@@ -32,12 +32,12 @@ namespace ProyectoSO
             this.connectButton = new System.Windows.Forms.Button();
             this.desconnectButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.NewAccountButton = new System.Windows.Forms.Button();
+            this.LogInButton = new System.Windows.Forms.Button();
             this.passwordBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.usernameBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.LogInButton = new System.Windows.Forms.Button();
-            this.NewAccountButton = new System.Windows.Forms.Button();
             this.PuntMax_But = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.Juan120_But = new System.Windows.Forms.Button();
@@ -78,12 +78,41 @@ namespace ProyectoSO
             this.panel1.Size = new System.Drawing.Size(293, 306);
             this.panel1.TabIndex = 6;
             // 
+            // NewAccountButton
+            // 
+            this.NewAccountButton.Location = new System.Drawing.Point(102, 259);
+            this.NewAccountButton.Name = "NewAccountButton";
+            this.NewAccountButton.Size = new System.Drawing.Size(99, 34);
+            this.NewAccountButton.TabIndex = 12;
+            this.NewAccountButton.Text = "New Account";
+            this.NewAccountButton.UseVisualStyleBackColor = true;
+            this.NewAccountButton.Click += new System.EventHandler(this.NewAccountButton_Click);
+            // 
+            // LogInButton
+            // 
+            this.LogInButton.Location = new System.Drawing.Point(102, 219);
+            this.LogInButton.Name = "LogInButton";
+            this.LogInButton.Size = new System.Drawing.Size(99, 34);
+            this.LogInButton.TabIndex = 11;
+            this.LogInButton.Text = "Log In";
+            this.LogInButton.UseVisualStyleBackColor = true;
+            this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
+            // 
             // passwordBox
             // 
             this.passwordBox.Location = new System.Drawing.Point(118, 167);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(142, 22);
             this.passwordBox.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Usuario:";
             // 
             // label2
             // 
@@ -101,42 +130,13 @@ namespace ProyectoSO
             this.usernameBox.Size = new System.Drawing.Size(142, 22);
             this.usernameBox.TabIndex = 8;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 137);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Usuario:";
-            // 
-            // LogInButton
-            // 
-            this.LogInButton.Location = new System.Drawing.Point(102, 219);
-            this.LogInButton.Name = "LogInButton";
-            this.LogInButton.Size = new System.Drawing.Size(99, 34);
-            this.LogInButton.TabIndex = 11;
-            this.LogInButton.Text = "Log In";
-            this.LogInButton.UseVisualStyleBackColor = true;
-            this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
-            // 
-            // NewAccountButton
-            // 
-            this.NewAccountButton.Location = new System.Drawing.Point(102, 259);
-            this.NewAccountButton.Name = "NewAccountButton";
-            this.NewAccountButton.Size = new System.Drawing.Size(99, 34);
-            this.NewAccountButton.TabIndex = 12;
-            this.NewAccountButton.Text = "New Account";
-            this.NewAccountButton.UseVisualStyleBackColor = true;
-            this.NewAccountButton.Click += new System.EventHandler(this.NewAccountButton_Click);
-            // 
             // PuntMax_But
             // 
             this.PuntMax_But.Location = new System.Drawing.Point(495, 77);
             this.PuntMax_But.Name = "PuntMax_But";
             this.PuntMax_But.Size = new System.Drawing.Size(150, 54);
             this.PuntMax_But.TabIndex = 13;
-            this.PuntMax_But.Text = "Puntuación Máxima";
+            this.PuntMax_But.Text = "Puntuación Máxima de Maria";
             this.PuntMax_But.UseVisualStyleBackColor = true;
             this.PuntMax_But.Click += new System.EventHandler(this.PuntMax_But_Click);
             // 

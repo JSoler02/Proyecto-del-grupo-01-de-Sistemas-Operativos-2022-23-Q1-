@@ -26,7 +26,7 @@ namespace ProyectoSO
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9070);
+            IPEndPoint ipep = new IPEndPoint(direc, 9080);
 
 
             //Creamos el socket 
@@ -83,7 +83,7 @@ namespace ProyectoSO
             byte[] msg2 = new byte[80];
             server.Receive(msg2);
             mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show("Juan ha jugado más de 120 segundos en " + mensaje + " partidas.");
+            MessageBox.Show("Juan ha jugado más de 120 segundos en las partidas: " + mensaje + ".");
         }
 
         private void Templo_But_Click(object sender, EventArgs e)
