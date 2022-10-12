@@ -1,0 +1,10 @@
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe.config
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.pdb
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csprojAssemblyReference.cache
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Main.resources
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Properties.Resources.resources
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.GenerateResource.cache
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.CoreCompileInputs.cache
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.exe
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\ProjecteSO_V2\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.pdb
