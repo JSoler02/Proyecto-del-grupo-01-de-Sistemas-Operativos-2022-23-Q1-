@@ -15,10 +15,16 @@ namespace ProyectoSO
     public partial class Main : Form
     {
         Socket server;
+        
 
         public Main()
         {
             InitializeComponent();
+            label3.Visible = false;
+            PuntMax_But.Visible = false;
+            Juan120_But.Visible = false;
+            Templo_But.Visible = false;
+            passwordBox.PasswordChar = ('*');
         }
 
         private void connectButton_Click(object sender, EventArgs e)
@@ -26,7 +32,7 @@ namespace ProyectoSO
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9080);
+            IPEndPoint ipep = new IPEndPoint(direc, 9050);
 
 
             //Creamos el socket 
@@ -48,6 +54,10 @@ namespace ProyectoSO
         private void desconnectButton_Click(object sender, EventArgs e)
         {
             //Mensaje de desconexión
+            label3.Visible = false;
+            PuntMax_But.Visible = false;
+            Juan120_But.Visible = false;
+            Templo_But.Visible = false;
             string mensaje = "0/";
 
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
@@ -103,7 +113,8 @@ namespace ProyectoSO
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            string mensaje = "1/";// + palabra_box.Text ;
+            string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
+            
             //-->> cositas para buscar username etc en la base de datos de C
             // pasar los datos de username, y contraseña en una cadena de texto. 
             // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
@@ -119,12 +130,18 @@ namespace ProyectoSO
 
             // haccer messagebox diciendo que login correcto o login incorrecto
             // hacer que cuando login correcto: desaparezcan las cositas de username, password, etc --> es decir el panel ese (que están en un panel)
+            MessageBox.Show(mensaje);
+            
+            label3.Visible = true;
+            PuntMax_But.Visible = true;
+            Juan120_But.Visible = true;
+            Templo_But.Visible = true;
 
         }
 
         private void NewAccountButton_Click(object sender, EventArgs e)
         {
-            string mensaje = "2/";// + palabra_box.Text ;
+            string mensaje = "2/"+usernameBox.Text+"/"+passwordBox.Text;
             //-->> cositas para crear username etc en la base de datos de C
             // pasar los datos de username, y contraseña en una cadena de texto. 
             // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
@@ -139,6 +156,7 @@ namespace ProyectoSO
             mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
 
             // hacer messagebox diciendo que usuario existente y/o usuario creado correctamente
+            MessageBox.Show(mensaje);
         }
     }
 }

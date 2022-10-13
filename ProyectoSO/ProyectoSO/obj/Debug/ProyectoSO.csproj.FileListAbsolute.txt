@@ -18,3 +18,13 @@ C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.CoreCompileInputs.cache
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.exe
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.pdb
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe.config
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.pdb
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.AssemblyReference.cache
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Main.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Properties.Resources.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.GenerateResource.cache
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.CoreCompileInputs.cache
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.exe
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.pdb
