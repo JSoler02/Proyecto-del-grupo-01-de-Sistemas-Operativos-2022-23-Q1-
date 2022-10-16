@@ -9,41 +9,23 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <pthread.h>
 
-int main(int argc, char *argv[])
+
+
+
+void *AtenderCliente (void *socket)
 {
-	int sock_conn, sock_listen, ret;
-	struct sockaddr_in serv_adr;
+	int sock_conn, ret;
+	int *s;
+	s= (int *) socket;
+	sock_conn = *s;
+	
 	char peticion[512];
 	char login[512];
 	char respuesta[512];
-	// INICIALITZACIONS
-	// Obrim el socket
-	if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-		printf("Error creant socket\n");
-	// Fem el bind al port
-	memset(&serv_adr, 0, sizeof(serv_adr));// inicialitza a zero serv_addr
-	serv_adr.sin_family = AF_INET;
-	
-	// asocia el socket a cualquiera de las IP de la m?quina. 
-	//htonl formatea el numero que recibe al formato necesario
-	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
-	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(9050);
-	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
-		printf ("Error al bind\n");
-	if (listen(sock_listen, 3) < 0)
-		printf("Error en el Listen\n");
-	
-	int i;
-	// Bucle infinito
-	for (;;){
-		printf ("Escuchando\n");
-		
-		sock_conn = accept(sock_listen, NULL, NULL);
-		printf ("He recibido conexion\n");
-		//sock_conn es el socket que usaremos para este cliente
-		int terminar =0;
+
+	int terminar =0;
 		// Entramos en un bucle para atender todas las peticiones de este cliente
 		//hasta que se desconecte
 		while (terminar ==0)
@@ -382,4 +364,50 @@ int main(int argc, char *argv[])
 		// Se acabo el servicio para este cliente
 		close(sock_conn); 
 	}
+}
+
+
+int main(int argc, char *argv[])
+{
+	int sock_conn, sock_listen;
+	struct sockaddr_in serv_adr;
+
+	// INICIALITZACIONS
+	// Obrim el socket
+	if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+		printf("Error creant socket\n");
+	// Fem el bind al port
+	memset(&serv_adr, 0, sizeof(serv_adr));// inicialitza a zero serv_addr
+	serv_adr.sin_family = AF_INET;
+	
+	// asocia el socket a cualquiera de las IP de la m?quina. 
+	//htonl formatea el numero que recibe al formato necesario
+	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
+	// establecemos el puerto de escucha
+	serv_adr.sin_port = htons(9050);
+	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
+		printf ("Error al bind\n");
+	if (listen(sock_listen, 3) < 0)
+		printf("Error en el Listen\n");
+	
+	int i;
+	int sockets[100];
+	pthread_t thread; //donde se guardan los ID de los sockets
+	// Bucle infinito
+	for (;;){
+		printf ("Escuchando\n");
+		
+		sock_conn = accept(sock_listen, NULL, NULL);
+		printf ("He recibido conexion\n");
+		//sock_conn es el socket que usaremos para este cliente
+		sockets[i] = sock_conn;
+		// Creamos thread y le decimos lo que tiene que hacer
+		pthread_create (&thread, NULL, AtenderCliente, &sockets[i]);
+		i=i+1;
+		}		
+	// Bucle para hacer que el servidor se espere a que acabe de todos los clientes.
+	/*for (i=0; i<5, i++)
+		pthread_join (thread[i], NULL);
+	*/
+	
 }

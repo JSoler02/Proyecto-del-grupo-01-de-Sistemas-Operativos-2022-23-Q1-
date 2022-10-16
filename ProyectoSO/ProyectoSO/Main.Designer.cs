@@ -29,7 +29,6 @@ namespace ProyectoSO
         /// </summary>
         private void InitializeComponent()
         {
-            this.connectButton = new System.Windows.Forms.Button();
             this.desconnectButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.NewAccountButton = new System.Windows.Forms.Button();
@@ -45,21 +44,11 @@ namespace ProyectoSO
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // connectButton
-            // 
-            this.connectButton.Location = new System.Drawing.Point(46, 374);
-            this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(111, 37);
-            this.connectButton.TabIndex = 4;
-            this.connectButton.Text = "Conectar";
-            this.connectButton.UseVisualStyleBackColor = true;
-            this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
-            // 
             // desconnectButton
             // 
-            this.desconnectButton.Location = new System.Drawing.Point(185, 374);
+            this.desconnectButton.Location = new System.Drawing.Point(93, 373);
             this.desconnectButton.Name = "desconnectButton";
-            this.desconnectButton.Size = new System.Drawing.Size(116, 37);
+            this.desconnectButton.Size = new System.Drawing.Size(133, 37);
             this.desconnectButton.TabIndex = 5;
             this.desconnectButton.Text = "Desconectar";
             this.desconnectButton.UseVisualStyleBackColor = true;
@@ -75,14 +64,14 @@ namespace ProyectoSO
             this.panel1.Controls.Add(this.usernameBox);
             this.panel1.Location = new System.Drawing.Point(25, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(293, 306);
+            this.panel1.Size = new System.Drawing.Size(293, 322);
             this.panel1.TabIndex = 6;
             // 
             // NewAccountButton
             // 
-            this.NewAccountButton.Location = new System.Drawing.Point(102, 259);
+            this.NewAccountButton.Location = new System.Drawing.Point(68, 270);
             this.NewAccountButton.Name = "NewAccountButton";
-            this.NewAccountButton.Size = new System.Drawing.Size(99, 34);
+            this.NewAccountButton.Size = new System.Drawing.Size(133, 34);
             this.NewAccountButton.TabIndex = 12;
             this.NewAccountButton.Text = "New Account";
             this.NewAccountButton.UseVisualStyleBackColor = true;
@@ -90,9 +79,9 @@ namespace ProyectoSO
             // 
             // LogInButton
             // 
-            this.LogInButton.Location = new System.Drawing.Point(102, 219);
+            this.LogInButton.Location = new System.Drawing.Point(68, 219);
             this.LogInButton.Name = "LogInButton";
-            this.LogInButton.Size = new System.Drawing.Size(99, 34);
+            this.LogInButton.Size = new System.Drawing.Size(133, 34);
             this.LogInButton.TabIndex = 11;
             this.LogInButton.Text = "Log In";
             this.LogInButton.UseVisualStyleBackColor = true;
@@ -181,7 +170,6 @@ namespace ProyectoSO
             this.Controls.Add(this.PuntMax_But);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.desconnectButton);
-            this.Controls.Add(this.connectButton);
             this.Name = "Main";
             this.Text = "Menú Principal";
             this.panel1.ResumeLayout(false);
@@ -192,8 +180,6 @@ namespace ProyectoSO
         }
 
         #endregion
-
-        private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.Button desconnectButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button NewAccountButton;
