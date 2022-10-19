@@ -17,6 +17,32 @@ namespace ProyectoSO
         Socket server;
         
 
+        /*
+         * Hacer un DATATABLE que se llene al dar al botón de Lista de Conectados
+         * 
+         * Poner usuario a conectado (necesitamos nombre y socket)
+         mensaje a enviar del tipo: 6/nombreconectado/4
+         mensaje recibido: "Conectado!" o "No se ha podido conectar al usuario" 
+         ↑ devolverlo directamente desde el C en la respuesta
+         
+         * Eliminar usuario conectado (necesitamos nombre)
+         mensaje a enviar del tipo: 7/nombreaeliminar
+         mensaje recibido: "Desconectado." o "No se ha podido desconectar" 
+         ↑ devolverlo directamente desde el C en la respuesta
+        
+         * Dame socket de usuario (necesitamos nombre) ??
+         * (Creo que esto se usará para enviar mensaje de jugar entre jugadores)
+         mensaje a enviar del tipo: 8/nombreconectado
+         
+         * Dame listado de nombre de los usuarios conectados
+         mensaje a enviar del tipo: 9/
+         mensaje recibido: 3/Juan/Pedro/Maria (el numero inicial nos indica el número de usuarios conectados)
+         
+         * Dame listado de sockets de usuario conectados 
+         * (necesitamos lista de conectados - la que nos devuelve la función anterior)
+         mensaje a enviar del tipo: 10/3/Juan/Pedro/Maria
+         mensaje recibido: 3/5/1/3
+         */
         public Main()
         {
             InitializeComponent();
