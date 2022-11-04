@@ -43,6 +43,28 @@ namespace ProyectoSO
          mensaje a enviar del tipo: 10/3/Juan/Pedro/Maria
          mensaje recibido: 3/5/1/3
          */
+
+        // Funciones Lista Conectados
+
+        public void TableRefresh()
+        {
+            
+            gridconectados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gridconectados.RowHeadersVisible = false;
+
+            string mensaje = "6/";
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+            //Recibimos la respuesta del servidor
+            byte[] msg2 = new byte[80];
+            server.Receive(msg2);
+            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+            MessageBox.Show(mensaje);
+
+            gridconectados.Refresh();
+
+        }
         public Main()
         {
             InitializeComponent();
@@ -128,7 +150,7 @@ namespace ProyectoSO
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
+            IPEndPoint ipep = new IPEndPoint(direc, 9070);
 
 
             //Creamos el socket 
@@ -149,7 +171,7 @@ namespace ProyectoSO
 
 
                 MessageBox.Show(mensaje);
-                if (mensaje == "Login EXITOSO")
+                if (mensaje == "Conectado")
                 {
                     label3.Visible = true;
                     PuntMax_But.Visible = true;
@@ -158,8 +180,12 @@ namespace ProyectoSO
                     desconnectButton.Visible = true;
                     panel1.Visible = false;
                     this.BackColor = Color.Green;
-                    //MessageBox.Show("Conectado.");
+                    TableRefresh();
+
+
+                    
                 }
+
 
             }
             catch (SocketException ex)
