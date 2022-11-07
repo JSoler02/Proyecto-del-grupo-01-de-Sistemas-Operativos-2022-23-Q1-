@@ -15,56 +15,7 @@ namespace ProyectoSO
     public partial class Main : Form
     {
         Socket server;
-        
 
-        /*
-         * Hacer un DATATABLE que se llene al dar al botón de Lista de Conectados
-         * 
-         * Poner usuario a conectado (necesitamos nombre y socket)
-         mensaje a enviar del tipo: 6/nombreconectado/4
-         mensaje recibido: "Conectado!" o "No se ha podido conectar al usuario" 
-         ↑ devolverlo directamente desde el C en la respuesta
-         
-         * Eliminar usuario conectado (necesitamos nombre)
-         mensaje a enviar del tipo: 7/nombreaeliminar
-         mensaje recibido: "Desconectado." o "No se ha podido desconectar" 
-         ↑ devolverlo directamente desde el C en la respuesta
-        
-         * Dame socket de usuario (necesitamos nombre) ??
-         * (Creo que esto se usará para enviar mensaje de jugar entre jugadores)
-         mensaje a enviar del tipo: 8/nombreconectado
-         
-         * Dame listado de nombre de los usuarios conectados
-         mensaje a enviar del tipo: 9/
-         mensaje recibido: 3/Juan/Pedro/Maria (el numero inicial nos indica el número de usuarios conectados)
-         
-         * Dame listado de sockets de usuario conectados 
-         * (necesitamos lista de conectados - la que nos devuelve la función anterior)
-         mensaje a enviar del tipo: 10/3/Juan/Pedro/Maria
-         mensaje recibido: 3/5/1/3
-         */
-
-        // Funciones Lista Conectados
-
-        public void TableRefresh()
-        {
-            
-            gridconectados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            gridconectados.RowHeadersVisible = false;
-
-            string mensaje = "6/";
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show(mensaje);
-
-            gridconectados.Refresh();
-
-        }
         public Main()
         {
             InitializeComponent();
@@ -73,6 +24,7 @@ namespace ProyectoSO
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
             desconnectButton.Visible = false;
+            listaCon_but.Visible = false;
             passwordBox.PasswordChar = ('*');
         }
 
@@ -83,6 +35,7 @@ namespace ProyectoSO
             PuntMax_But.Visible = false;
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
+            listaCon_but.Visible = false;
             panel1.Visible = true;
             desconnectButton.Visible = false;
             string mensaje = "0/";
@@ -178,9 +131,10 @@ namespace ProyectoSO
                     Juan120_But.Visible = true;
                     Templo_But.Visible = true;
                     desconnectButton.Visible = true;
+                    listaCon_but.Visible = true;
                     panel1.Visible = false;
                     this.BackColor = Color.Green;
-                    TableRefresh();
+                    //TableRefresh();
 
 
                     
@@ -215,6 +169,14 @@ namespace ProyectoSO
 
             // hacer messagebox diciendo que usuario existente y/o usuario creado correctamente
             MessageBox.Show(mensaje);
+        }
+
+        private void listaCon_but_Click(object sender, EventArgs e)
+        {
+            
+            ListaCon f = new ListaCon();
+            f.PassarSocket(server);
+            f.ShowDialog();
         }
     }
 }
