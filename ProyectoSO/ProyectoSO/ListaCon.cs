@@ -70,7 +70,6 @@ namespace ProyectoSO
             byte[] msg2 = new byte[80];
             server.Receive(msg2);
             mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show(mensaje);
 
             // string mensaje = "3/Juan/Pedro/Maria"; 
             // el numero inicial nos indica el número de usuarios conectados
@@ -81,7 +80,6 @@ namespace ProyectoSO
             {                
                 string nombre = Convert.ToString(mensaje.Split('/')[i+1]);
                 GridConectados.Rows[i].Cells[1].Value = nombre;
-
             }
 
             GridConectados.Refresh();

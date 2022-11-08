@@ -34,12 +34,13 @@
             // 
             // GridConectados
             // 
+            this.GridConectados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.GridConectados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridConectados.Location = new System.Drawing.Point(175, 33);
+            this.GridConectados.Location = new System.Drawing.Point(236, 39);
             this.GridConectados.Name = "GridConectados";
             this.GridConectados.RowHeadersWidth = 51;
             this.GridConectados.RowTemplate.Height = 24;
-            this.GridConectados.Size = new System.Drawing.Size(441, 352);
+            this.GridConectados.Size = new System.Drawing.Size(219, 352);
             this.GridConectados.TabIndex = 0;
             // 
             // ListaCon
