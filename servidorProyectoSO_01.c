@@ -74,8 +74,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 	
 }
 
-int EliminaConectado (ListaConectados *lista, char nombre[20])
-	
+int EliminaConectado (ListaConectados *lista, char nombre[20])	
 { // Devuelve 0 si elimina y -1 si el usuario no est￯﾿ﾡ en la lista
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
@@ -104,8 +103,7 @@ void DameNombreConectados (ListaConectados *lista, char respuesta[512])
 	}
 }
 
-void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char
-							  sockets[200])
+void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char sockets[200])
 { //Recibe una lista con nombres de jugadores separados por &quot;/&quot;: &quot;3/Juan/Pedro/Maria&quot;
 	//Devuelve una lista con los sockets de estos jugadores separados por &quot;/&quot;:&quot;3/5/1/3&quot;
 	char *p = strtok (conectados, "/");
@@ -128,9 +126,6 @@ void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char
 }
 
 
-
-
-
 void *AtenderCliente (void *socket)
 {
 	int sock_conn, ret;
@@ -141,7 +136,7 @@ void *AtenderCliente (void *socket)
 	char peticion[512];
 	char login[512];
 	char respuesta[512];
-		
+	
 	int terminar =0;
 	// Entramos en un bucle para atender todas las peticiones de este cliente
 	//hasta que se desconecte
@@ -197,290 +192,25 @@ void *AtenderCliente (void *socket)
 			terminar=1;
 		
 		else if (codigo ==1) //piden logearse
-		{
-			// Obtenemos usuario
-			p = strtok(NULL, "/");
-			strcpy(username, p);
-			
-			//Obtenemos contrase￯﾿ﾱa
-			p = strtok(NULL, "/");
-			strcpy(password, p);
-			
-			//Creamos conexion con MYSQL
-			conn= mysql_init(NULL);
-			if (conn==NULL)  {
-				printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			//inicializar la conexion
-			conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
-			if (conn==NULL)  {
-				printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			
-			//Hacemos la consulta
-			strcpy(consulta, "SELECT DISTINCT jugador.username, jugador.password FROM (jugador) WHERE jugador.username = '");
-			strcat(consulta, username);
-			strcat(consulta, "';");
-			
-			err = mysql_query (conn, consulta);
-			if (err!=0) {
-				printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			resultado = mysql_store_result (conn);
-			
-			row = mysql_fetch_row (resultado);
-			if (row == NULL)
-			{
-				printf ("No se han obtenido datos en la consulta\n");
-				strcpy(respuesta, "Usuario no encontrado");
-			}
-			else
-			{
-				if (strcmp(password,row[1]) == 0){
-					int res = PonConectado(&listaconectados, username, &s);
-					if (res == -1)
-						strcpy(respuesta,"No se ha podido conectar el usuario");
-					else {
-						strcpy(respuesta, "Conectado");
-						
-						
-					}
-				}
-				else
-					strcpy(respuesta,"No conectado, warning");
-			}
-			mysql_close (conn);
-			
-			
-		}
+			LogIn(username, password, consulta, respuesta, &listaconectados, p, conn, err, resultado, row, s);
+		
 		else if (codigo ==2) // quieren crear un usuario
-		{
-			// Obtenemos usuario
-			p = strtok(NULL, "/");
-			strcpy(username, p);
-			
-			//Obtenemos contrase￯﾿ﾱa
-			p = strtok(NULL, "/");
-			strcpy(password, p);
-			
-			//Creamos conexion con MYSQL
-			conn= mysql_init(NULL);
-			if (conn==NULL)  {
-				printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			//inicializar la conexion
-			conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
-			if (conn==NULL)  {
-				printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			
-			//Hacemos la consulta
-			
-			strcpy(consulta, "SELECT jugador.username FROM (jugador) WHERE jugador.username = '");
-			strcat(consulta, username);
-			strcat(consulta, "';");
-			
-			err = mysql_query (conn, consulta);
-			if (err!=0) {
-				printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			
-			resultado = mysql_store_result (conn);
-			row = mysql_fetch_row (resultado);
-			
-			
-			if (row == NULL) // Afegim usuari
-			{
-				
-				//COnsultamos el ID MAX
-				strcpy(consulta, "SELECT MAX(jugador.id) FROM (jugador);");
-				err = mysql_query (conn, consulta);
-				if (err!=0) {
-					printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-					exit (1);
-				}
-				resultado = mysql_store_result (conn);
-				row = mysql_fetch_row (resultado);
-				
-				int id_max;
-				char id_max_s[20];
-				id_max = atoi(row[0])+1;
-				sprintf(id_max_s,"%d",id_max);
-				
-				// Hacemos insert
-				strcpy(consulta, "INSERT INTO jugador VALUES (");
-				strcat(consulta,id_max_s);
-				strcat(consulta,",'");
-				strcat(consulta,username);
-				strcat(consulta,"','");
-				strcat(consulta,password);
-				strcat(consulta,"');");
-				
-				err = mysql_query (conn, consulta);
-				if (err!=0) {
-					printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-					exit (1);
-				}
-				
-				strcpy(respuesta,"Usuario creado GOOOOD");
-				
-				
-			}
-			else
-			{
-				strcpy(respuesta, "Usuario ya existente");
-			}
-			mysql_close (conn);
-		}
+			CrearUsuario(username, password, consulta, respuesta, p, conn, err, resultado, row);
 		
 		else if (codigo == 3)
-		{	//quiere saber la puntuacion maxima de Maria
-			strcpy (nombre, "'Maria'");
-			// reamos una conexion al servidor MYSQL 
-			conn= mysql_init(NULL);
-			if (conn==NULL)  {
-				printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			//inicializar la conexion
-			conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
-			if (conn==NULL)  {
-				printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			// consulta SQL para obtener una tabla con todos los datos
-			strcpy(consulta, "SELECT MAX(historial.puntos) FROM (jugador, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = ");
-			strcat(consulta, nombre);
-			strcat(consulta, ");");
-			
-			err = mysql_query (conn, consulta);
-			if (err!=0) {
-				printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			resultado = mysql_store_result (conn);
-			
-			row = mysql_fetch_row (resultado);
-			if (row == NULL)
-				printf ("No se han obtenido datos en la consulta\n");
-			else
-				max_jugador = atoi (row[0]);
-			// cerrar la conexion con el servidor MYSQL 
-			mysql_close (conn);
-			sprintf (respuesta,"%d", max_jugador);
-		}
+			Consulta1(consulta, nombre, respuesta, max_jugador, p, conn, err, resultado, row);
+	
 		else if (codigo == 4)
-		{	// Partidas en las que Juan ha jugado mas de 120 s
-			strcpy (nombre, "'Juan'");
-			
-			//Creamos conexion
-			conn = mysql_init(NULL);
-			if (conn==NULL) {
-				printf ("Error al crear la conexion: %u %s\n", 
-						mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			//inicializar la conexion
-			conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
-			if (conn==NULL) {
-				printf ("Error al inicializar la conexion: %u %s\n", 
-						mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			// Ahora vamos a realizar la consulta
-			printf ("Ahora encontraremos los id de las partidas cuya duracion sea mayor a 120 y donde Juan haya participado: \n");
-			strcpy (consulta,"SELECT partida.id FROM (jugador, partida, historial) WHERE jugador.username ="); 
-			strcat (consulta, nombre);
-			strcat (consulta," AND jugador.id = historial.id_j AND historial.id_p = partida.id AND partida.id IN (SELECT partida.id FROM (partida) WHERE partida.duracion > 120);");
-			err=mysql_query (conn, consulta);
-			if (err!=0) {
-				printf ("Error al consultar datos de la base %u %s\n",
-						mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			// Recogemos el resultado
-			resultado = mysql_store_result (conn); 
-			row = mysql_fetch_row (resultado);
-			//int id_max;
-			if (row == NULL)
-				printf ("No se han obtenido datos en la consulta\n");
-			else
-			{
-				while (row != NULL)
-				{
-					// obtenemos la siguiente fila
-					//id_max = row[0];
-					strcpy(respuesta, row[0]);
-					row = mysql_fetch_row (resultado);
-					/*sprintf (respuesta,"%s/%s",respuesta, row[0]);*/
-					
-				}
-			}
-			// cerrar la conexion con el servidor MYSQL 
-			mysql_close (conn);
-			
-		}
+			Consulta2(consulta, nombre, respuesta, p, conn, err, resultado, row);
+		
 		else if (codigo == 5)	
-		{	//Jugadores que han jugado en templo como J1
-			strcpy(mapa, "'templo'");
-			//Creamos una conexion al servidor MYSQL 
-			conn = mysql_init(NULL);
-			if (conn==NULL) {
-				printf ("Error al crear la conexion: %u %s\n", 
-						mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			//inicializar la conexion
-			conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
-			if (conn==NULL) {
-				printf ("Error al inicializar la conexion: %u %s\n", 
-						mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			// Ahora vamos a realizar la consulta
-			printf ("Ahora encontraremos el username de los usuarios que han jugado en el mapa 'templo' como jugador 1: \n");
-			// construimos la consulta SQL
-			strcpy (consulta,"SELECT jugador.username FROM (jugador, partida, historial) WHERE partida.mapa = "); 
-			strcat (consulta, mapa);
-			strcat (consulta," AND historial.id_p = partida.id AND historial.id_j = jugador.id AND historial.posicion = 1;");
-			// hacemos la consulta 
-			err=mysql_query (conn, consulta); 
-			if (err!=0) {
-				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			//recogemos el resultado de la consulta 
-			resultado = mysql_store_result (conn); 
-			row = mysql_fetch_row (resultado);
-			if (row == NULL)
-				printf ("No se han obtenido datos en la consulta\n");
-			else
-				while (row != NULL){
-					printf("Username: %s\n", row[0]);
-					sprintf (respuesta, "%s %s", respuesta, row[0]);
-					// obtenemos la siguiente fila
-					row = mysql_fetch_row (resultado);
-			}
+			Consulta2(consulta, mapa, respuesta, p, conn, err, resultado, row);
 		
-				
-				
-				// cerrar la conexion con el servidor MYSQL 
-				mysql_close (conn);
-		
-		}
 		else if (codigo == 6)
 		{
 			// Dame lista conectados
 			printf(listaconectados.num);
 			DameNombreConectados(&listaconectados, respuesta);
-			
-			
 		}
 		
 		if (codigo !=0)
@@ -493,7 +223,283 @@ void *AtenderCliente (void *socket)
 	}
 	// Se acabo el servicio para este cliente
 	close(sock_conn); 
+}
 
+void LogIn(char user[60], char passw[60], char cons[500], char resp[512], ListaConectados *lista, char *p, MYSQL *conn, int err, MYSQL_RES *resultado, MYSQL_ROW row, int *s)
+{
+	// Obtenemos usuario
+	p = strtok(NULL, "/");
+	strcpy(user, p);
+	
+	//Obtenemos contrase￯﾿ﾱa
+	p = strtok(NULL, "/");
+	strcpy(passw, p);
+	
+	//Creamos conexion con MYSQL
+	conn= mysql_init(NULL);
+	if (conn==NULL)  {
+		printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	//inicializar la conexion
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
+	if (conn==NULL)  {
+		printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	
+	//Hacemos la consulta
+	strcpy(cons, "SELECT DISTINCT jugador.username, jugador.password FROM (jugador) WHERE jugador.username = '");
+	strcat(cons, user);
+	strcat(cons, "';");
+	
+	err = mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	resultado = mysql_store_result (conn);
+	
+	row = mysql_fetch_row (resultado);
+	if (row == NULL)
+	{
+		printf ("No se han obtenido datos en la consulta\n");
+		strcpy(resp, "Usuario no encontrado");
+	}
+	else
+	{
+		if (strcmp(passw,row[1]) == 0){
+			int res = PonConectado(&lista, user, &s);
+			if (res == -1)
+				strcpy(resp,"No se ha podido conectar el usuario");
+			else {
+				strcpy(resp, "Conectado");
+			}
+		}
+		else
+			strcpy(resp,"No conectado, warning");
+	}
+	mysql_close (conn);
+	
+}
+
+void CrearUsuario(char user[60], char passw[60], char cons[500], char resp[512], char *p, MYSQL *conn, int err, MYSQL_RES *resultado, MYSQL_ROW row)
+{
+	// Obtenemos usuario
+	p = strtok(NULL, "/");
+	strcpy(user, p);
+	
+	//Obtenemos contrase￯﾿ﾱa
+	p = strtok(NULL, "/");
+	strcpy(passw, p);
+	
+	//Creamos conexion con MYSQL
+	conn= mysql_init(NULL);
+	if (conn==NULL)  {
+		printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	//inicializar la conexion
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
+	if (conn==NULL)  {
+		printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	
+	//Hacemos la consulta
+	
+	strcpy(cons, "SELECT jugador.username FROM (jugador) WHERE jugador.username = '");
+	strcat(cons, user);
+	strcat(cons, "';");
+	
+	err = mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	
+	
+	if (row == NULL) // Afegim usuari
+	{
+		
+		//COnsultamos el ID MAX
+		strcpy(cons, "SELECT MAX(jugador.id) FROM (jugador);");
+		err = mysql_query (conn, cons);
+		if (err!=0) {
+			printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+			exit (1);
+		}
+		resultado = mysql_store_result (conn);
+		row = mysql_fetch_row (resultado);
+		
+		int id_max;
+		char id_max_s[20];
+		id_max = atoi(row[0])+1;
+		sprintf(id_max_s,"%d",id_max);
+		
+		// Hacemos insert
+		strcpy(cons, "INSERT INTO jugador VALUES (");
+		strcat(cons,id_max_s);
+		strcat(cons,",'");
+		strcat(cons,user);
+		strcat(cons,"','");
+		strcat(cons,passw);
+		strcat(cons,"');");
+		
+		err = mysql_query (conn, cons);
+		if (err!=0) {
+			printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+			exit (1);
+		}
+		strcpy(resp,"Usuario creado GOOOOD");
+	}
+	else
+	{
+		strcpy(resp, "Usuario ya existente");
+	}
+	mysql_close (conn);
+}
+
+void Consulta1(char cons[500], char name[60], char resp[512], int max, char *p, MYSQL *conn, int err, MYSQL_RES *resultado, MYSQL_ROW row)
+{
+	//quiere saber la puntuacion maxima de Maria
+	strcpy (name, "'Maria'");
+	// reamos una conexion al servidor MYSQL 
+	conn= mysql_init(NULL);
+	if (conn==NULL)  {
+		printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	//inicializar la conexion
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
+	if (conn==NULL)  {
+		printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	// consulta SQL para obtener una tabla con todos los datos
+	strcpy(cons, "SELECT MAX(historial.puntos) FROM (jugador, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = ");
+	strcat(cons, name);
+	strcat(cons, ");");
+	
+	err = mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	resultado = mysql_store_result (conn);
+	
+	row = mysql_fetch_row (resultado);
+	if (row == NULL)
+		printf ("No se han obtenido datos en la consulta\n");
+	else
+		max = atoi (row[0]);
+	// cerrar la conexion con el servidor MYSQL 
+	mysql_close (conn);
+	sprintf (resp,"%d", max);
+}
+
+void Consulta2(char cons[500], char name[60], char resp[512], char *p, MYSQL *conn, int err, MYSQL_RES *resultado, MYSQL_ROW row)
+{
+	// Partidas en las que Juan ha jugado mas de 120 s	
+	strcpy (name, "'Juan'");
+	
+	//Creamos conexion
+	conn = mysql_init(NULL);
+	if (conn==NULL) {
+		printf ("Error al crear la conexion: %u %s\n", 
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	//inicializar la conexion
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
+	if (conn==NULL) {
+		printf ("Error al inicializar la conexion: %u %s\n", 
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	
+	// Ahora vamos a realizar la consulta
+	printf ("Ahora encontraremos los id de las partidas cuya duracion sea mayor a 120 y donde Juan haya participado: \n");
+	strcpy (cons,"SELECT partida.id FROM (jugador, partida, historial) WHERE jugador.username ="); 
+	strcat (cons, name);
+	strcat (cons," AND jugador.id = historial.id_j AND historial.id_p = partida.id AND partida.id IN (SELECT partida.id FROM (partida) WHERE partida.duracion > 120);");
+	
+	err=mysql_query (conn, cons);
+	
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	// Recogemos el resultado
+	resultado = mysql_store_result (conn); 
+	row = mysql_fetch_row (resultado);
+	//int id_max;
+	if (row == NULL)
+		printf ("No se han obtenido datos en la consulta\n");
+	else
+	{
+		while (row != NULL)
+		{
+			// obtenemos la siguiente fila
+			//id_max = row[0];
+			strcpy(resp, row[0]);
+			row = mysql_fetch_row (resultado);
+			/*sprintf (respuesta,"%s/%s",respuesta, row[0]);*/
+			
+		}
+	}
+	// cerrar la conexion con el servidor MYSQL 
+	mysql_close (conn);
+}
+
+void Consulta3(char cons[500], char map[60], char resp[512], char *p, MYSQL *conn, int err, MYSQL_RES *resultado, MYSQL_ROW row)
+{
+	//Jugadores que han jugado en templo como J1
+	strcpy(map, "'templo'");
+	//Creamos una conexion al servidor MYSQL 
+	conn = mysql_init(NULL);
+	if (conn==NULL) {
+		printf ("Error al crear la conexion: %u %s\n", 
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	//inicializar la conexion
+	conn = mysql_real_connect (conn, "localhost","root", "mysql", "bdFireWater",0, NULL, 0);
+	if (conn==NULL) {
+		printf ("Error al inicializar la conexion: %u %s\n", 
+				mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	// Ahora vamos a realizar la consulta
+	printf ("Ahora encontraremos el username de los usuarios que han jugado en el mapa 'templo' como jugador 1: \n");
+	// construimos la consulta SQL
+	strcpy (cons,"SELECT jugador.username FROM (jugador, partida, historial) WHERE partida.mapa = "); 
+	strcat (cons, map);
+	strcat (cons," AND historial.id_p = partida.id AND historial.id_j = jugador.id AND historial.posicion = 1;");
+	// hacemos la consulta 
+	err=mysql_query (conn, cons); 
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	//recogemos el resultado de la consulta 
+	resultado = mysql_store_result (conn); 
+	row = mysql_fetch_row (resultado);
+	if (row == NULL)
+		printf ("No se han obtenido datos en la consulta\n");
+	else
+		while (row != NULL){
+			printf("Username: %s\n", row[0]);
+			sprintf (resp, "%s %s", resp, row[0]);
+			// obtenemos la siguiente fila
+			row = mysql_fetch_row (resultado);
+	}		
+		// cerrar la conexion con el servidor MYSQL 
+		mysql_close (conn);
 }
 
 int main(int argc, char *argv[])
@@ -538,4 +544,4 @@ int main(int argc, char *argv[])
 	pthread_join (thread[i], NULL);
 	*/
 	
-}
+ }
