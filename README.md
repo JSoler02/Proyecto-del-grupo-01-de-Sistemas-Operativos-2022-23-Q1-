@@ -8,3 +8,6 @@ URL: https://youtu.be/TE0v9DNq2YM\
 
 Version 2 generada por Julia\
 Version 2 verificada por Victor\
+Version 2 comunicada por Marina\
+URL : https://youtu.be/cY5DuNFp0r8\
+URL interfaz grafica : https://youtu.be/3bqU2SIwHpA
