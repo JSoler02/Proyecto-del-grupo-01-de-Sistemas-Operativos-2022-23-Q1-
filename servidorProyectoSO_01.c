@@ -112,7 +112,7 @@ int EliminaConectado (ListaConectados *lista, char nombre[20])
 }
 
 void DameNombreConectados (ListaConectados *lista, char respuesta[512])
-{ //Devuelve los nombres de los jugadores conectados separados por &quot;/&quot;
+{ //Devuelve los nombres de los jugadores conectados separados por "/"
 	//Primero pone el numero de conectado. &quot;3/Juan/Pedro/Maria&quot;
 	sprintf (respuesta, "%d", lista->num);
 	for (int i = 0; i<lista->num; i++)
@@ -144,8 +144,9 @@ void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char
 }
 
 
+
 // Esta funci￳n hace el LogIn. Necesita un nombre y una contrasenya
-// Devuelve 0 si todo OK. Devuvelve -1 si no es correcto
+// Devuelve 0 si todo OK. Devuelve -1 si no es correcto. Devuelve 1 si contrasenya incorrecta
 int LogIn(char user[60], char passw[60])
 {
 	char cons[500];
@@ -188,41 +189,24 @@ int LogIn(char user[60], char passw[60])
 		}
 		else
 			//strcpy(resp,"No conectado, warning");
-			return -1;
+			// contrasenya incorrecta
+			return 1;
 	}
 	
 }
 
-void CrearUsuario(char user[60], char passw[60], char cons[500], char resp[512], char *p, MYSQL *conn, int err, MYSQL_RES *resultado, MYSQL_ROW row)
+// Esta funci￳n crea un Usuario. Necesita un nombre y una contrasenya
+// Devuelve 0 si todo OK. Devuelve -1 si no se hace correctamente. Devuelve 1 si usuario existente
+int CrearUsuario(char user[60], char passw[60])
 {
-	// Obtenemos usuario
-	p = strtok(NULL, "/");
-	strcpy(user, p);
-//Obtenemos contrase￯﾿ﾯ￯ﾾ﾿￯ﾾﾱa
-	p = strtok(NULL, "/");
-	strcpy(passw, p);
-	
-	//Creamos conexion con MYSQL
-	conn= mysql_init(NULL);
-	if (conn==NULL)  {
-		printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-
-//inicializar la conexion
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", "T1bdFireWater",0, NULL, 0);
-	if (conn==NULL)  {
-		printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-	
+	char cons[500];
 	//Hacemos la consulta
 	
 	strcpy(cons, "SELECT jugador.username FROM (jugador) WHERE jugador.username = '");
 	strcat(cons, user);
 	strcat(cons, "';");
 
-err = mysql_query (conn, cons);
+	err = mysql_query (conn, cons);
 	if (err!=0) {
 		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
 		exit (1);
@@ -262,34 +246,27 @@ err = mysql_query (conn, cons);
 		err = mysql_query (conn, cons);
 		if (err!=0) {
 			printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-			exit (1);
+			return -1;
 		}
-		strcpy(resp,"Usuario creado GOOOOD");
+		return 0;
 	}
 	else
 	{
-		strcpy(resp, "Usuario ya existente");
+		//strcpy(resp, "Usuario ya existente");
+		return 1;
 	}
-	mysql_close (conn);
+	
 }
 
-void Consulta1(char cons[500], char name[60], char resp[512], int max, char *p, MYSQL *conn, int err, MYSQL_RES *resultado, MYSQL_ROW row)
+// Nos dice la puntuacion maxima que ha conseguido Maria en sus partidas
+int Consulta1()
 {
+	char cons[500];
+	char name [20];
+	int max;
 	//quiere saber la puntuacion maxima de Maria
 	strcpy (name, "'Maria'");
-	// reamos una conexion al servidor MYSQL 
-	conn= mysql_init(NULL);
-	if (conn==NULL)  {
-		printf ("Error al crear la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-
-//inicializar la conexion
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", "T1bdFireWater",0, NULL, 0);
-	if (conn==NULL)  {
-		printf ("Error al inicializar la conexion: %u %s\n", mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
+	
 	// consulta SQL para obtener una tabla con todos los datos
 	strcpy(cons, "SELECT MAX(historial.puntos) FROM (jugador, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = ");
 	strcat(cons, name);
@@ -307,31 +284,17 @@ void Consulta1(char cons[500], char name[60], char resp[512], int max, char *p, 
 		printf ("No se han obtenido datos en la consulta\n");
 	else
 		max = atoi (row[0]);
-	// cerrar la conexion con el servidor MYSQL 
-	mysql_close (conn);
-	sprintf (resp,"%d", max);
+
+	return max;
 }
 
-void Consulta2(char cons[500], char name[60], char resp[512], char *p, MYSQL *conn, int err, MYSQL_RES *resultado, MYSQL_ROW row)
+// ID de las Partidas en las que Juan ha jugado mas de 120 s
+void Consulta2(char resp[500])
 {
-	// Partidas en las que Juan ha jugado mas de 120 s	
+	char cons[500];
+	char name[20];
 	strcpy (name, "'Juan'");
 	
-	//Creamos conexion
-	conn = mysql_init(NULL);
-	if (conn==NULL) {
-		printf ("Error al crear la conexion: %u %s\n", 
-				mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-
-	//inicializar la conexion
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", "T1bdFireWater",0, NULL, 0);
-	if (conn==NULL) {
-		printf ("Error al inicializar la conexion: %u %s\n", 
-				mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
 
 	// Ahora vamos a realizar la consulta
 	strcpy (cons,"SELECT partida.id FROM (jugador, partida, historial) WHERE jugador.username ="); 
@@ -357,14 +320,13 @@ void Consulta2(char cons[500], char name[60], char resp[512], char *p, MYSQL *co
 		{
 			// obtenemos la siguiente fila
 			//id_max = row[0];
-			strcpy(resp, row[0]);
+			sprintf(resp, "%d " ,atoi(row[0]));
 			row = mysql_fetch_row (resultado);
 			/*sprintf (respuesta,"%s/%s",respuesta, row[0]);*/
 			
 		}
 	}
-	// cerrar la conexion con el servidor MYSQL 
-	mysql_close (conn);
+
 }
 
 // Rellena el vector resp con los nombre de los jugadores que han jugado 
@@ -433,13 +395,7 @@ void *AtenderCliente (void *socket)
 		char *p = strtok( peticion, "/");
 		int codigo =  atoi (p);
 		// Ya tenemos el c?digo de la peticion
-		// Ahora creamos las variables que podremos sacar de las consultas
-		// Variables sql:
-		MYSQL *conn;
-		int err;
-		// Estructura especial para almacenar resultados de consultas 
-		MYSQL_RES *resultado;
-		MYSQL_ROW row;
+
 		// otras variables
 		int max_jugador;			
 		char consulta [500];
@@ -463,7 +419,7 @@ void *AtenderCliente (void *socket)
 			// Obtenemos usuario
 			p = strtok(NULL, "/");
 			strcpy(username, p);
-			//Obtenemos contrase￯﾿ﾯ￯ﾾ﾿￯ﾾﾱa
+			//Obtenemos contrasenya
 			p = strtok(NULL, "/");
 			strcpy(password, p);
 			
@@ -471,18 +427,39 @@ void *AtenderCliente (void *socket)
 
 			if (resultado==-1)
 				strcpy(respuesta, "Usuario no encontrado");
+			else if (resultado  ==1)
+				strcpy(respuesta, "Password incorrecto");
 			else
 				strcpy(respuesta, "Conectado");
 			
 		}
 		
 		else if (codigo ==2) // quieren crear un usuario
-			CrearUsuario(username, password, consulta, respuesta, p, conn, err, resultado, row);
+		{
+			// Obtenemos usuario
+			p = strtok(NULL, "/");
+			strcpy(username, p);
+			//Obtenemos contrasenya
+			p = strtok(NULL, "/");
+			strcpy(password, p);
+			
+			int resultado = CrearUsuario(username, password);
+			
+			if (resultado==-1)
+				strcpy(respuesta, "Usuario no se ha podido crear");
+			else if (resultado ==1)
+				strcpy(respuesta, "Usuario ya existente");
+			else
+				strcpy(respuesta, "Usuario creado correctamente");
+		}
 		else if (codigo == 3)
-			Consulta1(consulta, nombre, respuesta, max_jugador, p, conn, err, resultado, row);
+		{
+			int max = Consulta1();
+			sprintf (respuesta, "%d", max);
+		}
 		
 		else if (codigo == 4)
-			Consulta2(consulta, nombre, respuesta, p, conn, err, resultado, row);
+			Consulta2(respuesta);
 		else if (codigo == 5)	
 			Consulta3(respuesta);
 		

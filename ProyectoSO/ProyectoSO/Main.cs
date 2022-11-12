@@ -73,7 +73,7 @@ namespace ProyectoSO
             byte[] msg2 = new byte[80];
             server.Receive(msg2);
             mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show("Juan ha jugado más de 120 segundos en las partidas: " + mensaje + ".");
+            MessageBox.Show("Juan ha jugado más de 120 segundos en las partidas: " + mensaje);
         }
 
         private void Templo_But_Click(object sender, EventArgs e)
@@ -88,31 +88,15 @@ namespace ProyectoSO
             server.Receive(msg2);
             mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
 
-            MessageBox.Show(mensaje + " han jugado partidas en el mapa 'templo' como jugador 1.");
+            MessageBox.Show(mensaje + " han jugado partidas en el mapa 'templo' como jugador 1");
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            /*Llenamos textbox para que no dé error si están vacías
-            if (usernameBox.Text == "")
-            { usernameBox.Text = " "; }
-            if(passwordBox.Text == "")
-             { passwordBox.Text = " "; }
-            */
-
-            //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
-            //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9085);
-
-
-            //Creamos el socket 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
+            int conexion = ConectarConServidor();
+            if (conexion == 0)
             {
                 string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
-                server.Connect(ipep);//Intentamos conectar el socket
-
                 // Enviamos al servidor el nombre tecleado
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
@@ -134,49 +118,68 @@ namespace ProyectoSO
                     listaCon_but.Visible = true;
                     panel1.Visible = false;
                     this.BackColor = Color.Green;
-                    //TableRefresh();
 
-
-                    
                 }
 
 
+            }
+
+        }
+
+        private void NewAccountButton_Click(object sender, EventArgs e)
+        {
+            int conexion = ConectarConServidor();
+            if (conexion == 0)
+            {
+                string mensaje = "2/" + usernameBox.Text + "/" + passwordBox.Text;
+                //-->> cositas para crear username etc en la base de datos de C
+                // pasar los datos de username, y contraseña en una cadena de texto. 
+                // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
+
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+
+                //Recibimos la respuesta del servidor
+                byte[] msg2 = new byte[80];
+                server.Receive(msg2);
+                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+
+                // hacer messagebox diciendo que usuario existente y/o usuario creado correctamente
+                MessageBox.Show(mensaje);
+            }
+        }
+
+        private void listaCon_but_Click(object sender, EventArgs e)
+        {
+
+            ListaCon f = new ListaCon();
+            f.PassarSocket(server);
+            f.ShowDialog();
+        }
+
+        // Se conecta al servidor. Devuelve 0 si correcto o -1 si no puede.
+        private int ConectarConServidor()
+        {
+            //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
+            //al que deseamos conectarnos
+            IPAddress direc = IPAddress.Parse("192.168.56.102");
+            IPEndPoint ipep = new IPEndPoint(direc, 9085);
+
+
+            //Creamos el socket 
+            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
+            {
+                server.Connect(ipep);//Intentamos conectar el socket
+                return 0;
             }
             catch (SocketException ex)
             {
                 //Si hay excepcion imprimimos error y salimos del programa con return 
                 MessageBox.Show("No he podido conectar con el servidor");
-                return;
+                return -1;
             }
-        
-        }
-
-        private void NewAccountButton_Click(object sender, EventArgs e)
-        {
-            string mensaje = "2/"+usernameBox.Text+"/"+passwordBox.Text;
-            //-->> cositas para crear username etc en la base de datos de C
-            // pasar los datos de username, y contraseña en una cadena de texto. 
-            // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
-
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-
-            // hacer messagebox diciendo que usuario existente y/o usuario creado correctamente
-            MessageBox.Show(mensaje);
-        }
-
-        private void listaCon_but_Click(object sender, EventArgs e)
-        {
-            
-            ListaCon f = new ListaCon();
-            f.PassarSocket(server);
-            f.ShowDialog();
         }
     }
 }
