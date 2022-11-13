@@ -42,6 +42,7 @@ namespace ProyectoSO
             this.Juan120_But = new System.Windows.Forms.Button();
             this.Templo_But = new System.Windows.Forms.Button();
             this.listaCon_but = new System.Windows.Forms.Button();
+            this.conectar_bt = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +101,7 @@ namespace ProyectoSO
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 137);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Usuario:";
             // 
@@ -109,7 +110,7 @@ namespace ProyectoSO
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 172);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "Contraseña:";
             // 
@@ -168,13 +169,23 @@ namespace ProyectoSO
             this.listaCon_but.TabIndex = 17;
             this.listaCon_but.Text = "Lista Conectados";
             this.listaCon_but.UseVisualStyleBackColor = true;
-            this.listaCon_but.Click += new System.EventHandler(this.listaCon_but_Click);
+            // 
+            // conectar_bt
+            // 
+            this.conectar_bt.Location = new System.Drawing.Point(4, 2);
+            this.conectar_bt.Name = "conectar_bt";
+            this.conectar_bt.Size = new System.Drawing.Size(100, 23);
+            this.conectar_bt.TabIndex = 18;
+            this.conectar_bt.Text = "Conectar";
+            this.conectar_bt.UseVisualStyleBackColor = true;
+            this.conectar_bt.Click += new System.EventHandler(this.conectar_bt_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1258, 450);
+            this.Controls.Add(this.conectar_bt);
             this.Controls.Add(this.listaCon_but);
             this.Controls.Add(this.Templo_But);
             this.Controls.Add(this.Juan120_But);
@@ -184,6 +195,7 @@ namespace ProyectoSO
             this.Controls.Add(this.desconnectButton);
             this.Name = "Main";
             this.Text = "Menú Principal";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -205,6 +217,7 @@ namespace ProyectoSO
         private System.Windows.Forms.Button Juan120_But;
         private System.Windows.Forms.Button Templo_But;
         private System.Windows.Forms.Button listaCon_but;
+        private System.Windows.Forms.Button conectar_bt;
     }
 }
 

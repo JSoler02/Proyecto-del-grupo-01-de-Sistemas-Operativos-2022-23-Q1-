@@ -35,6 +35,8 @@ int err;
 MYSQL_RES *resultado;
 MYSQL_ROW row;
 
+int i;
+int sockets[100];
 
 
 
@@ -367,6 +369,24 @@ int Consulta3(char resp[500])
 	}
 }
 
+void EnviarListaConectadosNotificacion()
+{
+	char respuesta [500];
+	// Dame lista conectados
+	pthread_mutex_lock (&mutex);
+	DameNombreConectados(&listaconectados, respuesta);
+	pthread_mutex_unlock (&mutex);
+	
+	// Notificar a todos los conectados
+	sprintf(respuesta, "6/%s", respuesta);		
+	// enviar notificacion por todos los sockets de los conectados
+	int j;
+	for (j=0; j<i; j++)
+		
+		write (sockets[j], respuesta, strlen(respuesta));
+	
+}
+
 void *AtenderCliente (void *socket)
 {
 	int sock_conn, ret;
@@ -411,6 +431,9 @@ void *AtenderCliente (void *socket)
 			pthread_mutex_lock (&mutex);
 			EliminaConectado(&listaconectados, username);
 			pthread_mutex_unlock (&mutex);
+			
+			// ************************************************************** EnviarListaConectadosNotificacion();
+			
 			terminar = 1;
 		}
 		
@@ -426,12 +449,14 @@ void *AtenderCliente (void *socket)
 			int resultado = LogIn(username, password);
 
 			if (resultado==-1)
-				strcpy(respuesta, "Usuario no encontrado");
+				strcpy(respuesta, "1/Usuario no encontrado");
 			else if (resultado  ==1)
-				strcpy(respuesta, "Password incorrecto");
+				strcpy(respuesta, "1/Password incorrecto");
 			else
-				strcpy(respuesta, "Conectado");
-			
+			{
+				strcpy(respuesta, "1/Conectado");
+				// *********************************************************************** EnviarListaConectadosNotificacion();
+			}
 		}
 		
 		else if (codigo ==2) // quieren crear un usuario
@@ -446,30 +471,29 @@ void *AtenderCliente (void *socket)
 			int resultado = CrearUsuario(username, password);
 			
 			if (resultado==-1)
-				strcpy(respuesta, "Usuario no se ha podido crear");
+				strcpy(respuesta, "2/Usuario no se ha podido crear");
 			else if (resultado ==1)
-				strcpy(respuesta, "Usuario ya existente");
+				strcpy(respuesta, "2/Usuario ya existente");
 			else
-				strcpy(respuesta, "Usuario creado correctamente");
+				strcpy(respuesta, "2/Usuario creado correctamente");
 		}
 		else if (codigo == 3)
 		{
 			int max = Consulta1();
-			sprintf (respuesta, "%d", max);
+			sprintf (respuesta, "3/%d", max);
 		}
 		
 		else if (codigo == 4)
-			Consulta2(respuesta);
-		else if (codigo == 5)	
-			Consulta3(respuesta);
-		
-		else if (codigo == 6)
 		{
-			// Dame lista conectados
-			pthread_mutex_lock (&mutex);
-			DameNombreConectados(&listaconectados, respuesta);
-			pthread_mutex_unlock (&mutex);
+			Consulta2(respuesta);
+			sprintf (respuesta, "4/%s", respuesta);
 		}
+		else //if (codigo == 5)	
+		{
+			Consulta3(respuesta);
+			sprintf(respuesta, "5/%s", respuesta);
+		}
+	
 		if (codigo !=0)
 		{
 			
@@ -478,7 +502,8 @@ void *AtenderCliente (void *socket)
 			write (sock_conn,respuesta, strlen(respuesta));
 		}
 	}
-
+	// Se acabo el servicio para este cliente
+	close(sock_conn); 
 }
 
 int main(int argc, char *argv[])
@@ -495,15 +520,14 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(9085);
+	serv_adr.sin_port = htons(9080);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind\n");
 	if (listen(sock_listen, 3) < 0)
 		printf("Error en el Listen\n");
 	
-	int i;
-	int sockets[100];
-pthread_t thread; //donde se guardan los ID de los sockets
+
+	pthread_t thread; //donde se guardan los ID de los sockets
 
 
 	// Creamos conexion 1 sola vez con BaseDatos MYSQL 
@@ -532,6 +556,4 @@ pthread_t thread; //donde se guardan los ID de los sockets
 		pthread_create (&thread, NULL, AtenderCliente, &sockets[i]);
 		i=i+1;
 	}
-	// Se acabo el servicio para este cliente
-	close(sock_conn); 
 }
