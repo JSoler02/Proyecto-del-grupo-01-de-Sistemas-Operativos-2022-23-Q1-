@@ -181,7 +181,10 @@ int LogIn(char user[60], char passw[60])
 			else 
 			{
 				//strcpy(resp, "Conectado");
+				
+				
 				return 0;
+				
 			}
 		}
 		else
@@ -362,16 +365,16 @@ int Consulta3(char resp[500])
 	}
 }
 
-void EnviarListaConectadosNotificacion()
+void EnviarListaConectadosNotificacion(char respuesta[512])
 {
-	char respuesta [500];
+	char res[512];
 	// Dame lista conectados
 	pthread_mutex_lock (&mutex);
-	DameNombreConectados(&listaconectados, respuesta);
+	DameNombreConectados(&listaconectados, res);
 	pthread_mutex_unlock (&mutex);
 	
 	// Notificar a todos los conectados
-	sprintf(respuesta, "6/%s", respuesta);		
+	sprintf(respuesta, "6/%s", res);		
 	// enviar notificacion por todos los sockets de los conectados
 	int j;
 	for (j=0; j<i; j++)
@@ -388,6 +391,7 @@ void *AtenderCliente (void *socket)
 	char peticion[512];
 	char login[512];
 	char respuesta[512];
+	char notificacion[512];
 	char res[512];
 	
 	
@@ -419,6 +423,7 @@ void *AtenderCliente (void *socket)
 		char peticion[500];
 		char username[60];
 		char password[60];
+		
 		strcpy(respuesta, ""); // vaciamos respuesta
 		
 		if (codigo ==0) //peticion de desconexion
@@ -428,7 +433,7 @@ void *AtenderCliente (void *socket)
 			pthread_mutex_unlock (&mutex);
 			
 			// ************************************************************** EnviarListaConectadosNotificacion();
-			
+			//EnviarListaConectadosNotificacion(notificacion);
 			terminar = 1;
 		}
 		
@@ -449,6 +454,9 @@ void *AtenderCliente (void *socket)
 			else
 			{
 				strcpy(respuesta, "1/Conectado");
+				EnviarListaConectadosNotificacion(notificacion);
+				
+				
 				// *********************************************************************** EnviarListaConectadosNotificacion();
 			}
 		}

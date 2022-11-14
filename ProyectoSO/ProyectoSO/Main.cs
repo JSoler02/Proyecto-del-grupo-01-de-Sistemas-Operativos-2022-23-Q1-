@@ -68,6 +68,7 @@ namespace ProyectoSO
                             this.BackColor = Color.Green;
 
                         }
+
                         break;
                     case 2: // New User
                         MessageBox.Show(mensaje);
@@ -85,6 +86,25 @@ namespace ProyectoSO
                         /*ListaCon f = new ListaCon();
                         f.PassarSocket(server);
                         f.ShowDialog();*/
+                        GridConectados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                        GridConectados.RowHeadersVisible = false;
+                        GridConectados.ColumnCount = 2;
+                        GridConectados.Columns[1].HeaderText = "Username";
+                        GridConectados.Columns[0].HeaderText = "Socket ID";
+
+                        // string mensaje = "3/Juan/Pedro/Maria"; 
+                        // el numero inicial nos indica el número de usuarios conectados
+                        int num = Convert.ToInt32(mensaje);
+                        GridConectados.RowCount = num;
+                        
+                        for (int i = 0; i < num; i++)
+                        {
+                            string nombre = Convert.ToString(trozos[i+2].Split('\0')[0]);
+                            GridConectados.Rows[i].Cells[1].Value = nombre;
+                        }
+
+                        GridConectados.Refresh();
+
                         break;
              
                 }
@@ -97,6 +117,7 @@ namespace ProyectoSO
             PuntMax_But.Visible = false;
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
+            GridConectados.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;
             string mensaje = "0/";
