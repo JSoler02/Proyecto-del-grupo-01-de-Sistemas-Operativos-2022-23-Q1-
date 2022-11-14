@@ -27,7 +27,7 @@ namespace ProyectoSO
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
             desconnectButton.Visible = false;
-            listaCon_but.Visible = false;
+            GridConectados.Visible = false;
             passwordBox.PasswordChar = ('*');
             panel1.Visible = false;
             
@@ -63,8 +63,8 @@ namespace ProyectoSO
                             Juan120_But.Visible = true;
                             Templo_But.Visible = true;
                             desconnectButton.Visible = true;
-                            listaCon_but.Visible = true;
                             panel1.Visible = false;
+                            GridConectados.Visible = true;
                             this.BackColor = Color.Green;
 
                         }
@@ -97,7 +97,6 @@ namespace ProyectoSO
             PuntMax_But.Visible = false;
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
-            listaCon_but.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;
             string mensaje = "0/";
@@ -259,6 +258,10 @@ namespace ProyectoSO
                 MessageBox.Show("No he podido conectar con el servidor");
                 return -1;
             }
+
+     
+
+
         }
 
         private void conectar_bt_Click(object sender, EventArgs e)
@@ -271,5 +274,6 @@ namespace ProyectoSO
                 panel1.Visible = true;
             }
         }
+
     }
 }
