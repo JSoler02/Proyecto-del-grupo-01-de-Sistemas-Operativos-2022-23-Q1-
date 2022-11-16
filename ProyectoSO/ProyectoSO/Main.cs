@@ -30,13 +30,11 @@ namespace ProyectoSO
             GridConectados.Visible = false;
             passwordBox.PasswordChar = ('*');
             panel1.Visible = false;
-            
         }
         public Main()
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false; // que permita modificar la label los threads.
-
+            CheckForIllegalCrossThreadCalls = false; // que permita modificar la label los threads
         }
 
         // Creamos funcion del thread
@@ -51,7 +49,7 @@ namespace ProyectoSO
                 // Partimos el mensaje por la "/"
                 string[] trozos = Encoding.ASCII.GetString(msg2).Split('/');
                 int codigo = Convert.ToInt32(trozos[0]);
-                string mensaje = trozos[1].Split('\0')[0];
+                string mensaje = mensaje = trozos[1].Split('\0')[0];
                 switch (codigo)
                 {
                     case 1: // Login
@@ -66,20 +64,18 @@ namespace ProyectoSO
                             panel1.Visible = false;
                             GridConectados.Visible = true;
                             this.BackColor = Color.Green;
-
                         }
-
                         break;
                     case 2: // New User
                         MessageBox.Show(mensaje);
                         break;
-                    case 3: //consulta 1 -- Puntos maximos de Maria
+                    case 3: //consulta 1 --> Puntos maximos de Maria
                         MessageBox.Show("La puntuación máxima es: " + mensaje);
                         break;
-                    case 4: //consulta 2 -- Id de las partidas de más de 120 s de Juan
+                    case 4: //consulta 2 --> Id de las partidas de más de 120 s de Juan
                         MessageBox.Show("Juan ha jugado más de 120 segundos en las partidas: " + mensaje);
                         break;
-                    case 5: //consulta 3 -- Nombre de los jugadores que han jugado como J1 en "templo"
+                    case 5: //consulta 3 --> Nombre de los jugadores que han jugado como J1 en "templo"
                         MessageBox.Show(mensaje + " han jugado partidas en el mapa 'templo' como jugador 1");
                         break;
                     case 6: // Notificación de la Lista de Conectados
@@ -102,11 +98,8 @@ namespace ProyectoSO
                             string nombre = Convert.ToString(trozos[i+2].Split('\0')[0]);
                             GridConectados.Rows[i].Cells[1].Value = nombre;
                         }
-
                         GridConectados.Refresh();
-
                         break;
-             
                 }
             }
         }
@@ -256,8 +249,12 @@ namespace ProyectoSO
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9085);
+            // SHIVA --> 147.83.117.22
+            // JÚLIA --> 192.168.195.128 
+            // RESTA --> 192.168.56.102
+            IPAddress direc = IPAddress.Parse("192.168.195.128");
+            // SHIVA --> 50000 o 50001 o 50002
+            IPEndPoint ipep = new IPEndPoint(direc, 9090);
 
 
             //Creamos el socket 
