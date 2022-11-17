@@ -67,7 +67,7 @@ namespace ProyectoSO
                         }
                         break;
                     case 2: // New User
-                        MessageBox.Show(mensaje);
+                            MessageBox.Show(mensaje);
                         break;
                     case 3: //consulta 1 --> Puntos maximos de Maria
                         MessageBox.Show("La puntuación máxima es: " + mensaje);
@@ -252,9 +252,9 @@ namespace ProyectoSO
             // SHIVA --> 147.83.117.22
             // JÚLIA --> 192.168.195.128 
             // RESTA --> 192.168.56.102
-            IPAddress direc = IPAddress.Parse("192.168.195.128");
-            // SHIVA --> 50000 o 50001 o 50002
-            IPEndPoint ipep = new IPEndPoint(direc, 9090);
+            IPAddress direc = IPAddress.Parse("147.83.117.22");
+            // SHIVA --> 50050 o 50051 o 50052
+            IPEndPoint ipep = new IPEndPoint(direc, 50050);
 
 
             //Creamos el socket 

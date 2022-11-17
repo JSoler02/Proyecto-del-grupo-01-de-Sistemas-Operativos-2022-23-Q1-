@@ -531,8 +531,8 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	// SHIVA --> 50000 o 50001 o 50002
-	serv_adr.sin_port = htons(9085);
+	// SHIVA --> 50050 o 50051 o 50052
+	serv_adr.sin_port = htons(50050);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind\n");
 	if (listen(sock_listen, 3) < 0)
@@ -550,8 +550,8 @@ int main(int argc, char *argv[])
 	}
 	
 	//inicializar la conexion
-	// SHIVA --> conn = mysql_real_connect (conn, "shiva2.upc.es","root", "mysql", "T1bdFireWater",0, NULL, 0);
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", "T1bdFireWater",0, NULL, 0);
+	conn = mysql_real_connect (conn, "shiva2.upc.es","root", "mysql", "T1bdFireWater",0, NULL, 0);
+	// NO SHIVA --> conn = mysql_real_connect (conn, "localhost","root", "mysql", "T1bdFireWater",0, NULL, 0);
 	if (conn==NULL) {
 		printf ("Error al inicializar la conexion: %u %s\n", 
 				mysql_errno(conn), mysql_error(conn));
