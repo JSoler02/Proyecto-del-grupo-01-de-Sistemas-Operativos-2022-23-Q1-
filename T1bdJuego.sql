@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS bdFireWater;
-CREATE DATABASE bdFireWater;
+DROP DATABASE IF EXISTS T1bdFireWater;
+CREATE DATABASE T1bdFireWater;
 
-USE bdFireWater;
+USE T1bdFireWater;
 
 CREATE TABLE jugador (
 	id INT NOT NULL,

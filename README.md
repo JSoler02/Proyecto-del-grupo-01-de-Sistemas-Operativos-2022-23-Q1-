@@ -4,10 +4,20 @@
 Version 1 generada por Marina\
 Version 1 verificada por Julia\
 Version 1 comunicada por Victor\
-URL: https://youtu.be/TE0v9DNq2YM\
+URL: https://youtu.be/TE0v9DNq2YM
 
 Version 2 generada por Julia\
 Version 2 verificada por Victor\
 Version 2 comunicada por Marina\
+<<<<<<< HEAD
 URL : https://youtu.be/cY5DuNFp0r8\
 URL interfaz grafica : https://youtu.be/3bqU2SIwHpA
+=======
+URL : https://youtu.be/cY5DuNFp0r8 \
+URL interfaz grafica : https://youtu.be/3bqU2SIwHpA
+
+Version 3 generada por Victor\
+Version 3 verificada por Marina\
+Version 3 comunicada por Julia\
+URL : https://youtu.be/bfNAdN6CwFA \
+>>>>>>> v3-dev
