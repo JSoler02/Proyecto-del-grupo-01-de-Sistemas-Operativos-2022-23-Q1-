@@ -30,6 +30,11 @@ namespace ProyectoSO
             GridConectados.Visible = false;
             passwordBox.PasswordChar = ('*');
             panel1.Visible = false;
+            GridConectados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            GridConectados.RowHeadersVisible = false;
+            GridConectados.ColumnCount = 1;
+            GridConectados.Columns[0].HeaderText = "Username";
+
         }
         public Main()
         {
@@ -47,9 +52,12 @@ namespace ProyectoSO
                 byte[] msg2 = new byte[80];
                 server.Receive(msg2);
                 // Partimos el mensaje por la "/"
-                string[] trozos = Encoding.ASCII.GetString(msg2).Split('/');
+                string mensajeSucio = Encoding.ASCII.GetString(msg2);
+                    string mensajeLimpio = mensajeSucio.Split('\0')[0];
+                string[] trozos = mensajeLimpio.Split('/');
                 int codigo = Convert.ToInt32(trozos[0]);
-                string mensaje = mensaje = trozos[1].Split('\0')[0];
+                
+                string mensaje = trozos[1];
                 switch (codigo)
                 {
                     case 1: // Login
@@ -82,23 +90,19 @@ namespace ProyectoSO
                         /*ListaCon f = new ListaCon();
                         f.PassarSocket(server);
                         f.ShowDialog();*/
-                        GridConectados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                        GridConectados.RowHeadersVisible = false;
-                        GridConectados.ColumnCount = 2;
-                        GridConectados.Columns[1].HeaderText = "Username";
-                        GridConectados.Columns[0].HeaderText = "Socket ID";
+                        
 
                         // string mensaje = "3/Juan/Pedro/Maria"; 
                         // el numero inicial nos indica el número de usuarios conectados
                         int num = Convert.ToInt32(mensaje);
-                        GridConectados.RowCount = num;
                         
                         for (int i = 0; i < num; i++)
                         {
                             string nombre = Convert.ToString(trozos[i+2].Split('\0')[0]);
-                            GridConectados.Rows[i].Cells[1].Value = nombre;
+                            GridConectados.Rows.Add(nombre);
                         }
                         GridConectados.Refresh();
+                        GridConectados.ClearSelection();
                         break;
                 }
             }

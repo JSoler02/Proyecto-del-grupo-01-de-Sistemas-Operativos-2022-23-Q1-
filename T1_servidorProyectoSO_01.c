@@ -94,8 +94,9 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 	
 }
 
-int EliminaConectado (ListaConectados *lista, char nombre[20])	
+int EliminaConectado (ListaConectados *lista, char nombre[20],int sockets[100])	
 { // Devuelve 0 si elimina y -1 si el usuario no est￯﾿ﾡ en la lista
+	// Elimina el socket de la lista global de sockets
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
 		return -1;
@@ -103,12 +104,33 @@ int EliminaConectado (ListaConectados *lista, char nombre[20])
 	{ // Haremos un for, y desplazaremos a todos hacia la izquierda
 		// Bucle para eliminar comienza en la posicion a eliminar
 		// Y va hasta el num -1
+		
+		int socket = DameSocket(lista, nombre);
+
+		int found = 0;
+		int i = 0;
+		while (!found && i < 100)
+		{
+			if (sockets[i] == socket)
+				found = 1;
+			else
+				i++;
+		}
+
+
+		for (int j = i; j < 99; j++)
+		{
+			sockets[j]= sockets[j+1];
+		}
+
 		for (int i = pos; i<lista->num-1;i++)
 		{
 			strcpy(lista->conectados[i].nombre, lista->conectados[i+1].nombre);
 			lista->conectados[i].socket = lista->conectados[i+1].socket;
 		}
 		lista->num --; //restamos 1
+
+
 		return 0;
 	}
 }
@@ -437,7 +459,7 @@ void *AtenderCliente (void *socket)
 		if (codigo ==0) //peticion de desconexion
 		{
 			pthread_mutex_lock (&mutex);
-			EliminaConectado(&listaconectados, username);
+			EliminaConectado(&listaconectados, username,sockets);
 			pthread_mutex_unlock (&mutex);
 			
 			EnviarListaConectadosNotificacion(notificacion);
@@ -566,6 +588,7 @@ int main(int argc, char *argv[])
 		//sock_conn es el socket que usaremos para este cliente
 		sockets[i] = sock_conn;
 		// Creamos thread y le decimos lo que tiene que hacer
+		// resoldre sockets[i] --> clientes muertos 
 		pthread_create (&thread, NULL, AtenderCliente, &sockets[i]);
 		i=i+1;
 	}
