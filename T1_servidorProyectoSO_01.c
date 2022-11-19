@@ -37,7 +37,25 @@ MYSQL_ROW row;
 int i;
 int sockets[100];
 
-
+//Variables de desarrollo
+int shiva = 0; //1: si Shiva; 0: si MaqVirtual
+//Esta funcion devuelve el puerto y el Host 
+// dependiendo de si estamos en el entorno de desarrollo o el de produccion
+int DamePuertoYHost (int shiva, char host[50])
+{
+	int puerto;
+	if (shiva == 0)
+	{
+		strcpy(host, "localhost");
+		puerto = 8080;
+	}
+	else 
+	{
+		strcpy(host, "shiva2.upc.es");
+		puerto = 50050;
+	}
+	return puerto;
+}
 
 
 int PonConectado(ListaConectados *lista, char nombre[20], int socket){
@@ -554,7 +572,9 @@ int main(int argc, char *argv[])
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
 	// SHIVA --> 50050 o 50051 o 50052
-	serv_adr.sin_port = htons(50050);
+	char host[50];
+	int puerto = DamePuertoYHost(shiva, host);
+	serv_adr.sin_port = htons(puerto);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind\n");
 	if (listen(sock_listen, 3) < 0)
@@ -572,7 +592,7 @@ int main(int argc, char *argv[])
 	}
 	
 	//inicializar la conexion
-	conn = mysql_real_connect (conn, "shiva2.upc.es","root", "mysql", "T1bdFireWater",0, NULL, 0);
+	conn = mysql_real_connect (conn, host,"root", "mysql", "T1bdFireWater",0, NULL, 0);
 	// NO SHIVA --> conn = mysql_real_connect (conn, "localhost","root", "mysql", "T1bdFireWater",0, NULL, 0);
 	if (conn==NULL) {
 		printf ("Error al inicializar la conexion: %u %s\n", 

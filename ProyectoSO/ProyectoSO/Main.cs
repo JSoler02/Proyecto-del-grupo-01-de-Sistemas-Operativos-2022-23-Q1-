@@ -19,6 +19,9 @@ namespace ProyectoSO
         Socket server; // declaramos socket
         Thread atender; // declaramos thread
 
+        // Variables de desarrollo
+        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
+        int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -87,21 +90,17 @@ namespace ProyectoSO
                         MessageBox.Show(mensaje + " han jugado partidas en el mapa 'templo' como jugador 1");
                         break;
                     case 6: // Notificación de la Lista de Conectados
-                        /*ListaCon f = new ListaCon();
-                        f.PassarSocket(server);
-                        f.ShowDialog();*/
-                        
 
                         // string mensaje = "3/Juan/Pedro/Maria"; 
                         // el numero inicial nos indica el número de usuarios conectados
                         int num = Convert.ToInt32(mensaje);
-                        
+                        GridConectados.Rows.Clear();
                         for (int i = 0; i < num; i++)
                         {
                             string nombre = Convert.ToString(trozos[i+2].Split('\0')[0]);
                             GridConectados.Rows.Add(nombre);
                         }
-                        GridConectados.Refresh();
+                        //GridConectados.Refresh();
                         GridConectados.ClearSelection();
                         break;
                 }
@@ -137,13 +136,7 @@ namespace ProyectoSO
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-            /*
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show("La puntuación máxima es: " + mensaje);
-            */        
+     
         }
 
         private void Juan120_But_Click(object sender, EventArgs e)
@@ -152,13 +145,7 @@ namespace ProyectoSO
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-            /*
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show("Juan ha jugado más de 120 segundos en las partidas: " + mensaje);
-            */
+
         }
 
         private void Templo_But_Click(object sender, EventArgs e)
@@ -167,14 +154,7 @@ namespace ProyectoSO
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-            /*
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-
-            MessageBox.Show(mensaje + " han jugado partidas en el mapa 'templo' como jugador 1");
-            */        
+  
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
@@ -186,27 +166,7 @@ namespace ProyectoSO
                 // Enviamos al servidor el nombre tecleado
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
-                /*
-                //Recibimos la respuesta del servidor
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-
-
-                MessageBox.Show(mensaje);
-                if (mensaje == "Conectado")
-                {
-                    label3.Visible = true;
-                    PuntMax_But.Visible = true;
-                    Juan120_But.Visible = true;
-                    Templo_But.Visible = true;
-                    desconnectButton.Visible = true;
-                    listaCon_but.Visible = true;
-                    panel1.Visible = false;
-                    this.BackColor = Color.Green;
-
-                }
-                */
+                
 
             //}
 
@@ -218,7 +178,6 @@ namespace ProyectoSO
             //if (conexion == 0)
             //{
                 string mensaje = "2/" + usernameBox.Text + "/" + passwordBox.Text;
-                //-->> cositas para crear username etc en la base de datos de C
                 // pasar los datos de username, y contraseña en una cadena de texto. 
                 // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
 
@@ -226,26 +185,10 @@ namespace ProyectoSO
                 // Enviamos al servidor el nombre tecleado
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
-                /*
-                //Recibimos la respuesta del servidor
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-
-                // hacer messagebox diciendo que usuario existente y/o usuario creado correctamente
-                MessageBox.Show(mensaje);
-                */
+               
             //}
         }
 
-        /*
-        private void listaCon_but_Click(object sender, EventArgs e)
-        {
-            ListaCon f = new ListaCon();
-            f.PassarSocket(server);
-            f.ShowDialog();
-        }
-        */
 
         // Se conecta al servidor. Devuelve 0 si correcto o -1 si no puede.
         // Si se conecta correctamente crea el Thread para atender al servidor
@@ -256,9 +199,26 @@ namespace ProyectoSO
             // SHIVA --> 147.83.117.22
             // JÚLIA --> 192.168.195.128 
             // RESTA --> 192.168.56.102
-            IPAddress direc = IPAddress.Parse("147.83.117.22");
+            string ip;
             // SHIVA --> 50050 o 50051 o 50052
-            IPEndPoint ipep = new IPEndPoint(direc, 50050);
+            // MAQ VIRT --> 8050...
+            int puerto; 
+            if (this.shiva == 1)
+            { 
+                ip = "147.83.117.22";
+                puerto = 50050;
+            }
+            else
+            {
+                puerto = 8080;
+                if (this.julia == 1)
+                { ip = "147.83.117.22"; }
+                else
+                { ip = "192.168.56.102"; }
+            }
+
+            IPAddress direc = IPAddress.Parse(ip);
+            IPEndPoint ipep = new IPEndPoint(direc, puerto);
 
 
             //Creamos el socket 
@@ -280,9 +240,6 @@ namespace ProyectoSO
                 MessageBox.Show("No he podido conectar con el servidor");
                 return -1;
             }
-
-     
-
 
         }
 
