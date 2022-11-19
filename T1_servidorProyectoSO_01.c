@@ -126,25 +126,26 @@ int EliminaConectado (ListaConectados *lista, char nombre[20],int sockets[100])
 		int socket = DameSocket(lista, nombre);
 
 		int found = 0;
-		int i = 0;
-		while (!found && i < 100)
+		int x = 0;
+		while (!found && x < 100)
 		{
-			if (sockets[i] == socket)
+			if (sockets[x] == socket)
 				found = 1;
 			else
-				i++;
+				x++;
 		}
 
 
-		for (int j = i; j < 99; j++)
+		for (int j = x; j < 99; j++)
 		{
 			sockets[j]= sockets[j+1];
 		}
+		i = i -1; // i de los sockets
 
-		for (int i = pos; i<lista->num-1;i++)
+		for (int y = pos; y<lista->num-1;y++)
 		{
-			strcpy(lista->conectados[i].nombre, lista->conectados[i+1].nombre);
-			lista->conectados[i].socket = lista->conectados[i+1].socket;
+			strcpy(lista->conectados[y].nombre, lista->conectados[y+1].nombre);
+			lista->conectados[y].socket = lista->conectados[y+1].socket;
 		}
 		lista->num --; //restamos 1
 
