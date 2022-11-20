@@ -23,6 +23,7 @@ namespace ProyectoSO
         int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
         int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
+        int idPartida;
         private void Main_Load(object sender, EventArgs e)
         {
             label3.Visible = false;
@@ -102,6 +103,39 @@ namespace ProyectoSO
                         }
                         //GridConectados.Refresh();
                         GridConectados.ClearSelection();
+                        break;
+                    case 7: // Peticion de partida
+                            // 7/Maria: A quien te está pidiendo partida
+                        string anfitrion = mensaje;
+                        string resp; // "Si o No"
+                        DialogResult r = MessageBox.Show(anfitrion + " quiere jugar contigo.", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        if (r == DialogResult.OK)
+                        {
+                            resp = "Si";
+                        }
+                        else
+                        {
+                            resp = "No";
+                        }
+                        // * * * * * Enviamos respuesta como si queremos aceptar o no 
+                        // --> "7/resp"
+
+                        break;
+                    case 8: // Respuesta a  peticion de partida
+                            // "8/Juan/SI/2": Quien ha aceptado/su respuesta/idPartida
+                        string nombre_acepta = mensaje;
+                        string respuesta = Convert.ToString(trozos[2].Split('\0')[0]);
+                        if (respuesta == "Si")
+                        {
+                            idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
+                            MessageBox.Show(nombre_acepta + " ha aceptado tu invitación a partida");
+                            // * * * ** * * Se abre tablero etc etc etc.
+                        }
+                        else
+                        {
+                            MessageBox.Show(nombre_acepta + "no ha aceptado tu invitación a partida");
+                        }
+
                         break;
                 }
             }

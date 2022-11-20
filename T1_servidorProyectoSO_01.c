@@ -21,7 +21,23 @@ typedef struct{
 	int num;
 }ListaConectados;
 
+// Estructura de partida. Tiene como maximo 4 jugadores
+// campo ocupado = 0: si libre; ocupado=1: si ocupado
+typedef struct {
+	char jugador1[20];
+	int s1;
+	char jugador2[20];
+	int s2;
+	char jugador3[20];
+	int s3;
+	char jugador3[20];
+	int s4;
+	int numjugadores;
+	int ocupado;
+}Partida;
+
 ListaConectados listaconectados;
+Partida listaPartidas[20];
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 // Variables globales del socket
@@ -57,6 +73,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	return puerto;
 }
 
+// * * * * * * * * * Funciones ListaConectados
 
 int PonConectado(ListaConectados *lista, char nombre[20], int socket){
 	// Pone nuevo conectado.retorna 0 si ha ido bien y -1 si la lista ya 
@@ -186,6 +203,68 @@ void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char
 			sprintf(sockets, "%s/%d", sockets, socket);
 		}
 	}
+}
+// * * * * * * * * * Funciones ListaPartidas
+
+// Devuelve la id de la partida (busca el primero libre)
+// Devuelve -1 si no encuentra ninguna libre
+int BuscarPartidaLibre(Partida lista[20])
+{
+	int j = 0;
+	int encontrado = 0;
+	while ((j< 20)&&(encontrado == 0))
+	{
+		if (lista[j].ocupado == 0)
+			encontrado = 1;
+		if (encontrado == 0)
+			j=j+1;
+	}
+	if (encontrado == 1)
+		return j;
+	else
+		return -1;	
+}
+// Creamos la entrada de la partida en la lista de partidas
+// encontramos los sockets de los jugadores que han aceptado la Partida
+void CrearPartida(Partida lista[20], int partidalibre, char j1[20], char j2[20], char j3[20], char j4[20])
+{
+	int s1 = DameSocket(&listaconectados,j1);
+	int s2 = DameSocket(&listaconectados,j2);
+	int s3 = DameSocket(&listaconectados,j3);
+	int s4 = DameSocket(&listaconectados,j4);
+	int num = 0;
+	if (s1!=-1)
+		num = num -1;
+	if (s2!=-1)
+		num = num +1;
+	if (s3!=-1)
+		num = num +1;
+	if (s4!=-1)
+		num = num +1;
+	
+	strcpy(lista[partidalibre].jugador1, j1);
+	lista[partidalibre].s1 = s1;
+	strcpy(lista[partidalibre].jugador2, j2);
+	lista[partidalibre].s2 = s2;
+	strcpy(lista[partidalibre].jugador3, j3);
+	lista[partidalibre].s3 = s3;
+	strcpy(lista[partidalibre].jugador4, j4);
+	lista[partidalibre].s4 = s4;
+	lista[partidalibre].numjugadores = num;
+	
+	lista[partidalibre].ocupado = 1;
+}
+
+// Elimina la partida de la lista: pone a 0 el t￩rmino ocupado 
+// de la partida que le venga como parametro. Eliminamos (ponemos a -1)
+// tambi￩n los sockets de la lista de partidas
+void AcabaPartida (Partida lista[20], int idpartida)	
+{
+	lista[idpartida].ocupado = 0;
+	lista[idpartida].s1 = -1;
+	lista[idpartida].s2 = -1;
+	lista[idpartida].s3 = -1;
+	lista[idpartida].s4 = -1;
 }
 
 
