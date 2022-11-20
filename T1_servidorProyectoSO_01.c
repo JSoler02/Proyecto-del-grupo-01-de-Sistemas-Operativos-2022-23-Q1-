@@ -112,7 +112,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 	
 }
 
-int EliminaConectado (ListaConectados *lista, char nombre[20],int sockets[100])	
+int EliminaConectado (ListaConectados *lista, char nombre[20])	
 { // Devuelve 0 si elimina y -1 si el usuario no est￯﾿ﾡ en la lista
 	// Elimina el socket de la lista global de sockets
 	int pos = DamePosicion (lista,nombre);
@@ -156,8 +156,8 @@ int EliminaConectado (ListaConectados *lista, char nombre[20],int sockets[100])
 
 
 void DameNombreConectados (ListaConectados *lista, char respuesta[512])
-{ //Devuelve los nombres de los jugadores conectados separados por &quot;/&quot;
-	//Primero pone el numero de conectado. &quot;3/Juan/Pedro/Maria&quot;
+{ //Devuelve los nombres de los jugadores conectados separados por "/"
+	//Primero pone el numero de conectado. "3/Juan/Pedro/Maria"
 	sprintf (respuesta, "%d", lista->num);
 	for (int i = 0; i<lista->num; i++)
 	{
@@ -167,8 +167,8 @@ void DameNombreConectados (ListaConectados *lista, char respuesta[512])
 
 
 void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char sockets[200])
-{ //Recibe una lista con nombres de jugadores separados por &quot;/&quot;: &quot;3/Juan/Pedro/Maria&quot;
-	//Devuelve una lista con los sockets de estos jugadores separados por &quot;/&quot;:&quot;3/5/1/3&quot;
+{ //Recibe una lista con nombres de jugadores separados por "/";: "3/Juan/Pedro/Maria";
+	//Devuelve una lista con los sockets de estos jugadores separados por "/":"3/5/1/3";
 	char *p = strtok (conectados, "/");
 	int n = atoi (p);
 	sprintf (sockets,"%d", n);
@@ -478,10 +478,13 @@ void *AtenderCliente (void *socket)
 		if (codigo ==0) //peticion de desconexion
 		{
 			pthread_mutex_lock (&mutex);
-			EliminaConectado(&listaconectados, username,sockets);
+			EliminaConectado(&listaconectados, username);
 			pthread_mutex_unlock (&mutex);
-			
+
+			pthread_mutex_lock (&mutex);			
 			EnviarListaConectadosNotificacion(notificacion);
+			pthread_mutex_unlock (&mutex);
+
 			terminar = 1;
 		}
 		
@@ -502,8 +505,9 @@ void *AtenderCliente (void *socket)
 			else
 			{
 				strcpy(respuesta, "1/Conectado");
+				pthread_mutex_lock (&mutex);			
 				EnviarListaConectadosNotificacion(notificacion);
-				
+				pthread_mutex_unlock (&mutex);				
 			}
 		
 		}
