@@ -30,7 +30,7 @@ typedef struct {
 	int s2;
 	char jugador3[20];
 	int s3;
-	char jugador3[20];
+	char jugador4[20];
 	int s4;
 	int numjugadores;
 	int ocupado;
