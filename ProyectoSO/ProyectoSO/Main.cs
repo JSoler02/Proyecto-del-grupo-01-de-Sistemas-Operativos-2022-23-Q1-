@@ -24,6 +24,7 @@ namespace ProyectoSO
         int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
+        string nombre;
         private void Main_Load(object sender, EventArgs e)
         {
             label3.Visible = false;
@@ -38,6 +39,7 @@ namespace ProyectoSO
             GridConectados.RowHeadersVisible = false;
             GridConectados.ColumnCount = 1;
             GridConectados.Columns[0].HeaderText = "Username";
+            GridConectados.ReadOnly = true;
 
         }
         public Main()
@@ -112,6 +114,7 @@ namespace ProyectoSO
                         if (r == DialogResult.OK)
                         {
                             resp = "Si";
+
                         }
                         else
                         {
@@ -119,6 +122,10 @@ namespace ProyectoSO
                         }
                         // * * * * * Enviamos respuesta como si queremos aceptar o no 
                         // --> "7/resp"
+                        idPartida = Convert.ToInt32(trozos[2]);
+                        mensaje = "8/" + resp + "/"+ idPartida + "/" + nombre;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
 
                         break;
                     case 8: // Respuesta a  peticion de partida
@@ -133,7 +140,7 @@ namespace ProyectoSO
                         }
                         else
                         {
-                            MessageBox.Show(nombre_acepta + "no ha aceptado tu invitación a partida");
+                            MessageBox.Show(nombre_acepta + " no ha aceptado tu invitación a partida");
                         }
 
                         break;
@@ -197,6 +204,7 @@ namespace ProyectoSO
             //if (conexion == 0)
             //{
                 string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
+                nombre = usernameBox.Text;
                 // Enviamos al servidor el nombre tecleado
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
@@ -288,5 +296,23 @@ namespace ProyectoSO
             }
         }
 
+        private void GridConectados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string invitado = Convert.ToString(GridConectados.CurrentCell.Value);
+            
+            if (invitado != nombre)
+            {
+                DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (r == DialogResult.OK)
+                {
+                   MessageBox.Show("Vamos a invitar a " + invitado);
+                   string mensaje = "7/" + invitado;
+                   byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                   server.Send(msg);
+                }
+            }
+            
+            
+        }
     }
 }
