@@ -234,7 +234,7 @@ void CrearPartida(Partida lista[20], int partidalibre, char j1[20], char j2[20],
 	int s4 = DameSocket(&listaconectados,j4);
 	int num = 0;
 	if (s1!=-1)
-		num = num -1;
+		num = num +1;
 	if (s2!=-1)
 		num = num +1;
 	if (s3!=-1)
@@ -253,6 +253,7 @@ void CrearPartida(Partida lista[20], int partidalibre, char j1[20], char j2[20],
 	lista[partidalibre].numjugadores = num;
 	
 	lista[partidalibre].ocupado = 1;
+
 }
 
 // Elimina la partida de la lista: pone a 0 el t￩rmino ocupado 
