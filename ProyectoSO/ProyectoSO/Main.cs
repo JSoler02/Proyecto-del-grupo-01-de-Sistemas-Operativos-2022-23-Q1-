@@ -40,6 +40,7 @@ namespace ProyectoSO
             GridConectados.ColumnCount = 1;
             GridConectados.Columns[0].HeaderText = "Username";
             GridConectados.ReadOnly = true;
+            tableroJuego.Visible = false;
 
         }
         public Main()
@@ -114,6 +115,7 @@ namespace ProyectoSO
                         if (r == DialogResult.OK)
                         {
                             resp = "Si";
+                            tableroJuego.Visible = true;
 
                         }
                         else
@@ -136,13 +138,37 @@ namespace ProyectoSO
                         {
                             idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
                             MessageBox.Show(nombre_acepta + " ha aceptado tu invitación a partida");
-                            // * * * ** * * Se abre tablero etc etc etc.
+                            tableroJuego.Visible = true;
                         }
                         else
                         {
                             MessageBox.Show(nombre_acepta + " no ha aceptado tu invitación a partida");
                         }
 
+                        break;
+                    case 9: // acciones durante el juego: saltar, derecha, izquierda, quieto
+                            // 9/movimiento/IDpartida --> mensaje que recibo conforme otro jugador ha realizado un movimiento
+                        string ans = Convert.ToString(trozos[2].Split('\0')[0]);
+                        idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
+                        if (ans == "saltar")
+                        {
+                            // se me actualiza el monigote del otro jugador con el movimento que ha realizado
+                        }
+                        else if (ans == "derecha")
+                        {
+
+                        }
+                        else if (ans == "izquierda")
+                        {
+
+                        }
+                        else // quieto
+                        {
+
+                        }
+                        
+                        
+                        
                         break;
                 }
             }
@@ -313,6 +339,28 @@ namespace ProyectoSO
             }
             
             
+        }
+
+        private void tableroJuego_VisibleChanged(object sender, EventArgs e)
+        {
+            // cuando el tablero se haga visible (hay cambio en su visibilidad) --> apareceria todo
+            
+        }
+
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            // le enviamos un movimento que hace el cliente a otro jugador.
+            // lo hacemos solo si ha empezado la partida 
+            // faltaria saber el id de la partida per tenir el missatge guai
+            if (tableroJuego.Visible == true)
+            {
+                if (e.KeyCode == Keys.Left)
+                {
+                    string mov1 = "9/Left";
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mov1);
+                    server.Send(msg);
+                }
+            }            
         }
     }
 }

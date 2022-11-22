@@ -284,10 +284,16 @@ void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 	lista[idpartida].jugadores[lista[idpartida].numjugadores].socket = s1;
 	strcpy(lista[idpartida].jugadores[lista[idpartida].numjugadores].nombre, jugador);
 	lista[idpartida].numjugadores = lista[idpartida].numjugadores +1;
-	
 }
 
-
+// Jugada en la partida
+void MovimientoPartida(Partida lista[20], int idpartida, char move[20])
+{
+	for (int i=0; i < lista[idpartida].numjugadores; i++)
+	{
+		
+	}	
+}
 
 
 // Esta funcion hace el LogIn. Necesita un nombre y una contrasenya
@@ -529,6 +535,7 @@ void EnviarListaConectadosNotificacion(char respuesta[512])
 		write (sockets[j], respuesta, strlen(respuesta));
 }
 
+
 void *AtenderCliente (void *socket)
 {
 	int sock_conn, ret;
@@ -557,7 +564,7 @@ void *AtenderCliente (void *socket)
 		printf ("Peticion: %s\n",peticion);
 		
 		// vamos a ver que quieren
-		char *p = strtok( peticion, "/");
+		char *p = strtok(peticion, "/");
 		int codigo =  atoi (p);
 		// Ya tenemos el c?digo de la peticion
 		// otras variables
@@ -640,7 +647,6 @@ void *AtenderCliente (void *socket)
 			strcpy(res, "");
 			Consulta2(res);
 			sprintf(respuesta, "4/%s", res);
-			//printf(respuesta);
 		}
 		else if (codigo == 5)	
 		{
@@ -663,7 +669,7 @@ void *AtenderCliente (void *socket)
 			}
 			
 		}
-		else //if (codigo == 8)
+		else if (codigo == 8)
 		{
 			char decision[10];
 			int idpartida;
@@ -686,6 +692,23 @@ void *AtenderCliente (void *socket)
 				
 			}
 			write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
+		}
+		else // if (codigo == 9)
+		{
+			char movement[20];
+			int idpartida;
+
+			p = strtok(NULL, "/");
+			strcpy(movement, p);
+			p = strtok(NULL,"/");
+			idpartida = atoi(p);
+			
+			MovimientoPartida(listaPartidas, idpartida, movement);
+
+			sprintf(notificacion, "9/%d/%s", idpartida, movement);
+
+			write (listaPartidas[idpartida].jugadores.socket, notificacion, strlen(notificacion));
+
 		}
 		
 		if (codigo !=0)
