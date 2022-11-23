@@ -107,7 +107,7 @@ namespace ProyectoSO
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 137);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Usuario:";
             // 
@@ -116,7 +116,7 @@ namespace ProyectoSO
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 172);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "Contraseña:";
             // 
@@ -185,9 +185,8 @@ namespace ProyectoSO
             this.GridConectados.Name = "GridConectados";
             this.GridConectados.RowHeadersWidth = 82;
             this.GridConectados.RowTemplate.Height = 33;
-            this.GridConectados.Size = new System.Drawing.Size(128, 187);
+            this.GridConectados.Size = new System.Drawing.Size(121, 187);
             this.GridConectados.TabIndex = 19;
-            this.GridConectados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridConectados_CellContentClick);
             this.GridConectados.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridConectados_CellContentDoubleClick);
             // 
             // tableroJuego

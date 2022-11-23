@@ -25,14 +25,6 @@ typedef struct{
 // campo ocupado = 0: si libre; ocupado=1: si ocupado
 typedef struct {
 	Conectado jugadores[4];
-	//char jugador1[20];
-	//int s1;
-	//char jugador2[20];
-	//int s2;
-	//char jugador3[20];
-	//int s3;
-	//char jugador4[20];
-	//int s4;
 	int numjugadores;
 	int ocupado;
 }Partida;
@@ -290,8 +282,8 @@ int BuscarIDPartida (Partida lista[20], char jugador[20])
 	int idP = 0;
 	for (int i = 0; i < 20; i++)
 	{
-		for (int j = 0; j < 4)
-			if (strcmp(lista.jugadores[i].name, jugador)==0)
+		for (int j = 0; j < 4, j++)
+			if (strcmp(lista[i].jugadores[j].nombre, jugador)==0)
 				idP = i;
 	}
 	return idP;
@@ -665,12 +657,24 @@ void *AtenderCliente (void *socket)
 			Consulta3(res);
 			sprintf(respuesta, "5/%s", res);
 		}
-		else if (codgo == 6)
+		/*else if (codgo == 6)
 		{
 
-		}
+		}*/
 		else if (codigo == 7)
 		{ // 7/guest
+						
+			p = strtok(NULL, "/");
+			strcpy(invitado, p);
+			int sinvitado = DameSocket(&listaconectados, invitado);
+			if (sinvitado != -1)
+			{
+				int partidalibre = BuscarPartidaLibre(listaPartidas);
+				PonJugadorPartida(listaPartidas, partidalibre, username);
+				sprintf(notificacion, "7/%s/%d", username, partidalibre);
+				write (sinvitado, notificacion, strlen(notificacion));
+			}
+			/* ****** COSAS JULIA	
 			p = strtok(NULL, "/");
 			strcpy(username,p);
 			p = strtok(NULL, "/");
@@ -700,10 +704,33 @@ void *AtenderCliente (void *socket)
 					}
 				}
 			}
+			*/
 		
 		}
 		else if (codigo == 8)
 		{
+			char decision[10];
+			int idpartida;
+			
+			p = strtok(NULL, "/");
+			strcpy(decision, p);
+			p = strtok(NULL,"/");
+			idpartida = atoi(p);
+			p = strtok(NULL,"/");
+			strcpy(invitado, p);
+			if (strcmp(decision,"Si")==0)
+			{
+				PonJugadorPartida(listaPartidas, idpartida, invitado);
+				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
+			}
+			else
+			{
+				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
+				
+			}
+			write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
+			
+			/* *** ******************* COSAS JULIA
 			char decision[10];
 			int idpartida;
 			
@@ -728,7 +755,7 @@ void *AtenderCliente (void *socket)
 				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
 			}
 			write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
-			
+			*/
 		}
 		else // if (codigo == 9)
 		{

@@ -20,8 +20,8 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
-        int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
+        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
+        int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
         string nombre;
@@ -64,10 +64,10 @@ namespace ProyectoSO
                 server.Receive(msg2);
                 // Partimos el mensaje por la "/"
                 string mensajeSucio = Encoding.ASCII.GetString(msg2);
-                    string mensajeLimpio = mensajeSucio.Split('\0')[0];
+                string mensajeLimpio = mensajeSucio.Split('\0')[0];
                 string[] trozos = mensajeLimpio.Split('/');
                 int codigo = Convert.ToInt32(trozos[0]);
-                
+
                 string mensaje = trozos[1];
                 switch (codigo)
                 {
@@ -87,7 +87,7 @@ namespace ProyectoSO
                         }
                         break;
                     case 2: // New User
-                            MessageBox.Show(mensaje);
+                        MessageBox.Show(mensaje);
                         break;
                     case 3: //consulta 1 --> Puntos maximos de Maria
                         MessageBox.Show("La puntuación máxima es: " + mensaje);
@@ -106,7 +106,7 @@ namespace ProyectoSO
                         GridConectados.Rows.Clear();
                         for (int i = 0; i < num; i++)
                         {
-                            string nombre = Convert.ToString(trozos[i+2].Split('\0')[0]);
+                            string nombre = Convert.ToString(trozos[i + 2].Split('\0')[0]);
                             GridConectados.Rows.Add(nombre);
                         }
                         //GridConectados.Refresh();
@@ -130,7 +130,7 @@ namespace ProyectoSO
                         // * * * * * Enviamos respuesta como si queremos aceptar o no 
                         // --> "7/resp"
                         idPartida = Convert.ToInt32(trozos[2]);
-                        mensaje = "8/" + resp + "/"+ idPartida + "/" + nombre;
+                        mensaje = "8/" + resp + "/" + idPartida + "/" + nombre;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
 
@@ -174,9 +174,9 @@ namespace ProyectoSO
                         //{
 
                         //}
-                        
-                        
-                        
+
+
+
                         break;
                 }
             }
@@ -213,7 +213,7 @@ namespace ProyectoSO
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-     
+
         }
 
         private void Juan120_But_Click(object sender, EventArgs e)
@@ -231,7 +231,7 @@ namespace ProyectoSO
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-  
+
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
@@ -239,12 +239,12 @@ namespace ProyectoSO
             //int conexion = ConectarConServidor();
             //if (conexion == 0)
             //{
-                string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
-                nombre = usernameBox.Text;
-                // Enviamos al servidor el nombre tecleado
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-                
+            string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
+            nombre = usernameBox.Text;
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
 
             //}
 
@@ -255,15 +255,15 @@ namespace ProyectoSO
             //int conexion = ConectarConServidor();
             //if (conexion == 0)
             //{
-                string mensaje = "2/" + usernameBox.Text + "/" + passwordBox.Text;
-                // pasar los datos de username, y contraseña en una cadena de texto. 
-                // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
+            string mensaje = "2/" + usernameBox.Text + "/" + passwordBox.Text;
+            // pasar los datos de username, y contraseña en una cadena de texto. 
+            // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
 
-               
-                // Enviamos al servidor el nombre tecleado
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-               
+
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
             //}
         }
 
@@ -280,9 +280,9 @@ namespace ProyectoSO
             string ip;
             // SHIVA --> 50050 o 50051 o 50052
             // MAQ VIRT --> 8050...
-            int puerto; 
+            int puerto;
             if (this.shiva == 1)
-            { 
+            {
                 ip = "147.83.117.22";
                 puerto = 50050;
             }
@@ -304,12 +304,12 @@ namespace ProyectoSO
             try
             {
                 server.Connect(ipep);//Intentamos conectar el socket
-                
+
                 // Inicializamos el thread que atendera los mensajes del servidor
                 ThreadStart ts = delegate { AtenderServidor(); };
                 atender = new Thread(ts);
                 atender.Start();
-                
+
                 return 0;
             }
             catch (SocketException ex)
@@ -335,40 +335,27 @@ namespace ProyectoSO
         private void GridConectados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string invitado = Convert.ToString(GridConectados.CurrentCell.Value);
+
             if (invitado != nombre)
             {
                 DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (r == DialogResult.OK)
                 {
-                   MessageBox.Show("Vamos a invitar a " + invitado);
-                   MessageBox.Show("Si quieres volver a invitar a un jugador haz doble click otra vez.");
-                   string mensaje = "7/" + usernameBox.Text + "/" + invitado;
-                   byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                   server.Send(msg);
+                    MessageBox.Show("Vamos a invitar a " + invitado);
+                    string mensaje = "7/" + invitado;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
                 }
             }
+
+
         }
-        //private void GridConectados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    string invitado = Convert.ToString(GridConectados.CurrentCell.Value);
-        //    if (invitado != nombre)
-        //    {
-        //        DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        //        if (r == DialogResult.OK)
-        //        {
-        //            MessageBox.Show("Vamos a invitar a " + invitado);
-        //            string mensaje = "6/" + usernameBox.Text + "/"+ invitado;
-        //            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-        //            server.Send(msg);
-        //        }
-        //    }
-        //}
 
         private void tableroJuego_MouseClick(object sender, MouseEventArgs e)
         {
             // añadimos ciruclo a la lista de circulos
             MoverBicho(e.X, e.Y);
-            string movimiento = "9/"+ x_bicho + "/" + y_bicho + "/" + idPartida;
+            string movimiento = "9/" + x_bicho + "/" + y_bicho + "/" + idPartida;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(movimiento);
             server.Send(msg);
 
@@ -380,8 +367,6 @@ namespace ProyectoSO
             Point posicion = new Point(x_bicho, y_bicho);
             bicho_pb.Location = posicion;
         }
-
-        
 
         /*
         private void tableroJuego_VisibleChanged(object sender, EventArgs e)
