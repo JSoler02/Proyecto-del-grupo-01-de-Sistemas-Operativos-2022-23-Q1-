@@ -20,8 +20,8 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
-        int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
+        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
+        int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
         string nombre;
@@ -335,21 +335,34 @@ namespace ProyectoSO
         private void GridConectados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string invitado = Convert.ToString(GridConectados.CurrentCell.Value);
-            
             if (invitado != nombre)
             {
                 DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (r == DialogResult.OK)
                 {
                    MessageBox.Show("Vamos a invitar a " + invitado);
-                   string mensaje = "7/" + invitado;
+                   MessageBox.Show("Si quieres volver a invitar a un jugador haz doble click otra vez.");
+                   string mensaje = "7/" + usernameBox.Text + "/" + invitado;
                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                    server.Send(msg);
                 }
             }
-            
-            
         }
+        //private void GridConectados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    string invitado = Convert.ToString(GridConectados.CurrentCell.Value);
+        //    if (invitado != nombre)
+        //    {
+        //        DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //        if (r == DialogResult.OK)
+        //        {
+        //            MessageBox.Show("Vamos a invitar a " + invitado);
+        //            string mensaje = "6/" + usernameBox.Text + "/"+ invitado;
+        //            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+        //            server.Send(msg);
+        //        }
+        //    }
+        //}
 
         private void tableroJuego_MouseClick(object sender, MouseEventArgs e)
         {
@@ -367,6 +380,8 @@ namespace ProyectoSO
             Point posicion = new Point(x_bicho, y_bicho);
             bicho_pb.Location = posicion;
         }
+
+        
 
         /*
         private void tableroJuego_VisibleChanged(object sender, EventArgs e)
