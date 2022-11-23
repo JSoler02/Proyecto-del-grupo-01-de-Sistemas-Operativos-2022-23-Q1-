@@ -44,8 +44,12 @@ namespace ProyectoSO
             this.conectar_bt = new System.Windows.Forms.Button();
             this.GridConectados = new System.Windows.Forms.DataGridView();
             this.tableroJuego = new System.Windows.Forms.Panel();
+            this.lbl_lista_con = new System.Windows.Forms.Label();
+            this.bicho_pb = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
+            this.tableroJuego.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bicho_pb)).BeginInit();
             this.SuspendLayout();
             // 
             // desconnectButton
@@ -103,7 +107,7 @@ namespace ProyectoSO
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 137);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Usuario:";
             // 
@@ -112,7 +116,7 @@ namespace ProyectoSO
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 172);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "Contraseña:";
             // 
@@ -176,22 +180,43 @@ namespace ProyectoSO
             // GridConectados
             // 
             this.GridConectados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridConectados.Location = new System.Drawing.Point(619, 99);
+            this.GridConectados.Location = new System.Drawing.Point(634, 67);
             this.GridConectados.Margin = new System.Windows.Forms.Padding(2);
             this.GridConectados.Name = "GridConectados";
             this.GridConectados.RowHeadersWidth = 82;
             this.GridConectados.RowTemplate.Height = 33;
-            this.GridConectados.Size = new System.Drawing.Size(149, 209);
+            this.GridConectados.Size = new System.Drawing.Size(128, 187);
             this.GridConectados.TabIndex = 19;
             this.GridConectados.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridConectados_CellContentDoubleClick);
             // 
             // tableroJuego
             // 
+            this.tableroJuego.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tableroJuego.Controls.Add(this.bicho_pb);
             this.tableroJuego.Location = new System.Drawing.Point(982, 21);
             this.tableroJuego.Name = "tableroJuego";
             this.tableroJuego.Size = new System.Drawing.Size(753, 685);
             this.tableroJuego.TabIndex = 20;
-            this.tableroJuego.VisibleChanged += new System.EventHandler(this.tableroJuego_VisibleChanged);
+            this.tableroJuego.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tableroJuego_MouseClick);
+            // 
+            // lbl_lista_con
+            // 
+            this.lbl_lista_con.AutoSize = true;
+            this.lbl_lista_con.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_lista_con.Location = new System.Drawing.Point(593, 26);
+            this.lbl_lista_con.Name = "lbl_lista_con";
+            this.lbl_lista_con.Size = new System.Drawing.Size(197, 25);
+            this.lbl_lista_con.TabIndex = 14;
+            this.lbl_lista_con.Text = "Lista de Conectados:";
+            // 
+            // bicho_pb
+            // 
+            this.bicho_pb.BackColor = System.Drawing.Color.Red;
+            this.bicho_pb.Location = new System.Drawing.Point(145, 170);
+            this.bicho_pb.Name = "bicho_pb";
+            this.bicho_pb.Size = new System.Drawing.Size(33, 50);
+            this.bicho_pb.TabIndex = 0;
+            this.bicho_pb.TabStop = false;
             // 
             // Main
             // 
@@ -203,6 +228,7 @@ namespace ProyectoSO
             this.Controls.Add(this.conectar_bt);
             this.Controls.Add(this.Templo_But);
             this.Controls.Add(this.Juan120_But);
+            this.Controls.Add(this.lbl_lista_con);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.PuntMax_But);
             this.Controls.Add(this.panel1);
@@ -210,10 +236,11 @@ namespace ProyectoSO
             this.Name = "Main";
             this.Text = "Menú Principal";
             this.Load += new System.EventHandler(this.Main_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).EndInit();
+            this.tableroJuego.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bicho_pb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,6 +262,8 @@ namespace ProyectoSO
         private System.Windows.Forms.Button conectar_bt;
         private System.Windows.Forms.DataGridView GridConectados;
         private System.Windows.Forms.Panel tableroJuego;
+        private System.Windows.Forms.Label lbl_lista_con;
+        private System.Windows.Forms.PictureBox bicho_pb;
     }
 }
 

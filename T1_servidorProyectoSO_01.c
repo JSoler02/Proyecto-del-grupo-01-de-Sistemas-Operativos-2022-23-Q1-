@@ -695,22 +695,34 @@ void *AtenderCliente (void *socket)
 		}
 		else // if (codigo == 9)
 		{
-			char movement[20];
+			/*char movement[20];
 			int idpartida;
-
+			
 			p = strtok(NULL, "/");
 			strcpy(movement, p);
 			p = strtok(NULL,"/");
 			idpartida = atoi(p);
 			
 			MovimientoPartida(listaPartidas, idpartida, movement);
-
-			sprintf(notificacion, "9/%d/%s", idpartida, movement);
-
-			write (listaPartidas[idpartida].jugadores.socket, notificacion, strlen(notificacion));
+			*/			
+			p = strtok(NULL, "/");
+			int x = atoi(p);
+			p = strtok(NULL, "/");
+			int y = atoi(p);			
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);		
+			
+			sprintf(notificacion, "9/%d/%d/%d", x, y, idpartida);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != s)	// no soy yo
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
 
 		}
 		
+
 		if (codigo !=0)
 		{
 			

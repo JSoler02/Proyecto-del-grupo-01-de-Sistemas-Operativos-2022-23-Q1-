@@ -25,9 +25,13 @@ namespace ProyectoSO
 
         int idPartida;
         string nombre;
+
+        int x_bicho;
+        int y_bicho;
         private void Main_Load(object sender, EventArgs e)
         {
             label3.Visible = false;
+            lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
@@ -72,6 +76,7 @@ namespace ProyectoSO
                         if (mensaje == "Conectado")
                         {
                             label3.Visible = true;
+                            lbl_lista_con.Visible = false;
                             PuntMax_But.Visible = true;
                             Juan120_But.Visible = true;
                             Templo_But.Visible = true;
@@ -149,23 +154,26 @@ namespace ProyectoSO
                     case 9: // acciones durante el juego: saltar, derecha, izquierda, quieto
                             // 9/movimiento/IDpartida --> mensaje que recibo conforme otro jugador ha realizado un movimiento
                         string ans = Convert.ToString(trozos[2].Split('\0')[0]);
-                        idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
-                        if (ans == "saltar")
-                        {
-                            // se me actualiza el monigote del otro jugador con el movimento que ha realizado
-                        }
-                        else if (ans == "derecha")
-                        {
+                        // idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
+                        // 9/x/y/idpartida
+                        MoverBicho(Convert.ToInt32(mensaje), Convert.ToInt32(trozos[2].Split('\0')[0]));
 
-                        }
-                        else if (ans == "izquierda")
-                        {
+                        //if (ans == "saltar")
+                        //{
+                        //    // se me actualiza el monigote del otro jugador con el movimento que ha realizado
+                        //}
+                        //else if (ans == "derecha")
+                        //{
 
-                        }
-                        else // quieto
-                        {
+                        //}
+                        //else if (ans == "izquierda")
+                        //{
 
-                        }
+                        //}
+                        //else // quieto
+                        //{
+
+                        //}
                         
                         
                         
@@ -177,6 +185,8 @@ namespace ProyectoSO
         {
             //Mensaje de desconexión
             label3.Visible = false;
+            lbl_lista_con.Visible = false;
+            tableroJuego.Visible = false;
             PuntMax_But.Visible = false;
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
@@ -341,6 +351,24 @@ namespace ProyectoSO
             
         }
 
+        private void tableroJuego_MouseClick(object sender, MouseEventArgs e)
+        {
+            // añadimos ciruclo a la lista de circulos
+            MoverBicho(e.X, e.Y);
+            string movimiento = "9/"+ x_bicho + "/" + y_bicho + "/" + idPartida;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(movimiento);
+            server.Send(msg);
+
+        }
+        private void MoverBicho(int x, int y)
+        {
+            this.x_bicho = x;
+            this.y_bicho = y;
+            Point posicion = new Point(x_bicho, y_bicho);
+            bicho_pb.Location = posicion;
+        }
+
+        /*
         private void tableroJuego_VisibleChanged(object sender, EventArgs e)
         {
             // cuando el tablero se haga visible (hay cambio en su visibilidad) --> apareceria todo
@@ -362,5 +390,6 @@ namespace ProyectoSO
                 }
             }            
         }
+        */
     }
 }
