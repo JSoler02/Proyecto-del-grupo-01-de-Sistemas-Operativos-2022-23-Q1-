@@ -29,7 +29,6 @@ namespace ProyectoSO
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.desconnectButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.NewAccountButton = new System.Windows.Forms.Button();
@@ -45,37 +44,8 @@ namespace ProyectoSO
             this.conectar_bt = new System.Windows.Forms.Button();
             this.GridConectados = new System.Windows.Forms.DataGridView();
             this.tableroJuego = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.diamante1 = new System.Windows.Forms.PictureBox();
-            this.J1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.horizontal1 = new System.Windows.Forms.PictureBox();
-            this.vertical1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblPuntos = new System.Windows.Forms.Label();
-            this.enemigo1 = new System.Windows.Forms.PictureBox();
-            this.puertaJ1 = new System.Windows.Forms.PictureBox();
-            this.lblpulsaEnter = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
-            this.tableroJuego.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diamante1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.J1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.horizontal1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vertical1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.enemigo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.puertaJ1)).BeginInit();
             this.SuspendLayout();
             // 
             // desconnectButton
@@ -207,7 +177,7 @@ namespace ProyectoSO
             // 
             this.GridConectados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridConectados.Location = new System.Drawing.Point(619, 99);
-            this.GridConectados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridConectados.Margin = new System.Windows.Forms.Padding(2);
             this.GridConectados.Name = "GridConectados";
             this.GridConectados.RowHeadersWidth = 82;
             this.GridConectados.RowTemplate.Height = 33;
@@ -217,181 +187,11 @@ namespace ProyectoSO
             // 
             // tableroJuego
             // 
-            this.tableroJuego.Controls.Add(this.pictureBox5);
-            this.tableroJuego.Controls.Add(this.pictureBox4);
-            this.tableroJuego.Controls.Add(this.pictureBox1);
-            this.tableroJuego.Controls.Add(this.diamante1);
-            this.tableroJuego.Controls.Add(this.J1);
-            this.tableroJuego.Controls.Add(this.pictureBox6);
-            this.tableroJuego.Controls.Add(this.pictureBox8);
-            this.tableroJuego.Controls.Add(this.horizontal1);
-            this.tableroJuego.Controls.Add(this.vertical1);
-            this.tableroJuego.Controls.Add(this.pictureBox3);
-            this.tableroJuego.Controls.Add(this.pictureBox2);
-            this.tableroJuego.Controls.Add(this.lblPuntos);
-            this.tableroJuego.Controls.Add(this.enemigo1);
-            this.tableroJuego.Controls.Add(this.puertaJ1);
-            this.tableroJuego.Controls.Add(this.lblpulsaEnter);
             this.tableroJuego.Location = new System.Drawing.Point(982, 21);
             this.tableroJuego.Name = "tableroJuego";
             this.tableroJuego.Size = new System.Drawing.Size(753, 685);
             this.tableroJuego.TabIndex = 20;
             this.tableroJuego.VisibleChanged += new System.EventHandler(this.tableroJuego_VisibleChanged);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(478, 400);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 39;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Tag = "diamante";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(668, 582);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 38;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Tag = "diamante";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(634, 146);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 37;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "diamante";
-            // 
-            // diamante1
-            // 
-            this.diamante1.BackColor = System.Drawing.Color.Goldenrod;
-            this.diamante1.Image = ((System.Drawing.Image)(resources.GetObject("diamante1.Image")));
-            this.diamante1.Location = new System.Drawing.Point(217, 347);
-            this.diamante1.Name = "diamante1";
-            this.diamante1.Size = new System.Drawing.Size(25, 25);
-            this.diamante1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.diamante1.TabIndex = 36;
-            this.diamante1.TabStop = false;
-            this.diamante1.Tag = "diamante";
-            // 
-            // J1
-            // 
-            this.J1.BackColor = System.Drawing.SystemColors.WindowText;
-            this.J1.Location = new System.Drawing.Point(94, 578);
-            this.J1.Name = "J1";
-            this.J1.Size = new System.Drawing.Size(25, 29);
-            this.J1.TabIndex = 33;
-            this.J1.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox6.Location = new System.Drawing.Point(50, 140);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(239, 30);
-            this.pictureBox6.TabIndex = 27;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Tag = "plataforma";
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox8.Location = new System.Drawing.Point(335, 186);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(208, 30);
-            this.pictureBox8.TabIndex = 28;
-            this.pictureBox8.TabStop = false;
-            this.pictureBox8.Tag = "plataforma";
-            // 
-            // horizontal1
-            // 
-            this.horizontal1.BackColor = System.Drawing.Color.Olive;
-            this.horizontal1.Location = new System.Drawing.Point(136, 414);
-            this.horizontal1.Name = "horizontal1";
-            this.horizontal1.Size = new System.Drawing.Size(117, 30);
-            this.horizontal1.TabIndex = 29;
-            this.horizontal1.TabStop = false;
-            this.horizontal1.Tag = "plataforma";
-            // 
-            // vertical1
-            // 
-            this.vertical1.BackColor = System.Drawing.Color.HotPink;
-            this.vertical1.Location = new System.Drawing.Point(593, 239);
-            this.vertical1.Name = "vertical1";
-            this.vertical1.Size = new System.Drawing.Size(66, 30);
-            this.vertical1.TabIndex = 30;
-            this.vertical1.TabStop = false;
-            this.vertical1.Tag = "plataforma";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox3.Location = new System.Drawing.Point(363, 454);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(157, 30);
-            this.pictureBox3.TabIndex = 31;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Tag = "plataforma";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox2.Location = new System.Drawing.Point(576, 543);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(117, 30);
-            this.pictureBox2.TabIndex = 32;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "plataforma";
-            // 
-            // lblPuntos
-            // 
-            this.lblPuntos.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPuntos.Location = new System.Drawing.Point(488, 51);
-            this.lblPuntos.Name = "lblPuntos";
-            this.lblPuntos.Size = new System.Drawing.Size(214, 92);
-            this.lblPuntos.TabIndex = 26;
-            this.lblPuntos.Text = "Puntos: 0";
-            this.lblPuntos.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // enemigo1
-            // 
-            this.enemigo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.enemigo1.Location = new System.Drawing.Point(530, 604);
-            this.enemigo1.Name = "enemigo1";
-            this.enemigo1.Size = new System.Drawing.Size(25, 29);
-            this.enemigo1.TabIndex = 35;
-            this.enemigo1.TabStop = false;
-            this.enemigo1.Tag = "enemigo";
-            // 
-            // puertaJ1
-            // 
-            this.puertaJ1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.puertaJ1.Location = new System.Drawing.Point(83, 76);
-            this.puertaJ1.Name = "puertaJ1";
-            this.puertaJ1.Size = new System.Drawing.Size(36, 67);
-            this.puertaJ1.TabIndex = 34;
-            this.puertaJ1.TabStop = false;
-            // 
-            // lblpulsaEnter
-            // 
-            this.lblpulsaEnter.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblpulsaEnter.Location = new System.Drawing.Point(298, 51);
-            this.lblpulsaEnter.Name = "lblpulsaEnter";
-            this.lblpulsaEnter.Size = new System.Drawing.Size(205, 62);
-            this.lblpulsaEnter.TabIndex = 40;
-            this.lblpulsaEnter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
             // 
@@ -414,20 +214,6 @@ namespace ProyectoSO
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).EndInit();
-            this.tableroJuego.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diamante1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.J1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.horizontal1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vertical1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.enemigo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.puertaJ1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,21 +235,6 @@ namespace ProyectoSO
         private System.Windows.Forms.Button conectar_bt;
         private System.Windows.Forms.DataGridView GridConectados;
         private System.Windows.Forms.Panel tableroJuego;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox diamante1;
-        private System.Windows.Forms.PictureBox J1;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox horizontal1;
-        private System.Windows.Forms.PictureBox vertical1;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblPuntos;
-        private System.Windows.Forms.PictureBox enemigo1;
-        private System.Windows.Forms.PictureBox puertaJ1;
-        private System.Windows.Forms.Label lblpulsaEnter;
     }
 }
 
