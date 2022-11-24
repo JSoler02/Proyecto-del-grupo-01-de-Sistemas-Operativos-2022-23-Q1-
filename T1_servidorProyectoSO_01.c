@@ -671,12 +671,14 @@ void *AtenderCliente (void *socket)
 				int sinvitado = DameSocket(&listaconectados, invitado);
 				if (sinvitado != -1)
 				{
+					pthread_mutex_lock (&mutex);
 					PonJugadorPartida(listaPartidas, partidalibre, username);
+					pthread_mutex_unlock (&mutex);
 					sprintf(notificacion, "7/%s/%d", username, partidalibre);
 					write (sinvitado, notificacion, strlen(notificacion));
 				}
 				p = strtok(NULL,"/");
-			}
+			}	
 		}
 		else if (codigo == 8)
 		{
@@ -691,7 +693,9 @@ void *AtenderCliente (void *socket)
 			strcpy(invitado, p);
 			if (strcmp(decision,"Si")==0)
 			{
+				pthread_mutex_lock (&mutex);
 				PonJugadorPartida(listaPartidas, idpartida, invitado);
+				pthread_mutex_unlock (&mutex);
 				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
 			}
 			else
