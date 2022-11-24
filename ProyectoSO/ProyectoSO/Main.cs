@@ -28,6 +28,9 @@ namespace ProyectoSO
 
         int x_bicho;
         int y_bicho;
+
+        string invitados;
+        int NumInvitados = 0; // maximo puede ser 4
         private void Main_Load(object sender, EventArgs e)
         {
             label3.Visible = false;
@@ -335,20 +338,36 @@ namespace ProyectoSO
         private void GridConectados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string invitado = Convert.ToString(GridConectados.CurrentCell.Value);
-
+            
             if (invitado != nombre)
             {
                 DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (r == DialogResult.OK)
                 {
-                    MessageBox.Show("Vamos a invitar a " + invitado);
-                    string mensaje = "7/" + invitado;
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
+                    invitados = invitados + "/" + invitado;
+                    if (NumInvitados < 4)
+                    {
+                        DialogResult m = MessageBox.Show("Quieres invitar a alguien más?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        if (m == DialogResult.OK)
+                        {
+                            MessageBox.Show("Indique el jugador.");
+                        }
+                        else
+                        {
+                            EnviarJugadoresPartida(invitados);
+                        }
+                        NumInvitados++;
+                    }
                 }
             }
-
-
+        }
+        
+        private void EnviarJugadoresPartida(string guests)
+        {
+            MessageBox.Show("Vamos a invitar a los otros jugadores.");
+            string mensaje = "7" + guests;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
         }
 
         private void tableroJuego_MouseClick(object sender, MouseEventArgs e)

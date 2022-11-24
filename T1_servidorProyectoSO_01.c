@@ -105,7 +105,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 { //Devuelve la posicion o -1 si no lo encuentra
 	int i = 0;
 	int encontrado = 0;
-	//b￯﾿ﾺsqueda
+	//bï¿¯ï¾¿ï¾ºsqueda
 	while ((i<lista->num)&&(encontrado == 0))
 	{
 		if (strcmp(lista->conectados[i].nombre, nombre) ==0)
@@ -123,7 +123,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 
 
 int EliminaConectado (ListaConectados *lista, char nombre[20])	
-{ // Devuelve 0 si elimina y -1 si el usuario no est￯﾿ﾡ en la lista
+{ // Devuelve 0 si elimina y -1 si el usuario no estï¿¯ï¾¿ï¾¡ en la lista
 	// Elimina el socket de la lista global de sockets
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
@@ -234,7 +234,7 @@ int BuscarPartidaLibre(Partida lista[20])
 /*		num = num +1;*/
 /*	if (s4!=-1)*/
 /*		num = num +1;*/
-	
+
 /*	strcpy(lista[partidalibre].jugador1, j1);*/
 /*	lista[partidalibre].s1 = s1;*/
 /*	strcpy(lista[partidalibre].jugador2, j2);*/
@@ -244,13 +244,13 @@ int BuscarPartidaLibre(Partida lista[20])
 /*	strcpy(lista[partidalibre].jugador4, j4);*/
 /*	lista[partidalibre].s4 = s4;*/
 /*	lista[partidalibre].numjugadores = num;*/
-	
+
 /*	lista[partidalibre].ocupado = 1;*/
 /*}*/
-	
-// Elimina la partida de la lista: pone a 0 el t￩rmino ocupado 
+
+// Elimina la partida de la lista: pone a 0 el tï¿©rmino ocupado 
 // de la partida que le venga como parametro. Eliminamos (ponemos a -1)
-// tambi￩n los sockets de la lista de partidas
+// tambiï¿©n los sockets de la lista de partidas
 void AcabaPartida (Partida lista[20], int idpartida)	
 {
 	lista[idpartida].numjugadores = 0;
@@ -282,7 +282,7 @@ int BuscarIDPartida (Partida lista[20], char jugador[20])
 	int idP = 0;
 	for (int i = 0; i < 20; i++)
 	{
-		for (int j = 0; j < 4, j++)
+		for (int j = 0; j < 4; j++)
 			if (strcmp(lista[i].jugadores[j].nombre, jugador)==0)
 				idP = i;
 	}
@@ -659,53 +659,24 @@ void *AtenderCliente (void *socket)
 		}
 		/*else if (codgo == 6)
 		{
-
+		
 		}*/
 		else if (codigo == 7)
-		{ // 7/guest
-						
+		{ // --> 7/guest1/guest2/guest3/guest4
+			int partidalibre = BuscarPartidaLibre(listaPartidas);			
 			p = strtok(NULL, "/");
-			strcpy(invitado, p);
-			int sinvitado = DameSocket(&listaconectados, invitado);
-			if (sinvitado != -1)
+			while (p != NULL)
 			{
-				int partidalibre = BuscarPartidaLibre(listaPartidas);
-				PonJugadorPartida(listaPartidas, partidalibre, username);
-				sprintf(notificacion, "7/%s/%d", username, partidalibre);
-				write (sinvitado, notificacion, strlen(notificacion));
-			}
-			/* ****** COSAS JULIA	
-			p = strtok(NULL, "/");
-			strcpy(username,p);
-			p = strtok(NULL, "/");
-			strcpy(invitado, p);
-			int sinvitado = DameSocket(&listaconectados, invitado);
-			int i = 0;
-			int found = 0;
-			while (found != 0)
-			{
-				if (strcmp(listaPartidas[i].jugadores.name,username)==0)
+				strcpy(invitado, p);
+				int sinvitado = DameSocket(&listaconectados, invitado);
+				if (sinvitado != -1)
 				{
-					if (sinvitado != -1)
-					{
-						int partidalibre = BuscarPartidaLibre(listaPartidas);
-						PonJugadorPartida(listaPartidas, partidalibre, username);
-						sprintf(notificacion, "7/%s/%d", username, partidalibre);
-						write (sinvitado, notificacion, strlen(notificacion));
-					}
+					PonJugadorPartida(listaPartidas, partidalibre, username);
+					sprintf(notificacion, "7/%s/%d", username, partidalibre);
+					write (sinvitado, notificacion, strlen(notificacion));
 				}
-				else
-				{
-					if (sinvitado != -1)
-					{
-						int partidalibre = BuscarIDPartida;
-						sprintf(notificacion, "7/%s/%d", username, partidalibre);
-						write (sinvitado, notificacion, strlen(notificacion));
-					}
-				}
+				p = strtok(NULL,"/");
 			}
-			*/
-		
 		}
 		else if (codigo == 8)
 		{
@@ -729,33 +700,6 @@ void *AtenderCliente (void *socket)
 				
 			}
 			write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
-			
-			/* *** ******************* COSAS JULIA
-			char decision[10];
-			int idpartida;
-			
-			p = strtok(NULL, "/");
-			strcpy(decision, p);
-			p = strtok(NULL,"/");
-			idpartida = atoi(p);
-			p = strtok(NULL,"/");
-			strcpy(invitado, p);
-			int found = 0;
-			while (found != 0)
-			{
-
-			}
-			if (strcmp(decision,"Si")==0)
-			{
-				PonJugadorPartida(listaPartidas, idpartida, invitado);
-				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
-			}
-			else
-			{
-				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
-			}
-			write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
-			*/
 		}
 		else // if (codigo == 9)
 		{
@@ -783,10 +727,10 @@ void *AtenderCliente (void *socket)
 				if (listaPartidas[idpartida].jugadores[j].socket != s)	// no soy yo
 					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
 			}
-
+			
 		}
 		
-
+		
 		if (codigo !=0)
 		{
 			
