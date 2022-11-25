@@ -639,7 +639,7 @@ void *AtenderCliente (void *socket)
 			pthread_mutex_lock (&mutex);
 			PonJugadorPartida(listaPartidas, partidalibre, username);
 			pthread_mutex_unlock (&mutex);
-			
+			  
 			p = strtok(NULL, "/");
 			while (p != NULL)
 			{
