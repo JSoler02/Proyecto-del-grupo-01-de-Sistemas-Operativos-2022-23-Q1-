@@ -56,7 +56,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8080;
+		puerto = 8090;
 	}
 	else 
 	{
@@ -669,15 +669,19 @@ void *AtenderCliente (void *socket)
 			strcpy(invitado, p);
 			if (strcmp(decision,"Si")==0)
 			{
-				pthread_mutex_lock (&mutex);
+				/*pthread_mutex_lock (&mutex);
 				PonJugadorPartida(listaPartidas, idpartida, invitado);
 				pthread_mutex_unlock (&mutex);
+				*/
 				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
 			}
 			else
 			{
-				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
 				
+				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
+				pthread_mutex_lock (&mutex);
+				AcabaPartida (listaPartidas, idpartida);	
+				pthread_mutex_unlock (&mutex);
 			}
 			write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
 		}
