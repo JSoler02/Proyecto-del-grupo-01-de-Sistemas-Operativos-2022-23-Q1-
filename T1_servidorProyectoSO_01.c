@@ -217,36 +217,6 @@ int BuscarPartidaLibre(Partida lista[20])
 		return -1;	
 }
 
-// Creamos la entrada de la partida en la lista de partidas
-// encontramos los sockets de los jugadores que han aceptado la Partida
-/*void CrearPartida(Partida lista[20], int partidalibre, char j1[20], char j2[20], char j3[20], char j4[20])*/
-/*{*/
-/*	int s1 = DameSocket(&listaconectados,j1);*/
-/*	int s2 = DameSocket(&listaconectados,j2);*/
-/*	int s3 = DameSocket(&listaconectados,j3);*/
-/*	int s4 = DameSocket(&listaconectados,j4);*/
-/*	int num = 0;*/
-/*	if (s1!=-1)*/
-/*		num = num +1;*/
-/*	if (s2!=-1)*/
-/*		num = num +1;*/
-/*	if (s3!=-1)*/
-/*		num = num +1;*/
-/*	if (s4!=-1)*/
-/*		num = num +1;*/
-
-/*	strcpy(lista[partidalibre].jugador1, j1);*/
-/*	lista[partidalibre].s1 = s1;*/
-/*	strcpy(lista[partidalibre].jugador2, j2);*/
-/*	lista[partidalibre].s2 = s2;*/
-/*	strcpy(lista[partidalibre].jugador3, j3);*/
-/*	lista[partidalibre].s3 = s3;*/
-/*	strcpy(lista[partidalibre].jugador4, j4);*/
-/*	lista[partidalibre].s4 = s4;*/
-/*	lista[partidalibre].numjugadores = num;*/
-
-/*	lista[partidalibre].ocupado = 1;*/
-/*}*/
 
 // Elimina la partida de la lista: pone a 0 el tï¿©rmino ocupado 
 // de la partida que le venga como parametro. Eliminamos (ponemos a -1)
@@ -662,8 +632,14 @@ void *AtenderCliente (void *socket)
 		
 		}*/
 		else if (codigo == 7)
-		{ // --> 7/guest1/guest2/guest3/guest4
-			int partidalibre = BuscarPartidaLibre(listaPartidas);			
+		{ 	// --> 7/guest1/guest2/guest3			
+			int partidalibre = BuscarPartidaLibre(listaPartidas);
+			
+			
+			pthread_mutex_lock (&mutex);
+			PonJugadorPartida(listaPartidas, partidalibre, username);
+			pthread_mutex_unlock (&mutex);
+			
 			p = strtok(NULL, "/");
 			while (p != NULL)
 			{
@@ -672,13 +648,13 @@ void *AtenderCliente (void *socket)
 				if (sinvitado != -1)
 				{
 					pthread_mutex_lock (&mutex);
-					PonJugadorPartida(listaPartidas, partidalibre, username);
+					PonJugadorPartida(listaPartidas, partidalibre, invitado);
 					pthread_mutex_unlock (&mutex);
-					sprintf(notificacion, "7/%s/%d", username, partidalibre);
+					sprintf(notificacion, "7/%s/%d", invitado, partidalibre);
 					write (sinvitado, notificacion, strlen(notificacion));
 				}
 				p = strtok(NULL,"/");
-			}	
+			}
 		}
 		else if (codigo == 8)
 		{
