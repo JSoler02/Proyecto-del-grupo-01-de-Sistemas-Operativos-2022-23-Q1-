@@ -53,7 +53,6 @@ namespace ProyectoSO
         public Main()
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false; // que permita modificar la label los threads
         }
 
         // Creamos funcion del thread
@@ -78,15 +77,18 @@ namespace ProyectoSO
                         MessageBox.Show(mensaje);
                         if (mensaje == "Conectado")
                         {
-                            label3.Visible = true;
-                            lbl_lista_con.Visible = false;
-                            PuntMax_But.Visible = true;
-                            Juan120_But.Visible = true;
-                            Templo_But.Visible = true;
-                            desconnectButton.Visible = true;
-                            panel1.Visible = false;
-                            GridConectados.Visible = true;
-                            this.BackColor = Color.Green;
+                            Invoke(new Action(() =>
+                            {
+                                label3.Visible = true;
+                                lbl_lista_con.Visible = false;
+                                PuntMax_But.Visible = true;
+                                Juan120_But.Visible = true;
+                                Templo_But.Visible = true;
+                                desconnectButton.Visible = true;
+                                panel1.Visible = false;
+                                GridConectados.Visible = true;
+                                this.BackColor = Color.Green;
+                            }));
                         }
                         break;
                     case 2: // New User
@@ -106,14 +108,18 @@ namespace ProyectoSO
                         // string mensaje = "3/Juan/Pedro/Maria"; 
                         // el numero inicial nos indica el número de usuarios conectados
                         int num = Convert.ToInt32(mensaje);
-                        GridConectados.Rows.Clear();
-                        for (int i = 0; i < num; i++)
+                        Invoke(new Action(() =>
                         {
-                            string nombre = Convert.ToString(trozos[i + 2].Split('\0')[0]);
-                            GridConectados.Rows.Add(nombre);
-                        }
-                        //GridConectados.Refresh();
-                        GridConectados.ClearSelection();
+                           GridConectados.Rows.Clear();
+
+                           for (int i = 0; i < num; i++)
+                           {
+                               string nombre = Convert.ToString(trozos[i + 2].Split('\0')[0]);
+                               GridConectados.Rows.Add(nombre);
+                           }
+                            //GridConectados.Refresh();
+                            GridConectados.ClearSelection();
+                        }));
                         break;
                     case 7: // Peticion de partida
                             // 7/Maria: A quien te está pidiendo partida
@@ -123,7 +129,10 @@ namespace ProyectoSO
                         if (r == DialogResult.OK)
                         {
                             resp = "Si";
-                            tableroJuego.Visible = true;
+                            Invoke(new Action(() =>
+                            {
+                                tableroJuego.Visible = true;
+                            }));                            
 
                         }
                         else
@@ -146,7 +155,10 @@ namespace ProyectoSO
                         {
                             idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
                             MessageBox.Show(nombre_acepta + " ha aceptado tu invitación a partida");
-                            tableroJuego.Visible = true;
+                            Invoke(new Action(() =>
+                            {
+                                tableroJuego.Visible = true;
+                            }));
                         }
                         else
                         {
@@ -159,8 +171,10 @@ namespace ProyectoSO
                         string ans = Convert.ToString(trozos[2].Split('\0')[0]);
                         // idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
                         // 9/x/y/idpartida
-                        MoverBicho(Convert.ToInt32(mensaje), Convert.ToInt32(trozos[2].Split('\0')[0]));
-
+                        Invoke(new Action(() =>
+                        {
+                            MoverBicho(Convert.ToInt32(mensaje), Convert.ToInt32(trozos[2].Split('\0')[0]));
+                        }));
                         //if (ans == "saltar")
                         //{
                         //    // se me actualiza el monigote del otro jugador con el movimento que ha realizado
@@ -177,8 +191,6 @@ namespace ProyectoSO
                         //{
 
                         //}
-
-
 
                         break;
                 }
@@ -355,6 +367,7 @@ namespace ProyectoSO
                         else
                         {
                             EnviarJugadoresPartida(invitados);
+                            invitados = "";
                         }
                         NumInvitados++;
                     }

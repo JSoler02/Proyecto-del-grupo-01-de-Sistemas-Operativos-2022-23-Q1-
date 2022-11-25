@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ListaCon.cs">
+    <Compile Include="Mapa1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListaCon.Designer.cs">
-      <DependentUpon>ListaCon.cs</DependentUpon>
+    <Compile Include="Mapa1.Designer.cs">
+      <DependentUpon>Mapa1.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -60,8 +60,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ListaCon.resx">
-      <DependentUpon>ListaCon.cs</DependentUpon>
+    <EmbeddedResource Include="Mapa1.resx">
+      <DependentUpon>Mapa1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
