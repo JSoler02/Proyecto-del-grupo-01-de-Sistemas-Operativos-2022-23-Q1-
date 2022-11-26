@@ -639,7 +639,7 @@ void *AtenderCliente (void *socket)
 			pthread_mutex_lock (&mutex);
 			PonJugadorPartida(listaPartidas, partidalibre, username);
 			pthread_mutex_unlock (&mutex);
-			  
+			
 			p = strtok(NULL, "/");
 			while (p != NULL)
 			{
@@ -669,19 +669,15 @@ void *AtenderCliente (void *socket)
 			strcpy(invitado, p);
 			if (strcmp(decision,"Si")==0)
 			{
-				/*pthread_mutex_lock (&mutex);
+				pthread_mutex_lock (&mutex);
 				PonJugadorPartida(listaPartidas, idpartida, invitado);
 				pthread_mutex_unlock (&mutex);
-				*/
 				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
 			}
 			else
 			{
-				
 				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
-				pthread_mutex_lock (&mutex);
-				AcabaPartida (listaPartidas, idpartida);	
-				pthread_mutex_unlock (&mutex);
+				
 			}
 			write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
 		}
@@ -711,9 +707,8 @@ void *AtenderCliente (void *socket)
 				if (listaPartidas[idpartida].jugadores[j].socket != s)	// no soy yo
 					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
 			}
-			
 		}
-		
+			
 		
 		if (codigo !=0)
 		{
