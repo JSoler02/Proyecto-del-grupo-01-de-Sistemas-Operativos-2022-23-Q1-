@@ -47,7 +47,7 @@ int i;
 int sockets[100];
 
 //Variables de desarrollo
-int shiva = 0; //1: si Shiva; 0: si MaqVirtual
+int shiva = 1; //1: si Shiva; 0: si MaqVirtual
 //Esta funcion devuelve el puerto y el Host 
 // dependiendo de si estamos en el entorno de desarrollo o el de produccion
 int DamePuertoYHost (int shiva, char host[50])
@@ -105,7 +105,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 { //Devuelve la posicion o -1 si no lo encuentra
 	int i = 0;
 	int encontrado = 0;
-	//bï¿¯ï¾¿ï¾ºsqueda
+	//bÃ¯Â¿Â¯Ã¯Â¾Â¿Ã¯Â¾Âºsqueda
 	while ((i<lista->num)&&(encontrado == 0))
 	{
 		if (strcmp(lista->conectados[i].nombre, nombre) ==0)
@@ -123,7 +123,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 
 
 int EliminaConectado (ListaConectados *lista, char nombre[20])	
-{ // Devuelve 0 si elimina y -1 si el usuario no estï¿¯ï¾¿ï¾¡ en la lista
+{ // Devuelve 0 si elimina y -1 si el usuario no estÃ¯Â¿Â¯Ã¯Â¾Â¿Ã¯Â¾Â¡ en la lista
 	// Elimina el socket de la lista global de sockets
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
@@ -218,9 +218,9 @@ int BuscarPartidaLibre(Partida lista[20])
 }
 
 
-// Elimina la partida de la lista: pone a 0 el tï¿©rmino ocupado 
+// Elimina la partida de la lista: pone a 0 el tÃ¯Â¿Â©rmino ocupado 
 // de la partida que le venga como parametro. Eliminamos (ponemos a -1)
-// tambiï¿©n los sockets de la lista de partidas
+// tambiÃ¯Â¿Â©n los sockets de la lista de partidas
 void AcabaPartida (Partida lista[20], int idpartida)	
 {
 	lista[idpartida].numjugadores = 0;
@@ -236,6 +236,7 @@ void AcabaPartida (Partida lista[20], int idpartida)
 //en el mensaje.
 void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 {
+	printf ("Partida n%d tiene a los jugadores en este orden: %s, %s, %s, %s --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[2].nombre, listaPartidas[idpartida].jugadores[3].nombre, listaPartidas[idpartida].numjugadores);
 	if (lista[idpartida].ocupado == 0)
 	{
 		AcabaPartida(lista, idpartida);
@@ -246,6 +247,7 @@ void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 	lista[idpartida].jugadores[lista[idpartida].numjugadores].socket = s1;
 	strcpy(lista[idpartida].jugadores[lista[idpartida].numjugadores].nombre, jugador);
 	lista[idpartida].numjugadores = lista[idpartida].numjugadores +1;
+	
 }
 int BuscarIDPartida (Partida lista[20], char jugador[20])
 {
@@ -639,7 +641,7 @@ void *AtenderCliente (void *socket)
 			pthread_mutex_lock (&mutex);
 			PonJugadorPartida(listaPartidas, partidalibre, username);
 			pthread_mutex_unlock (&mutex);
-			  
+			
 			p = strtok(NULL, "/");
 			while (p != NULL)
 			{
