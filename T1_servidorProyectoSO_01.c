@@ -56,7 +56,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8080;
+		puerto = 8090;
 	}
 	else 
 	{
@@ -709,9 +709,8 @@ void *AtenderCliente (void *socket)
 				if (listaPartidas[idpartida].jugadores[j].socket != s)	// no soy yo
 					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
 			}
-			
 		}
-		
+			
 		
 		if (codigo !=0)
 		{
