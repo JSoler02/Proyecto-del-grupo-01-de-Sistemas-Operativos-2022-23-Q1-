@@ -20,7 +20,7 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
+        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
         int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
@@ -49,10 +49,80 @@ namespace ProyectoSO
             GridConectados.ReadOnly = true;
             tableroJuego.Visible = false;
 
+            //chat partida
+            chatGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            chatGrid.ReadOnly = true;
+            chatGrid.RowHeadersVisible = false;
+            chatGrid.ColumnHeadersVisible = false;
+            chatGrid.ColumnCount = 1;
+            chatGrid.Visible = false;
+            chatbox.Visible = false;
+            EnviarChatBut.Visible = false;
+
+            bicho_pb.Image = Image.FromFile("Fireboy.gif");
+            bicho_pb.BackColor = Color.Transparent;
+            bicho_pb.Width = 60;
+            bicho_pb.Height = 75;
+
+
+
         }
         public Main()
         {
             InitializeComponent();
+        }
+
+        // Se conecta al servidor. Devuelve 0 si correcto o -1 si no puede.
+        // Si se conecta correctamente crea el Thread para atender al servidor
+        private int ConectarConServidor()
+        {
+            //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
+            //al que deseamos conectarnos
+            // SHIVA --> 147.83.117.22
+            // JÚLIA --> 192.168.195.128 
+            // RESTA --> 192.168.56.102
+            string ip;
+            // SHIVA --> 50050 o 50051 o 50052
+            // MAQ VIRT --> 8050...
+            int puerto;
+            if (this.shiva == 1)
+            {
+                ip = "147.83.117.22";
+                puerto = 50050;
+            }
+            else
+            {
+                puerto = 8070;
+                if (this.julia == 1)
+                { ip = "147.83.117.22"; }
+                else
+                { ip = "192.168.56.102"; }
+            }
+
+            IPAddress direc = IPAddress.Parse(ip);
+            IPEndPoint ipep = new IPEndPoint(direc, puerto);
+
+
+            //Creamos el socket 
+            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
+            {
+                server.Connect(ipep);//Intentamos conectar el socket
+
+                // Inicializamos el thread que atendera los mensajes del servidor
+                ThreadStart ts = delegate { AtenderServidor(); };
+                atender = new Thread(ts);
+                atender.Start();
+
+                return 0;
+            }
+            catch (SocketException ex)
+            {
+                //Si hay excepcion imprimimos error y salimos del programa con return 
+                MessageBox.Show("No he podido conectar con el servidor");
+                return -1;
+            }
+
         }
 
         // Creamos funcion del thread
@@ -132,6 +202,9 @@ namespace ProyectoSO
                             Invoke(new Action(() =>
                             {
                                 tableroJuego.Visible = true;
+                                chatGrid.Visible = true;
+                                chatbox.Visible = true;
+                                EnviarChatBut.Visible = true;
                             }));                            
 
                         }
@@ -140,9 +213,9 @@ namespace ProyectoSO
                             resp = "No";
                         }
                         // * * * * * Enviamos respuesta como si queremos aceptar o no 
-                        // --> "7/resp"
+                        // --> "8/Si/idpartida/Juan"
                         idPartida = Convert.ToInt32(trozos[2]);
-                        mensaje = "8/" + resp + "/" + idPartida + "/" + nombre;
+                        mensaje = "8/" + resp + "/" + idPartida + "/" + nombre; 
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
 
@@ -157,7 +230,10 @@ namespace ProyectoSO
                             MessageBox.Show(nombre_acepta + " ha aceptado tu invitación a partida");
                             Invoke(new Action(() =>
                             {
-                                tableroJuego.Visible = true;
+                                tableroJuego.Visible = true;    //  ---> inicia la partida para el anfitrion
+                                chatGrid.Visible = true;
+                                chatbox.Visible = true;
+                                EnviarChatBut.Visible = true;
                             }));
                         }
                         else
@@ -165,6 +241,10 @@ namespace ProyectoSO
                             MessageBox.Show(nombre_acepta + " no ha aceptado tu invitación a partida");
                         }
 
+                        Invoke(new Action(() =>
+                        {
+                            GridConectados.DefaultCellStyle.BackColor = Color.White;
+                        }));
                         break;
                     case 9: // acciones durante el juego: saltar, derecha, izquierda, quieto
                             // 9/movimiento/IDpartida --> mensaje que recibo conforme otro jugador ha realizado un movimiento
@@ -193,6 +273,17 @@ namespace ProyectoSO
                         //}
 
                         break;
+                    case 20:
+                        // mensaje del chat
+                        //--> "20/Juan/Hola compañeros/idpartida"
+                        string n = mensaje; // trozos[1];
+                        string informacion = trozos[2];
+                        Invoke(new Action(() =>
+                        {
+                            chatGrid.Rows.Add(n + ": " + informacion);
+                            chatGrid.ClearSelection();
+                        }));
+                        break;
                 }
             }
         }
@@ -208,6 +299,11 @@ namespace ProyectoSO
             GridConectados.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;
+
+            chatGrid.Visible = false;
+            chatbox.Visible = false;
+            EnviarChatBut.Visible = false;
+
             string mensaje = "0/";
 
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
@@ -282,60 +378,6 @@ namespace ProyectoSO
             //}
         }
 
-
-        // Se conecta al servidor. Devuelve 0 si correcto o -1 si no puede.
-        // Si se conecta correctamente crea el Thread para atender al servidor
-        private int ConectarConServidor()
-        {
-            //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
-            //al que deseamos conectarnos
-            // SHIVA --> 147.83.117.22
-            // JÚLIA --> 192.168.195.128 
-            // RESTA --> 192.168.56.102
-            string ip;
-            // SHIVA --> 50050 o 50051 o 50052
-            // MAQ VIRT --> 8050...
-            int puerto;
-            if (this.shiva == 1)
-            {
-                ip = "147.83.117.22";
-                puerto = 50050;
-            }
-            else
-            {
-                puerto = 8080;
-                if (this.julia == 1)
-                { ip = "147.83.117.22"; }
-                else
-                { ip = "192.168.56.102"; }
-            }
-
-            IPAddress direc = IPAddress.Parse(ip);
-            IPEndPoint ipep = new IPEndPoint(direc, puerto);
-
-
-            //Creamos el socket 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);//Intentamos conectar el socket
-
-                // Inicializamos el thread que atendera los mensajes del servidor
-                ThreadStart ts = delegate { AtenderServidor(); };
-                atender = new Thread(ts);
-                atender.Start();
-
-                return 0;
-            }
-            catch (SocketException ex)
-            {
-                //Si hay excepcion imprimimos error y salimos del programa con return 
-                MessageBox.Show("No he podido conectar con el servidor");
-                return -1;
-            }
-
-        }
-
         private void conectar_bt_Click(object sender, EventArgs e)
         {
             int conexion = ConectarConServidor();
@@ -356,10 +398,12 @@ namespace ProyectoSO
                 DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (r == DialogResult.OK)
                 {
+                    GridConectados.CurrentCell.Style.BackColor = Color.LightGreen;
+
                     invitados = invitados + "/" + invitado;
                     if (NumInvitados < 3)
                     {
-                        DialogResult m = MessageBox.Show("Quieres invitar a alguien más?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        DialogResult m = MessageBox.Show("Quieres invitar a alguien más?\nPuedes a " + (2-NumInvitados) + " más.", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                         if (m == DialogResult.OK)
                         {
                             MessageBox.Show("Indique el jugador.");
@@ -398,6 +442,17 @@ namespace ProyectoSO
             this.y_bicho = y;
             Point posicion = new Point(x_bicho, y_bicho);
             bicho_pb.Location = posicion;
+        }
+
+        private void EnviarChatBut_Click(object sender, EventArgs e)
+        {
+            if (chatbox.Text != null)
+            {
+                string mensaje_chat = "20/" + chatbox.Text + "/" + idPartida;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+                server.Send(msg);
+                chatbox.Text = null;
+            }
         }
 
         /*
