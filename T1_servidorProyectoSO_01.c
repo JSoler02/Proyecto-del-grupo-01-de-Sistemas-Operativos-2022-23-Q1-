@@ -30,6 +30,7 @@ typedef struct {
 }Partida;
 
 ListaConectados listaconectados;
+
 Partida listaPartidas[20];
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -90,7 +91,7 @@ int DameSocket (ListaConectados *lista, char nombre[20])
 	{
 		if (strcmp(lista->conectados[i].nombre, nombre) ==0)
 			encontrado =1;
-		if (encontrado == 0)
+		else if (encontrado == 0)
 			i++;
 		
 	}
@@ -295,6 +296,7 @@ int LogIn(char user[60], char passw[60])
 			
 			pthread_mutex_lock (&mutex);
 			int res = PonConectado(&listaconectados, user, *s);
+			printf("[Ponconectado(%s,%d)]\n",user,*s);
 			pthread_mutex_unlock (&mutex);
 			if (res == -1)
 				return -1;

@@ -41,7 +41,6 @@ namespace ProyectoSO
             this.label3 = new System.Windows.Forms.Label();
             this.Juan120_But = new System.Windows.Forms.Button();
             this.Templo_But = new System.Windows.Forms.Button();
-            this.conectar_bt = new System.Windows.Forms.Button();
             this.GridConectados = new System.Windows.Forms.DataGridView();
             this.tableroJuego = new System.Windows.Forms.Panel();
             this.bicho_pb = new System.Windows.Forms.PictureBox();
@@ -183,17 +182,6 @@ namespace ProyectoSO
             this.Templo_But.UseVisualStyleBackColor = true;
             this.Templo_But.Click += new System.EventHandler(this.Templo_But_Click);
             // 
-            // conectar_bt
-            // 
-            this.conectar_bt.Location = new System.Drawing.Point(6, 3);
-            this.conectar_bt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.conectar_bt.Name = "conectar_bt";
-            this.conectar_bt.Size = new System.Drawing.Size(150, 36);
-            this.conectar_bt.TabIndex = 18;
-            this.conectar_bt.Text = "Conectar";
-            this.conectar_bt.UseVisualStyleBackColor = true;
-            this.conectar_bt.Click += new System.EventHandler(this.conectar_bt_Click);
-            // 
             // GridConectados
             // 
             this.GridConectados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -277,7 +265,6 @@ namespace ProyectoSO
             this.Controls.Add(this.chatbox);
             this.Controls.Add(this.tableroJuego);
             this.Controls.Add(this.GridConectados);
-            this.Controls.Add(this.conectar_bt);
             this.Controls.Add(this.Templo_But);
             this.Controls.Add(this.Juan120_But);
             this.Controls.Add(this.lbl_lista_con);
@@ -314,7 +301,6 @@ namespace ProyectoSO
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Juan120_But;
         private System.Windows.Forms.Button Templo_But;
-        private System.Windows.Forms.Button conectar_bt;
         private System.Windows.Forms.DataGridView GridConectados;
         private System.Windows.Forms.Panel tableroJuego;
         private System.Windows.Forms.Label lbl_lista_con;

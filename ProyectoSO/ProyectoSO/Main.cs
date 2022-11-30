@@ -20,7 +20,7 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
+        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
         int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
@@ -41,7 +41,7 @@ namespace ProyectoSO
             desconnectButton.Visible = false;
             GridConectados.Visible = false;
             passwordBox.PasswordChar = ('*');
-            panel1.Visible = false;
+            panel1.Visible = true;
             GridConectados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             GridConectados.RowHeadersVisible = false;
             GridConectados.ColumnCount = 1;
@@ -320,7 +320,7 @@ namespace ProyectoSO
             server.Shutdown(SocketShutdown.Both);
             server.Close();
 
-            conectar_bt.Visible = true;
+            
         }
         private void PuntMax_But_Click(object sender, EventArgs e)
         {
@@ -354,11 +354,19 @@ namespace ProyectoSO
             //int conexion = ConectarConServidor();
             //if (conexion == 0)
             //{
-            string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
-            nombre = usernameBox.Text;
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
+            int conexion = ConectarConServidor();
+            if (conexion == 0)
+            {
+                MessageBox.Show("Conectado con el servidor");
+                
+                //panel1.Visible = true;
+                string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
+                nombre = usernameBox.Text;
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+            }
+            
 
 
             //}
@@ -382,16 +390,6 @@ namespace ProyectoSO
             //}
         }
 
-        private void conectar_bt_Click(object sender, EventArgs e)
-        {
-            int conexion = ConectarConServidor();
-            if (conexion == 0)
-            {
-                MessageBox.Show("Conectado con el servidor");
-                conectar_bt.Visible = false;
-                panel1.Visible = true;
-            }
-        }
 
         private void GridConectados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -488,7 +486,7 @@ namespace ProyectoSO
             server.Shutdown(SocketShutdown.Both);
             server.Close();
 
-            conectar_bt.Visible = true;
+            
         }
 
         /*
