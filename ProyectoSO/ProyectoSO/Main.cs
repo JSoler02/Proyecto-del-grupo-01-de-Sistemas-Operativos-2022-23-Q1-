@@ -92,7 +92,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8070;
+                puerto = 8080;
                 if (this.julia == 1)
                 { ip = "147.83.117.22"; }
                 else
@@ -221,7 +221,7 @@ namespace ProyectoSO
 
                         break;
                     case 8: // Respuesta a  peticion de partida
-                            // "8/Juan/SI/2": Quien ha aceptado/su respuesta/idPartida
+                            // "8/Juan/Si/2": Quien ha aceptado/su respuesta/idPartida
                         string nombre_acepta = mensaje;
                         string respuesta = Convert.ToString(trozos[2].Split('\0')[0]);
                         if (respuesta == "Si")
@@ -251,10 +251,14 @@ namespace ProyectoSO
                         string ans = Convert.ToString(trozos[2].Split('\0')[0]);
                         // idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
                         // 9/x/y/idpartida
+                        
                         Invoke(new Action(() =>
                         {
                             MoverBicho(Convert.ToInt32(mensaje), Convert.ToInt32(trozos[2].Split('\0')[0]));
+                            
                         }));
+                        
+
                         //if (ans == "saltar")
                         //{
                         //    // se me actualiza el monigote del otro jugador con el movimento que ha realizado
@@ -430,8 +434,8 @@ namespace ProyectoSO
         private void tableroJuego_MouseClick(object sender, MouseEventArgs e)
         {
             // añadimos ciruclo a la lista de circulos
-            MoverBicho(e.X, e.Y);
-            string movimiento = "9/" + x_bicho + "/" + y_bicho + "/" + idPartida;
+            //MoverBicho(e.X, e.Y);
+            string movimiento = "9/" + e.X + "/" + e.Y + "/" + idPartida;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(movimiento);
             server.Send(msg);
 
@@ -453,6 +457,38 @@ namespace ProyectoSO
                 server.Send(msg);
                 chatbox.Text = null;
             }
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Mensaje de desconexión
+            label3.Visible = false;
+            lbl_lista_con.Visible = false;
+            tableroJuego.Visible = false;
+            PuntMax_But.Visible = false;
+            Juan120_But.Visible = false;
+            Templo_But.Visible = false;
+            GridConectados.Visible = false;
+            //panel1.Visible = true;
+            desconnectButton.Visible = false;
+
+            chatGrid.Visible = false;
+            chatbox.Visible = false;
+            EnviarChatBut.Visible = false;
+
+            string mensaje = "0/";
+
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+            // Nos desconectamos
+            atender.Abort(); // cerramos thread
+
+            this.BackColor = Color.Gray;
+            server.Shutdown(SocketShutdown.Both);
+            server.Close();
+
+            conectar_bt.Visible = true;
         }
 
         /*
