@@ -561,6 +561,20 @@ void *AtenderCliente (void *socket)
 			EnviarListaConectadosNotificacion(notificacion);
 			//pthread_mutex_unlock (&mutex);
 			
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)
+			{
+				sprintf(notificacion, "10/%d", idpartida);
+				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));
+				printf("%s\n",notificacion);
+			}
+
+			pthread_mutex_lock (&mutex);
+			AcabaPartida(listaPartidas,idpartida);
+			pthread_mutex_unlock (&mutex);
+
 			terminar = 1;
 		}
 		
@@ -727,6 +741,23 @@ void *AtenderCliente (void *socket)
 				printf("%s\n",notificacion);
 			}
 			
+		}
+		else if (codigo == 10) // click boton acabar partida
+		{ // 10/idpartida --> el username ja el tenim
+
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)
+			{
+				sprintf(notificacion, "10/%d", idpartida);
+				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));
+				printf("%s\n",notificacion);
+			}
+
+			pthread_mutex_lock (&mutex);
+			AcabaPartida (listaPartidas, idpartida);	
+			pthread_mutex_unlock (&mutex);
 		}
 		else //if (codigo == 20)
 		{	//Mensaje del chat de partida
