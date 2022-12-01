@@ -20,8 +20,8 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
-        int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
+        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
+        int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
         string nombre;
@@ -95,7 +95,7 @@ namespace ProyectoSO
             {
                 puerto = 8080;
                 if (this.julia == 1)
-                { ip = "147.83.117.22"; }
+                { ip = "192.168.195.128"; }
                 else
                 { ip = "192.168.56.102"; }
             }
@@ -329,6 +329,7 @@ namespace ProyectoSO
             chatbox.Visible = false;
             EnviarChatBut.Visible = false;
             AcabarPartida_But.Visible = false;
+            panel1.Visible = true;
 
             string mensaje = "0/" + Convert.ToString(idPartida);
 
@@ -341,6 +342,8 @@ namespace ProyectoSO
             this.BackColor = Color.Gray;
             server.Shutdown(SocketShutdown.Both);
             server.Close();
+
+            NumInvitados = 0;
 
             
         }
@@ -497,7 +500,7 @@ namespace ProyectoSO
             chatbox.Visible = false;
             EnviarChatBut.Visible = false;
 
-            string mensaje = "0/";
+            string mensaje = "0/" + Convert.ToString(idPartida);
 
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);

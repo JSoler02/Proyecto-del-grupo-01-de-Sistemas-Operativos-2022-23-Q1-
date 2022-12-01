@@ -247,7 +247,7 @@ namespace ProyectoSO
             this.AcabarPartida_But.TabIndex = 24;
             this.AcabarPartida_But.Text = "Acabar Partida";
             this.AcabarPartida_But.UseVisualStyleBackColor = true;
-            this.AcabarPartida_But.Click += new System.EventHandler(this.button1_Click);
+            this.AcabarPartida_But.Click += new System.EventHandler(this.AcabarPartida_But_Click);
             // 
             // Main
             // 
