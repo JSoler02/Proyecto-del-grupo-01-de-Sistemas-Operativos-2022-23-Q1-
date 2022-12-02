@@ -46,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mapa1.cs">
+    <Compile Include="Cueva Maritima.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Mapa1.Designer.cs">
-      <DependentUpon>Mapa1.cs</DependentUpon>
+    <Compile Include="Cueva Maritima.Designer.cs">
+      <DependentUpon>Cueva Maritima.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeleccionPartida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionPartida.Designer.cs">
+      <DependentUpon>SeleccionPartida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Templo.Designer.cs">
+      <DependentUpon>Templo.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -58,10 +76,22 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Templo Helado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Templo Helado.Designer.cs">
+      <DependentUpon>Templo Helado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Mapa1.resx">
-      <DependentUpon>Mapa1.cs</DependentUpon>
+    <Compile Include="Volcán.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Volcán.Designer.cs">
+      <DependentUpon>Volcán.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Templo.resx">
+      <DependentUpon>Templo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

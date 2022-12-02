@@ -1,6 +1,6 @@
 ﻿namespace ProyectoSO
 {
-    partial class Mapa1
+    partial class Inicio
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Mapa1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Mapa1";
-            this.Text = "Templo";
-            this.ResumeLayout(false);
-
+            this.Text = "Inicio";
         }
 
         #endregion

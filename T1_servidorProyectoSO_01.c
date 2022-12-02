@@ -106,7 +106,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 { //Devuelve la posicion o -1 si no lo encuentra
 	int i = 0;
 	int encontrado = 0;
-	//b￯﾿ﾺsqueda
+	//bï¿¯ï¾¿ï¾ºsqueda
 	while ((i<lista->num)&&(encontrado == 0))
 	{
 		if (strcmp(lista->conectados[i].nombre, nombre) ==0)
@@ -124,7 +124,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 
 
 int EliminaConectado (ListaConectados *lista, char nombre[20])	
-{ // Devuelve 0 si elimina y -1 si el usuario no est￯﾿ﾡ en la lista
+{ // Devuelve 0 si elimina y -1 si el usuario no estï¿¯ï¾¿ï¾¡ en la lista
 	// Elimina el socket de la lista global de sockets
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
@@ -218,10 +218,10 @@ int BuscarPartidaLibre(Partida lista[20])
 		return -1;	
 }
 
-	
-// Elimina la partida de la lista: pone a 0 el t￩rmino ocupado 
+
+// Elimina la partida de la lista: pone a 0 el tï¿©rmino ocupado 
 // de la partida que le venga como parametro. Eliminamos (ponemos a -1)
-// tambi￩n los sockets de la lista de partidas
+// tambiï¿©n los sockets de la lista de partidas
 void AcabaPartida (Partida lista[20], int idpartida)	
 {
 	lista[idpartida].numjugadores = 0;
@@ -502,8 +502,7 @@ void EnviarListaConectadosNotificacion(char respuesta[512])
 	// enviar notificacion por todos los sockets de los conectados
 	int j;
 	for (j=0; j<i; j++)
-		
-		write (sockets[j], respuesta, strlen(respuesta));
+		write (listaconectados.conectados[j].socket, respuesta, strlen(respuesta));
 }
 
 void *AtenderCliente (void *socket)
@@ -563,18 +562,18 @@ void *AtenderCliente (void *socket)
 			
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)
 			{
 				sprintf(notificacion, "10/%d", idpartida);
 				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));
 				printf("%s\n",notificacion);
 			}
-
+			
 			pthread_mutex_lock (&mutex);
 			AcabaPartida(listaPartidas,idpartida);
 			pthread_mutex_unlock (&mutex);
-
+			
 			terminar = 1;
 		}
 		
@@ -744,24 +743,24 @@ void *AtenderCliente (void *socket)
 		}
 		else if (codigo == 10) // click boton acabar partida
 		{ // 10/idpartida --> el username ja el tenim
-
+			
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)
 			{
 				sprintf(notificacion, "10/%d", idpartida);
 				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));
 				printf("%s\n",notificacion);
 			}
-
+			
 			pthread_mutex_lock (&mutex);
 			AcabaPartida (listaPartidas, idpartida);	
 			pthread_mutex_unlock (&mutex);
 		}
 		else //if (codigo == 20)
 		{	//Mensaje del chat de partida
-			// "20/Hola compa￱eros/idpartida"
+			// "20/Hola compaï¿±eros/idpartida"
 			//char nombrechat[20];
 			char mensaje[200];
 			
@@ -826,7 +825,7 @@ int main(int argc, char *argv[])
 	conn = mysql_init(NULL);
 	if (conn==NULL) {
 		printf ("Error al crear la conexion: %u %s\n", 
-				mysql_errno(conn), mysql_error(conn));
+			mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
 	
@@ -835,12 +834,11 @@ int main(int argc, char *argv[])
 	
 	if (conn==NULL) {
 		printf ("Error al inicializar la conexion: %u %s\n", 
-				mysql_errno(conn), mysql_error(conn));
+			mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
 	// Bucle infinito
 	for (;;){
-		
 		printf ("Escuchando\n");
 		sock_conn = accept(sock_listen, NULL, NULL);
 		printf ("He recibido conexion\n");

@@ -175,7 +175,7 @@ namespace ProyectoSO
             // 
             this.GridConectados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridConectados.Location = new System.Drawing.Point(375, 65);
-            this.GridConectados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GridConectados.Margin = new System.Windows.Forms.Padding(2);
             this.GridConectados.Name = "GridConectados";
             this.GridConectados.RowHeadersWidth = 82;
             this.GridConectados.RowTemplate.Height = 33;
@@ -241,9 +241,9 @@ namespace ProyectoSO
             // 
             // AcabarPartida_But
             // 
-            this.AcabarPartida_But.Location = new System.Drawing.Point(808, 539);
+            this.AcabarPartida_But.Location = new System.Drawing.Point(808, 544);
             this.AcabarPartida_But.Name = "AcabarPartida_But";
-            this.AcabarPartida_But.Size = new System.Drawing.Size(137, 69);
+            this.AcabarPartida_But.Size = new System.Drawing.Size(137, 37);
             this.AcabarPartida_But.TabIndex = 24;
             this.AcabarPartida_But.Text = "Acabar Partida";
             this.AcabarPartida_But.UseVisualStyleBackColor = true;
@@ -253,7 +253,7 @@ namespace ProyectoSO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 647);
+            this.ClientSize = new System.Drawing.Size(1202, 593);
             this.Controls.Add(this.AcabarPartida_But);
             this.Controls.Add(this.EnviarChatBut);
             this.Controls.Add(this.chatGrid);
