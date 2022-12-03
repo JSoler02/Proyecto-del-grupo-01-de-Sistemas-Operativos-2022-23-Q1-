@@ -39,7 +39,7 @@ namespace ProyectoSO
         int jumpSpeed = 8; // velocidad vertical
         int jumpSpeed1; int jumpSpeed2; int jumpSpeed3; int jumpSpeed4; // --> una para cada uno para controlar el salto
         int force1; int force2; int force3; int force4; // contador para el maximo del salto
-        int puntos1 = 0; int puntos2 = 0; int puntos3 = 0; int puntos4 = 0;
+        int puntos1; int puntos2; int puntos3; int puntos4;
         int hspeed = 7; // velocidad horizontal --> general
 
 
@@ -94,6 +94,8 @@ namespace ProyectoSO
         }
         private void MainGameTimerEvent(object sender, EventArgs e)
         {
+            lblPuntos.Text = "Puntos J1: " + puntos1;
+
             pintarPersonajesEnSusPosiciones();
             movimientosPersonajesConCadaTick();
 
@@ -110,6 +112,54 @@ namespace ProyectoSO
                 {
                     ColisionesPersonajesPlaca1(x);
 
+                }
+                // techo
+                if ((string)x.Tag == "techo")
+                {
+                    ColisionesPersonajesTecho(x);
+                }
+                // pared izquierda
+                if ((string)x.Tag == "pared_izquierda")
+                {
+                    ColisionesPersonajesParedIzquierda(x);
+                }
+                // pared izquierda
+                if ((string)x.Tag == "pared_derecha")
+                {
+                    ColisionesPersonajesParedDerecha(x);
+                }
+                // Puntos
+                if ((string)x.Tag == "diamante1")
+                {
+                    if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false; // se eliminan los diamantes
+                        puntos1++;
+                    }
+                }
+                if ((string)x.Tag == "diamante2")
+                {
+                    if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false; // se eliminan los diamantes
+                        puntos2++;
+                    }
+                }
+                if ((string)x.Tag == "diamante3")
+                {
+                    if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false; // se eliminan los diamantes
+                        puntos3++;
+                    }
+                }
+                if ((string)x.Tag == "diamante4")
+                {
+                    if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false; // se eliminan los diamantes
+                        puntos4++;
+                    }
                 }
             }
 
@@ -213,6 +263,7 @@ namespace ProyectoSO
             goLeft_J4 = false; goRight_J4 = false; jumping_J4 = false; isGameOver_J4 = false; onPlatform_J4 = false;
 
             jumpSpeed1 = jumpSpeed; jumpSpeed2 = jumpSpeed; jumpSpeed3 = jumpSpeed; jumpSpeed4 = jumpSpeed;
+            puntos1 = 0; puntos2 = 0; puntos3 = 0; puntos4 = 0;
 
 
             permitirAnimaciones_J1 = true;
@@ -235,6 +286,54 @@ namespace ProyectoSO
             placa1.Image = Image.FromFile("placa1_desactivada.png");
             placa1.SizeMode = PictureBoxSizeMode.Zoom;
             placa1.BackColor = Color.Transparent;
+
+            foreach (Control x in this.Controls)
+            {
+                // techos   --> 1 por cada plataforma que no se pueda atravesar desde abajo.
+                if ((string)x.Tag == "techo")
+                {
+                    x.Visible = false;
+                }
+                // Puntos
+                if ((string)x.Tag == "diamante1")
+                {   // Image + SizeMode.Zoom se ponen desde el diseño
+                    x.Visible = true;
+                    x.BackColor = Color.Transparent;
+                    x.Width = 62 / 3;
+                    x.Height = 58 / 3;
+                }
+                // Puntos
+                if ((string)x.Tag == "diamante2")
+                {   // Image + SizeMode.Zoom se ponen desde el diseño
+                    x.Visible = true;
+                    x.BackColor = Color.Transparent;
+                    x.Width = 62 / 3;
+                    x.Height = 58 / 3;
+                }
+                // Puntos
+                if ((string)x.Tag == "diamante3")
+                {   // Image + SizeMode.Zoom se ponen desde el diseño
+                    x.Visible = true;
+                    x.BackColor = Color.Transparent;
+                    x.Width = 62 / 3;
+                    x.Height = 58 / 3;
+                }
+                // Puntos
+                if ((string)x.Tag == "diamante4")
+                {   // Image + SizeMode.Zoom se ponen desde el diseño
+                    x.Visible = true;
+                    x.BackColor = Color.Transparent;
+                    x.Width = 62 / 3;
+                    x.Height = 58 / 3;
+                }
+                // Plataformas
+                if ((string)x.Tag == "plataforma")
+                {
+                    x.BackgroundImage = Image.FromFile("plataforma_Mapa1.png");
+                }
+
+            }
+
         }
 
 
@@ -1171,6 +1270,88 @@ namespace ProyectoSO
             }
 
         }
+        private void ColisionesPersonajesTecho(Control x)
+        {
+            // Colisiones Jugador 1 - plataforma
+            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (onPlatform_J1 == false)
+                {
+                    Jug1.SetY(x.Bottom); // mueve directamente abajo del techo al colisionar
+                }
+            }
+            // Colisiones Jugador 2 - plataforma
+            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (onPlatform_J2 == false)
+                {
+                    Jug2.SetY(x.Bottom); // mueve directamente abajo del techo al colisionar
+                }
+            }
+            // Colisiones Jugador 3 - plataforma
+            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (onPlatform_J3 == false)
+                {
+                    Jug3.SetY(x.Bottom); // mueve directamente abajo del techo al colisionar
+                }
+            }
+            // Colisiones Jugador 4 - plataforma
+            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (onPlatform_J4 == false)
+                {
+                    Jug4.SetY(x.Bottom); // mueve directamente abajo del techo al colisionar
+                }
+            }
+        }
+        private void ColisionesPersonajesParedIzquierda(Control x)
+        {
+            // Colisiones Jugador 1 - plataforma
+            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
+            {
+                Jug1.SetX(x.Left - Jug1.GetAnchoNormal()); // mueve directamente
+            }
+            // Colisiones Jugador 2 - plataforma
+            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
+            {
+                Jug2.SetX(x.Left - Jug2.GetAnchoNormal()); // mueve directamente
+            }
+            // Colisiones Jugador 3 - plataforma
+            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
+            {
+                Jug3.SetX(x.Left - Jug3.GetAnchoNormal()); // mueve directamente
+            }
+            // Colisiones Jugador 4 - plataforma
+            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
+            {
+                Jug4.SetX(x.Left - Jug4.GetAnchoNormal()); // mueve directamente
+            }
+        }
+        private void ColisionesPersonajesParedDerecha(Control x)
+        {
+            // Colisiones Jugador 1 - plataforma
+            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
+            {
+                Jug1.SetX(x.Right); // mueve directamente
+            }
+            // Colisiones Jugador 2 - plataforma
+            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
+            {
+                Jug2.SetX(x.Right); // mueve directamente
+            }
+            // Colisiones Jugador 3 - plataforma
+            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
+            {
+                Jug3.SetX(x.Right); // mueve directamente
+            }
+            // Colisiones Jugador 4 - plataforma
+            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
+            {
+                Jug4.SetX(x.Right); // mueve directamente
+            }
+        }
+
 
 
     }
