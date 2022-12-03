@@ -58,6 +58,7 @@
     <Compile Include="Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Jugador.cs" />
     <Compile Include="SeleccionPartida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +91,9 @@
     <Compile Include="Volcán.Designer.cs">
       <DependentUpon>Volcán.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SeleccionPartida.resx">
+      <DependentUpon>SeleccionPartida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Templo.resx">
       <DependentUpon>Templo.cs</DependentUpon>
     </EmbeddedResource>

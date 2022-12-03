@@ -21,3 +21,15 @@ C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Pro
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe.config
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.pdb
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csprojAssemblyReference.cache
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Templo.resources
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Main.resources
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Properties.Resources.resources
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.GenerateResource.cache
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.CoreCompileInputs.cache
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.exe
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.pdb
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe.config
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.pdb
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.SeleccionPartida.resources
