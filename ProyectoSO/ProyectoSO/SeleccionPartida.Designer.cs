@@ -52,6 +52,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.numForm = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chatGrid)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,7 +131,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(171, 382);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(134, 17);
+            this.label5.Size = new System.Drawing.Size(130, 16);
             this.label5.TabIndex = 6;
             this.label5.Text = "Mapa seleccionado:";
             // 
@@ -314,11 +315,20 @@
             this.label1.Text = "Fireboy";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // numForm
+            // 
+            this.numForm.AutoSize = true;
+            this.numForm.Location = new System.Drawing.Point(951, 524);
+            this.numForm.Name = "numForm";
+            this.numForm.Size = new System.Drawing.Size(0, 20);
+            this.numForm.TabIndex = 34;
+            // 
             // SeleccionPartida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 601);
+            this.Controls.Add(this.numForm);
             this.Controls.Add(this.EnviarChatBut);
             this.Controls.Add(this.chatGrid);
             this.Controls.Add(this.chatbox);
@@ -364,5 +374,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label numForm;
     }
 }

@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
-using System.Net;
-using System.Net.Sockets; // libreria de sockets
 using System.Threading; // libreria de threads
 
 namespace ProyectoSO
@@ -19,6 +17,7 @@ namespace ProyectoSO
     {
         int idPartida;
         Socket server; // declaramos socket
+        int nForm;
 
         // Mi personaje --> 1,2,3,4
         int miPersonajeQueControlo = 3;
@@ -76,9 +75,11 @@ namespace ProyectoSO
             label_tiempo.Text = "Tiempo: " + segundos;
         }
 
-        public Templo()
+        public Templo(int nForm, Socket server)
         {
             InitializeComponent();
+            this.nForm = nForm; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
+            this.server = server;
         }
 
         private void pintarPersonajesEnSusPosiciones()
@@ -413,7 +414,7 @@ namespace ProyectoSO
                     jumping_J4 = true;
                     break;
             }
-            string mensaje = "20/" + idPartida + "/" + miPersonajeQueControlo;
+            string mensaje = "21/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             //server.Send(msg);
             label_mensaje.Text = mensaje;
@@ -451,7 +452,7 @@ namespace ProyectoSO
                     jumping_J4 = true;
                     break;
             }
-            string mensaje = "21/" + idPartida + "/" + miPersonajeQueControlo;
+            string mensaje = "22/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             //server.Send(msg);
             label_mensaje.Text = mensaje;
@@ -497,7 +498,7 @@ namespace ProyectoSO
                     jumping_J4 = false;
                     break;
             }
-            string mensaje = "22/" + idPartida + "/" + miPersonajeQueControlo;
+            string mensaje = "23/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             //server.Send(msg);
             label_mensaje.Text = mensaje;
@@ -738,7 +739,7 @@ namespace ProyectoSO
                     jumping_J4 = true;
                     break;
             }
-            string mensaje = "20/" + idPartida + "/" + miPersonajeQueControlo;
+            string mensaje = "21/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             //server.Send(msg);
             label_mensaje.Text = mensaje;
@@ -776,7 +777,7 @@ namespace ProyectoSO
                     jumping_J4 = true;
                     break;
             }
-            string mensaje = "21/" + idPartida + "/" + miPersonajeQueControlo;
+            string mensaje = "22/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             //server.Send(msg);
             label_mensaje.Text = mensaje;
@@ -822,7 +823,7 @@ namespace ProyectoSO
                     jumping_J4 = false;
                     break;
             }
-            string mensaje = "22/" + idPartida + "/" + miPersonajeQueControlo;
+            string mensaje = "23/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             //server.Send(msg);
             label_mensaje.Text = mensaje;
@@ -1352,6 +1353,25 @@ namespace ProyectoSO
             }
         }
 
+        // Chat
+        private void EnviarChatBut_Click(object sender, EventArgs e)
+        {
+            if (chatbox.Text != null)
+            {
+                string mensaje_chat = "20/" + nForm + "/2/" + idPartida + "/" + chatbox.Text;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+                server.Send(msg);
+                chatbox.Text = null;
+            }
+        }
+        public void AtenderMensajeChat(string nombre, string informacion)
+        {
+            Invoke(new Action(() =>
+            {
+                chatGrid.Rows.Add(nombre + ": " + informacion);
+                chatGrid.ClearSelection();
+            }));
+        }
 
 
     }

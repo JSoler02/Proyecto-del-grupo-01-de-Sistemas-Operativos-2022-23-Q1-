@@ -54,6 +54,10 @@
             this.J33 = new System.Windows.Forms.PictureBox();
             this.J22 = new System.Windows.Forms.PictureBox();
             this.J11 = new System.Windows.Forms.PictureBox();
+            this.AcabarPartida_But = new System.Windows.Forms.Button();
+            this.EnviarChatBut = new System.Windows.Forms.Button();
+            this.chatGrid = new System.Windows.Forms.DataGridView();
+            this.chatbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -74,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.J33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.J22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.J11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chatGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tiempoJuego
@@ -315,11 +320,50 @@
             this.J11.TabIndex = 51;
             this.J11.TabStop = false;
             // 
+            // AcabarPartida_But
+            // 
+            this.AcabarPartida_But.Location = new System.Drawing.Point(1300, 511);
+            this.AcabarPartida_But.Name = "AcabarPartida_But";
+            this.AcabarPartida_But.Size = new System.Drawing.Size(137, 37);
+            this.AcabarPartida_But.TabIndex = 77;
+            this.AcabarPartida_But.Text = "Acabar Partida";
+            this.AcabarPartida_But.UseVisualStyleBackColor = true;
+            // 
+            // EnviarChatBut
+            // 
+            this.EnviarChatBut.Location = new System.Drawing.Point(1588, 474);
+            this.EnviarChatBut.Name = "EnviarChatBut";
+            this.EnviarChatBut.Size = new System.Drawing.Size(72, 30);
+            this.EnviarChatBut.TabIndex = 76;
+            this.EnviarChatBut.Text = "Enviar";
+            this.EnviarChatBut.UseVisualStyleBackColor = true;
+            // 
+            // chatGrid
+            // 
+            this.chatGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.chatGrid.Location = new System.Drawing.Point(1097, 31);
+            this.chatGrid.Name = "chatGrid";
+            this.chatGrid.RowHeadersWidth = 51;
+            this.chatGrid.RowTemplate.Height = 24;
+            this.chatGrid.Size = new System.Drawing.Size(563, 437);
+            this.chatGrid.TabIndex = 75;
+            // 
+            // chatbox
+            // 
+            this.chatbox.Location = new System.Drawing.Point(1097, 478);
+            this.chatbox.Name = "chatbox";
+            this.chatbox.Size = new System.Drawing.Size(485, 22);
+            this.chatbox.TabIndex = 74;
+            // 
             // Templo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1210, 563);
+            this.ClientSize = new System.Drawing.Size(1683, 563);
+            this.Controls.Add(this.AcabarPartida_But);
+            this.Controls.Add(this.EnviarChatBut);
+            this.Controls.Add(this.chatGrid);
+            this.Controls.Add(this.chatbox);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox9);
@@ -368,7 +412,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.J33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.J22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.J11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chatGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -398,5 +444,9 @@
         private System.Windows.Forms.PictureBox J33;
         private System.Windows.Forms.PictureBox J22;
         private System.Windows.Forms.PictureBox J11;
+        private System.Windows.Forms.Button AcabarPartida_But;
+        private System.Windows.Forms.Button EnviarChatBut;
+        private System.Windows.Forms.DataGridView chatGrid;
+        protected System.Windows.Forms.TextBox chatbox;
     }
 }

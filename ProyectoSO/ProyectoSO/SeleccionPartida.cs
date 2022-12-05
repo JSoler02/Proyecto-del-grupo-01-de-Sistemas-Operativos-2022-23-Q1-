@@ -18,8 +18,8 @@ namespace ProyectoSO
         string username = "Juan";
         int idPartida;
 
+        int nForm; // numero de formulario
         Socket server; // declaramos socket
-        Thread atender; // declaramos thread
 
         // 0: libre; 1: ocupado por mi; -1: ocupado por otro jugador; 2: no lo puedo ocupar porque ya ocupo uno
         int J1seleccionado = 0;
@@ -31,10 +31,15 @@ namespace ProyectoSO
         bool anfitrion = true;
         string mapa;
 
-        public SeleccionPartida()
+        
+
+        public SeleccionPartida(int nForm, Socket server)
         {
             InitializeComponent();
+            this.nForm = nForm; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
+            this.server = server; 
         }
+
         //***************** Usar este de aquí abajo1
         //public PantallaEleccionPersonaje(int idPartida, Socket server)
         //{
@@ -122,76 +127,9 @@ namespace ProyectoSO
             //atender = new Thread(ts);
             //atender.Start();
 
+            numForm.Text = nForm.ToString();
         }
 
-        // Creamos funcion del thread
-        private void AtenderServidor()
-        {
-            // Bucle infinito
-            while (true)
-            {
-                //Recibimos la respuesta del servidor
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-
-                // Partimos el mensaje por la "/"
-                string mensajeSucio = Encoding.ASCII.GetString(msg2);
-                string mensajeLimpio = mensajeSucio.Split('\0')[0];
-                string[] trozos = mensajeLimpio.Split('/');
-                int codigo = Convert.ToInt32(trozos[0]);
-
-                string mensaje = trozos[1];
-                switch (codigo)
-                {
-                    case 10:
-                        // Recibo seleccion de personaje de alguien:
-                        // --> 10/idPartida/Juan/jugadorEscogido
-                        Invoke(new Action(() =>
-                        {
-                            OtroSeleccionaJugador(Convert.ToInt32(trozos[3]), trozos[2]);
-                        }));
-                        break;
-                    case 11:
-                        // Recibo deseleccion de personaje de alguien:
-                        // --> 10/idPartida/Juan/jugadorDeseleccionado
-                        Invoke(new Action(() =>
-                        {
-                            OtroDesSeleccionaJugador(Convert.ToInt32(trozos[3]), trozos[2]);
-                        }));
-                        break;
-                    case 12:
-                        // Recibo notificacion de seleccion de mapa del anfitrion:
-                        // --> 12/idPartida/tipo de mapa
-                        Invoke(new Action(() =>
-                        {
-                            this.mapa = trozos[2];
-                            map_escogido_lbl.Text = trozos[2];
-                        }));
-                        break;
-                    case 13:
-                        // Usuario está listo para empezar la partida
-                        // --> 13/--------/idPartida
-                        break;
-                    case 14:
-                        // Empieza la partida: El anfitrión le ha dado a empezar: se abrirá otro formulario
-                        // --> 14/idPartida
-
-                        break;
-                    case 20:
-                        // mensaje del chat
-                        //--> "20/idPartida/Juan/Hola compañeros"
-                        string n = trozos[2];
-                        string informacion = trozos[3];
-                        Invoke(new Action(() =>
-                        {
-                            chatGrid.Rows.Add(n + ": " + informacion);
-                            chatGrid.ClearSelection();
-                        }));
-                        break;
-
-                }
-            }
-        }
         // Funciones de atender mensajes:
         public void RecibirSeleccionDePersonaje(int nPersonaje, string usuario_nombre)
         {
@@ -219,6 +157,7 @@ namespace ProyectoSO
         {
             //Se abre el formulario con el mapa escogido:
             // coger mapa, idPartida, seleccion de personajes...
+            
         }
         public void AtenderMensajeChat(string nombre, string informacion)
         {
@@ -329,9 +268,9 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 2; }
 
-                string mensaje_chat = "10/" + "/" + idPartida + "/1/" + username;
+                string mensaje_chat = "10/" + nForm + "/" + idPartida + "/1/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
 
             }
             else if (J1seleccionado == 1)
@@ -348,9 +287,9 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 0; }
 
-                string mensaje_chat = "11/" + "/" + idPartida + "/1/" + username;
+                string mensaje_chat = "11/" + nForm + "/" + idPartida + "/1/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
             }
         }
 
@@ -369,9 +308,9 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 2; }
 
-                string mensaje_chat = "10/" + idPartida + "/2/" + username;
+                string mensaje_chat = "10/" + nForm + "/" + idPartida + "/2/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
             }
             else if (J2seleccionado == 1)
             {
@@ -387,9 +326,9 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 0; }
 
-                string mensaje_chat = "11/" + idPartida + "/2/" + username;
+                string mensaje_chat = "11/" + nForm + "/" + idPartida + "/2/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
             }
         }
 
@@ -408,9 +347,9 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 2; }
 
-                string mensaje_chat = "10/" + idPartida + "/3/" + username;
+                string mensaje_chat = "10/" + nForm + "/" + idPartida + "/3/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
             }
             else if (J3seleccionado == 1)
             {
@@ -426,9 +365,9 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 0; }
 
-                string mensaje_chat = "11/" + idPartida + "/3/" + username;
+                string mensaje_chat = "11/" + nForm + "/" + idPartida + "/3/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
             }
         }
 
@@ -447,9 +386,9 @@ namespace ProyectoSO
                 if (J3seleccionado != -1)
                 { J3seleccionado = 2; }
 
-                string mensaje_chat = "10/" + idPartida + "/4/" + username;
+                string mensaje_chat = "10/" + nForm + "/" + idPartida + "/4/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
             }
             else if (J4seleccionado == 1)
             {
@@ -465,9 +404,9 @@ namespace ProyectoSO
                 if (J3seleccionado != -1)
                 { J3seleccionado = 0; }
 
-                string mensaje_chat = "11/" + idPartida + "/4/" + username;
+                string mensaje_chat = "11/" + nForm + "/" + idPartida + "/4/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
             }
         }
 
@@ -477,9 +416,9 @@ namespace ProyectoSO
         {
             if (chatbox.Text != null)
             {
-                string mensaje_chat = "20/" + idPartida + "/" + chatbox.Text;
+                string mensaje_chat = "20/" + nForm + "/" + idPartida + "/" + chatbox.Text;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                //server.Send(msg);
+                server.Send(msg);
                 chatbox.Text = null;
             }
         }
@@ -489,11 +428,11 @@ namespace ProyectoSO
             if (comboBox_Mapa.Text != null)
             {
                 this.mapa = comboBox_Mapa.Text;
-                string mensaje = "12/" + idPartida + "/" + mapa;
+                string mensaje = "12/" + nForm + "/" + idPartida + "/" + mapa;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                //server.Send(msg);
+                server.Send(msg);
 
-                //map_escogido_lbl.Text = mapa;
+                map_escogido_lbl.Text = mapa;
 
             }
         }
@@ -507,9 +446,9 @@ namespace ProyectoSO
                 // 0: libre; 1: ocupado por mi; -1: ocupado por otro jugador; 2: no lo puedo ocupar porque ya ocupo uno
                 if ((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))
                 {
-                    string mensaje_chat = "14/" + idPartida;
+                    string mensaje_chat = "14/" + nForm + "/" + idPartida;
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                    //server.Send(msg);   
+                    server.Send(msg);   
                 }
                 else
                 {

@@ -52,12 +52,6 @@
     <Compile Include="Cueva Maritima.Designer.cs">
       <DependentUpon>Cueva Maritima.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inicio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inicio.Designer.cs">
-      <DependentUpon>Inicio.cs</DependentUpon>
-    </Compile>
     <Compile Include="Jugador.cs" />
     <Compile Include="SeleccionPartida.cs">
       <SubType>Form</SubType>
@@ -91,8 +85,14 @@
     <Compile Include="Volcán.Designer.cs">
       <DependentUpon>Volcán.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Cueva Maritima.resx">
+      <DependentUpon>Cueva Maritima.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeleccionPartida.resx">
       <DependentUpon>SeleccionPartida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templo Helado.resx">
+      <DependentUpon>Templo Helado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templo.resx">
       <DependentUpon>Templo.cs</DependentUpon>
@@ -110,6 +110,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Volcán.resx">
+      <DependentUpon>Volcán.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

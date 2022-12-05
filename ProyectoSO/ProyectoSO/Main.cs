@@ -31,6 +31,14 @@ namespace ProyectoSO
 
         string invitados;
         int NumInvitados = 0; // maximo puede ser 4
+
+        // Lista generica de formularios (memoria) per saber a on enviare el missatge
+        List<SeleccionPartida> formularios1 = new List<SeleccionPartida>();
+        List<Templo> formularios2 = new List<Templo>();
+        List<Cueva_Maritima> formularios3 = new List<Cueva_Maritima>();
+        List<Volcán> formularios4 = new List<Volcán>();
+        List<Mapa2> formularios5 = new List<Mapa2>();
+
         private void Main_Load(object sender, EventArgs e)
         {
             label3.Visible = false;
@@ -103,7 +111,6 @@ namespace ProyectoSO
             IPAddress direc = IPAddress.Parse(ip);
             IPEndPoint ipep = new IPEndPoint(direc, puerto);
 
-
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
@@ -141,10 +148,14 @@ namespace ProyectoSO
                 string[] trozos = mensajeLimpio.Split('/');
                 int codigo = Convert.ToInt32(trozos[0]);
 
-                string mensaje = trozos[1];
+                int numForm; // para saber a que formulario debo enviarle la respuesta
+                string mensaje;
+
                 switch (codigo)
                 {
                     case 1: // Login
+                        numForm = Convert.ToInt32(trozos[1]);
+                        mensaje = trozos[2];
                         MessageBox.Show(mensaje);
                         if (mensaje == "Conectado")
                         {
@@ -163,26 +174,37 @@ namespace ProyectoSO
                         }
                         break;
                     case 2: // New User
+                        numForm = Convert.ToInt32(trozos[1]);
+                        mensaje = trozos[2];
                         MessageBox.Show(mensaje);
                         break;
+
                     case 3: //consulta 1 --> Puntos maximos de Maria
+                        numForm = Convert.ToInt32(trozos[1]);
+                        mensaje = trozos[2];
                         MessageBox.Show("La puntuación máxima es: " + mensaje);
                         break;
+
                     case 4: //consulta 2 --> Id de las partidas de más de 120 s de Juan
+                        numForm = Convert.ToInt32(trozos[1]);
+                        mensaje = trozos[2];
                         MessageBox.Show("Juan ha jugado más de 120 segundos en las partidas: " + mensaje);
                         break;
+
                     case 5: //consulta 3 --> Nombre de los jugadores que han jugado como J1 en "templo"
+                        numForm = Convert.ToInt32(trozos[1]);
+                        mensaje = trozos[2];
                         MessageBox.Show(mensaje + " han jugado partidas en el mapa 'templo' como jugador 1");
                         break;
                     case 6: // Notificación de la Lista de Conectados
 
                         // string mensaje = "3/Juan/Pedro/Maria"; 
                         // el numero inicial nos indica el número de usuarios conectados
+                        mensaje = trozos[1];
                         int num = Convert.ToInt32(mensaje);
                         Invoke(new Action(() =>
                         {
                            GridConectados.Rows.Clear();
-
                            for (int i = 0; i < num; i++)
                            {
                                string nombre = Convert.ToString(trozos[i + 2].Split('\0')[0]);
@@ -193,7 +215,9 @@ namespace ProyectoSO
                         }));
                         break;
                     case 7: // Peticion de partida
-                            // 7/Maria: A quien te está pidiendo partida
+                            // 7/numForm/Maria: A quien te está pidiendo partida
+                        numForm = Convert.ToInt32(trozos[1]);
+                        mensaje = trozos[2];
                         string anfitrion = mensaje;
                         string resp; // "Si o No"
                         DialogResult r = MessageBox.Show(anfitrion + " quiere jugar contigo.", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -208,7 +232,6 @@ namespace ProyectoSO
                                 EnviarChatBut.Visible = true;
                                 AcabarPartida_But.Visible = true;
                             }));                            
-
                         }
                         else
                         {
@@ -222,8 +245,10 @@ namespace ProyectoSO
                         server.Send(msg);
 
                         break;
-                    case 8: // Respuesta a  peticion de partida
-                            // "8/Juan/Si/2": Quien ha aceptado/su respuesta/idPartida
+                    case 8: // Respuesta a peticion de partida
+                            // "8/numForm/Juan/Si/2": Quien ha aceptado/su respuesta/idPartida
+                        numForm = Convert.ToInt32(trozos[1]);
+                        mensaje = trozos[2];
                         string nombre_acepta = mensaje;
                         string respuesta = Convert.ToString(trozos[2].Split('\0')[0]);
                         if (respuesta == "Si")
@@ -249,41 +274,25 @@ namespace ProyectoSO
                             GridConectados.DefaultCellStyle.BackColor = Color.White;
                         }));
                         break;
-                    case 9: // acciones durante el juego: saltar, derecha, izquierda, quieto
-                            // 9/movimiento/IDpartida --> mensaje que recibo conforme otro jugador ha realizado un movimiento
-                        string ans = Convert.ToString(trozos[2].Split('\0')[0]);
-                        // idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
-                        // 9/x/y/idpartida
-                        
-                        Invoke(new Action(() =>
-                        {
-                            MoverBicho(Convert.ToInt32(mensaje), Convert.ToInt32(trozos[2].Split('\0')[0]));
-                            
-                        }));
-                        
+                    
+                    // joc previ
+                    //case 9: // acciones durante el juego: saltar, derecha, izquierda, quieto
+                    //        // 9/movimiento/IDpartida --> mensaje que recibo conforme otro jugador ha realizado un movimiento
+                    //    string ans = Convert.ToString(trozos[2].Split('\0')[0]);
+                    //    // idPartida = Convert.ToInt32(trozos[3].Split('\0')[0]);
+                    //    // 9/x/y/idpartida
 
-                        //if (ans == "saltar")
-                        //{
-                        //    // se me actualiza el monigote del otro jugador con el movimento que ha realizado
-                        //}
-                        //else if (ans == "derecha")
-                        //{
+                    //    Invoke(new Action(() =>
+                    //    {
+                    //        MoverBicho(Convert.ToInt32(mensaje), Convert.ToInt32(trozos[2].Split('\0')[0]));
 
-                        //}
-                        //else if (ans == "izquierda")
-                        //{
+                    //    }));
 
-                        //}
-                        //else // quieto
-                        //{
 
-                        //}
+                    //    break;
 
-                        break;
-
-                    case 10: // em diuen que un company s'ha desconnectat
-                             // 10/idpartida
-
+                    case 9: // em diuen que un company s'ha desconnectat
+                            // 10/numForm/idpartida
                         MessageBox.Show("La partida ha terminado.");
 
                         Invoke(new Action(() =>
@@ -298,17 +307,110 @@ namespace ProyectoSO
                         chatGrid.Rows.Clear();
                         break;
 
+                    case 10:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        // Recibo seleccion de personaje de alguien:
+                        // cridem funcio publica del formulari SeleccionPartida
+                        // --> 10/numForm/idPartida/Juan/jugadorEscogido
+                        formularios1[numForm].RecibirSeleccionDePersonaje(Convert.ToInt32(trozos[4]), trozos[3]);
+                        break;
+
+                    case 11:
+                        // Recibo deseleccion de personaje de alguien:
+                        // cridem funcio publica del formulari SeleccionPartida
+                        // --> 11/numForm/idPartida/Juan/jugadorDeseleccionado
+                        numForm = Convert.ToInt32(trozos[1]);
+                        formularios1[numForm].RecibirDeseleccionDePersonaje(Convert.ToInt32(trozos[4]), trozos[3]);
+                        break;
+
+                    case 12:
+                        // Recibo notificacion de seleccion de mapa del anfitrion:
+                        // 12/numForm/idPartida/tipo de mapa
+                        numForm = Convert.ToInt32(trozos[1]);
+                        formularios1[numForm].AtenderMensajeEleccionMapa(trozos[3]);
+                        break;
+
+                    case 13:
+                        // Usuario está listo para empezar la partida
+                        // --> 13/numForm/--------/idPartida
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 14:
+                        // Empieza la partida: El anfitrión le ha dado a empezar: se abrirá otro formulario
+                        // --> 14/numForm/idPartida
+                        numForm = Convert.ToInt32(trozos[1]);
+                        formularios1[numForm].AnfitrionEmpiezaPartida();
+                        break;
+
+                    case 15:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 16:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 17:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 18:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 19:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
                     case 20:
                         // mensaje del chat
-                        //--> "20/Juan/Hola compañeros/idpartida"
-                        string n = mensaje; // trozos[1];
-                        string informacion = trozos[2];
-                        Invoke(new Action(() =>
+                        //--> "20/numForm/form/idPartida/Juan/Hola compañeros"
+                        // en mapas y seleccion personajes
+                        numForm = Convert.ToInt32(trozos[1]);
+                        int form = Convert.ToInt32(trozos[2]);
+                        if (form == 1)
                         {
-                            chatGrid.Rows.Add(n + ": " + informacion);
-                            chatGrid.ClearSelection();
-                        }));
+                            formularios1[numForm].AtenderMensajeChat(trozos[4], trozos[5]);
+                        }
+                        else if (form == 2)
+                        {
+                            formularios2[numForm].AtenderMensajeChat(trozos[4], trozos[5]);
+                        }
+                        else if (form == 3)
+                        {
+                            formularios3[numForm].AtenderMensajeChat(trozos[4], trozos[5]);
+                        }
+                        else if (form == 4)
+                        {
+                            formularios4[numForm].AtenderMensajeChat(trozos[4], trozos[5]);
+                        }
+                        else
+                        {
+                            formularios5[numForm].AtenderMensajeChat(trozos[4], trozos[5]);
+                        }
                         break;
+
+                    case 21:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 22:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 23:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 24:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
+                    case 25:
+                        numForm = Convert.ToInt32(trozos[1]);
+                        break;
+
                 }
             }
         }
@@ -375,10 +477,7 @@ namespace ProyectoSO
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
-        {
-            //int conexion = ConectarConServidor();
-            //if (conexion == 0)
-            //{
+        {  
             int conexion = ConectarConServidor();
             if (conexion == 0)
             {
@@ -391,18 +490,11 @@ namespace ProyectoSO
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
             }
-            
-
-
-            //}
-
         }
 
         private void NewAccountButton_Click(object sender, EventArgs e)
         {
-            //int conexion = ConectarConServidor();
-            //if (conexion == 0)
-            //{
+
             string mensaje = "2/" + usernameBox.Text + "/" + passwordBox.Text;
             // pasar los datos de username, y contraseña en una cadena de texto. 
             // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
@@ -411,8 +503,6 @@ namespace ProyectoSO
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-
-            //}
         }
 
 
@@ -445,43 +535,55 @@ namespace ProyectoSO
                 }
             }
         }
-        
+        private void PonerEnMarchaFormulario1()
+        {
+            int cont = formularios1.Count; 
+            SeleccionPartida f = new SeleccionPartida(cont,server);
+            formularios1.Add(f);
+            f.ShowDialog();
+        }
         private void EnviarJugadoresPartida(string guests)
         {
             MessageBox.Show("Vamos a invitar a los otros jugadores.");
             string mensaje = "7" + guests;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+            ThreadStart ts = delegate {PonerEnMarchaFormulario1(); }; // creo thread que executa la funcio PonerEnMarchaFormulario
+            Thread t = new Thread(ts);
+            t.Start();
         }
 
-        private void tableroJuego_MouseClick(object sender, MouseEventArgs e)
+        public void PonerEnMarchaFormulario2(string mapa)
         {
-            // añadimos ciruclo a la lista de circulos
-            //MoverBicho(e.X, e.Y);
-            string movimiento = "9/" + e.X + "/" + e.Y + "/" + idPartida;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(movimiento);
-            server.Send(msg);
-
-        }
-        private void MoverBicho(int x, int y)
-        {
-            this.x_bicho = x;
-            this.y_bicho = y;
-            Point posicion = new Point(x_bicho, y_bicho);
-            bicho_pb.Location = posicion;
-        }
-
-        private void EnviarChatBut_Click(object sender, EventArgs e)
-        {
-            if (chatbox.Text != null)
+            if (mapa == "A")
             {
-                string mensaje_chat = "20/" + chatbox.Text + "/" + idPartida;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                server.Send(msg);
-                chatbox.Text = null;
+                int cont = formularios2.Count;
+                Templo f = new Templo(cont, server);
+                formularios2.Add(f);
+                f.ShowDialog();
+            }
+            else if (mapa == "B")
+            {
+                int cont = formularios3.Count;
+                Cueva_Maritima f = new Cueva_Maritima(cont, server);
+                formularios3.Add(f);
+                f.ShowDialog();
+            }
+            else if (mapa == "C")
+            {
+                int cont = formularios4.Count;
+                Volcán f = new Volcán(cont, server);
+                formularios4.Add(f);
+                f.ShowDialog();
+            }
+            else
+            {
+                int cont = formularios5.Count;
+                Mapa2 f = new Mapa2(cont, server);
+                formularios5.Add(f);
+                f.ShowDialog();
             }
         }
-
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -516,6 +618,11 @@ namespace ProyectoSO
             
         }
 
+        // SELECCION
+
+
+        // MAPES
+
         private void AcabarPartida_But_Click(object sender, EventArgs e)
         {
             string mensaje = "10/" + Convert.ToString(idPartida);
@@ -523,28 +630,32 @@ namespace ProyectoSO
             server.Send(msg);
         }
 
-        /*
-        private void tableroJuego_VisibleChanged(object sender, EventArgs e)
+        private void tableroJuego_MouseClick(object sender, MouseEventArgs e)
         {
-            // cuando el tablero se haga visible (hay cambio en su visibilidad) --> apareceria todo
-            
+            // añadimos ciruclo a la lista de circulos
+            //MoverBicho(e.X, e.Y);
+            string movimiento = "9/" + e.X + "/" + e.Y + "/" + idPartida;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(movimiento);
+            server.Send(msg);
         }
 
-        private void Main_KeyDown(object sender, KeyEventArgs e)
+        private void MoverBicho(int x, int y)
         {
-            // le enviamos un movimento que hace el cliente a otro jugador.
-            // lo hacemos solo si ha empezado la partida 
-            // faltaria saber el id de la partida per tenir el missatge guai
-            if (tableroJuego.Visible == true)
-            {
-                if (e.KeyCode == Keys.Left)
-                {
-                    string mov1 = "9/Left";
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mov1);
-                    server.Send(msg);
-                }
-            }            
+            this.x_bicho = x;
+            this.y_bicho = y;
+            Point posicion = new Point(x_bicho, y_bicho);
+            bicho_pb.Location = posicion;
         }
-        */
+
+        private void EnviarChatBut_Click(object sender, EventArgs e)
+        {
+            if (chatbox.Text != null)
+            {
+                string mensaje_chat = "20/" + chatbox.Text + "/" + idPartida;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+                server.Send(msg);
+                chatbox.Text = null;
+            }
+        }
     }
 }
