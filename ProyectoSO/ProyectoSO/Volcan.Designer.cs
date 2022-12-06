@@ -1,6 +1,6 @@
 ﻿namespace ProyectoSO
 {
-    partial class Volcán
+    partial class Volcan
     {
         /// <summary>
         /// Required designer variable.

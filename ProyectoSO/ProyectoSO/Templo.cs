@@ -75,10 +75,10 @@ namespace ProyectoSO
             label_tiempo.Text = "Tiempo: " + segundos;
         }
 
-        public Templo(int nForm, Socket server)
+        public Templo(int idPartida, Socket server)
         {
             InitializeComponent();
-            this.nForm = nForm; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
+            this.idPartida = idPartida; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
             this.server = server;
         }
 
@@ -666,7 +666,7 @@ namespace ProyectoSO
 
         // Simulacion de control de los otros personajes
         // necesitan el número de Personaje
-        private void TeclaArribaSolaClicada_Otro(int otropersonaje)
+        public void TeclaArribaSolaClicada_Otro(int otropersonaje)
         {
             switch (otropersonaje)
             {
@@ -704,7 +704,7 @@ namespace ProyectoSO
             //server.Send(msg);
             label_mensaje.Text = mensaje;
         }
-        private void TeclaArribaConIzquierdaClicada_Otro(int otropersonaje)
+        public void TeclaArribaConIzquierdaClicada_Otro(int otropersonaje)
         {
             switch (otropersonaje)
             {
@@ -744,7 +744,7 @@ namespace ProyectoSO
             //server.Send(msg);
             label_mensaje.Text = mensaje;
         }
-        private void TeclaArribaConDerechaClicada_Otro(int otropersonaje)
+        public void TeclaArribaConDerechaClicada_Otro(int otropersonaje)
         {
             switch (otropersonaje)
             {
@@ -782,7 +782,7 @@ namespace ProyectoSO
             //server.Send(msg);
             label_mensaje.Text = mensaje;
         }
-        private void TeclaArribaDejadaDeClicar_Otro(int otropersonaje)
+        public void TeclaArribaDejadaDeClicar_Otro(int otropersonaje)
         {
             switch (otropersonaje)
             {
@@ -828,7 +828,7 @@ namespace ProyectoSO
             //server.Send(msg);
             label_mensaje.Text = mensaje;
         }
-        private void TeclaIzquierdaClicada_Otro(int otropersonaje)
+        public void TeclaIzquierdaClicada_Otro(int otropersonaje)
         {
             switch (otropersonaje)
             {
@@ -866,7 +866,7 @@ namespace ProyectoSO
             //server.Send(msg);
             label_mensaje.Text = mensaje;
         }
-        private void TeclaIzquierdaDejadaDeClicar_Otro(int otropersonaje)
+        public void TeclaIzquierdaDejadaDeClicar_Otro(int otropersonaje)
         {
             switch (otropersonaje)
             {
@@ -908,7 +908,7 @@ namespace ProyectoSO
             //server.Send(msg);
             label_mensaje.Text = mensaje;
         }
-        private void TeclaDerechaClicada_Otro(int otropersonaje)
+        public void TeclaDerechaClicada_Otro(int otropersonaje)
         {
             switch (otropersonaje)
             {
@@ -950,7 +950,7 @@ namespace ProyectoSO
             //server.Send(msg);
             label_mensaje.Text = mensaje;
         }
-        private void TeclaDerechaDejadaDeClicar_Otro(int otropersonaje)
+        public void TeclaDerechaDejadaDeClicar_Otro(int otropersonaje)
         {
             switch (otropersonaje)
             {
@@ -1373,6 +1373,10 @@ namespace ProyectoSO
             }));
         }
 
-
+        // funciones para inicializar este cliente
+        public void MiPersonaje(int personaje)
+        {
+            this.miPersonajeQueControlo = personaje;
+        }
     }
 }

@@ -122,7 +122,7 @@
             this.map_escogido_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.map_escogido_lbl.Location = new System.Drawing.Point(311, 379);
             this.map_escogido_lbl.Name = "map_escogido_lbl";
-            this.map_escogido_lbl.Size = new System.Drawing.Size(147, 23);
+            this.map_escogido_lbl.Size = new System.Drawing.Size(326, 23);
             this.map_escogido_lbl.TabIndex = 7;
             this.map_escogido_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -320,7 +320,7 @@
             this.numForm.AutoSize = true;
             this.numForm.Location = new System.Drawing.Point(951, 524);
             this.numForm.Name = "numForm";
-            this.numForm.Size = new System.Drawing.Size(0, 20);
+            this.numForm.Size = new System.Drawing.Size(0, 16);
             this.numForm.TabIndex = 34;
             // 
             // SeleccionPartida

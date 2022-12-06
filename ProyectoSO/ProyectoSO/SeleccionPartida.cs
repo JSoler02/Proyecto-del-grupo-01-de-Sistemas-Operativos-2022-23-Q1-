@@ -15,7 +15,7 @@ namespace ProyectoSO
 {
     public partial class SeleccionPartida : Form
     {
-        string username = "Juan";
+        string username;
         int idPartida;
 
         int nForm; // numero de formulario
@@ -28,10 +28,14 @@ namespace ProyectoSO
         int J4seleccionado = 0;
 
         // Si anfitrion = true --> este cliente es el creador de la partida: escoge mapa y dice cuando empezar
-        bool anfitrion = true;
+        bool anfitrion = false;
         string mapa;
 
-        
+        Templo a;
+        Mapa2 b;
+        Volcan c;
+        Cueva_Maritima d;
+
 
         public SeleccionPartida(int nForm, Socket server)
         {
@@ -153,12 +157,7 @@ namespace ProyectoSO
                 map_escogido_lbl.Text = mapa_escogido;
             }));
         }
-        public void AnfitrionEmpiezaPartida()
-        {
-            //Se abre el formulario con el mapa escogido:
-            // coger mapa, idPartida, seleccion de personajes...
-            
-        }
+
         public void AtenderMensajeChat(string nombre, string informacion)
         {
             Invoke(new Action(() =>
@@ -268,7 +267,7 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 2; }
 
-                string mensaje_chat = "10/" + nForm + "/" + idPartida + "/1/" + username;
+                string mensaje_chat = "10/" + idPartida + "/1";
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
 
@@ -287,7 +286,7 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 0; }
 
-                string mensaje_chat = "11/" + nForm + "/" + idPartida + "/1/" + username;
+                string mensaje_chat = "11/" + idPartida + "/1/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -308,7 +307,7 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 2; }
 
-                string mensaje_chat = "10/" + nForm + "/" + idPartida + "/2/" + username;
+                string mensaje_chat = "10/" + idPartida + "/2/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -326,7 +325,7 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 0; }
 
-                string mensaje_chat = "11/" + nForm + "/" + idPartida + "/2/" + username;
+                string mensaje_chat = "11/" + idPartida + "/2/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -347,7 +346,7 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 2; }
 
-                string mensaje_chat = "10/" + nForm + "/" + idPartida + "/3/" + username;
+                string mensaje_chat = "10/" + idPartida + "/3/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -365,7 +364,7 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 0; }
 
-                string mensaje_chat = "11/" + nForm + "/" + idPartida + "/3/" + username;
+                string mensaje_chat = "11/" + idPartida + "/3/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -386,7 +385,7 @@ namespace ProyectoSO
                 if (J3seleccionado != -1)
                 { J3seleccionado = 2; }
 
-                string mensaje_chat = "10/" + nForm + "/" + idPartida + "/4/" + username;
+                string mensaje_chat = "10/" + idPartida + "/4/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -404,7 +403,7 @@ namespace ProyectoSO
                 if (J3seleccionado != -1)
                 { J3seleccionado = 0; }
 
-                string mensaje_chat = "11/" + nForm + "/" + idPartida + "/4/" + username;
+                string mensaje_chat = "11/" + idPartida + "/4/" + username;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -428,7 +427,7 @@ namespace ProyectoSO
             if (comboBox_Mapa.Text != null)
             {
                 this.mapa = comboBox_Mapa.Text;
-                string mensaje = "12/" + nForm + "/" + idPartida + "/" + mapa;
+                string mensaje = "12/" + idPartida + "/" + mapa;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
@@ -440,26 +439,218 @@ namespace ProyectoSO
         private void empezarPartida_but_Click(object sender, EventArgs e)
         {
             //Primero miramos que se haya escogido la partida
+            
             if (map_escogido_lbl.Text != "")
             {
                 // miramos si alguno de los personajes está libre: si lo está no podemos empezar la partida
                 // 0: libre; 1: ocupado por mi; -1: ocupado por otro jugador; 2: no lo puedo ocupar porque ya ocupo uno
-                if ((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))
-                {
-                    string mensaje_chat = "14/" + nForm + "/" + idPartida;
+                // hablar de partidas de menos de 4 jugadores
+                // if ((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))
+                //{
+                    string mensaje_chat = "14/" + idPartida;
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                     server.Send(msg);   
-                }
-                else
-                {
-                    MessageBox.Show("Alguien no está listo.");
-                }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Alguien no está listo.");
+                //}
             }
             else
             {
                 MessageBox.Show("Escoge un mapa para la partida.");
             }
         }
+        public void AnfitrionEmpiezaPartida()
+        {
+            //Se abre el formulario con el mapa escogido:
+            // coger mapa, idPartida, seleccion de personajes...
+            switch (mapa)
+            {
+                case "Templo":
+                    a = new Templo(idPartida, server);
+                    int found = 0;
+                    while (found == 0)
+                    {
+                        if (J1seleccionado == 1)
+                        {
+                            found = 1;
+                        }
+                        if (J2seleccionado == 1)
+                        {
+                            found = 2;
+                        }
+                        if (J3seleccionado == 1)
+                        {
+                            found = 3;
+                        }
+                        if (J4seleccionado == 1)
+                        {
+                            found = 4;
+                        }
+                    }
+                    a.MiPersonaje(found);
+                    a.ShowDialog();
+                    this.Hide();
+                    break;
 
+                //case "Templo Helado":
+                //    b = new Mapa2(idPartida, server);
+                //    break;
+                //case "Volcan":
+                //    c = new Volcan(idPartida, server);
+                //    break;
+                //case "Cueva Maritima":
+                //    d = new Cueva_Maritima(idPartida, server);
+                //    break;
+            }
+
+        }
+
+        public void TeclaArribaSolaClicada_Otro(int otropersonaje)
+        {
+            switch (mapa)
+            {
+                case "Templo":
+                    a.TeclaArribaSolaClicada_Otro(otropersonaje);
+                    break;
+                //case "Templo Helado":
+                //    b = new Mapa2(idPartida, server);
+                //    break;
+                //case "Volcan":
+                //    c = new Volcan(idPartida, server);
+                //    break;
+                //case "Cueva Maritima":
+                //    d = new Cueva_Maritima(idPartida, server);
+                //    break;
+            }
+        }
+
+        public void TeclaArribaConIzquierdaClicada_Otro(int otropersonaje)
+        {
+            switch (mapa)
+            {
+                case "Templo":
+                    a.TeclaArribaConIzquierdaClicada_Otro(otropersonaje);
+                    break;
+                    //case "Templo Helado":
+                    //    b = new Mapa2(idPartida, server);
+                    //    break;
+                    //case "Volcan":
+                    //    c = new Volcan(idPartida, server);
+                    //    break;
+                    //case "Cueva Maritima":
+                    //    d = new Cueva_Maritima(idPartida, server);
+                    //    break;
+            }
+        }
+        public void TeclaArribaConDerechaClicada_Otro(int otropersonaje)
+        {
+            switch (mapa)
+            {
+                case "Templo":
+                    a.TeclaArribaConDerechaClicada_Otro(otropersonaje);
+                    break;
+                    //case "Templo Helado":
+                    //    b = new Mapa2(idPartida, server);
+                    //    break;
+                    //case "Volcan":
+                    //    c = new Volcan(idPartida, server);
+                    //    break;
+                    //case "Cueva Maritima":
+                    //    d = new Cueva_Maritima(idPartida, server);
+                    //    break;
+            }
+        }
+        public void TeclaArribaDejadaDeClicar_Otro(int otropersonaje)
+        {
+            switch (mapa)
+            {
+                case "Templo":
+                    a.TeclaArribaDejadaDeClicar_Otro(otropersonaje);
+                    break;
+                    //case "Templo Helado":
+                    //    b = new Mapa2(idPartida, server);
+                    //    break;
+                    //case "Volcan":
+                    //    c = new Volcan(idPartida, server);
+                    //    break;
+                    //case "Cueva Maritima":
+                    //    d = new Cueva_Maritima(idPartida, server);
+                    //    break;
+            }
+        }
+        public void TeclaIzquierdaClicada_Otro(int otropersonaje)
+        {
+            switch (mapa)
+            {
+                case "Templo":
+                    a.TeclaIzquierdaClicada_Otro(otropersonaje);
+                    break;
+                    //case "Templo Helado":
+                    //    b = new Mapa2(idPartida, server);
+                    //    break;
+                    //case "Volcan":
+                    //    c = new Volcan(idPartida, server);
+                    //    break;
+                    //case "Cueva Maritima":
+                    //    d = new Cueva_Maritima(idPartida, server);
+                    //    break;
+            }
+        }
+        public void TeclaIzquierdaDejadaDeClicar_Otro(int otropersonaje)
+        {
+            switch (mapa)
+            {
+                case "Templo":
+                    a.TeclaIzquierdaDejadaDeClicar_Otro(otropersonaje);
+                    break;
+                    //case "Templo Helado":
+                    //    b = new Mapa2(idPartida, server);
+                    //    break;
+                    //case "Volcan":
+                    //    c = new Volcan(idPartida, server);
+                    //    break;
+                    //case "Cueva Maritima":
+                    //    d = new Cueva_Maritima(idPartida, server);
+                    //    break;
+            }
+        }
+        public void TeclaDerechaClicada_Otro(int otropersonaje)
+        {
+            switch (mapa)
+            {
+                case "Templo":
+                    a.TeclaDerechaClicada_Otro(otropersonaje);
+                    break;
+                    //case "Templo Helado":
+                    //    b = new Mapa2(idPartida, server);
+                    //    break;
+                    //case "Volcan":
+                    //    c = new Volcan(idPartida, server);
+                    //    break;
+                    //case "Cueva Maritima":
+                    //    d = new Cueva_Maritima(idPartida, server);
+                    //    break;
+            }
+        }
+        public void TeclaDerechaDejadaDeClicar_Otro(int otropersonaje)
+        {
+            switch (mapa)
+            {
+                case "Templo":
+                    a.TeclaDerechaDejadaDeClicar_Otro(otropersonaje);
+                    break;
+                    //case "Templo Helado":
+                    //    b = new Mapa2(idPartida, server);
+                    //    break;
+                    //case "Volcan":
+                    //    c = new Volcan(idPartida, server);
+                    //    break;
+                    //case "Cueva Maritima":
+                    //    d = new Cueva_Maritima(idPartida, server);
+                    //    break;
+            }
+        }
     }
 }

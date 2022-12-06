@@ -13,13 +13,13 @@ using System.Threading; // libreria de threads
 
 namespace ProyectoSO
 {
-    public partial class Volcán : Form
+    public partial class Volcan : Form
     {
         int nForm;
         Socket server;
 
         int idPartida;
-        public Volcán(int nForm, Socket server)
+        public Volcan(int nForm, Socket server)
         {
             InitializeComponent();
             this.nForm = nForm;

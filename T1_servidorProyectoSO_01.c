@@ -534,12 +534,6 @@ void *AtenderCliente (void *socket)
 		char invitado[60];
 		
 		strcpy(respuesta, ""); // vaciamos respuesta
-		
-		if (codigo !=0)
-		{
-			char *p = strtok(NULL, "/");
-			numForm = atoi (p);
-		}
 
 		if (codigo == 0) //peticion de desconexion
 		{
@@ -556,7 +550,7 @@ void *AtenderCliente (void *socket)
 			
 			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)
 			{
-				sprintf(notificacion, "10/%d/%d", numForm,idpartida);
+				sprintf(notificacion, "10/%d", idpartida);
 				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));
 				printf("%s\n",notificacion);
 			}
@@ -568,7 +562,7 @@ void *AtenderCliente (void *socket)
 			terminar = 1;
 		}
 		
-		else if (codigo ==1)
+		else if (codigo == 1)
 		{//piden logearse
 			// Obtenemos usuario
 			p = strtok(NULL, "/");
@@ -578,12 +572,12 @@ void *AtenderCliente (void *socket)
 			strcpy(password, p);
 			int resultado = LogIn(username, password);
 			if (resultado==-1)
-				sprintf(respuesta, "1/%d/Usuario no encontrado", numForm);
+				sprintf(respuesta, "1/Usuario no encontrado");
 			else if (resultado  ==1)
-				sprintf(respuesta, "1/%d/Password incorrecto", numForm);
+				sprintf(respuesta, "1/Password incorrecto");
 			else
 			{
-				sprintf(respuesta, "1/%d/Conectado", numForm);
+				sprintf(respuesta, "1/Conectado");
 				//pthread_mutex_lock (&mutex);			
 				EnviarListaConectadosNotificacion(notificacion);
 				//pthread_mutex_unlock (&mutex);				
@@ -602,31 +596,31 @@ void *AtenderCliente (void *socket)
 			int resultado = CrearUsuario(username, password);
 			
 			if (resultado==-1)
-				sprintf(respuesta, "2/%d/Usuario no se ha podido crear", numForm);
+				sprintf(respuesta, "2/Usuario no se ha podido crear");
 			else if (resultado ==1)
-				sprintf(respuesta, "2/%d/Usuario ya existente",numForm);
+				sprintf(respuesta, "2/Usuario ya existente");
 			else
-				sprintf(respuesta, "2/%d/Usuario creado correctamente", numForm);
+				sprintf(respuesta, "2/Usuario creado correctamente");
 		}
 		
 		else if (codigo == 3)
 		{
 			int max = Consulta1();
-			sprintf(respuesta, "3/%d/%d", numForm, max);
+			sprintf(respuesta, "3/%d", max);
 		}
 		
 		else if (codigo == 4)
 		{
 			strcpy(res, "");
 			Consulta2(res);
-			sprintf(respuesta, "4/%d/%s", numForm, res);
+			sprintf(respuesta, "4/%s", res);
 			//printf(respuesta);
 		}
 		else if (codigo == 5)	
 		{
 			strcpy(res, "");
 			Consulta3(res);
-			sprintf(respuesta, "5/%d/%s", numForm, res);
+			sprintf(respuesta, "5/%s", res);
 		}
 		else if (codigo == 7)
 		{
@@ -649,7 +643,7 @@ void *AtenderCliente (void *socket)
 					pthread_mutex_lock (&mutex);
 					PonJugadorPartida(listaPartidas, partidalibre, invitado);
 					pthread_mutex_unlock (&mutex);
-					sprintf(notificacion, "7/%d/%s/%d", numForm, username, partidalibre);
+					sprintf(notificacion, "7/%s/%d", username, partidalibre);
 					write (sinvitado, notificacion, strlen(notificacion));
 				}
 				p = strtok(NULL,"/");
@@ -675,11 +669,11 @@ void *AtenderCliente (void *socket)
 				PonJugadorPartida(listaPartidas, idpartida, invitado);
 				pthread_mutex_unlock (&mutex);
 				*/
-				sprintf(notificacion, "8/%d/%s/%s/%d", numForm, invitado, decision, idpartida);
+				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
 			}
 			else
 			{
-				sprintf(notificacion, "8/%d/%s/%s/%d", numForm, invitado, decision, idpartida);
+				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
 				pthread_mutex_lock (&mutex);
 				AcabaPartida (listaPartidas, idpartida);	
 				pthread_mutex_unlock (&mutex);
@@ -689,44 +683,16 @@ void *AtenderCliente (void *socket)
 			printf("Notificacion: %s\n", notificacion);
 		}
 
-		else if (codigo == 9)
-		{
-			/*char movement[20];
-			int idpartida;
-			
-			p = strtok(NULL, "/");
-			strcpy(movement, p);
-			p = strtok(NULL,"/");
-			idpartida = atoi(p);
-			
-			MovimientoPartida(listaPartidas, idpartida, movement);
-			*/			
-			p = strtok(NULL, "/");
-			int x = atoi(p);
-			p = strtok(NULL, "/");
-			int y = atoi(p);			
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
-			
-			sprintf(notificacion, "9/%d/%d/%d/%d", numForm, x, y, idpartida);
-			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
-			{
-				//if (listaPartidas[idpartida].jugadores[j].socket != *s)	// no soy yo
-				write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
-				printf("%s\n",notificacion);
-			}
-		}
 
-		else if (codigo == 10) // click boton acabar partida
-		{ // 10/idpartida --> el username ja el tenim
+		else if (codigo == 9) // click boton acabar partida
+		{ // 9/idpartida --> el username ja el tenim
 			
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
 			
 			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)
 			{
-				sprintf(notificacion, "10/%d/%d", numForm, idpartida);
+				sprintf(notificacion, "9/%d", idpartida);
 				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));
 				printf("%s\n",notificacion);
 			}
@@ -735,8 +701,207 @@ void *AtenderCliente (void *socket)
 			AcabaPartida (listaPartidas, idpartida);	
 			pthread_mutex_unlock (&mutex);
 		}
-		else if (codigo == )
+		else if (codigo == 10) // seleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
 
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "10/%d/%d/%s", idpartida, jugadorEscogido, username);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+
+		else if (codigo == 11) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "11/%d/%d/%s", idpartida, jugadorEscogido, username);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 12)
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			char mapaEsc[20];
+			strcpy(mapaEsc, p);
+			
+			sprintf(notificacion, "12/%d/%s", idpartida, mapaEsc);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 14)
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			sprintf(notificacion, "14/%d", idpartida);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 15) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "15/%d/%d", idpartida, jugadorEscogido);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 16) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "16/%d/%d", idpartida, jugadorEscogido);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 17) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "17/%d/%d", idpartida, jugadorEscogido);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 18) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "18/%d/%d", idpartida, jugadorEscogido);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 19) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "19/%d/%d", idpartida, jugadorEscogido);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 21) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "21/%d/%d", idpartida, jugadorEscogido);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 22) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "22/%d/%d", idpartida, jugadorEscogido);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
+		else if (codigo == 23) // deseleccion de personaje
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+
+			p = strtok(NULL, "/");
+			int jugadorEscogido = atoi(p);
+			
+			sprintf(notificacion, "23/%d/%d", idpartida, jugadorEscogido);
+			
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
 		else //if (codigo == 20)
 		{	//Mensaje del chat de partida
 			// "20/nForm/form/idpartida/HolaQueTal"
@@ -756,7 +921,7 @@ void *AtenderCliente (void *socket)
 			
 			
 			//sprintf(notificacion, "20/%s/%s/%d", nombrechat, mensaje, idpartida);
-			sprintf(notificacion, "20/%d/%d/%d/%s/%s", numForm, form, idpartida, username, mensaje);
+			sprintf(notificacion, "20/%d/%d/%s/%s", form, idpartida, username, mensaje);
 			
 			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 			{

@@ -191,7 +191,7 @@ namespace ProyectoSO
             this.tableroJuego.Name = "tableroJuego";
             this.tableroJuego.Size = new System.Drawing.Size(563, 386);
             this.tableroJuego.TabIndex = 20;
-            this.tableroJuego.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tableroJuego_MouseClick);
+            //this.tableroJuego.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tableroJuego_MouseClick);
             // 
             // bicho_pb
             // 
@@ -237,7 +237,7 @@ namespace ProyectoSO
             this.EnviarChatBut.TabIndex = 23;
             this.EnviarChatBut.Text = "Enviar";
             this.EnviarChatBut.UseVisualStyleBackColor = true;
-            this.EnviarChatBut.Click += new System.EventHandler(this.EnviarChatBut_Click);
+            //this.EnviarChatBut.Click += new System.EventHandler(this.EnviarChatBut_Click);
             // 
             // AcabarPartida_But
             // 
@@ -247,7 +247,7 @@ namespace ProyectoSO
             this.AcabarPartida_But.TabIndex = 24;
             this.AcabarPartida_But.Text = "Acabar Partida";
             this.AcabarPartida_But.UseVisualStyleBackColor = true;
-            this.AcabarPartida_But.Click += new System.EventHandler(this.AcabarPartida_But_Click);
+            //this.AcabarPartida_But.Click += new System.EventHandler(this.AcabarPartida_But_Click);
             // 
             // Main
             // 
