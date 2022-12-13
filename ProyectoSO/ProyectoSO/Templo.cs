@@ -376,7 +376,7 @@ namespace ProyectoSO
             }
             string mensaje = "19/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            //server.Send(msg);
+            server.Send(msg);
             label_mensaje.Text = mensaje;
         }
         private void TeclaArribaConIzquierdaClicada()
@@ -416,7 +416,7 @@ namespace ProyectoSO
             }
             string mensaje = "21/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            //server.Send(msg);
+            server.Send(msg);
             label_mensaje.Text = mensaje;
         }
         private void TeclaArribaConDerechaClicada()
@@ -454,7 +454,7 @@ namespace ProyectoSO
             }
             string mensaje = "22/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            //server.Send(msg);
+            server.Send(msg);
             label_mensaje.Text = mensaje;
         }
         private void TeclaArribaDejadaDeClicar()
@@ -500,7 +500,7 @@ namespace ProyectoSO
             }
             string mensaje = "23/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            //server.Send(msg);
+            server.Send(msg);
             label_mensaje.Text = mensaje;
         }
         private void TeclaIzquierdaClicada()
@@ -538,7 +538,7 @@ namespace ProyectoSO
             }
             string mensaje = "15/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            //server.Send(msg);
+            server.Send(msg);
             label_mensaje.Text = mensaje;
         }
         private void TeclaIzquierdaDejadaDeClicar()
@@ -580,7 +580,7 @@ namespace ProyectoSO
             }
             string mensaje = "16/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            //server.Send(msg);
+            server.Send(msg);
             label_mensaje.Text = mensaje;
         }
         private void TeclaDerechaClicada()
@@ -618,7 +618,7 @@ namespace ProyectoSO
             }
             string mensaje = "17/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            //server.Send(msg);
+            server.Send(msg);
             label_mensaje.Text = mensaje;
         }
         private void TeclaDerechaDejadaDeClicar()
@@ -660,7 +660,7 @@ namespace ProyectoSO
             }
             string mensaje = "18/" + idPartida + "/" + miPersonajeQueControlo;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            //server.Send(msg);
+            server.Send(msg);
             label_mensaje.Text = mensaje;
         }
 

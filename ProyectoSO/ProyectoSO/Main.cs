@@ -20,7 +20,7 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
+        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
         int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
@@ -34,7 +34,6 @@ namespace ProyectoSO
 
         // Lista generica de formularios (memoria) per saber a on enviare el missatge
         List<SeleccionPartida> formularios1 = new List<SeleccionPartida>();
-
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -69,9 +68,6 @@ namespace ProyectoSO
             bicho_pb.BackColor = Color.Transparent;
             bicho_pb.Width = 60;
             bicho_pb.Height = 75;
-
-
-
         }
         public Main()
         {

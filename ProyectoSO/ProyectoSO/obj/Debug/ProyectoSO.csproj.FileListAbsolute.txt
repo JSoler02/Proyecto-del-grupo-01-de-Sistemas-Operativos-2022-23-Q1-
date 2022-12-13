@@ -50,3 +50,6 @@ C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\AAA
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\AAAAAAAAAAAA\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.exe
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\AAAAAAAAAAAA\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.pdb
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\AAAAAAAAAAAA\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan.resources
+C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Cueva_Maritima.resources
+C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Mapa2.resources
+C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan.resources
