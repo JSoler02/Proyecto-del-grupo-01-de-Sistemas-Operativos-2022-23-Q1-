@@ -1358,7 +1358,7 @@ namespace ProyectoSO
         {
             if (chatbox.Text != null)
             {
-                string mensaje_chat = "20/" + nForm + "/2/" + idPartida + "/" + chatbox.Text;
+                string mensaje_chat = "24/" + idPartida + "/" + chatbox.Text;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
                 chatbox.Text = null;
@@ -1372,6 +1372,7 @@ namespace ProyectoSO
                 chatGrid.ClearSelection();
             }));
         }
+
 
         // funciones para inicializar este cliente
         public void MiPersonaje(int personaje)

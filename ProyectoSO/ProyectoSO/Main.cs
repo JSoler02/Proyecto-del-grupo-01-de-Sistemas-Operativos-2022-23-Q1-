@@ -20,7 +20,7 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
+        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
         int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
@@ -290,7 +290,7 @@ namespace ProyectoSO
                         formularios1[idPartida].AtenderMensajeEleccionMapa(trozos[2]);
                         break;
 
-                    case 13:
+                    case 13: // LO USAMOS?
                         // Usuario está listo para empezar la partida
                         // --> 13/--------/idPartida
                         numForm = Convert.ToInt32(trozos[1]);
@@ -358,6 +358,13 @@ namespace ProyectoSO
                         idPartida = Convert.ToInt32(trozos[1]);
                         formularios1[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[2]));
                         break;
+                    case 24:
+                        // mensaje del chat
+                        //--> "24/idPartida/Juan/Hola compañeros"
+                        // en mapas y seleccion personajes
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        formularios1[idPartida].PasarMensajeChat(trozos[2], trozos[3]);
+                        break; ;
                 }
             }
         }
