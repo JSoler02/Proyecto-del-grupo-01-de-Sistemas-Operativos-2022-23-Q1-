@@ -2,7 +2,6 @@ C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.exe
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\bin\Debug\ProyectoSO.pdb
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.AssemblyReference.cache
-C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Mapa1.resources
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Main.resources
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Properties.Resources.resources
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.csproj.GenerateResource.cache
@@ -53,3 +52,8 @@ C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\AAA
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Cueva_Maritima.resources
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Mapa2.resources
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Cueva_Maritima.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.SeleccionPartida.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Mapa2.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Templo.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan.resources

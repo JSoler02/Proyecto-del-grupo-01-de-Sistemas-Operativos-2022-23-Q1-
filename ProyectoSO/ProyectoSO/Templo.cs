@@ -20,7 +20,7 @@ namespace ProyectoSO
         int nForm;
 
         // Mi personaje --> 1,2,3,4
-        int miPersonajeQueControlo = 3;
+        int miPersonajeQueControlo;
 
         // Variables globales que se crean en False
         bool goLeft_J1, goRight_J1, jumping_J1, isGameOver_J1, onPlatform_J1;
