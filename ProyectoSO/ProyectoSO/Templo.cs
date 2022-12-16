@@ -1353,25 +1353,6 @@ namespace ProyectoSO
             }
         }
 
-        // Chat
-        private void EnviarChatBut_Click(object sender, EventArgs e)
-        {
-            if (chatbox.Text != null)
-            {
-                string mensaje_chat = "24/" + idPartida + "/" + chatbox.Text;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                server.Send(msg);
-                chatbox.Text = null;
-            }
-        }
-        public void AtenderMensajeChat(string nombre, string informacion)
-        {
-            Invoke(new Action(() =>
-            {
-                chatGrid.Rows.Add(nombre + ": " + informacion);
-                chatGrid.ClearSelection();
-            }));
-        }
 
 
         // funciones para inicializar este cliente
