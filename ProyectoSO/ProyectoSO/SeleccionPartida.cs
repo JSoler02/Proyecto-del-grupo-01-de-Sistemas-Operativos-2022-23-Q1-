@@ -471,8 +471,11 @@ namespace ProyectoSO
                         }
                     }
                     a.MiPersonaje(found);
+                    Invoke(new Action(() =>
+                    {
+                       this.Hide();
+                    }));
                     a.ShowDialog();
-                    this.Hide();
                     break;
 
                     //case "Templo Helado":
