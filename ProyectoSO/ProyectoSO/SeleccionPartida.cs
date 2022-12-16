@@ -657,23 +657,6 @@ namespace ProyectoSO
                 chatGrid.ClearSelection();
             }));
         }
-        public void PasarMensajeChat(string nombre, string info)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.AtenderMensajeChat(nombre,info);
-                    break;
-                //case "Templo Helado":
-                //    b = new Mapa2(idPartida, server);
-                //    break;
-                //case "Volcan":
-                //    c = new Volcan(idPartida, server);
-                //    break;
-                //case "Cueva Maritima":
-                //    d = new Cueva_Maritima(idPartida, server);
-                //    break;
-            }
-        }
+        
     }
 }

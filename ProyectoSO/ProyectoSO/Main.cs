@@ -362,13 +362,7 @@ namespace ProyectoSO
                         idPartida = Convert.ToInt32(trozos[1]);
                         formularios1[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[2]));
                         break;
-                    case 24:
-                        // mensaje del chat
-                        //--> "24/idPartida/Juan/Hola compañeros"
-                        // en mapas y seleccion personajes
-                        idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].PasarMensajeChat(trozos[2], trozos[3]);
-                        break; ;
+                   
                 }
             }
         }
