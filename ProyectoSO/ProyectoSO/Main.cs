@@ -457,6 +457,7 @@ namespace ProyectoSO
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
+                    conectado = true;
                 }
             }
             

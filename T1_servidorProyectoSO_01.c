@@ -902,30 +902,7 @@ void *AtenderCliente (void *socket)
 			}
 			printf("Notificacion: %s\n", notificacion);
 		}
-		else if (codigo == 24)
-		{	//Mensaje del chat de mapa
-			// "24/idpartida/HolaQueTal"
-			char mensaje[200];
-			
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
-
-			p = strtok(NULL, "/");
-			strcpy(mensaje, p);
-			
-			
-			//sprintf(notificacion, "20/%s/%s/%d", nombrechat, mensaje, idpartida);
-			sprintf(notificacion, "24/%d/%s/%s", idpartida, username, mensaje);
-			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
-			{
-
-				// se lo enviamos a todos
-				write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
-			}
-			printf("Notificacion: %s\n", notificacion);
-			
-		}
+		
 		else //if (codigo == 20)
 		{	//Mensaje del chat de seleccion partida
 			// "20/nForm/form/idpartida/HolaQueTal"
