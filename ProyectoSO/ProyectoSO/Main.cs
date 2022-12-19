@@ -20,7 +20,7 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
+        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
         int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
@@ -31,6 +31,8 @@ namespace ProyectoSO
 
         string invitados;
         int NumInvitados = 0; // maximo puede ser 4
+        int InvPartida;
+        bool But_empezarPartida_activado = false;
 
         bool conectado;
 
@@ -53,23 +55,8 @@ namespace ProyectoSO
             GridConectados.ColumnCount = 1;
             GridConectados.Columns[0].HeaderText = "Username";
             GridConectados.ReadOnly = true;
-            tableroJuego.Visible = false;
-            AcabarPartida_But.Visible = false;
+            CrearPartidaBut.Visible = false;
 
-            //chat partida
-            chatGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            chatGrid.ReadOnly = true;
-            chatGrid.RowHeadersVisible = false;
-            chatGrid.ColumnHeadersVisible = false;
-            chatGrid.ColumnCount = 1;
-            chatGrid.Visible = false;
-            chatbox.Visible = false;
-            EnviarChatBut.Visible = false;
-
-            bicho_pb.Image = Image.FromFile("Fireboy.gif");
-            bicho_pb.BackColor = Color.Transparent;
-            bicho_pb.Width = 60;
-            bicho_pb.Height = 75;
 
             conectado = false;
         }
@@ -98,7 +85,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8080;
+                puerto = 8085;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -165,6 +152,7 @@ namespace ProyectoSO
                                 desconnectButton.Visible = true;
                                 panel1.Visible = false;
                                 GridConectados.Visible = true;
+                                CrearPartidaBut.Visible = true;
                                 this.BackColor = Color.Green;
                             }));
                         }
@@ -215,9 +203,6 @@ namespace ProyectoSO
                         if (r == DialogResult.OK)
                         {
                             resp = "Si";
-                            ThreadStart ts = delegate { PonerEnMarchaFormulario1(0); }; // creo thread que executa la funcio PonerEnMarchaFormulario
-                            Thread t = new Thread(ts);
-                            t.Start();
                         }
                         else
                         {
@@ -231,18 +216,14 @@ namespace ProyectoSO
                         server.Send(msg);
 
                         break;
-                    case 8: // Respuesta a peticion de partida
+                    case 8: // Respuesta negativa a peticion de partida
                             // "8/Juan/Si/2": Quien ha aceptado/su respuesta/idPartida
                         mensaje = trozos[1];
                         string nombre_acepta = mensaje;
                         string respuesta = trozos[2];
                         if (respuesta == "Si")
                         {
-                            idPartida = Convert.ToInt32(trozos[3]);
                             MessageBox.Show(nombre_acepta + " ha aceptado tu invitación a partida");
-                            ThreadStart ts = delegate { PonerEnMarchaFormulario1(1); }; // creo thread que executa la funcio PonerEnMarchaFormulario
-                            Thread t = new Thread(ts);
-                            t.Start();
                         }
                         else
                         {
@@ -255,20 +236,14 @@ namespace ProyectoSO
                         }));
                         break;
 
-                    case 9: // em diuen que un company s'ha desconnectat
-                            // 9/idpartida
-                        MessageBox.Show("La partida ha terminado.");
+                    case 9: // empieza la partida para todo el mundo
+                        // 9/idpartida
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        MessageBox.Show("Todo el mundo ha aceptado la invitación.");
+                        ThreadStart ts = delegate { PonerEnMarchaFormulario1(1); }; // creo thread que executa la funcio PonerEnMarchaFormulario
+                        Thread t = new Thread(ts);
+                        t.Start();
 
-                        Invoke(new Action(() =>
-                        {
-                            tableroJuego.Visible = false;
-                            chatGrid.Visible = false;
-                            chatbox.Visible = false;
-                            EnviarChatBut.Visible = false;
-                            AcabarPartida_But.Visible = false;
-                        }));
-                        NumInvitados = 0;
-                        chatGrid.Rows.Clear();
                         break;
 
                     case 10:
@@ -372,7 +347,6 @@ namespace ProyectoSO
             //Mensaje de desconexión
             label3.Visible = false;
             lbl_lista_con.Visible = false;
-            tableroJuego.Visible = false;
             PuntMax_But.Visible = false;
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
@@ -380,10 +354,8 @@ namespace ProyectoSO
             //panel1.Visible = true;
             desconnectButton.Visible = false;
 
-            chatGrid.Visible = false;
-            chatbox.Visible = false;
-            EnviarChatBut.Visible = false;
-            AcabarPartida_But.Visible = false;
+        
+            CrearPartidaBut.Visible = false;
             panel1.Visible = true;
 
             string mensaje = "0/" + Convert.ToString(idPartida);
@@ -481,33 +453,56 @@ namespace ProyectoSO
                 conectado = true;
             }
         }
-
+        private void CrearPartidaBut_Click(object sender, EventArgs e)
+        {
+            if (But_empezarPartida_activado == false)
+            {
+                DialogResult r = MessageBox.Show("¿De cuántos jugadores quieres crear la partida?\n{2 jugadores}\t{3 jugadores}\t{4 jugadores}", "Creación de Partida", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (r == DialogResult.Yes)
+                {
+                    InvPartida = 2;
+                }
+                else if (r == DialogResult.No)
+                {
+                    InvPartida = 3;
+                }
+                else
+                {
+                    InvPartida = 4;
+                }
+                MessageBox.Show("Haz doble-click en los nombres de los jugadores que quieras invitar.");
+                But_empezarPartida_activado = true;
+            }
+        }
 
         private void GridConectados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string invitado = Convert.ToString(GridConectados.CurrentCell.Value);
-            
-            if (invitado != nombre)
+            if (But_empezarPartida_activado == true)
             {
-                DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (r == DialogResult.OK)
-                {
-                    GridConectados.CurrentCell.Style.BackColor = Color.LightGreen;
+                string invitado = Convert.ToString(GridConectados.CurrentCell.Value);
 
-                    invitados = invitados + "/" + invitado;
-                    if (NumInvitados < 3)
+                if (invitado != nombre)
+                {
+                    DialogResult r = MessageBox.Show("Quieres invitar a " + invitado + " a una partida?", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (r == DialogResult.OK)
                     {
-                        DialogResult m = MessageBox.Show("Quieres invitar a alguien más?\nPuedes a " + (2-NumInvitados) + " más.", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                        if (m == DialogResult.OK)
+                        GridConectados.CurrentCell.Style.BackColor = Color.LightGreen;
+                        NumInvitados++;
+                        invitados = invitados + "/" + invitado;
+                        if (NumInvitados < InvPartida)
                         {
-                            MessageBox.Show("Indique el jugador.");
-                        }
-                        else
-                        {
+                            //DialogResult m = MessageBox.Show("Quieres invitar a alguien más?\nPuedes a " + (2-NumInvitados) + " más.", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                            //if (m == DialogResult.OK)
+                            //{
+                            //    MessageBox.Show("Indique el jugador.");
+
+                            //}
+                            //else
+                            //{
                             EnviarJugadoresPartida(invitados);
                             invitados = "";
+                            //}
                         }
-                        NumInvitados++;
                     }
                 }
             }
@@ -526,9 +521,11 @@ namespace ProyectoSO
         private void EnviarJugadoresPartida(string guests)
         {
             MessageBox.Show("Vamos a invitar a los otros jugadores.");
-            string mensaje = "7" + guests;
+            string mensaje = "7/"+ (InvPartida-1) + guests;
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+            InvPartida = 0;
+            NumInvitados = 0;
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -536,32 +533,31 @@ namespace ProyectoSO
             //Mensaje de desconexión
             label3.Visible = false;
             lbl_lista_con.Visible = false;
-            tableroJuego.Visible = false;
             PuntMax_But.Visible = false;
             Juan120_But.Visible = false;
             Templo_But.Visible = false;
             GridConectados.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;
-            AcabarPartida_But.Visible = false;
+            CrearPartidaBut.Visible = false;
 
-            chatGrid.Visible = false;
-            chatbox.Visible = false;
-            EnviarChatBut.Visible = false;
+            if (conectado == true)
+            {
+                string mensaje = "0/" + Convert.ToString(idPartida);
+
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+
+                // Nos desconectamos
+                atender.Abort(); // cerramos thread
+
+                this.BackColor = Color.Gray;
+                server.Shutdown(SocketShutdown.Both);
+                server.Close();
+            }
             conectado = false;
-
-            string mensaje = "0/" + Convert.ToString(idPartida);
-
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            // Nos desconectamos
-            atender.Abort(); // cerramos thread
-
-            this.BackColor = Color.Gray;
-            server.Shutdown(SocketShutdown.Both);
-            server.Close();            
         }
+
 
         // SELECCION
 

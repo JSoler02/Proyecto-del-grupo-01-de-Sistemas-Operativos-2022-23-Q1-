@@ -42,18 +42,10 @@ namespace ProyectoSO
             this.Juan120_But = new System.Windows.Forms.Button();
             this.Templo_But = new System.Windows.Forms.Button();
             this.GridConectados = new System.Windows.Forms.DataGridView();
-            this.tableroJuego = new System.Windows.Forms.Panel();
-            this.bicho_pb = new System.Windows.Forms.PictureBox();
             this.lbl_lista_con = new System.Windows.Forms.Label();
-            this.chatbox = new System.Windows.Forms.TextBox();
-            this.chatGrid = new System.Windows.Forms.DataGridView();
-            this.EnviarChatBut = new System.Windows.Forms.Button();
-            this.AcabarPartida_But = new System.Windows.Forms.Button();
+            this.CrearPartidaBut = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
-            this.tableroJuego.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bicho_pb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chatGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // desconnectButton
@@ -111,7 +103,7 @@ namespace ProyectoSO
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 137);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Usuario:";
             // 
@@ -120,7 +112,7 @@ namespace ProyectoSO
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 172);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "Contraseña:";
             // 
@@ -183,25 +175,6 @@ namespace ProyectoSO
             this.GridConectados.TabIndex = 19;
             this.GridConectados.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridConectados_CellContentDoubleClick);
             // 
-            // tableroJuego
-            // 
-            this.tableroJuego.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tableroJuego.Controls.Add(this.bicho_pb);
-            this.tableroJuego.Location = new System.Drawing.Point(605, 24);
-            this.tableroJuego.Name = "tableroJuego";
-            this.tableroJuego.Size = new System.Drawing.Size(563, 386);
-            this.tableroJuego.TabIndex = 20;
-            //this.tableroJuego.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tableroJuego_MouseClick);
-            // 
-            // bicho_pb
-            // 
-            this.bicho_pb.BackColor = System.Drawing.Color.Red;
-            this.bicho_pb.Location = new System.Drawing.Point(145, 170);
-            this.bicho_pb.Name = "bicho_pb";
-            this.bicho_pb.Size = new System.Drawing.Size(25, 31);
-            this.bicho_pb.TabIndex = 0;
-            this.bicho_pb.TabStop = false;
-            // 
             // lbl_lista_con
             // 
             this.lbl_lista_con.AutoSize = true;
@@ -212,53 +185,22 @@ namespace ProyectoSO
             this.lbl_lista_con.TabIndex = 14;
             this.lbl_lista_con.Text = "Lista de Conectados:";
             // 
-            // chatbox
+            // CrearPartidaBut
             // 
-            this.chatbox.Location = new System.Drawing.Point(605, 511);
-            this.chatbox.Name = "chatbox";
-            this.chatbox.Size = new System.Drawing.Size(485, 22);
-            this.chatbox.TabIndex = 21;
-            // 
-            // chatGrid
-            // 
-            this.chatGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.chatGrid.Location = new System.Drawing.Point(605, 416);
-            this.chatGrid.Name = "chatGrid";
-            this.chatGrid.RowHeadersWidth = 51;
-            this.chatGrid.RowTemplate.Height = 24;
-            this.chatGrid.Size = new System.Drawing.Size(563, 85);
-            this.chatGrid.TabIndex = 22;
-            // 
-            // EnviarChatBut
-            // 
-            this.EnviarChatBut.Location = new System.Drawing.Point(1096, 507);
-            this.EnviarChatBut.Name = "EnviarChatBut";
-            this.EnviarChatBut.Size = new System.Drawing.Size(72, 30);
-            this.EnviarChatBut.TabIndex = 23;
-            this.EnviarChatBut.Text = "Enviar";
-            this.EnviarChatBut.UseVisualStyleBackColor = true;
-            //this.EnviarChatBut.Click += new System.EventHandler(this.EnviarChatBut_Click);
-            // 
-            // AcabarPartida_But
-            // 
-            this.AcabarPartida_But.Location = new System.Drawing.Point(808, 544);
-            this.AcabarPartida_But.Name = "AcabarPartida_But";
-            this.AcabarPartida_But.Size = new System.Drawing.Size(137, 37);
-            this.AcabarPartida_But.TabIndex = 24;
-            this.AcabarPartida_But.Text = "Acabar Partida";
-            this.AcabarPartida_But.UseVisualStyleBackColor = true;
-            //this.AcabarPartida_But.Click += new System.EventHandler(this.AcabarPartida_But_Click);
+            this.CrearPartidaBut.Location = new System.Drawing.Point(535, 65);
+            this.CrearPartidaBut.Name = "CrearPartidaBut";
+            this.CrearPartidaBut.Size = new System.Drawing.Size(72, 83);
+            this.CrearPartidaBut.TabIndex = 23;
+            this.CrearPartidaBut.Text = "Crear Partida";
+            this.CrearPartidaBut.UseVisualStyleBackColor = true;
+            this.CrearPartidaBut.Click += new System.EventHandler(this.CrearPartidaBut_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 593);
-            this.Controls.Add(this.AcabarPartida_But);
-            this.Controls.Add(this.EnviarChatBut);
-            this.Controls.Add(this.chatGrid);
-            this.Controls.Add(this.chatbox);
-            this.Controls.Add(this.tableroJuego);
+            this.Controls.Add(this.CrearPartidaBut);
             this.Controls.Add(this.GridConectados);
             this.Controls.Add(this.Templo_But);
             this.Controls.Add(this.Juan120_But);
@@ -274,9 +216,6 @@ namespace ProyectoSO
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).EndInit();
-            this.tableroJuego.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bicho_pb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chatGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,13 +235,8 @@ namespace ProyectoSO
         private System.Windows.Forms.Button Juan120_But;
         private System.Windows.Forms.Button Templo_But;
         private System.Windows.Forms.DataGridView GridConectados;
-        private System.Windows.Forms.Panel tableroJuego;
         private System.Windows.Forms.Label lbl_lista_con;
-        private System.Windows.Forms.PictureBox bicho_pb;
-        private System.Windows.Forms.DataGridView chatGrid;
-        private System.Windows.Forms.Button EnviarChatBut;
-        protected System.Windows.Forms.TextBox chatbox;
-        private System.Windows.Forms.Button AcabarPartida_But;
+        private System.Windows.Forms.Button CrearPartidaBut;
     }
 }
 

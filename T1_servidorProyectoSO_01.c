@@ -26,6 +26,7 @@ typedef struct{
 typedef struct {
 	Conectado jugadores[4];
 	int numjugadores;
+	int invitaciones;
 	int ocupado;
 }Partida;
 
@@ -57,7 +58,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8080;
+		puerto = 8085;
 	}
 	else 
 	{
@@ -106,7 +107,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 { //Devuelve la posicion o -1 si no lo encuentra
 	int i = 0;
 	int encontrado = 0;
-	//bï¿¯ï¾¿ï¾ºsqueda
+	//b￯﾿ﾯ￯ﾾ﾿￯ﾾﾺsqueda
 	while ((i<lista->num)&&(encontrado == 0))
 	{
 		if (strcmp(lista->conectados[i].nombre, nombre) ==0)
@@ -124,7 +125,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 
 
 int EliminaConectado (ListaConectados *lista, char nombre[20])	
-{ // Devuelve 0 si elimina y -1 si el usuario no estï¿¯ï¾¿ï¾¡ en la lista
+{ // Devuelve 0 si elimina y -1 si el usuario no est￯﾿ﾯ￯ﾾ﾿￯ﾾﾡ en la lista
 	// Elimina el socket de la lista global de sockets
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
@@ -219,13 +220,13 @@ int BuscarPartidaLibre(Partida lista[20])
 }
 
 
-// Elimina la partida de la lista: pone a 0 el tï¿©rmino ocupado 
+// Elimina la partida de la lista: pone a 0 el t￯﾿ﾩrmino ocupado 
 // de la partida que le venga como parametro. Eliminamos (ponemos a -1)
-// tambiï¿©n los sockets de la lista de partidas
+// tambi￯﾿ﾩn los sockets de la lista de partidas
 void AcabaPartida (Partida lista[20], int idpartida)	
 {
 	lista[idpartida].numjugadores = 0;
-	
+	lista[idpartida].invitaciones = 0;
 	for (int i=0;i < 4;i++)
 	{
 		lista[idpartida].jugadores[i].socket = -1;
@@ -233,18 +234,31 @@ void AcabaPartida (Partida lista[20], int idpartida)
 	}
 }
 
-//Pon jugador en partida en la posicion que se especifica
-//en el mensaje.
-void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
+// Esta funcion establece el numero de invitaciones que se necesitan para empezar la Partida
+// adem￡s pone al anfitrion en la partida
+void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char jugador[20], int n_invitaciones)
 {
-	printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
-	
+	lista[idpartida].invitaciones = n_invitaciones;
+	printf("En esta partida: [%d] se necesitan %d invitaciones aceptadas\n", idpartida, n_invitaciones);
 	if (lista[idpartida].ocupado == 0)
 	{
 		AcabaPartida(lista, idpartida);
 		lista[idpartida].ocupado = 1;
 	}
+	printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 	
+	int s1 = DameSocket(&listaconectados,jugador);
+	lista[idpartida].jugadores[lista[idpartida].numjugadores].socket = s1;
+	strcpy(lista[idpartida].jugadores[lista[idpartida].numjugadores].nombre, jugador);
+	lista[idpartida].numjugadores = lista[idpartida].numjugadores +1;
+	
+	printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
+	
+}
+//Pone al jugador en partida. (menos al anfitri￳n)
+void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
+{
+	printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);	
 	int s1 = DameSocket(&listaconectados,jugador);
 	lista[idpartida].jugadores[lista[idpartida].numjugadores].socket = s1;
 	strcpy(lista[idpartida].jugadores[lista[idpartida].numjugadores].nombre, jugador);
@@ -253,6 +267,14 @@ void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 	printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 }
 
+// Actualiza la decision sobre la Partida
+// devuelve el numero de invitaciones faltantes para empezar la partida
+int  AceptaInvitacionYDameFaltantes(Partida lista[20], int idpartida)
+{
+	int n_invitaciones_Faltantes = 	lista[idpartida].invitaciones-1;
+	printf ("Ahora faltan %d para empezar la partida [%d]\n", n_invitaciones_Faltantes, idpartida);
+	return n_invitaciones_Faltantes;
+}
 // Esta funcion hace el LogIn. Necesita un nombre y una contrasenya
 // Devuelve 0 si todo OK. Devuelve -1 si no es correcto. Devuelve 1 si contrasenya incorrecta
 int LogIn(char user[60], char passw[60])
@@ -534,7 +556,7 @@ void *AtenderCliente (void *socket)
 		char invitado[60];
 		
 		strcpy(respuesta, ""); // vaciamos respuesta
-
+		
 		if (codigo == 0) //peticion de desconexion
 		{
 			pthread_mutex_lock (&mutex);
@@ -544,7 +566,7 @@ void *AtenderCliente (void *socket)
 			//pthread_mutex_lock (&mutex);			
 			EnviarListaConectadosNotificacion(notificacion);
 			//pthread_mutex_unlock (&mutex);
-
+			
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
 			
@@ -624,12 +646,16 @@ void *AtenderCliente (void *socket)
 		}
 		else if (codigo == 7)
 		{
-			// --> 7/guest1/guest2/guest3			
+			// --> 7/3/guest1/guest2/guest3	
+			//Obtenemos contrasenya
+			p = strtok(NULL, "/");
+			int n_invitaciones =atoi(p);
+			
 			int partidalibre = BuscarPartidaLibre(listaPartidas);
 			
 			//metemos al invitador
 			pthread_mutex_lock (&mutex);
-			PonJugadorPartida(listaPartidas, partidalibre, username);
+			PonInvitacionesYAnfitrionEnPartida(listaPartidas, partidalibre, username, n_invitaciones);
 			pthread_mutex_unlock (&mutex);
 			
 			// metemos al invitado
@@ -650,7 +676,7 @@ void *AtenderCliente (void *socket)
 			}
 			printf("Notificacion: %s\n", notificacion);
 		}
-
+		
 		else if (codigo == 8)
 		{
 			char decision[10];
@@ -665,47 +691,62 @@ void *AtenderCliente (void *socket)
 			
 			if (strcmp(decision,"Si")==0)
 			{
-				/*pthread_mutex_lock (&mutex);
-				PonJugadorPartida(listaPartidas, idpartida, invitado);
+				pthread_mutex_lock (&mutex);			
+				int n_invitaciones_faltantes =  AceptaInvitacionYDameFaltantes(listaPartidas, idpartida);
 				pthread_mutex_unlock (&mutex);
-				*/
-				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
+				
+				// Enviamos al invitador que el invitado ha aceptado la invitacion
+				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);				
+				write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
+				
+				
+				if (n_invitaciones_faltantes <= 0)	// empieza la partida para todos
+				{
+					sprintf(notificacion, "9/%d", idpartida); 
+					printf("Notificacion: %s\n", notificacion);	
+					for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+					{
+						//if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
+							write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+					}
+					printf("Notificacion: %s\n", notificacion);
+				}
 			}
 			else
-			{
+			{	// No ha aceptado la invitacion
 				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);
 				pthread_mutex_lock (&mutex);
 				AcabaPartida (listaPartidas, idpartida);	
 				pthread_mutex_unlock (&mutex);
+				
+				// El invitador
+				write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
+				printf("Notificacion: %s\n", notificacion);
 			}
-			// El invitador
-			write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
-			printf("Notificacion: %s\n", notificacion);
 		}
-
-
-		else if (codigo == 9) // click boton acabar partida
-		{ // 9/idpartida --> el username ja el tenim
+		
+/*		else if (codigo == 9) */// click boton acabar partida
+/*		{ */// 9/idpartida --> el username ja el tenim
 			
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
+/*			p = strtok(NULL, "/");*/
+/*			int idpartida = atoi(p);*/
 			
-			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)
-			{
-				sprintf(notificacion, "9/%d", idpartida);
-				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));
-				printf("%s\n",notificacion);
-			}
+/*			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)*/
+/*			{*/
+/*				sprintf(notificacion, "9/%d", idpartida);*/
+/*				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));*/
+/*				printf("%s\n",notificacion);*/
+/*			}*/
 			
-			pthread_mutex_lock (&mutex);
-			AcabaPartida (listaPartidas, idpartida);	
-			pthread_mutex_unlock (&mutex);
-		}
+/*			pthread_mutex_lock (&mutex);*/
+/*			AcabaPartida (listaPartidas, idpartida);	*/
+/*			pthread_mutex_unlock (&mutex);*/
+/*		}*/
 		else if (codigo == 10) // seleccion de personaje
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -718,12 +759,12 @@ void *AtenderCliente (void *socket)
 			}
 			printf("Notificacion: %s\n", notificacion);
 		}
-
+		
 		else if (codigo == 11) // deseleccion de personaje
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -740,7 +781,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			char mapaEsc[20];
 			strcpy(mapaEsc, p);
@@ -757,7 +798,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			sprintf(notificacion, "14/%d", idpartida);
 			
 			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
@@ -770,7 +811,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -787,7 +828,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -804,7 +845,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -821,7 +862,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -838,7 +879,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -855,7 +896,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -872,7 +913,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -889,7 +930,7 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
 			
@@ -910,7 +951,7 @@ void *AtenderCliente (void *socket)
 			
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
-
+			
 			p = strtok(NULL, "/");
 			strcpy(mensaje, p);
 			
@@ -968,7 +1009,7 @@ int main(int argc, char *argv[])
 	conn = mysql_init(NULL);
 	if (conn==NULL) {
 		printf ("Error al crear la conexion: %u %s\n", 
-			mysql_errno(conn), mysql_error(conn));
+				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
 	
@@ -977,7 +1018,7 @@ int main(int argc, char *argv[])
 	
 	if (conn==NULL) {
 		printf ("Error al inicializar la conexion: %u %s\n", 
-			mysql_errno(conn), mysql_error(conn));
+				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
 	// Bucle infinito
@@ -995,3 +1036,5 @@ int main(int argc, char *argv[])
 		printf("[%d]", i);
 	}
 }
+	
+	
