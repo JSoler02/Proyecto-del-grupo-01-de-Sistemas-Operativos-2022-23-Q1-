@@ -31,8 +31,9 @@ namespace ProyectoSO
 
         string invitados;
         int NumInvitados = 0; // maximo puede ser 4
-        int InvPartida;
+        int InvPartida = 0;
         bool But_empezarPartida_activado = false;
+        bool soyanfitrion;
 
         bool conectado;
 
@@ -85,7 +86,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8085;
+                puerto = 8080;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -237,10 +238,14 @@ namespace ProyectoSO
                         break;
 
                     case 9: // empieza la partida para todo el mundo
-                        // 9/idpartida
+                        // 9/idpartida/anfitrión
                         idPartida = Convert.ToInt32(trozos[1]);
+                        if (trozos[2]==nombre)
+                        { soyanfitrion = true; }
+                        else
+                        { soyanfitrion = false; }
                         MessageBox.Show("Todo el mundo ha aceptado la invitación.");
-                        ThreadStart ts = delegate { PonerEnMarchaFormulario1(1); }; // creo thread que executa la funcio PonerEnMarchaFormulario
+                        ThreadStart ts = delegate { PonerEnMarchaFormulario1(); }; // creo thread que executa la funcio PonerEnMarchaFormulario
                         Thread t = new Thread(ts);
                         t.Start();
 
@@ -489,7 +494,7 @@ namespace ProyectoSO
                         GridConectados.CurrentCell.Style.BackColor = Color.LightGreen;
                         NumInvitados++;
                         invitados = invitados + "/" + invitado;
-                        if (NumInvitados < InvPartida)
+                        if (NumInvitados == InvPartida-1)
                         {
                             //DialogResult m = MessageBox.Show("Quieres invitar a alguien más?\nPuedes a " + (2-NumInvitados) + " más.", "¿Aceptar?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                             //if (m == DialogResult.OK)
@@ -507,12 +512,12 @@ namespace ProyectoSO
                 }
             }
         }
-        private void PonerEnMarchaFormulario1(int anfitrion)
+        private void PonerEnMarchaFormulario1()
         { 
             SeleccionPartida f = new SeleccionPartida(idPartida,server);
             formularios1.Add(f);
             f.SetUsername(usernameBox.Text);
-            if (anfitrion == 1)
+            if (soyanfitrion == true)
             {
                 f.SetAnfitrion();
             }

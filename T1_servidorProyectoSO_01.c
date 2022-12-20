@@ -58,7 +58,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8085;
+		puerto = 8080;
 	}
 	else 
 	{
@@ -238,8 +238,6 @@ void AcabaPartida (Partida lista[20], int idpartida)
 // adem￡s pone al anfitrion en la partida
 void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char jugador[20], int n_invitaciones)
 {
-	lista[idpartida].invitaciones = n_invitaciones;
-	printf("En esta partida: [%d] se necesitan %d invitaciones aceptadas\n", idpartida, n_invitaciones);
 	if (lista[idpartida].ocupado == 0)
 	{
 		AcabaPartida(lista, idpartida);
@@ -251,6 +249,8 @@ void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char j
 	lista[idpartida].jugadores[lista[idpartida].numjugadores].socket = s1;
 	strcpy(lista[idpartida].jugadores[lista[idpartida].numjugadores].nombre, jugador);
 	lista[idpartida].numjugadores = lista[idpartida].numjugadores +1;
+	lista[idpartida].invitaciones = n_invitaciones;
+	printf("En esta partida: [%d] se necesitan %d invitaciones aceptadas\n", idpartida, lista[idpartida].invitaciones);
 	
 	printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 	
@@ -271,7 +271,9 @@ void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 // devuelve el numero de invitaciones faltantes para empezar la partida
 int  AceptaInvitacionYDameFaltantes(Partida lista[20], int idpartida)
 {
-	int n_invitaciones_Faltantes = 	lista[idpartida].invitaciones-1;
+	printf ("Antes de restar faltan %d para empezar la partida [%d]\n", lista[idpartida].invitaciones, idpartida);
+	int n_invitaciones_Faltantes = 	lista[idpartida].invitaciones - 1;
+	lista[idpartida].invitaciones = n_invitaciones_Faltantes;
 	printf ("Ahora faltan %d para empezar la partida [%d]\n", n_invitaciones_Faltantes, idpartida);
 	return n_invitaciones_Faltantes;
 }
@@ -694,7 +696,7 @@ void *AtenderCliente (void *socket)
 				pthread_mutex_lock (&mutex);			
 				int n_invitaciones_faltantes =  AceptaInvitacionYDameFaltantes(listaPartidas, idpartida);
 				pthread_mutex_unlock (&mutex);
-				
+				printf("Para la partida [%d] ahora faltan %d invitaciones para aceptar", idpartida, n_invitaciones_faltantes);
 				// Enviamos al invitador que el invitado ha aceptado la invitacion
 				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);				
 				write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
@@ -702,7 +704,7 @@ void *AtenderCliente (void *socket)
 				
 				if (n_invitaciones_faltantes <= 0)	// empieza la partida para todos
 				{
-					sprintf(notificacion, "9/%d", idpartida); 
+					sprintf(notificacion, "9/%d/%s", idpartida, listaPartidas[idpartida].jugadores[0].nombre); 
 					printf("Notificacion: %s\n", notificacion);	
 					for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 					{
