@@ -21,7 +21,7 @@ namespace ProyectoSO
 
         // Variables de desarrollo
         int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
-        int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
+        int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
         string nombre;
@@ -45,8 +45,8 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
-            Juan120_But.Visible = false;
-            Templo_But.Visible = false;
+            PartidasMapa_But.Visible = false;
+            PartidasDia_But.Visible = false;
             desconnectButton.Visible = false;
             GridConectados.Visible = false;
             passwordBox.PasswordChar = ('*');
@@ -57,7 +57,8 @@ namespace ProyectoSO
             GridConectados.Columns[0].HeaderText = "Username";
             GridConectados.ReadOnly = true;
             CrearPartidaBut.Visible = false;
-
+            fechaTbox.Visible = false;
+            mapaTbx.Visible = false;
 
             conectado = false;
         }
@@ -86,7 +87,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8080;
+                puerto = 8095;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -148,12 +149,14 @@ namespace ProyectoSO
                                 label3.Visible = true;
                                 lbl_lista_con.Visible = false;
                                 PuntMax_But.Visible = true;
-                                Juan120_But.Visible = true;
-                                Templo_But.Visible = true;
+                                PartidasMapa_But.Visible = true;
+                                PartidasDia_But.Visible = true;
                                 desconnectButton.Visible = true;
                                 panel1.Visible = false;
                                 GridConectados.Visible = true;
                                 CrearPartidaBut.Visible = true;
+                                fechaTbox.Visible = true;
+                                mapaTbx.Visible = true;
                                 this.BackColor = Color.Green;
                             }));
                         }
@@ -165,17 +168,17 @@ namespace ProyectoSO
 
                     case 3: //consulta 1 --> Puntos maximos de Maria
                         mensaje = trozos[1];
-                        MessageBox.Show("La puntuación máxima es: " + mensaje);
+                        MessageBox.Show("Tu puntuación máxima es: " + mensaje);
                         break;
 
-                    case 4: //consulta 2 --> Id de las partidas de más de 120 s de Juan
+                    case 4: //consulta 2 --> Tantas partidas en el mapa X
                         mensaje = trozos[1];
-                        MessageBox.Show("Juan ha jugado más de 120 segundos en las partidas: " + mensaje);
+                        MessageBox.Show("En el mapa " + mapaTbx.Text + " has jugado " + mensaje + " partidas.");
                         break;
 
                     case 5: //consulta 3 --> Nombre de los jugadores que han jugado como J1 en "templo"
                         mensaje = trozos[1];
-                        MessageBox.Show(mensaje + " han jugado partidas en el mapa 'templo' como jugador 1");
+                        MessageBox.Show("Ese dia jugaste en los mapas: " + mensaje);
                         break;
                     case 6: // Notificación de la Lista de Conectados
 
@@ -353,8 +356,8 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
-            Juan120_But.Visible = false;
-            Templo_But.Visible = false;
+            PartidasMapa_But.Visible = false;
+            PartidasDia_But.Visible = false;
             GridConectados.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;
@@ -381,25 +384,25 @@ namespace ProyectoSO
         }
         private void PuntMax_But_Click(object sender, EventArgs e)
         {
-            string mensaje = "3/";// + palabra_box.Text;
+            string mensaje = "3/" + usernameBox.Text;
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
         }
 
-        private void Juan120_But_Click(object sender, EventArgs e)
+        private void PartidasMapa_But_Click(object sender, EventArgs e)
         {
-            string mensaje = "4/";// + palabra_box.Text;
+            string mensaje = "4/" + mapaTbx.Text;
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
         }
 
-        private void Templo_But_Click(object sender, EventArgs e)
+        private void PartidasDia_But_Click(object sender, EventArgs e)
         {
-            string mensaje = "5/";// + palabra_box.Text;
+            string mensaje = "5/" + fechaTbox.Text;
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -437,8 +440,6 @@ namespace ProyectoSO
                     conectado = true;
                 }
             }
-            
-            
         }
 
         private void NewAccountButton_Click(object sender, EventArgs e)
@@ -539,8 +540,8 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
-            Juan120_But.Visible = false;
-            Templo_But.Visible = false;
+            PartidasMapa_But.Visible = false;
+            PartidasDia_But.Visible = false;
             GridConectados.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;

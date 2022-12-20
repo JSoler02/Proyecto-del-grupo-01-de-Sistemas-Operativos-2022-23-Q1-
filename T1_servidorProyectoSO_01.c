@@ -58,7 +58,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8080;
+		puerto = 8090;
 	}
 	else 
 	{
@@ -107,7 +107,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 { //Devuelve la posicion o -1 si no lo encuentra
 	int i = 0;
 	int encontrado = 0;
-	//b￯﾿ﾯ￯ﾾ﾿￯ﾾﾺsqueda
+	//bï¿¯ï¾¿ï¾¯ï¿¯ï¾¾ï¾¿ï¿¯ï¾¾ï¾ºsqueda
 	while ((i<lista->num)&&(encontrado == 0))
 	{
 		if (strcmp(lista->conectados[i].nombre, nombre) ==0)
@@ -125,7 +125,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 
 
 int EliminaConectado (ListaConectados *lista, char nombre[20])	
-{ // Devuelve 0 si elimina y -1 si el usuario no est￯﾿ﾯ￯ﾾ﾿￯ﾾﾡ en la lista
+{ // Devuelve 0 si elimina y -1 si el usuario no estï¿¯ï¾¿ï¾¯ï¿¯ï¾¾ï¾¿ï¿¯ï¾¾ï¾¡ en la lista
 	// Elimina el socket de la lista global de sockets
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
@@ -220,9 +220,9 @@ int BuscarPartidaLibre(Partida lista[20])
 }
 
 
-// Elimina la partida de la lista: pone a 0 el t￯﾿ﾩrmino ocupado 
+// Elimina la partida de la lista: pone a 0 el tï¿¯ï¾¿ï¾©rmino ocupado 
 // de la partida que le venga como parametro. Eliminamos (ponemos a -1)
-// tambi￯﾿ﾩn los sockets de la lista de partidas
+// tambiï¿¯ï¾¿ï¾©n los sockets de la lista de partidas
 void AcabaPartida (Partida lista[20], int idpartida)	
 {
 	lista[idpartida].numjugadores = 0;
@@ -235,7 +235,7 @@ void AcabaPartida (Partida lista[20], int idpartida)
 }
 
 // Esta funcion establece el numero de invitaciones que se necesitan para empezar la Partida
-// adem￡s pone al anfitrion en la partida
+// ademï¿¡s pone al anfitrion en la partida
 void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char jugador[20], int n_invitaciones)
 {
 	if (lista[idpartida].ocupado == 0)
@@ -255,7 +255,7 @@ void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char j
 	printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 	
 }
-//Pone al jugador en partida. (menos al anfitri￳n)
+//Pone al jugador en partida. (menos al anfitriï¿³n)
 void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 {
 	printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);	
@@ -391,18 +391,18 @@ int CrearUsuario(char user[60], char passw[60])
 }
 
 // Nos dice la puntuacion maxima que ha conseguido Maria en sus partidas
-int Consulta1()
+int Consulta1(char username[60])
 {
 	char cons[500];
 	char name [20];
 	int max;
 	//quiere saber la puntuacion maxima de Maria
-	strcpy (name, "'Maria'");
+	strcpy (name, username);
 	
 	// consulta SQL para obtener una tabla con todos los datos
-	strcpy(cons, "SELECT MAX(historial.puntos) FROM (jugador, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = ");
+	strcpy(cons, "SELECT MAX(historial.puntos) FROM (jugador, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '");
 	strcat(cons, name);
-	strcat(cons, ");");
+	strcat(cons, "');");
 	err = mysql_query (conn, cons);
 	if (err!=0) {
 		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
@@ -420,17 +420,18 @@ int Consulta1()
 }
 
 // ID de las Partidas en las que Juan ha jugado mas de 120 s
-void Consulta2(char resp[500])
+int Consulta2(char mapa[60], char username[60])
 {
 	char cons[500];
-	char name[20];
-	strcpy (name, "'Juan'");
+	int total;
 	
 	// Ahora vamos a realizar la consulta
-	strcpy (cons,"SELECT partida.id FROM (jugador, partida, historial) WHERE jugador.username ="); 
-	strcat (cons, name);
-	strcat (cons," AND jugador.id = historial.id_j AND historial.id_p = partida.id AND partida.id IN (SELECT partida.id FROM (partida) WHERE partida.duracion > 120);");
-	
+	strcpy (cons,"SELECT COUNT(partida.id) FROM (jugador, partida, historial) WHERE jugador.username = '"); 
+	strcat (cons, username);
+	strcat (cons,"' AND jugador.id = historial.id_j AND historial.id_p = partida.id AND partida.id IN (SELECT partida.id FROM (partida) WHERE partida.mapa = '");
+	strcat (cons, mapa);
+	strcat (cons,"');");
+
 	err=mysql_query (conn, cons);
 	
 	if (err!=0) {
@@ -441,40 +442,30 @@ void Consulta2(char resp[500])
 	// Recogemos el resultado
 	resultado = mysql_store_result (conn); 
 	row = mysql_fetch_row (resultado);
-	//int id_max;
 	
 	if (row == NULL)
 		printf ("No se han obtenido datos en la consulta\n");
 	else
-	{
-		while (row != NULL)
-		{
-			// obtenemos la siguiente fila
-			//id_max = row[0];
-			
-			sprintf(resp, "%d " ,atoi(row[0]));
-			row = mysql_fetch_row (resultado);
-			/*sprintf (respuesta,"%s/%s",respuesta, row[0]);*/
-			
-		}
-	}
+		total = atoi(row[0]);
+
+	return total;
 	
 }
 
 // Rellena el vector resp con los nombre de los jugadores que han jugado 
 // como J1 en el mapa "templo"
 // Devuelve 0 si OK. Devuelve -1 si va mal
-int Consulta3(char resp[500])
+int Consulta3(char resp[500], char username[60], char fecha[60])
 {
-	char map [60];
 	char cons[512];
-	//Jugadores que han jugado en templo como J1
-	strcpy(map, "'templo'");
+	// Jugadores que han jugado en templo como J1
 	// Ahora vamos a realizar la consulta
 	
-	strcpy (cons,"SELECT jugador.username FROM (jugador, partida, historial) WHERE partida.mapa = "); 
-	strcat (cons, map);
-	strcat (cons," AND historial.id_p = partida.id AND historial.id_j = jugador.id AND historial.posicion = 1;");
+	strcpy (cons,"SELECT partida.mapa FROM (jugador, partida, historial) WHERE jugador.username = '"); 
+	strcat (cons, username);
+	strcat (cons,"' AND historial.id_p = partida.id AND historial.id_j = jugador.id AND partida.fecha = '");
+	strcat(cons, fecha);
+	strcat(cons, "';");
 	// hacemos la consulta 
 	err=mysql_query (conn, cons); 
 	if (err!=0) {
@@ -492,7 +483,7 @@ int Consulta3(char resp[500])
 		while (row != NULL)
 		{
 			printf("Username: %s\n", row[0]);
-			sprintf (resp, "%s %s", resp, row[0]);
+			sprintf (resp, "%s, %s", resp, row[0]);
 			// obtenemos la siguiente fila
 			row = mysql_fetch_row (resultado);
 		}
@@ -629,21 +620,37 @@ void *AtenderCliente (void *socket)
 		
 		else if (codigo == 3)
 		{
-			int max = Consulta1();
+			char cons[60];
+			p = strtok(NULL, "/");
+			strcpy(cons, p);
+			printf("%s\n", cons);
+			int max = Consulta1(cons);
 			sprintf(respuesta, "3/%d", max);
 		}
 		
 		else if (codigo == 4)
 		{
-			strcpy(res, "");
-			Consulta2(res);
-			sprintf(respuesta, "4/%s", res);
-			//printf(respuesta);
+			char cons[60];
+			p = strtok(NULL, "/");
+			strcpy(cons, p);
+			int part = Consulta2(cons, username);
+			sprintf(respuesta, "4/%d", part);
 		}
 		else if (codigo == 5)	
 		{
+			char fecha[60];
+			char dia[60];
+			p = strtok(NULL, "/");
+			strcpy(dia, p);
+			char mes[60];
+			p = strtok(NULL, "/");
+			strcpy(mes, p);
+			char any[60];
+			p = strtok(NULL, "/");
+			strcpy(any, p);
+			sprintf(fecha,"%s/%s/%s",dia,mes,any);
 			strcpy(res, "");
-			Consulta3(res);
+			Consulta3(res, username, fecha);
 			sprintf(respuesta, "5/%s", res);
 		}
 		else if (codigo == 7)
@@ -709,7 +716,7 @@ void *AtenderCliente (void *socket)
 					for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 					{
 						//if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
-							write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+						write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
 					}
 					printf("Notificacion: %s\n", notificacion);
 				}
@@ -727,23 +734,23 @@ void *AtenderCliente (void *socket)
 			}
 		}
 		
-/*		else if (codigo == 9) */// click boton acabar partida
-/*		{ */// 9/idpartida --> el username ja el tenim
-			
-/*			p = strtok(NULL, "/");*/
-/*			int idpartida = atoi(p);*/
-			
-/*			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)*/
-/*			{*/
-/*				sprintf(notificacion, "9/%d", idpartida);*/
-/*				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));*/
-/*				printf("%s\n",notificacion);*/
-/*			}*/
-			
-/*			pthread_mutex_lock (&mutex);*/
-/*			AcabaPartida (listaPartidas, idpartida);	*/
-/*			pthread_mutex_unlock (&mutex);*/
-/*		}*/
+		/*		else if (codigo == 9) */// click boton acabar partida
+		/*		{ */// 9/idpartida --> el username ja el tenim
+		
+		/*			p = strtok(NULL, "/");*/
+		/*			int idpartida = atoi(p);*/
+		
+		/*			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)*/
+		/*			{*/
+		/*				sprintf(notificacion, "9/%d", idpartida);*/
+		/*				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));*/
+		/*				printf("%s\n",notificacion);*/
+		/*			}*/
+		
+		/*			pthread_mutex_lock (&mutex);*/
+		/*			AcabaPartida (listaPartidas, idpartida);	*/
+		/*			pthread_mutex_unlock (&mutex);*/
+		/*		}*/
 		else if (codigo == 10) // seleccion de personaje
 		{
 			p = strtok(NULL, "/");
@@ -1038,5 +1045,5 @@ int main(int argc, char *argv[])
 		printf("[%d]", i);
 	}
 }
-	
-	
+
+

@@ -39,11 +39,13 @@ namespace ProyectoSO
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.PuntMax_But = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.Juan120_But = new System.Windows.Forms.Button();
-            this.Templo_But = new System.Windows.Forms.Button();
+            this.PartidasMapa_But = new System.Windows.Forms.Button();
+            this.PartidasDia_But = new System.Windows.Forms.Button();
             this.GridConectados = new System.Windows.Forms.DataGridView();
             this.lbl_lista_con = new System.Windows.Forms.Label();
             this.CrearPartidaBut = new System.Windows.Forms.Button();
+            this.mapaTbx = new System.Windows.Forms.TextBox();
+            this.fechaTbox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
             this.SuspendLayout();
@@ -103,7 +105,7 @@ namespace ProyectoSO
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 137);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 17);
+            this.label1.Size = new System.Drawing.Size(57, 16);
             this.label1.TabIndex = 7;
             this.label1.Text = "Usuario:";
             // 
@@ -112,7 +114,7 @@ namespace ProyectoSO
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 172);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 17);
+            this.label2.Size = new System.Drawing.Size(79, 16);
             this.label2.TabIndex = 9;
             this.label2.Text = "Contraseña:";
             // 
@@ -129,7 +131,7 @@ namespace ProyectoSO
             this.PuntMax_But.Name = "PuntMax_But";
             this.PuntMax_But.Size = new System.Drawing.Size(137, 69);
             this.PuntMax_But.TabIndex = 13;
-            this.PuntMax_But.Text = "Puntuación Máxima de Maria";
+            this.PuntMax_But.Text = "Puntuación Máxima";
             this.PuntMax_But.UseVisualStyleBackColor = true;
             this.PuntMax_But.Click += new System.EventHandler(this.PuntMax_But_Click);
             // 
@@ -143,25 +145,25 @@ namespace ProyectoSO
             this.label3.TabIndex = 14;
             this.label3.Text = "Consultas:";
             // 
-            // Juan120_But
+            // PartidasMapa_But
             // 
-            this.Juan120_But.Location = new System.Drawing.Point(165, 483);
-            this.Juan120_But.Name = "Juan120_But";
-            this.Juan120_But.Size = new System.Drawing.Size(172, 69);
-            this.Juan120_But.TabIndex = 15;
-            this.Juan120_But.Text = "Partidas en las que Juan ha pasado más de 120 segundos";
-            this.Juan120_But.UseVisualStyleBackColor = true;
-            this.Juan120_But.Click += new System.EventHandler(this.Juan120_But_Click);
+            this.PartidasMapa_But.Location = new System.Drawing.Point(165, 483);
+            this.PartidasMapa_But.Name = "PartidasMapa_But";
+            this.PartidasMapa_But.Size = new System.Drawing.Size(172, 69);
+            this.PartidasMapa_But.TabIndex = 15;
+            this.PartidasMapa_But.Text = "Partidas en el mapa (escribir abajo)";
+            this.PartidasMapa_But.UseVisualStyleBackColor = true;
+            this.PartidasMapa_But.Click += new System.EventHandler(this.PartidasMapa_But_Click);
             // 
-            // Templo_But
+            // PartidasDia_But
             // 
-            this.Templo_But.Location = new System.Drawing.Point(343, 483);
-            this.Templo_But.Name = "Templo_But";
-            this.Templo_But.Size = new System.Drawing.Size(165, 69);
-            this.Templo_But.TabIndex = 16;
-            this.Templo_But.Text = "Jugadores que han jugado como J1 en \"templo\"";
-            this.Templo_But.UseVisualStyleBackColor = true;
-            this.Templo_But.Click += new System.EventHandler(this.Templo_But_Click);
+            this.PartidasDia_But.Location = new System.Drawing.Point(343, 483);
+            this.PartidasDia_But.Name = "PartidasDia_But";
+            this.PartidasDia_But.Size = new System.Drawing.Size(165, 69);
+            this.PartidasDia_But.TabIndex = 16;
+            this.PartidasDia_But.Text = "Partidas del dia (dd/mm/aa)";
+            this.PartidasDia_But.UseVisualStyleBackColor = true;
+            this.PartidasDia_But.Click += new System.EventHandler(this.PartidasDia_But_Click);
             // 
             // GridConectados
             // 
@@ -195,15 +197,31 @@ namespace ProyectoSO
             this.CrearPartidaBut.UseVisualStyleBackColor = true;
             this.CrearPartidaBut.Click += new System.EventHandler(this.CrearPartidaBut_Click);
             // 
+            // mapaTbx
+            // 
+            this.mapaTbx.Location = new System.Drawing.Point(180, 558);
+            this.mapaTbx.Name = "mapaTbx";
+            this.mapaTbx.Size = new System.Drawing.Size(142, 22);
+            this.mapaTbx.TabIndex = 13;
+            // 
+            // fechaTbox
+            // 
+            this.fechaTbox.Location = new System.Drawing.Point(354, 559);
+            this.fechaTbox.Name = "fechaTbox";
+            this.fechaTbox.Size = new System.Drawing.Size(142, 22);
+            this.fechaTbox.TabIndex = 24;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 593);
+            this.ClientSize = new System.Drawing.Size(694, 593);
+            this.Controls.Add(this.fechaTbox);
+            this.Controls.Add(this.mapaTbx);
             this.Controls.Add(this.CrearPartidaBut);
             this.Controls.Add(this.GridConectados);
-            this.Controls.Add(this.Templo_But);
-            this.Controls.Add(this.Juan120_But);
+            this.Controls.Add(this.PartidasDia_But);
+            this.Controls.Add(this.PartidasMapa_But);
             this.Controls.Add(this.lbl_lista_con);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.PuntMax_But);
@@ -232,11 +250,13 @@ namespace ProyectoSO
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.Button PuntMax_But;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button Juan120_But;
-        private System.Windows.Forms.Button Templo_But;
+        private System.Windows.Forms.Button PartidasMapa_But;
+        private System.Windows.Forms.Button PartidasDia_But;
         private System.Windows.Forms.DataGridView GridConectados;
         private System.Windows.Forms.Label lbl_lista_con;
         private System.Windows.Forms.Button CrearPartidaBut;
+        private System.Windows.Forms.TextBox mapaTbx;
+        private System.Windows.Forms.TextBox fechaTbox;
     }
 }
 
