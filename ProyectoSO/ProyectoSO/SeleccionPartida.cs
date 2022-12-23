@@ -36,7 +36,7 @@ namespace ProyectoSO
         Volcan c;
         Cueva_Maritima d;
 
-
+        prueba_Teclas formteclas;
         public SeleccionPartida(int nForm, Socket server)
         {
             InitializeComponent();
@@ -449,33 +449,35 @@ namespace ProyectoSO
             switch (mapa)
             {
                 case "Templo":
-                    a = new Templo(idPartida, server);
-                    int found = 0;
-                    while (found == 0)
-                    {
-                        if (J1seleccionado == 1)
-                        {
-                            found = 1;
-                        }
-                        if (J2seleccionado == 1)
-                        {
-                            found = 2;
-                        }
-                        if (J3seleccionado == 1)
-                        {
-                            found = 3;
-                        }
-                        if (J4seleccionado == 1)
-                        {
-                            found = 4;
-                        }
-                    }
-                    a.MiPersonaje(found);
-                    Invoke(new Action(() =>
-                    {
-                       this.Hide();
-                    }));
-                    a.ShowDialog();
+                    formteclas = new prueba_Teclas(idPartida, server);
+                    formteclas.ShowDialog();
+                    //a = new Templo(idPartida, server);
+                    //int found = 0;
+                    //while (found == 0)
+                    //{
+                    //    if (J1seleccionado == 1)
+                    //    {
+                    //        found = 1;
+                    //    }
+                    //    if (J2seleccionado == 1)
+                    //    {
+                    //        found = 2;
+                    //    }
+                    //    if (J3seleccionado == 1)
+                    //    {
+                    //        found = 3;
+                    //    }
+                    //    if (J4seleccionado == 1)
+                    //    {
+                    //        found = 4;
+                    //    }
+                    //}
+                    //a.MiPersonaje(found);
+                    //Invoke(new Action(() =>
+                    //{
+                    //   this.Hide();
+                    //}));
+                    //a.ShowDialog();
                     break;
 
                     //case "Templo Helado":
@@ -491,6 +493,49 @@ namespace ProyectoSO
 
         }
 
+        public void TocaDerecha_otro()
+        {
+            Invoke(new Action(() =>
+            {
+                formteclas.TocaDerecha_otro();
+            }));
+        }
+        public void TocaIzquierda_otro()
+        {
+            Invoke(new Action(() =>
+            {
+                formteclas.TocaIzquierda_otro();
+            }));
+        }
+        public void TocaArriba_otro()
+        {
+            Invoke(new Action(() =>
+            {
+                formteclas.TocaArriba_otro();
+            }));
+        }
+        public void SueltaDerecha_otro()
+        {
+            MessageBox.Show("Seleccion de partida: Otro suelta la derecha: 118;");
+            Invoke(new Action(() =>
+            {
+                formteclas.SueltaDerecha_otro();
+            }));
+        }
+        public void SueltaIzquierda_otro()
+        {
+            Invoke(new Action(() =>
+            {
+                formteclas.SueltaIzquierda_otro();
+            }));
+        }
+        public void SueltaArriba_otro()
+        {
+            Invoke(new Action(() =>
+            {
+                formteclas.SueltaArriba_otro();
+            }));
+        }
         public void TeclaArribaSolaClicada_Otro(int otropersonaje)
         {
             switch (mapa)
@@ -509,7 +554,6 @@ namespace ProyectoSO
                     //    break;
             }
         }
-
         public void TeclaArribaConIzquierdaClicada_Otro(int otropersonaje)
         {
             switch (mapa)

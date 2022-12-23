@@ -60,3 +60,4 @@ C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Cueva_Maritima.resources
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Mapa2.resources
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan.resources
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.prueba_Teclas.resources

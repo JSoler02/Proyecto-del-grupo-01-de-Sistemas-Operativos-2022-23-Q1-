@@ -21,7 +21,7 @@ namespace ProyectoSO
 
         // Variables de desarrollo
         int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
-        int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
+        int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
         string nombre;
@@ -87,7 +87,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8095;
+                puerto = 8085;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -133,10 +133,13 @@ namespace ProyectoSO
                 string mensajeLimpio = mensajeSucio.Split('\0')[0];
                 string[] trozos = mensajeLimpio.Split('/');
                 int codigo = Convert.ToInt32(trozos[0]);
-
+                MessageBox.Show(mensajeLimpio);
                 int numForm; // para saber a que formulario debo enviarle la respuesta
                 string mensaje;
-
+                if (codigo == 38)
+                {
+                    MessageBox.Show("Main: Otro suelta la derecha: 118;");
+                }
                 switch (codigo)
                 {
                     case 1: // Login
@@ -345,7 +348,49 @@ namespace ProyectoSO
                         idPartida = Convert.ToInt32(trozos[1]);
                         formularios1[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[2]));
                         break;
-                   
+                    case 35:
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        Invoke(new Action(() =>
+                        {
+                            formularios1[idPartida].TocaIzquierda_otro();
+                        }));
+                        break;
+                    case 36:
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        Invoke(new Action(() =>
+                        {
+                            formularios1[idPartida].SueltaIzquierda_otro();
+                        }));
+                        break;
+                    case 37:
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        Invoke(new Action(() =>
+                        {
+                            formularios1[idPartida].TocaDerecha_otro();
+                        }));
+                        break;
+                    case 38:
+                        MessageBox.Show("Main: Otro suelta la derecha: 118;");
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        Invoke(new Action(() =>
+                        {
+                            formularios1[idPartida].SueltaDerecha_otro();
+                        }));
+                        break;
+                    case 39:
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        Invoke(new Action(() =>
+                        {
+                            formularios1[idPartida].TocaArriba_otro();
+                        }));
+                        break;
+                    case 40:
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        Invoke(new Action(() =>
+                        {
+                            formularios1[idPartida].SueltaArriba_otro();
+                        }));
+                        break;
                 }
             }
         }

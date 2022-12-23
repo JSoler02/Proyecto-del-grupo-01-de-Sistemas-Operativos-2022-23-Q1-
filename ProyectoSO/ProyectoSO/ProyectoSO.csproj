@@ -53,6 +53,12 @@
       <DependentUpon>Cueva Maritima.cs</DependentUpon>
     </Compile>
     <Compile Include="Jugador.cs" />
+    <Compile Include="prueba_Teclas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="prueba_Teclas.Designer.cs">
+      <DependentUpon>prueba_Teclas.cs</DependentUpon>
+    </Compile>
     <Compile Include="SeleccionPartida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </Compile>
     <EmbeddedResource Include="Cueva Maritima.resx">
       <DependentUpon>Cueva Maritima.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="prueba_Teclas.resx">
+      <DependentUpon>prueba_Teclas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionPartida.resx">
       <DependentUpon>SeleccionPartida.cs</DependentUpon>
