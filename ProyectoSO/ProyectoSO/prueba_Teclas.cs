@@ -19,10 +19,11 @@ namespace ProyectoSO
         Socket server; // declaramos socket
         int nForm;
 
-        public prueba_Teclas(int nForm, Socket server)
+        string mapa = "PruebaTeclas";
+        public prueba_Teclas(int idPart, Socket server)
         {
             InitializeComponent();
-            this.nForm = nForm; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
+            this.idPartida = idPart; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
             this.server = server;
         }
 
@@ -32,18 +33,18 @@ namespace ProyectoSO
             if (e.KeyCode == Keys.Left)
             {
                 label_Envio.Text = "toco la izquierda";
-                mensaje = "35/" + idPartida;
+                mensaje = "35/" + idPartida + "/" + mapa + "/" + mapa;
                 
             }
             if (e.KeyCode == Keys.Right)
             {
                 label_Envio.Text = "toco la derecha";
-                mensaje = "37/" + idPartida;
+                mensaje = "37/" + idPartida + "/" + mapa;
             }
             if (e.KeyCode == Keys.Up)
             {
                 label_Envio.Text = "toco la arriba";
-                mensaje = "39/" + idPartida;
+                mensaje = "39/" + idPartida + "/" + mapa;
 
             }
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
@@ -58,19 +59,19 @@ namespace ProyectoSO
             if (e.KeyCode == Keys.Left)
             {
                 label_Envio.Text = "suelto la izquierda";
-                mensaje = "36/" + idPartida;
+                mensaje = "36/" + idPartida + "/" + mapa;
 
             }
             if (e.KeyCode == Keys.Right)
             {
                 label_Envio.Text = "suelto la derecha";
-                mensaje = "38/" + idPartida;
+                mensaje = "38/" + idPartida + "/" + mapa;
 
             }
             if (e.KeyCode == Keys.Up)
             {
                 label_Envio.Text = "suelto la arriba";
-                mensaje = "40/" + idPartida;
+                mensaje = "40/" + idPartida + "/" + mapa;
 
             }
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
@@ -102,7 +103,6 @@ namespace ProyectoSO
         }
         public void SueltaDerecha_otro()
         {
-            MessageBox.Show("Prueba teclas: Otro suelta la derecha: 118;");
             Invoke(new Action(() =>
             {
                 label_Recibo.Text = "Sueltan la derecha";

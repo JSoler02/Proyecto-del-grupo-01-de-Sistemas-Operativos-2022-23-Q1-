@@ -26,8 +26,6 @@ namespace ProyectoSO
         int idPartida;
         string nombre;
 
-        int x_bicho;
-        int y_bicho;
 
         string invitados;
         int NumInvitados = 0; // maximo puede ser 4
@@ -37,8 +35,19 @@ namespace ProyectoSO
 
         bool conectado;
 
-        // Lista generica de formularios (memoria) per saber a on enviare el missatge
+        // Lista generica de formularios (memoria) per saber donde enviare el mensaje
         List<SeleccionPartida> formularios1 = new List<SeleccionPartida>();
+        // listas de los mapas -->  igual que la lista de partidas del servidor[] tiene 10 max
+        //Templo[] form_templo_4Jug = new Templo[10];
+        //Volcan[] form_volcan_4Jug = new Volcan[10];
+        //Cueva_Maritima[] form_cueva_mar_4Jug = new Cueva_Maritima[10];
+        //prueba_Teclas[] form_prueba_tecl = new prueba_Teclas[10];
+        List<Templo> form_templo_4Jug = new List<Templo>();
+        List<Volcan> form_volcan_4Jug = new List<Volcan>();
+        List<Cueva_Maritima> form_cueva_mar_4Jug = new List<Cueva_Maritima>();
+        List<prueba_Teclas> form_prueba_tecl = new List<prueba_Teclas>();
+
+
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -87,7 +96,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8085;
+                puerto = 8075;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -133,13 +142,12 @@ namespace ProyectoSO
                 string mensajeLimpio = mensajeSucio.Split('\0')[0];
                 string[] trozos = mensajeLimpio.Split('/');
                 int codigo = Convert.ToInt32(trozos[0]);
-                MessageBox.Show(mensajeLimpio);
+                //MessageBox.Show(mensajeLimpio);
                 int numForm; // para saber a que formulario debo enviarle la respuesta
                 string mensaje;
-                if (codigo == 38)
-                {
-                    MessageBox.Show("Main: Otro suelta la derecha: 118;");
-                }
+
+                string mapa;
+               
                 switch (codigo)
                 {
                     case 1: // Login
@@ -243,7 +251,7 @@ namespace ProyectoSO
                         }));
                         break;
 
-                    case 9: // empieza la partida para todo el mundo
+                    case 9: // empieza la seleccion de personaje y partida para todo el mundo
                         // 9/idpartida/anfitrión
                         idPartida = Convert.ToInt32(trozos[1]);
                         if (trozos[2]==nombre)
@@ -280,19 +288,32 @@ namespace ProyectoSO
                         formularios1[idPartida].AtenderMensajeEleccionMapa(trozos[2]);
                         break;
 
-                    case 13: // LO USAMOS?
-                        // Usuario está listo para empezar la partida
-                        // --> 13/--------/idPartida
-                        numForm = Convert.ToInt32(trozos[1]);
+                    case 13: 
+
                         break;
 
                     case 14:
                         // Empieza la partida: El anfitrión le ha dado a empezar: se abrirá otro formulario
                         // --> 14/idPartida
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].AnfitrionEmpiezaPartida();
+                        //formularios1[idPartida].AnfitrionEmpiezaPartida();
+                        string p = "PruebaTeclas";// formularios1[idPartida].GetMapa();
+                        switch (p)
+                        {
+                            case "Templo":
+                                ThreadStart ts_mapa_templo4 = delegate { PonerEnMarchaForm_Templo4Jug(); };
+                                t = new Thread(ts_mapa_templo4);
+                                t.Start();
+                                break;
+                            case "PruebaTeclas":
+                                ThreadStart ts_mapa_pt = delegate { PonerEnMarchaForm_PruebaTecla(); };
+                                t = new Thread(ts_mapa_pt);
+                                t.Start();
+                                break;
+                        }
+ 
                         break;
-
+                    //  *   *   *   *   *   *   *   *   *   *   *   *   *  INICIO:  Movimientos de los personajes   *   *   *   *   *   *   *   *   *   
                     case 15:
                         // 15/idPartida/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
@@ -348,49 +369,120 @@ namespace ProyectoSO
                         idPartida = Convert.ToInt32(trozos[1]);
                         formularios1[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[2]));
                         break;
+                    //  *   *   *   *   *   *   *   *   *   *   *   *   *   FIN: Movimientos de los personajes   *   *   *   *   *   *   *   *  *   *
+                    //  *   *   *   *   *   *   *   *   *   *   *   *   *  INICIO:  Movimientos de los personajes   *   *   *   *   *   *   *   *   *   
+
                     case 35:
+                        // 35/idpartida/mapa
                         idPartida = Convert.ToInt32(trozos[1]);
-                        Invoke(new Action(() =>
+                        mapa = trozos[2];
+                        
+                        switch (mapa)
                         {
-                            formularios1[idPartida].TocaIzquierda_otro();
-                        }));
+                            case "Templo":
+
+                                break;
+                            case "PruebaTeclas":
+                                Invoke(new Action(() =>
+                                {
+                                    form_prueba_tecl[idPartida].TocaIzquierda_otro();
+                                }));
+                                break;
+                        }
                         break;
+        
                     case 36:
+                        // 36/idpartida/mapa
                         idPartida = Convert.ToInt32(trozos[1]);
-                        Invoke(new Action(() =>
+                        mapa = trozos[2];
+
+                        switch (mapa)
                         {
-                            formularios1[idPartida].SueltaIzquierda_otro();
-                        }));
+                            case "Templo":
+
+                                break;
+                            case "PruebaTeclas":
+                                Invoke(new Action(() =>
+                                {
+                                    form_prueba_tecl[idPartida].SueltaIzquierda_otro();
+                                }));
+                                break;
+                        }
                         break;
                     case 37:
+                        // 37/idpartida/mapa
                         idPartida = Convert.ToInt32(trozos[1]);
-                        Invoke(new Action(() =>
+                        mapa = trozos[2];
+
+                        switch (mapa)
                         {
-                            formularios1[idPartida].TocaDerecha_otro();
-                        }));
+                            case "Templo":
+
+                                break;
+                            case "PruebaTeclas":
+                                Invoke(new Action(() =>
+                                {
+                                    form_prueba_tecl[idPartida].TocaDerecha_otro();
+                                }));
+                                break;
+                        }
                         break;
                     case 38:
-                        MessageBox.Show("Main: Otro suelta la derecha: 118;");
+                        // 38/idpartida/
                         idPartida = Convert.ToInt32(trozos[1]);
-                        Invoke(new Action(() =>
+                        mapa = trozos[2];
+
+                        switch (mapa)
                         {
-                            formularios1[idPartida].SueltaDerecha_otro();
-                        }));
+                            case "Templo":
+
+                                break;
+                            case "PruebaTeclas":
+                                Invoke(new Action(() =>
+                                {
+                                    form_prueba_tecl[idPartida].SueltaDerecha_otro();
+                                }));
+                                break;
+                        }
                         break;
                     case 39:
+                        // 39/idpartida/
                         idPartida = Convert.ToInt32(trozos[1]);
-                        Invoke(new Action(() =>
+                        mapa = trozos[2];
+
+                        switch (mapa)
                         {
-                            formularios1[idPartida].TocaArriba_otro();
-                        }));
+                            case "Templo":
+
+                                break;
+                            case "PruebaTeclas":
+                                Invoke(new Action(() =>
+                                {
+                                    form_prueba_tecl[idPartida].TocaArriba_otro();
+                                }));
+                                break;
+                        }
                         break;
                     case 40:
+                        // 40/idpartida/
                         idPartida = Convert.ToInt32(trozos[1]);
-                        Invoke(new Action(() =>
+                        mapa = trozos[2];
+
+                        switch (mapa)
                         {
-                            formularios1[idPartida].SueltaArriba_otro();
-                        }));
+                            case "Templo":
+
+                                break;
+                            case "PruebaTeclas":
+                                Invoke(new Action(() =>
+                                {
+                                    form_prueba_tecl[idPartida].SueltaArriba_otro();
+                                }));
+                                break;
+                        }
                         break;
+                        //  *   *   *   *   *   *   *   *   *   *   *   *   *   FIN: Movimientos de los personajes   *   *   *   *   *   *   *   *  *   *
+
                 }
             }
         }
@@ -558,6 +650,8 @@ namespace ProyectoSO
                 }
             }
         }
+
+        // * * * * Otros Formularios * * * *
         private void PonerEnMarchaFormulario1()
         { 
             SeleccionPartida f = new SeleccionPartida(idPartida,server);
@@ -569,6 +663,45 @@ namespace ProyectoSO
             }
             f.ShowDialog();
         }
+        private void PonerEnMarchaForm_Templo4Jug()
+        {
+            Templo t = new Templo(idPartida, server);
+            t.MiPersonaje(formularios1[idPartida].DameMiPersonajeQueHeEscogido());
+            switch (formularios1[idPartida].DameMiPersonajeQueHeEscogido())
+            {
+                case 1:
+                    t.SetJug1Nombre(nombre);
+                    break;
+                case 2:
+                    t.SetJug2Nombre(nombre);
+                    break;
+                case 3:
+                    t.SetJug3Nombre(nombre);
+                    break;
+                case 4:
+                    t.SetJug4Nombre(nombre);
+                    break;
+            }   // pasamos nombre
+            form_templo_4Jug.Add(t);
+            t.ShowDialog();
+        }
+        private void PonerEnMarchaForm_PruebaTecla()
+        {
+
+            prueba_Teclas pt = new prueba_Teclas(idPartida, server);
+            form_prueba_tecl.Add(pt);
+            // para ir a la par con el resto de listas de mapas, añadimos mapas vacíos a esos mapas para que ocupen las columnas    ----------------------------------- ?????????????????????????????????????????
+            //Templo t = new Templo(idPartida, server);
+            //form_templo_4Jug.Add(t);
+            //Volcan v = new Volcan(idPartida, server);
+            //form_volcan_4Jug.Add(v);
+            //Cueva_Maritima cm = new Cueva_Maritima(idPartida, server);
+            //form_cueva_mar_4Jug.Add(cm);
+
+            pt.ShowDialog();
+        }
+        // * * * * Otros Formularios * * * *
+
         private void EnviarJugadoresPartida(string guests)
         {
             MessageBox.Show("Vamos a invitar a los otros jugadores.");

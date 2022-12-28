@@ -137,6 +137,8 @@ namespace ProyectoSO
         { this.posicion_X = x; }
         public void SetY(int y)
         { this.posicion_Y = y; }
+        public void SetNombre(string nombre)
+        { this.username = nombre; }
         // Movimiento
         public void MoverDerecha(int velocidad)
         { this.posicion_X = posicion_X + velocidad; }

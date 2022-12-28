@@ -701,6 +701,23 @@ namespace ProyectoSO
                 chatGrid.ClearSelection();
             }));
         }
+
+        // */*/*/*/*/*/*/*/*/*/*/*/*/ Funciones para pasar información a los mapas
+        public int DameMiPersonajeQueHeEscogido()
+        {
+            int found = 0;
+            if (J1seleccionado == 1)
+            { found = 1; }
+            else if (J2seleccionado == 1)
+            { found = 2; }
+            else if (J3seleccionado == 1)
+            { found = 3; }
+            else if (J4seleccionado == 1)
+            { found = 4; }
+            return found;
+        }
+        public string GetMapa()
+        { return this.mapa; }
         
     }
 }

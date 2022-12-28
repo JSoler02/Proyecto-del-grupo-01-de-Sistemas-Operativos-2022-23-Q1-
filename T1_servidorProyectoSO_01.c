@@ -58,7 +58,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8085;
+		puerto = 8075;
 	}
 	else 
 	{
@@ -949,8 +949,11 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
+			char map[30];
+			p = strtok(NULL, "/");
+			strcpy(map, p);
 			
-			sprintf(notificacion, "35/%d", idpartida);
+			sprintf(notificacion, "35/%d/%s", idpartida, map);
 			
 			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 			{
@@ -963,8 +966,11 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
+			char map[30];
+			p = strtok(NULL, "/");
+			strcpy(map, p);
 			
-			sprintf(notificacion, "36/%d", idpartida);
+			sprintf(notificacion, "36/%d/%s", idpartida, map);
 			
 			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 			{
@@ -977,8 +983,11 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
+			char map[30];
+			p = strtok(NULL, "/");
+			strcpy(map, p);
 			
-			sprintf(notificacion, "37/%d", idpartida);
+			sprintf(notificacion, "37/%d/%s", idpartida, map);
 			
 			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 			{
@@ -991,9 +1000,11 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
+			char map[30];
+			p = strtok(NULL, "/");
+			strcpy(map, p);
 			
-			sprintf(notificacion, "38/%d", idpartida);
-			
+			sprintf(notificacion, "38/%d/%s", idpartida, map);
 			
 			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 			{
@@ -1010,8 +1021,11 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
+			char map[30];
+			p = strtok(NULL, "/");
+			strcpy(map, p);
 			
-			sprintf(notificacion, "39/%d", idpartida);
+			sprintf(notificacion, "39/%d/%s", idpartida, map);
 			
 			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 			{
@@ -1024,9 +1038,11 @@ void *AtenderCliente (void *socket)
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
+			char map[30];
+			p = strtok(NULL, "/");
+			strcpy(map, p);
 			
-			sprintf(notificacion, "40/%d", idpartida);
-			
+			sprintf(notificacion, "40/%d/%s", idpartida, map);
 			
 			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 			{

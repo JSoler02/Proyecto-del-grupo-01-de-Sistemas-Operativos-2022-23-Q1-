@@ -46,6 +46,14 @@ namespace ProyectoSO
         int horizontalSpeed = 5;
         int verticalSpeed = 3;
 
+        public void SetJug1Nombre(string name)
+        { this.Jug1.SetNombre(name); }
+        public void SetJug2Nombre(string name)
+        { this.Jug2.SetNombre(name); }
+        public void SetJug3Nombre(string name)
+        { this.Jug3.SetNombre(name); }
+        public void SetJug4Nombre(string name)
+        { this.Jug4.SetNombre(name); }
         private void Templo_Load(object sender, EventArgs e)
         {
             RestartGame();
