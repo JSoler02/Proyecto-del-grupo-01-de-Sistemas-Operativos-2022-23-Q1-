@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProyectoSO
 {
@@ -36,10 +40,9 @@ namespace ProyectoSO
 
 
         // Constructor del Personaje a través del PictureBox del mapa
-        public Jugador(int num, string username, int pos_X, int pos_Y)
+        public Jugador(int num, int pos_X, int pos_Y)
         {
             this.numero = num;
-            this.username = username;
             UpdateNombrePersonaje(num);
             UpdateAnimaciones();
             this.posicion_X = pos_X;
@@ -73,7 +76,7 @@ namespace ProyectoSO
                 case 4:
                     this.personaje = "Cloudgirl";
                     this.ancho = 70;
-                    this.altura = 75;
+                    this.altura = 70;
                     break;
             }
         }
@@ -162,5 +165,6 @@ namespace ProyectoSO
                 velocidad = 10;
             }
         }
+
     }
 }

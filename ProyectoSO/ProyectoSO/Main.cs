@@ -42,8 +42,8 @@ namespace ProyectoSO
         //Volcan[] form_volcan_4Jug = new Volcan[10];
         //Cueva_Maritima[] form_cueva_mar_4Jug = new Cueva_Maritima[10];
         //prueba_Teclas[] form_prueba_tecl = new prueba_Teclas[10];
-        List<Templo> form_templo_4Jug = new List<Templo>();
-        List<Volcan> form_volcan_4Jug = new List<Volcan>();
+        List<Templo4> form_templo_4Jug = new List<Templo4>();
+        List<Volcan4> form_volcan_4Jug = new List<Volcan4>();
         List<Cueva_Maritima> form_cueva_mar_4Jug = new List<Cueva_Maritima>();
         List<prueba_Teclas> form_prueba_tecl = new List<prueba_Teclas>();
 
@@ -96,7 +96,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8075;
+                puerto = 8090;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -297,12 +297,17 @@ namespace ProyectoSO
                         // --> 14/idPartida
                         idPartida = Convert.ToInt32(trozos[1]);
                         //formularios1[idPartida].AnfitrionEmpiezaPartida();
-                        string p = "PruebaTeclas";// formularios1[idPartida].GetMapa();
+                        string p = formularios1[idPartida].GetMapa();//"PruebaTeclas";// 
                         switch (p)
                         {
                             case "Templo":
                                 ThreadStart ts_mapa_templo4 = delegate { PonerEnMarchaForm_Templo4Jug(); };
                                 t = new Thread(ts_mapa_templo4);
+                                t.Start();
+                                break;
+                            case "Volcan":
+                                ThreadStart ts_mapa_volcan4 = delegate { PonerEnMarchaForm_Volcan4Jug(); };
+                                t = new Thread(ts_mapa_volcan4);
                                 t.Start();
                                 break;
                             case "PruebaTeclas":
@@ -311,37 +316,118 @@ namespace ProyectoSO
                                 t.Start();
                                 break;
                         }
+                        Invoke(new Action(() =>
+                        { formularios1[idPartida].CerrarSeleccionPartida();}));
  
                         break;
                     //  *   *   *   *   *   *   *   *   *   *   *   *   *  INICIO:  Movimientos de los personajes   *   *   *   *   *   *   *   *   *   
                     case 15:
-                        // 15/idPartida/PersonajeOtro
+                        // 15/idPartida/mapa/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[2]));
+                        mapa = trozos[2];
+
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                        }
                         break;
 
                     case 16:
-                        // 16/idPartida/PersonajeOtro
+                        // 16/idPartida/mapa/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[2]));
+                        mapa = trozos[2];
+
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                        }
                         break;
 
                     case 17:
-                        // 17/idPartida/PersonajeOtro
+                        // 17/idPartida/mapa/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[2]));
+                        mapa = trozos[2];
+
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                        }
                         break;
 
                     case 18:
-                        // 18/idPartida/PersonajeOtro
+                        // 18/idPartida/mapa/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[2]));
+                        mapa = trozos[2];
+
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                        }
                         break;
 
                     case 19:
-                        // 19/idPartida/PersonajeOtro
+                        // 19/idPartida/mapa/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[2]));
+                        mapa = trozos[2];
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() => 
+                                { 
+                                    form_templo_4Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3])); 
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                        }
                         break;
 
                     case 20:
@@ -353,21 +439,68 @@ namespace ProyectoSO
                         break;
 
                     case 21:
-                        // 21/idPartida/PersonajeOtro
+                        // 21/idPartida/mapa/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[2]));
-                        break;
+                        mapa = trozos[2];
 
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                        }
+                        break;
                     case 22:
-                        // 22/idPartida/PersonajeOtro
+                        // 22/idPartida/mapa/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[2]));
+                        mapa = trozos[2];
+
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                        }
                         break;
 
                     case 23:
-                        // 23/idPartida/PersonajeOtro
+                        // 23/idPartida/mapa/PersonajeOtro
                         idPartida = Convert.ToInt32(trozos[1]);
-                        formularios1[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[2]));
+                        mapa = trozos[2];
+
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                        }
                         break;
                     //  *   *   *   *   *   *   *   *   *   *   *   *   *   FIN: Movimientos de los personajes   *   *   *   *   *   *   *   *  *   *
                     //  *   *   *   *   *   *   *   *   *   *   *   *   *  INICIO:  Movimientos de los personajes   *   *   *   *   *   *   *   *   *   
@@ -481,8 +614,29 @@ namespace ProyectoSO
                                 break;
                         }
                         break;
-                        //  *   *   *   *   *   *   *   *   *   *   *   *   *   FIN: Movimientos de los personajes   *   *   *   *   *   *   *   *  *   *
-
+                    //  *   *   *   *   *   *   *   *   *   *   *   *   *   FIN: Movimientos de los personajes   *   *   *   *   *   *   *   *  *   *
+                    case 50:
+                        //"50/%d/%s/%s/%s", idpartida,map, resultado, letra_result);
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        mapa = trozos[2];
+                        string resultado = trozos[3];
+                        string letra_res = trozos[4];
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug[idPartida].FinDePartida(resultado, letra_res);
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug[idPartida].FinDePartida(resultado, letra_res);
+                                }));
+                                break;
+                        }
+                        break;
                 }
             }
         }
@@ -651,7 +805,7 @@ namespace ProyectoSO
             }
         }
 
-        // * * * * Otros Formularios * * * *
+        // * * * * Inicio: Otros Formularios * * * *
         private void PonerEnMarchaFormulario1()
         { 
             SeleccionPartida f = new SeleccionPartida(idPartida,server);
@@ -665,7 +819,7 @@ namespace ProyectoSO
         }
         private void PonerEnMarchaForm_Templo4Jug()
         {
-            Templo t = new Templo(idPartida, server);
+            Templo4 t = new Templo4(idPartida, server);
             t.MiPersonaje(formularios1[idPartida].DameMiPersonajeQueHeEscogido());
             switch (formularios1[idPartida].DameMiPersonajeQueHeEscogido())
             {
@@ -685,6 +839,28 @@ namespace ProyectoSO
             form_templo_4Jug.Add(t);
             t.ShowDialog();
         }
+        private void PonerEnMarchaForm_Volcan4Jug()
+        {
+            Volcan4 t = new Volcan4(idPartida, server);
+            t.MiPersonaje(formularios1[idPartida].DameMiPersonajeQueHeEscogido());
+            switch (formularios1[idPartida].DameMiPersonajeQueHeEscogido())
+            {
+                case 1:
+                    t.SetJug1Nombre(nombre);
+                    break;
+                case 2:
+                    t.SetJug2Nombre(nombre);
+                    break;
+                case 3:
+                    t.SetJug3Nombre(nombre);
+                    break;
+                case 4:
+                    t.SetJug4Nombre(nombre);
+                    break;
+            }   // pasamos nombre
+            form_volcan_4Jug.Add(t);
+            t.ShowDialog();
+        }
         private void PonerEnMarchaForm_PruebaTecla()
         {
 
@@ -700,7 +876,7 @@ namespace ProyectoSO
 
             pt.ShowDialog();
         }
-        // * * * * Otros Formularios * * * *
+        // * * * * Fin: Otros Formularios * * * *
 
         private void EnviarJugadoresPartida(string guests)
         {

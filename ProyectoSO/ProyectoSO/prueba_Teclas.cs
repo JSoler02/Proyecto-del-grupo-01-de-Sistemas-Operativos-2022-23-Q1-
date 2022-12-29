@@ -33,7 +33,7 @@ namespace ProyectoSO
             if (e.KeyCode == Keys.Left)
             {
                 label_Envio.Text = "toco la izquierda";
-                mensaje = "35/" + idPartida + "/" + mapa + "/" + mapa;
+                mensaje = "35/" + idPartida + "/" + mapa;
                 
             }
             if (e.KeyCode == Keys.Right)

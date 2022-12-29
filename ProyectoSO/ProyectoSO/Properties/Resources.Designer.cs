@@ -63,6 +63,16 @@ namespace ProyectoSO.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap diamante_cloud {
+            get {
+                object obj = ResourceManager.GetObject("diamante_cloud", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap diamante_fire {
             get {
                 object obj = ResourceManager.GetObject("diamante_fire", resourceCulture);

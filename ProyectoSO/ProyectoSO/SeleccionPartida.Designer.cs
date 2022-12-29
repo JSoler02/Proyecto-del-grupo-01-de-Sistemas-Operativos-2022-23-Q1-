@@ -131,7 +131,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(171, 382);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 16);
+            this.label5.Size = new System.Drawing.Size(134, 17);
             this.label5.TabIndex = 6;
             this.label5.Text = "Mapa seleccionado:";
             // 
@@ -141,8 +141,8 @@
             this.comboBox_Mapa.Items.AddRange(new object[] {
             "Templo",
             "Templo Helado",
-            "Volcán",
-            "Cueva Marítima"});
+            "Volcan",
+            "Cueva Maritima"});
             this.comboBox_Mapa.Location = new System.Drawing.Point(8, 382);
             this.comboBox_Mapa.Name = "comboBox_Mapa";
             this.comboBox_Mapa.Size = new System.Drawing.Size(155, 24);
@@ -320,7 +320,7 @@
             this.numForm.AutoSize = true;
             this.numForm.Location = new System.Drawing.Point(951, 524);
             this.numForm.Name = "numForm";
-            this.numForm.Size = new System.Drawing.Size(0, 16);
+            this.numForm.Size = new System.Drawing.Size(0, 17);
             this.numForm.TabIndex = 34;
             // 
             // SeleccionPartida

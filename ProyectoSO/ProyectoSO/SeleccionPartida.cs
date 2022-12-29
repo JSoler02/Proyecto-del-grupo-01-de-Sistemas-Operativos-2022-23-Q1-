@@ -18,6 +18,8 @@ namespace ProyectoSO
         string username;
         int idPartida;
 
+        int numJugadoresPartida;
+
         int nForm; // numero de formulario
         Socket server; // declaramos socket
 
@@ -31,12 +33,6 @@ namespace ProyectoSO
         bool anfitrion = false;
         string mapa;
 
-        Templo a;
-        Mapa2 b;
-        Volcan c;
-        Cueva_Maritima d;
-
-        prueba_Teclas formteclas;
         public SeleccionPartida(int nForm, Socket server)
         {
             InitializeComponent();
@@ -442,244 +438,7 @@ namespace ProyectoSO
                 MessageBox.Show("Escoge un mapa para la partida.");
             }
         }
-        public void AnfitrionEmpiezaPartida()
-        {
-            //Se abre el formulario con el mapa escogido:
-            // coger mapa, idPartida, seleccion de personajes...
-            switch (mapa)
-            {
-                case "Templo":
-                    formteclas = new prueba_Teclas(idPartida, server);
-                    formteclas.ShowDialog();
-                    //a = new Templo(idPartida, server);
-                    //int found = 0;
-                    //while (found == 0)
-                    //{
-                    //    if (J1seleccionado == 1)
-                    //    {
-                    //        found = 1;
-                    //    }
-                    //    if (J2seleccionado == 1)
-                    //    {
-                    //        found = 2;
-                    //    }
-                    //    if (J3seleccionado == 1)
-                    //    {
-                    //        found = 3;
-                    //    }
-                    //    if (J4seleccionado == 1)
-                    //    {
-                    //        found = 4;
-                    //    }
-                    //}
-                    //a.MiPersonaje(found);
-                    //Invoke(new Action(() =>
-                    //{
-                    //   this.Hide();
-                    //}));
-                    //a.ShowDialog();
-                    break;
-
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-
-        }
-
-        public void TocaDerecha_otro()
-        {
-            Invoke(new Action(() =>
-            {
-                formteclas.TocaDerecha_otro();
-            }));
-        }
-        public void TocaIzquierda_otro()
-        {
-            Invoke(new Action(() =>
-            {
-                formteclas.TocaIzquierda_otro();
-            }));
-        }
-        public void TocaArriba_otro()
-        {
-            Invoke(new Action(() =>
-            {
-                formteclas.TocaArriba_otro();
-            }));
-        }
-        public void SueltaDerecha_otro()
-        {
-            MessageBox.Show("Seleccion de partida: Otro suelta la derecha: 118;");
-            Invoke(new Action(() =>
-            {
-                formteclas.SueltaDerecha_otro();
-            }));
-        }
-        public void SueltaIzquierda_otro()
-        {
-            Invoke(new Action(() =>
-            {
-                formteclas.SueltaIzquierda_otro();
-            }));
-        }
-        public void SueltaArriba_otro()
-        {
-            Invoke(new Action(() =>
-            {
-                formteclas.SueltaArriba_otro();
-            }));
-        }
-        public void TeclaArribaSolaClicada_Otro(int otropersonaje)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.TeclaArribaSolaClicada_Otro(otropersonaje);
-                    break;
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-        }
-        public void TeclaArribaConIzquierdaClicada_Otro(int otropersonaje)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.TeclaArribaConIzquierdaClicada_Otro(otropersonaje);
-                    break;
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-        }
-        public void TeclaArribaConDerechaClicada_Otro(int otropersonaje)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.TeclaArribaConDerechaClicada_Otro(otropersonaje);
-                    break;
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-        }
-        public void TeclaArribaDejadaDeClicar_Otro(int otropersonaje)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.TeclaArribaDejadaDeClicar_Otro(otropersonaje);
-                    break;
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-        }
-        public void TeclaIzquierdaClicada_Otro(int otropersonaje)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.TeclaIzquierdaClicada_Otro(otropersonaje);
-                    break;
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-        }
-        public void TeclaIzquierdaDejadaDeClicar_Otro(int otropersonaje)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.TeclaIzquierdaDejadaDeClicar_Otro(otropersonaje);
-                    break;
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-        }
-        public void TeclaDerechaClicada_Otro(int otropersonaje)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.TeclaDerechaClicada_Otro(otropersonaje);
-                    break;
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-        }
-        public void TeclaDerechaDejadaDeClicar_Otro(int otropersonaje)
-        {
-            switch (mapa)
-            {
-                case "Templo":
-                    a.TeclaDerechaDejadaDeClicar_Otro(otropersonaje);
-                    break;
-                    //case "Templo Helado":
-                    //    b = new Mapa2(idPartida, server);
-                    //    break;
-                    //case "Volcan":
-                    //    c = new Volcan(idPartida, server);
-                    //    break;
-                    //case "Cueva Maritima":
-                    //    d = new Cueva_Maritima(idPartida, server);
-                    //    break;
-            }
-        }
+        
         
         // Chat
         private void EnviarChatBut_Click(object sender, EventArgs e)
@@ -718,6 +477,12 @@ namespace ProyectoSO
         }
         public string GetMapa()
         { return this.mapa; }
-        
+        public void CerrarSeleccionPartida()
+        {
+            Invoke(new Action(() =>
+            {
+                this.Close();
+            }));
+        }
     }
 }
