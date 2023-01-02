@@ -29,6 +29,7 @@ namespace ProyectoSO
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.desconnectButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.NewAccountButton = new System.Windows.Forms.Button();
@@ -46,6 +47,8 @@ namespace ProyectoSO
             this.CrearPartidaBut = new System.Windows.Forms.Button();
             this.mapaTbx = new System.Windows.Forms.TextBox();
             this.fechaTbox = new System.Windows.Forms.TextBox();
+            this.timer_personaj = new System.Windows.Forms.Timer(this.components);
+            this.timer_saludo = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
             this.SuspendLayout();
@@ -105,7 +108,7 @@ namespace ProyectoSO
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 137);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Usuario:";
             // 
@@ -114,7 +117,7 @@ namespace ProyectoSO
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 172);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 16);
+            this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "Contraseña:";
             // 
@@ -211,6 +214,15 @@ namespace ProyectoSO
             this.fechaTbox.Size = new System.Drawing.Size(142, 22);
             this.fechaTbox.TabIndex = 24;
             // 
+            // timer_personaj
+            // 
+            this.timer_personaj.Interval = 1000;
+            this.timer_personaj.Tick += new System.EventHandler(this.timer_personaj_Tick);
+            // 
+            // timer_saludo
+            // 
+            this.timer_saludo.Tick += new System.EventHandler(this.timer_saludo_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -257,6 +269,12 @@ namespace ProyectoSO
         private System.Windows.Forms.Button CrearPartidaBut;
         private System.Windows.Forms.TextBox mapaTbx;
         private System.Windows.Forms.TextBox fechaTbox;
+        private System.Windows.Forms.Timer timer_personaj;
+        private System.Windows.Forms.PictureBox J1;
+        private System.Windows.Forms.PictureBox J2;
+        private System.Windows.Forms.PictureBox J3;
+        private System.Windows.Forms.PictureBox J4;
+        private System.Windows.Forms.Timer timer_saludo;
     }
 }
 

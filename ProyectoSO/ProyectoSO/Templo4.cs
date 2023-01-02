@@ -2224,7 +2224,7 @@ namespace ProyectoSO
                 {
                     string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado;
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    //server.Send(msg);
+                    server.Send(msg);
                     label_mensaje.Text = mensaje;
                 }
             }
@@ -2233,7 +2233,7 @@ namespace ProyectoSO
                 // Envía el mensaje el personaje que controla al jugador sin vidas
                 string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                //server.Send(msg);
+                server.Send(msg);
                 label_mensaje.Text = mensaje;
             }
         }
@@ -2396,35 +2396,37 @@ namespace ProyectoSO
             else
             { vidas_fin4.Image = Image.FromFile("vidas_0.png"); }
 
-            // Add the Panel control to the form.
-            this.Controls.Add(panelResultado);
-            // Add the Label controls to the Panel.
-            panelResultado.Controls.Add(labelResultado);
-            panelResultado.Controls.Add(label_letraResultado);
+            Invoke(new Action(() =>
+            {
+                // Add the Panel control to the form.
+                this.Controls.Add(panelResultado);
+                // Add the Label controls to the Panel.
+                panelResultado.Controls.Add(labelResultado);
+                panelResultado.Controls.Add(label_letraResultado);
 
-            panelResultado.Controls.Add(labelNombreJ1);
-            panelResultado.Controls.Add(labelNombreJ2);
-            panelResultado.Controls.Add(labelNombreJ3);
-            panelResultado.Controls.Add(labelNombreJ4);
-            panelResultado.Controls.Add(labelPuntosJ1);
-            panelResultado.Controls.Add(labelPuntosJ2);
-            panelResultado.Controls.Add(labelPuntosJ3);
-            panelResultado.Controls.Add(labelPuntosJ4);
-            panelResultado.Controls.Add(labelTiempo);
+                panelResultado.Controls.Add(labelNombreJ1);
+                panelResultado.Controls.Add(labelNombreJ2);
+                panelResultado.Controls.Add(labelNombreJ3);
+                panelResultado.Controls.Add(labelNombreJ4);
+                panelResultado.Controls.Add(labelPuntosJ1);
+                panelResultado.Controls.Add(labelPuntosJ2);
+                panelResultado.Controls.Add(labelPuntosJ3);
+                panelResultado.Controls.Add(labelPuntosJ4);
+                panelResultado.Controls.Add(labelTiempo);
 
-            panelResultado.Controls.Add(botonCerrarPartida);
+                panelResultado.Controls.Add(botonCerrarPartida);
 
-            panelResultado.Controls.Add(p1);
-            panelResultado.Controls.Add(p2);
-            panelResultado.Controls.Add(p3);
-            panelResultado.Controls.Add(p4);
-            panelResultado.Controls.Add(vidas_fin1);
-            panelResultado.Controls.Add(vidas_fin2);
-            panelResultado.Controls.Add(vidas_fin3);
-            panelResultado.Controls.Add(vidas_fin4);
+                panelResultado.Controls.Add(p1);
+                panelResultado.Controls.Add(p2);
+                panelResultado.Controls.Add(p3);
+                panelResultado.Controls.Add(p4);
+                panelResultado.Controls.Add(vidas_fin1);
+                panelResultado.Controls.Add(vidas_fin2);
+                panelResultado.Controls.Add(vidas_fin3);
+                panelResultado.Controls.Add(vidas_fin4);
 
-            panelResultado.BringToFront();
-
+                panelResultado.BringToFront();
+            }));
         }
         // función del click del botón de finalizar partida 
         void botonCerrarPartida_Click(object sender, EventArgs e)

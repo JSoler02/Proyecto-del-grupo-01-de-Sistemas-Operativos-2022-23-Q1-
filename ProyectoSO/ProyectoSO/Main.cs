@@ -47,10 +47,54 @@ namespace ProyectoSO
         List<Cueva_Maritima> form_cueva_mar_4Jug = new List<Cueva_Maritima>();
         List<prueba_Teclas> form_prueba_tecl = new List<prueba_Teclas>();
 
-
+        // Adornos
+        PictureBox Jug1 = new PictureBox();
+        PictureBox Jug2 = new PictureBox();
+        PictureBox Jug3 = new PictureBox();
+        PictureBox Jug4 = new PictureBox();
+        Random rnd = new Random();
+        int dice;
+        Panel panelTituloJuego = new Panel();
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // Proceso del título del juego       --> TheELEMENTS
+            {    // Creamos controles 
+                Label labelResultado = new Label();
+                Label labelcomentario = new Label();
+
+
+                // Initialize the Panel control.  
+                panelTituloJuego.Size = this.Size;
+                panelTituloJuego.Location = new Point(0, 0);
+                panelTituloJuego.BackColor = Color.Turquoise;
+
+                // Initialize the Label controls.
+                labelResultado.Text = "The ELEMENTS";
+                labelResultado.Font = new Font("Arial Black", 35, FontStyle.Bold);
+                labelResultado.AutoSize = false;
+                labelResultado.TextAlign = ContentAlignment.MiddleCenter;
+                labelResultado.Width = panelTituloJuego.Width;
+                labelResultado.Height = 100;
+                labelResultado.Location = new Point(0, 30);
+
+                labelcomentario.Text = "Haz click para entrar.";
+                labelcomentario.AutoSize = true;
+                labelcomentario.Font = new Font("Arial", 13, FontStyle.Bold);
+                labelcomentario.TextAlign = ContentAlignment.MiddleCenter;
+                labelcomentario.Location = new Point(panelTituloJuego.Width /4 - labelcomentario.Width/2 , this.Width-100);
+
+                this.Controls.Add(panelTituloJuego);
+                panelTituloJuego.BringToFront();
+
+                panelTituloJuego.Controls.Add(labelResultado);
+                panelTituloJuego.Controls.Add(labelcomentario);
+                labelcomentario.BringToFront();
+
+                panelTituloJuego.Click += panelTituloJuego_Click;   //ponemos el evento al boton que hemos creado
+
+            }
+
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
@@ -68,8 +112,50 @@ namespace ProyectoSO
             CrearPartidaBut.Visible = false;
             fechaTbox.Visible = false;
             mapaTbx.Visible = false;
-
             conectado = false;
+
+            InicioPersonajesImagenes();
+
+        }
+        void panelTituloJuego_Click(object sender, EventArgs e)
+        {
+            this.Controls.Remove(panelTituloJuego);
+        }
+        private void InicioPersonajesImagenes ()
+        {
+            //string corriendo_der = "_corriendo_der.gif
+            Jug1.Image = Image.FromFile("Fireboy.gif"); 
+            Jug1.BackColor = Color.Transparent;
+            Jug1.SizeMode = PictureBoxSizeMode.Zoom;
+            Jug1.Width = 65;
+            Jug1.Height = 75;
+            Jug1.Location = new Point(250, this.ClientSize.Height - Jug1.Height);
+            this.Controls.Add(Jug1);
+
+            Jug2.Image = Image.FromFile("Watergirl.gif");
+            Jug2.BackColor = Color.Transparent;
+            Jug2.SizeMode = PictureBoxSizeMode.Zoom;
+            Jug2.Width = 70;
+            Jug2.Height = 85;
+            Jug2.Location = new Point(Jug1.Left - Jug2.Width - 10 , this.ClientSize.Height - Jug2.Height);
+            this.Controls.Add(Jug2);
+
+            Jug3.Image = Image.FromFile("Rockboy.gif");
+            Jug3.BackColor = Color.Transparent;
+            Jug3.SizeMode = PictureBoxSizeMode.Zoom;
+            Jug3.Width = 60;
+            Jug3.Height = 75;
+            Jug3.Location = new Point(Jug2.Left - Jug3.Width - 10, this.ClientSize.Height - Jug3.Height);
+            this.Controls.Add(Jug3);
+
+            Jug4.Image = Image.FromFile("Cloudgirl.gif");
+            Jug4.BackColor = Color.Transparent;
+            Jug4.SizeMode = PictureBoxSizeMode.Zoom;
+            Jug4.Width = 70;
+            Jug4.Height = 70;
+            Jug4.Location = new Point(Jug3.Left - Jug4.Width - 10, this.ClientSize.Height - Jug4.Height);
+            this.Controls.Add(Jug4);
+
         }
         public Main()
         {
@@ -157,18 +243,18 @@ namespace ProyectoSO
                         {
                             Invoke(new Action(() =>
                             {
-                                label3.Visible = true;
-                                lbl_lista_con.Visible = false;
-                                PuntMax_But.Visible = true;
-                                PartidasMapa_But.Visible = true;
-                                PartidasDia_But.Visible = true;
-                                desconnectButton.Visible = true;
-                                panel1.Visible = false;
-                                GridConectados.Visible = true;
-                                CrearPartidaBut.Visible = true;
-                                fechaTbox.Visible = true;
-                                mapaTbx.Visible = true;
-                                this.BackColor = Color.Green;
+                                dice = rnd.Next(1, 5); //generates a random in number from 1 to 4
+                                timer_saludo.Interval = 2000; //3segundos para el saludo
+                                timer_saludo.Start();
+                                if (dice == 1)
+                                { Jug1.Image = Image.FromFile("Fireboy_saludando.gif");}
+                                else if (dice == 2)
+                                { Jug2.Image = Image.FromFile("Watergirl_saludando.gif"); }
+                                else if (dice == 3)
+                                { Jug3.Image = Image.FromFile("Rockboy_saludando.gif"); }
+                                else
+                                { Jug4.Image = Image.FromFile("Cloudgirl_saludando.gif"); }
+
                             }));
                         }
                         break;
@@ -244,22 +330,21 @@ namespace ProyectoSO
                         {
                             MessageBox.Show(nombre_acepta + " no ha aceptado tu invitación a partida");
                         }
-
                         Invoke(new Action(() =>
                         {
-                            GridConectados.DefaultCellStyle.BackColor = Color.White;
+                            GridConectados.BackgroundColor = Color.White;
                         }));
                         break;
 
                     case 9: // empieza la seleccion de personaje y partida para todo el mundo
-                        // 9/idpartida/anfitrión
+                        // 9/idpartida/anfitrión/numJugadores
                         idPartida = Convert.ToInt32(trozos[1]);
                         if (trozos[2]==nombre)
                         { soyanfitrion = true; }
                         else
                         { soyanfitrion = false; }
                         MessageBox.Show("Todo el mundo ha aceptado la invitación.");
-                        ThreadStart ts = delegate { PonerEnMarchaFormulario1(); }; // creo thread que executa la funcio PonerEnMarchaFormulario
+                        ThreadStart ts = delegate { PonerEnMarchaFormulario1(Convert.ToInt32(trozos[3])); }; // creo thread que executa la funcio PonerEnMarchaFormulario
                         Thread t = new Thread(ts);
                         t.Start();
 
@@ -652,10 +737,13 @@ namespace ProyectoSO
             GridConectados.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;
-
+            mapaTbx.Visible = false;
+            fechaTbox.Visible = false;
         
             CrearPartidaBut.Visible = false;
             panel1.Visible = true;
+
+            InicioPersonajesImagenes();
 
             string mensaje = "0/" + Convert.ToString(idPartida);
 
@@ -665,12 +753,12 @@ namespace ProyectoSO
             // Nos desconectamos
             atender.Abort(); // cerramos thread
 
-            this.BackColor = Color.Gray;
+            this.BackColor= Color.LightGray;
             server.Shutdown(SocketShutdown.Both);
             server.Close();
 
             NumInvitados = 0;
-
+            conectado = false;
             
         }
         private void PuntMax_But_Click(object sender, EventArgs e)
@@ -806,7 +894,7 @@ namespace ProyectoSO
         }
 
         // * * * * Inicio: Otros Formularios * * * *
-        private void PonerEnMarchaFormulario1()
+        private void PonerEnMarchaFormulario1(int numJugadores)
         { 
             SeleccionPartida f = new SeleccionPartida(idPartida,server);
             formularios1.Add(f);
@@ -815,27 +903,34 @@ namespace ProyectoSO
             {
                 f.SetAnfitrion();
             }
+            f.SetNumJugadores(numJugadores);
             f.ShowDialog();
         }
         private void PonerEnMarchaForm_Templo4Jug()
         {
             Templo4 t = new Templo4(idPartida, server);
             t.MiPersonaje(formularios1[idPartida].DameMiPersonajeQueHeEscogido());
-            switch (formularios1[idPartida].DameMiPersonajeQueHeEscogido())
-            {
-                case 1:
-                    t.SetJug1Nombre(nombre);
-                    break;
-                case 2:
-                    t.SetJug2Nombre(nombre);
-                    break;
-                case 3:
-                    t.SetJug3Nombre(nombre);
-                    break;
-                case 4:
-                    t.SetJug4Nombre(nombre);
-                    break;
-            }   // pasamos nombre
+            // pasamos nombre
+            t.SetJug1Nombre(formularios1[idPartida].DameNombreJug1());
+            t.SetJug2Nombre(formularios1[idPartida].DameNombreJug2());
+            t.SetJug3Nombre(formularios1[idPartida].DameNombreJug3());
+            t.SetJug4Nombre(formularios1[idPartida].DameNombreJug4());
+
+            //switch (formularios1[idPartida].DameMiPersonajeQueHeEscogido())
+            //{
+            //    case 1:
+            //        t.SetJug1Nombre(nombre);
+            //        break;
+            //    case 2:
+            //        t.SetJug2Nombre(nombre);
+            //        break;
+            //    case 3:
+            //        t.SetJug3Nombre(nombre);
+            //        break;
+            //    case 4:
+            //        t.SetJug4Nombre(nombre);
+            //        break;
+            //}   
             form_templo_4Jug.Add(t);
             t.ShowDialog();
         }
@@ -911,52 +1006,55 @@ namespace ProyectoSO
                 // Nos desconectamos
                 atender.Abort(); // cerramos thread
 
-                this.BackColor = Color.Gray;
+                this.BackColor = Color.LightGray;
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
             }
             conectado = false;
         }
 
+        private void timer_personaj_Tick(object sender, EventArgs e)
+        {
+            Jug1.Left = Jug1.Left + 7;
+            Jug2.Left = Jug2.Left + 7;
+            Jug3.Left = Jug3.Left + 7;
+            Jug4.Left = Jug4.Left + 7;
 
-        // SELECCION
+            if (Jug4.Left > this.ClientSize.Width)
+            {
+                label3.Visible = true;
+                lbl_lista_con.Visible = false;
+                PuntMax_But.Visible = true;
+                PartidasMapa_But.Visible = true;
+                PartidasDia_But.Visible = true;
+                desconnectButton.Visible = true;
+                panel1.Visible = false;
+                GridConectados.Visible = true;
+                CrearPartidaBut.Visible = true;
+                fechaTbox.Visible = true;
+                mapaTbx.Visible = true;
+                this.BackColor = Color.Green;
+                this.Controls.Remove(Jug1);
+                this.Controls.Remove(Jug2);
+                this.Controls.Remove(Jug3);
+                this.Controls.Remove(Jug4);
 
+                timer_personaj.Stop();
+            }
 
-        // MAPES
+        }
 
-        //private void AcabarPartida_But_Click(object sender, EventArgs e)
-        //{
-        //    string mensaje = "10/" + Convert.ToString(idPartida);
-        //    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-        //    server.Send(msg);
-        //}
+        private void timer_saludo_Tick(object sender, EventArgs e)
+        {
+            timer_personaj.Interval = 30;
+            timer_personaj.Start();
 
-        //private void tableroJuego_MouseClick(object sender, MouseEventArgs e)
-        //{
-        //    // añadimos ciruclo a la lista de circulos
-        //    //MoverBicho(e.X, e.Y);
-        //    string movimiento = "9/" + e.X + "/" + e.Y + "/" + idPartida;
-        //    byte[] msg = System.Text.Encoding.ASCII.GetBytes(movimiento);
-        //    server.Send(msg);
-        //}
+            Jug1.Image = Image.FromFile("Fireboy_corriendo_der.gif");
+            Jug2.Image = Image.FromFile("Watergirl_corriendo_der.gif");
+            Jug3.Image = Image.FromFile("Rockboy_corriendo_der.gif");
+            Jug4.Image = Image.FromFile("Cloudgirl_corriendo_der.gif");
 
-        //private void MoverBicho(int x, int y)
-        //{
-        //    this.x_bicho = x;
-        //    this.y_bicho = y;
-        //    Point posicion = new Point(x_bicho, y_bicho);
-        //    bicho_pb.Location = posicion;
-        //}
-
-        //private void EnviarChatBut_Click(object sender, EventArgs e)
-        //{
-        //    if (chatbox.Text != null)
-        //    {
-        //        string mensaje_chat = "20/" + chatbox.Text + "/" + idPartida;
-        //        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-        //        server.Send(msg);
-        //        chatbox.Text = null;
-        //    }
-        //}
+            timer_saludo.Stop();
+        }
     }
 }

@@ -704,7 +704,7 @@ void *AtenderCliente (void *socket)
 				
 				if (n_invitaciones_faltantes <= 0)	// empieza la partida para todos
 				{
-					sprintf(notificacion, "9/%d/%s", idpartida, listaPartidas[idpartida].jugadores[0].nombre); 
+					sprintf(notificacion, "9/%d/%s/%d", idpartida, listaPartidas[idpartida].jugadores[0].nombre,  listaPartidas[idpartida].numjugadores) ; 
 					printf("Notificacion: %s\n", notificacion);	
 					for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 					{
@@ -984,6 +984,11 @@ void *AtenderCliente (void *socket)
 				write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
 			}
 			printf("Notificacion: %s\n", notificacion);
+			
+			// acabamos la partida
+			pthread_mutex_lock (&mutex);
+			AcabaPartida (listaPartidas, idpartida);	
+			pthread_mutex_unlock (&mutex);
 		}
 		else if (codigo == 35) // prueba teclas 
 		{

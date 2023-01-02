@@ -20,7 +20,6 @@ namespace ProyectoSO
 
         int numJugadoresPartida;
 
-        int nForm; // numero de formulario
         Socket server; // declaramos socket
 
         // 0: libre; 1: ocupado por mi; -1: ocupado por otro jugador; 2: no lo puedo ocupar porque ya ocupo uno
@@ -33,22 +32,20 @@ namespace ProyectoSO
         bool anfitrion = false;
         string mapa;
 
-        public SeleccionPartida(int nForm, Socket server)
+        public SeleccionPartida(int idpartida, Socket server)
         {
             InitializeComponent();
-            this.nForm = nForm; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
+            this.idPartida = idpartida; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
             this.server = server;
         }
 
-        //***************** Usar este de aquí abajo1
-        //public PantallaEleccionPersonaje(int idPartida, Socket server)
-        //{
-        //    InitializeComponent();
-        //    this.SetSocket(server);
-        //    this.SetIdPartida(idPartida);
-        //}
+        public void SetNumJugadores(int num)
+        { this.numJugadoresPartida = num; }
         private void PantallaEleccionPersonaje_Load(object sender, EventArgs e)
         {
+            // - - - - - - - - - - - - - - -- - - - - - Establecemos las diferentes opciones de mapas y personajes dependiendo del numero de Jugadores -- - - - - - - -- - - - -- - - -- - - - - - -- - 
+
+
             //picurebox1 -- Fireboy
             pictureBox1.Width = 200 / 2;
             pictureBox1.Height = 300 / 2;
@@ -127,7 +124,7 @@ namespace ProyectoSO
             //atender = new Thread(ts);
             //atender.Start();
 
-            numForm.Text = nForm.ToString();
+            numForm.Text = idPartida.ToString();
         }
 
         // Funciones de atender mensajes:
@@ -422,16 +419,31 @@ namespace ProyectoSO
                 // miramos si alguno de los personajes está libre: si lo está no podemos empezar la partida
                 // 0: libre; 1: ocupado por mi; -1: ocupado por otro jugador; 2: no lo puedo ocupar porque ya ocupo uno
                 // hablar de partidas de menos de 4 jugadores
-                // if ((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))
-                //{
-                string mensaje_chat = "14/" + idPartida;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                server.Send(msg);
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Alguien no está listo.");
-                //}
+                if (numJugadoresPartida == 4)
+                {
+                    if ((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))
+                    {
+                        string mensaje_chat = "14/" + idPartida;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+                        server.Send(msg);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Alguien no está listo.");
+                    }
+                }
+                else if (numJugadoresPartida == 3)  // mirar qué personajes hay disponibles
+                {
+                    string mensaje_chat = "14/" + idPartida;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+                    server.Send(msg);
+                }
+                else if (numJugadoresPartida == 2)  // mirar qué personajes hay disponibles
+                {
+                    string mensaje_chat = "14/" + idPartida;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+                    server.Send(msg);
+                }
             }
             else
             {
@@ -475,6 +487,15 @@ namespace ProyectoSO
             { found = 4; }
             return found;
         }
+        public string DameNombreJug1()
+        { return this.usuario1.Text; }
+        public string DameNombreJug2()
+        { return this.usuario2.Text; }
+        public string DameNombreJug3()
+        { return this.usuario3.Text; }
+        public string DameNombreJug4()
+        { return this.usuario4.Text; }
+
         public string GetMapa()
         { return this.mapa; }
         public void CerrarSeleccionPartida()
