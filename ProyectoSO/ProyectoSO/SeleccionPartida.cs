@@ -39,12 +39,34 @@ namespace ProyectoSO
             this.server = server;
         }
 
+        // Seters
+        public void SetUsername(string username)
+        { this.username = username; }
+
+        public void SetAnfitrion()
+        { this.anfitrion = true; }
+        public void SetMapa(string mapa)
+        { this.mapa = mapa; }
         public void SetNumJugadores(int num)
         { this.numJugadoresPartida = num; }
         private void PantallaEleccionPersonaje_Load(object sender, EventArgs e)
         {
             // - - - - - - - - - - - - - - -- - - - - - Establecemos las diferentes opciones de mapas y personajes dependiendo del numero de Jugadores -- - - - - - - -- - - - -- - - -- - - - - - -- - 
 
+            comboBox_Mapa.Items.Clear();
+            // Para el anfitrion ponemos las opciones de MAPAS  -   -   -   -   -   -   -   -   -   -   -   -   -   -   
+            if (numJugadoresPartida == 4)
+            {
+                comboBox_Mapa.Items.Add("Templo");
+                comboBox_Mapa.Items.Add("Volcan");
+
+            }
+            else if (numJugadoresPartida == 3)
+            { }
+            else // if (numJugadoresPartida == 2)
+            {
+                comboBox_Mapa.Items.Add("Volcan (2Jug)");
+            }
 
             //picurebox1 -- Fireboy
             pictureBox1.Width = 200 / 2;
@@ -118,13 +140,7 @@ namespace ProyectoSO
                 comboBox_Mapa.Visible = false;
                 empezarPartida_but.Visible = false;
             }
-
-            // Inicializamos el thread que atendera los mensajes del servidor
-            //ThreadStart ts = delegate { AtenderServidor(); };
-            //atender = new Thread(ts);
-            //atender.Start();
-
-            numForm.Text = idPartida.ToString();
+            numForm.Text = "ID partida: " + idPartida;
         }
 
         // Funciones de atender mensajes:
@@ -150,27 +166,6 @@ namespace ProyectoSO
                 map_escogido_lbl.Text = mapa_escogido;
             }));
         }
-
-        
-
-        // Seters
-        public void SetSocket(Socket socket)
-        {
-            this.server = socket;
-        }
-        public void SetIdPartida(int idpartida)
-        {
-            this.idPartida = idpartida;
-            this.label1.Text = "ID partida: " + idPartida;
-        }
-        public void SetUsername(string username)
-        { this.username = username; }
-
-        public void SetAnfitrion()
-        { this.anfitrion = true; }
-
-        public void SetMapa(string mapa)
-        { this.mapa = mapa; }
 
         // Métodos para manejar que los otros jugadores escojan personajes
         // Necesitan el número de jugador escogido y el nombre del usuario
@@ -473,7 +468,7 @@ namespace ProyectoSO
             }));
         }
 
-        // */*/*/*/*/*/*/*/*/*/*/*/*/ Funciones para pasar información a los mapas
+        // - - - - - - - - - - - - - - - - Funciones para pasar información a los mapas - - -- - - - - - - - - - - - - 
         public int DameMiPersonajeQueHeEscogido()
         {
             int found = 0;
@@ -495,6 +490,34 @@ namespace ProyectoSO
         { return this.usuario3.Text; }
         public string DameNombreJug4()
         { return this.usuario4.Text; }
+        public bool DameJug1Juega()
+        { 
+            if (J1seleccionado == 1 || J1seleccionado == -1)
+            { return true; }
+            else
+            { return false; }
+        }
+        public bool DameJug2Juega()
+        {
+            if (J2seleccionado == 1 || J2seleccionado == -1)
+            { return true; }
+            else
+            { return false; }
+        }
+        public bool DameJug3Juega()
+        {
+            if (J3seleccionado == 1 || J3seleccionado == -1)
+            { return true; }
+            else
+            { return false; }
+        }
+        public bool DameJug4Juega()
+        {
+            if (J4seleccionado == 1 || J4seleccionado == -1)
+            { return true; }
+            else
+            { return false; }
+        }
 
         public string GetMapa()
         { return this.mapa; }

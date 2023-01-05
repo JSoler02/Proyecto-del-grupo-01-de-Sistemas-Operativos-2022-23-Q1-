@@ -13,14 +13,17 @@ using System.Threading; // libreria de threads
 
 namespace ProyectoSO
 {
-    public partial class Templo4 : Form
+    public partial class Volcan2 : Form
     {
         int idPartida;
         Socket server; // declaramos socket
 
-        string mapa = "Templo";
+        string mapa = "Volcan (2Jug)";
         // Mi personaje --> 1,2,3,4
         int miPersonajeQueControlo;
+
+        // Variables bool para partidas de menos de 4 jugadores
+        bool jug1Juega, jug2Juega, jug3Juega, jug4Juega;
 
         // Variables globales que se crean en False
         bool goLeft_J1, goRight_J1, jumping_J1, isGameOver_J1, onPlatform_J1;
@@ -46,7 +49,7 @@ namespace ProyectoSO
 
         // Velocidades para las PLATAFORMAS verticales y horizontales
         int horizontalSpeed = 5;
-        int verticalSpeed_v1 = 3; int verticalSpeed_v2 = 3;
+        int verticalSpeed_v1 = 3; int verticalSpeed_v2 = 3; int verticalSpeed_v4 = 3; int verticalSpeed_v5 = 3;
 
         // Placa del tipo 1
         bool plataformaVertical1_activa1_1; bool plataformaVertical1_activa1_2; bool plataformaVertical1_activa2_1; bool plataformaVertical1_activa2_2;
@@ -54,21 +57,27 @@ namespace ProyectoSO
         bool plataformaVertical1_ACT;
         bool plataformaVertical1_final;
 
-        bool plataformaVertical2_activa;
+        bool plataformaVertical2_activa1_1; bool plataformaVertical2_activa1_2; bool plataformaVertical2_activa2_1; bool plataformaVertical2_activa2_2;
+        bool plataformaVertical2_activa3_1; bool plataformaVertical2_activa3_2; bool plataformaVertical2_activa4_1; bool plataformaVertical2_activa4_2;
+        bool plataformaVertical2_ACT;
+
+        bool plataformaVertical5_activa1_1; bool plataformaVertical5_activa1_2; bool plataformaVertical5_activa2_1; bool plataformaVertical5_activa2_2;
+        bool plataformaVertical5_activa3_1; bool plataformaVertical5_activa3_2; bool plataformaVertical5_activa4_1; bool plataformaVertical5_activa4_2;
+        bool plataformaVertical5_ACT;
+
+        bool plataformaVertical4_activa;
         bool paredPalanca3_activa;
 
-        // Velocidad para el ENEMIGO
-        int enemy1Speed = 5;
 
         // Personajes/PictureBoxes
         //EquipoJugadores miequipo = new EquipoJugadores();
         List<PictureBox> misPicsPersonajes = new List<PictureBox>();
         int numPics = 1;
 
-        Jugador Jug1 = new Jugador(1, 30, 200);
-        Jugador Jug2 = new Jugador(2, 100, 200);
-        Jugador Jug3 = new Jugador(3, 225, 200);
-        Jugador Jug4 = new Jugador(4, 300, 200);
+        Jugador Jug1 = new Jugador(1, 10, 660);
+        Jugador Jug2 = new Jugador(2, 70, 660);
+        Jugador Jug3 = new Jugador(3, 700, 660);
+        Jugador Jug4 = new Jugador(4, 770, 660);
         // variables del tiempo
         int segundos;
 
@@ -92,19 +101,62 @@ namespace ProyectoSO
         { this.Jug3.SetNombre(name); }
         public void SetJug4Nombre(string name)
         { this.Jug4.SetNombre(name); }
-        public Templo4(int idPartida, Socket server)
+
+        public void SetJug1Juega(bool valor)
+        { this.jug1Juega = valor; }
+        public void SetJug2Juega(bool valor)
+        { this.jug2Juega = valor; }
+        public void SetJug3Juega(bool valor)
+        { this.jug3Juega = valor; }
+        public void SetJug4Juega(bool valor)
+        { this.jug4Juega = valor; }
+        public Volcan2(int idPartida, Socket server)
         {
             InitializeComponent();
             this.idPartida = idPartida; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
             this.server = server;
         }
 
-        private void Controles1Personaje_Load(object sender, EventArgs e)
+
+        private void Volcan4_Load(object sender, EventArgs e)
         {
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             RestartGame();
-        }
+            this.Controls.Remove(placa1_2);
+            this.Controls.Remove(placa2_2);
+            // eliminamos personaje, puerta y diamante
+            if (jug1Juega == false)
+            {
+                this.Controls.Remove(misPicsPersonajes[0]);
+                this.Controls.Remove(puertaJ1);
+                this.Controls.Remove(d1);
+                this.Controls.Remove(vidasJ1_pb);
+            }
+            if (jug2Juega == false)
+            {
+                this.Controls.Remove(misPicsPersonajes[1]);
+                this.Controls.Remove(puertaJ2);
+                this.Controls.Remove(d2);
+                this.Controls.Remove(vidasJ2_pb);
 
+            }
+            if (jug3Juega == false)
+            {
+                this.Controls.Remove(misPicsPersonajes[2]);
+                this.Controls.Remove(puertaJ3);
+                this.Controls.Remove(d3);
+                this.Controls.Remove(vidasJ3_pb);
+
+            }
+            if (jug4Juega == false)
+            {
+                this.Controls.Remove(misPicsPersonajes[3]);
+                this.Controls.Remove(puertaJ4);
+                this.Controls.Remove(d4);
+                this.Controls.Remove(vidasJ4_pb);
+
+            }
+        }
         private void pintarPersonajesEnSusPosiciones()
         {
             Point p = new Point(Jug1.GetX(), Jug1.GetY());
@@ -118,9 +170,6 @@ namespace ProyectoSO
         }
         private void MainGameTimerEvent(object sender, EventArgs e)
         {
-            lblPuntos.Text = "Puntos J1: " + puntos1 + "\nPuntos J2: " + puntos2 + "\nPuntos J3: " + puntos3 + "\nPuntos J4: " + puntos4;
-            label_estaEnPuerta.Text = "J1 en puerta: " + estaEnPuerta_J1 + "\nJ2 en puerta: " + estaEnPuerta_J2 + "\nJ3 en puerta: " + estaEnPuerta_J3 + "\nJ4 en puerta: " + estaEnPuerta_J4;
-
             pintarPersonajesEnSusPosiciones();
             movimientosPersonajesConCadaTick();
 
@@ -147,10 +196,22 @@ namespace ProyectoSO
                 {
                     ColisionesPersonajesPlaca1_2(x);
                 }
-                // palanca
-                if ((string)x.Tag == "palanca2")
+                if ((string)x.Tag == "placa2_1")
                 {
-                    ColisionesPersonajesPalanca2(x);
+                    ColisionesPersonajesPlaca2_1(x);
+                }
+                if ((string)x.Tag == "placa2_2")
+                {
+                    ColisionesPersonajesPlaca2_2(x);
+                }
+                if ((string)x.Tag == "placa5_1")
+                {
+                    ColisionesPersonajesPlaca5_1(x);
+                }
+                // palanca
+                if ((string)x.Tag == "palanca4")
+                {
+                    ColisionesPersonajesPalanca4(x);
                 }
                 if ((string)x.Tag == "palanca3")
                 {
@@ -171,16 +232,7 @@ namespace ProyectoSO
                 {
                     ColisionesPersonajesParedDerecha(x);
                 }
-                // portal 1
-                if ((string)x.Tag == "portal1")
-                {
-                    ColisionesPersonajesPortal1(x);
-                }
-                // portal 2
-                if ((string)x.Tag == "portal2")
-                {
-                    ColisionesPersonajesPortal2(x);
-                }
+
                 // Puntos
                 if ((string)x.Tag == "diamante1")
                 {
@@ -227,12 +279,6 @@ namespace ProyectoSO
 
             }
 
-            // Plataforma horizontal
-            horizontal1.Left -= horizontalSpeed;
-            if ((horizontal1.Left < 0) || (horizontal1.Left + horizontal1.Width > this.ClientSize.Width)) // Calculo dinámico
-            {
-                horizontalSpeed = -horizontalSpeed;
-            }
             // Plataforma vertical 1
             if ((plataformaVertical1_activa1_1 || plataformaVertical1_activa1_2) || (plataformaVertical1_activa2_1 || plataformaVertical1_activa2_2) || (plataformaVertical1_activa3_1 || plataformaVertical1_activa3_2) || (plataformaVertical1_activa4_1 || plataformaVertical1_activa4_2))
             { plataformaVertical1_ACT = true; }
@@ -258,15 +304,61 @@ namespace ProyectoSO
                 placa1_2.Image = Image.FromFile("placa1_desactivada.png");
             }
             // Plataforma vertical 2
-            if (plataformaVertical2_activa == true)
+            if ((plataformaVertical2_activa1_1 || plataformaVertical2_activa1_2) || (plataformaVertical2_activa2_1 || plataformaVertical2_activa2_2) || (plataformaVertical2_activa3_1 || plataformaVertical2_activa3_2) || (plataformaVertical2_activa4_1 || plataformaVertical2_activa4_2))
+            { plataformaVertical2_ACT = true; }
+            else
+            { plataformaVertical2_ACT = false; }
+            if (plataformaVertical2_ACT)
             {
+                placa2_1.Image = Image.FromFile("placa2_activada.png");
+                placa2_2.Image = Image.FromFile("placa2_activada.png");
+                //if (plataformaVertical2_final == false)
+                //{
                 vertical2.Top += verticalSpeed_v2;
                 if ((vertical2.Bounds.IntersectsWith(plataformaVertical2_Bot_limit.Bounds) || vertical2.Bounds.IntersectsWith(plataformaVertical2_Top_limit.Bounds)))
                 {
-                    //plataformaVertical1_final = true;
+                    //plataformaVertical2_final = true;
                     verticalSpeed_v2 = -verticalSpeed_v2;
                 }
                 //}
+            }
+            else
+            {
+                placa2_1.Image = Image.FromFile("placa2_desactivada.png");
+                placa2_2.Image = Image.FromFile("placa2_desactivada.png");
+            }
+            // Plataforma vertical 5
+            if ((plataformaVertical5_activa1_1 || plataformaVertical5_activa1_2) || (plataformaVertical5_activa2_1 || plataformaVertical5_activa2_2) || (plataformaVertical5_activa3_1 || plataformaVertical5_activa3_2) || (plataformaVertical5_activa4_1 || plataformaVertical5_activa4_2))
+            { plataformaVertical5_ACT = true; }
+            else
+            { plataformaVertical5_ACT = false; }
+            if (plataformaVertical5_ACT)
+            {
+                placa5_1.Image = Image.FromFile("placa5_activada.png");
+                //placa5_2.Image = Image.FromFile("placa5_activada.png");
+                //if (plataformaVertical5_final == false)
+                //{
+                vertical5.Top += verticalSpeed_v5;
+                if ((vertical5.Bounds.IntersectsWith(plataformaVertical5_Bot_limit.Bounds) || vertical5.Bounds.IntersectsWith(plataformaVertical5_Top_limit.Bounds)))
+                {
+                    //plataformaVertical5_final = true;
+                    verticalSpeed_v5 = -verticalSpeed_v5;
+                }
+                //}
+            }
+            else
+            {
+                placa5_1.Image = Image.FromFile("placa5_desactivada.png");
+                //placa5_2.Image = Image.FromFile("placa5_desactivada.png");
+            }
+            // Plataforma vertical 4
+            if (plataformaVertical4_activa == true)
+            {
+                vertical4.Top += verticalSpeed_v4;
+                if ((vertical4.Bounds.IntersectsWith(plataformaVertical4_Bot_limit.Bounds) || vertical4.Bounds.IntersectsWith(plataformaVertical4_Top_limit.Bounds)))
+                {
+                    verticalSpeed_v4 = -verticalSpeed_v4;
+                }
             }
             // Pared Palanca 3
             if (paredPalanca3_activa == true)
@@ -280,15 +372,37 @@ namespace ProyectoSO
             }
 
             // Todos los jugadores en las puertas
-            // Solo el jugador 1 envía el mensaje al servidor para que este le
+            // Solo el jugador 1 (si está, si no el siguiente) envía el mensaje al servidor para que este le
             // devuelva el mensaje de fin de partida con el panel de las estadísticas y el resultado de la partida
-            if (estaEnPuerta_J1 == true && estaEnPuerta_J2 == true && estaEnPuerta_J3 == true && estaEnPuerta_J4 == true)
+            if (jug1Juega == true)
             {
-                string letra_miResultado = CalcularPuntosTotales();
-                EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
-                // Quitar esta función cuando esté ya trabajada. De momento está aquí para trabajarla.
-                // parámetros sacados de la seleccion de partida y del MENSAJE RECIBIDO
-                // FinDePartida("SUPERADO", letra_miResultado);
+                if ((estaEnPuerta_J1 == true && estaEnPuerta_J2 == true) || (estaEnPuerta_J1 == true && estaEnPuerta_J3 == true) || (estaEnPuerta_J1 == true && estaEnPuerta_J4 == true))
+                {
+                    string letra_miResultado = CalcularPuntosTotales();
+                    EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
+                    // Quitar esta función cuando esté ya trabajada. De momento está aquí para trabajarla.
+                    // parámetros sacados de la seleccion de partida y del MENSAJE RECIBIDO
+                    //FinDePartida("SUPERADO", letra_miResultado);
+                }
+            }
+            else // no juega el J1
+            {
+                if (jug2Juega == true)
+                {
+                    if ((estaEnPuerta_J2 == true && estaEnPuerta_J3 == true) || (estaEnPuerta_J2 == true && estaEnPuerta_J4 == true))
+                    {
+                        string letra_miResultado = CalcularPuntosTotales();
+                        EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
+                    }
+                }
+                else // no juega el J2
+                {
+                    if (jug3Juega == true && (estaEnPuerta_J3 == true && estaEnPuerta_J4 == true))
+                    {
+                        string letra_miResultado = CalcularPuntosTotales();
+                        EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
+                    }
+                }
             }
 
             if (isGameOver_J1 == true || isGameOver_J2 == true || isGameOver_J3 == true || isGameOver_J4 == true)
@@ -351,10 +465,23 @@ namespace ProyectoSO
             {
                 TeclaArribaDejadaDeClicar();
             }
+            //// Cuando le demos al enter y tengamos GameOver reempezamos
+            //if (e.KeyCode == Keys.Enter && isGameOver_J1 == true)
+            //{
+            //    RestartGame();
+            //}
+
         }
         private void RestartGame()
         {
-           
+            //miequipo.AddJugadorAEquipo(J1);
+            //miequipo.AddJugadorAEquipo(J2);
+            //miequipo.AddJugadorAEquipo(J3);
+
+            //FlightPlan f = form.GetFlightFromForm(); // Metodo getter to get the information of the flightplan introduced
+            //if (f != null)
+            //{
+            //    miEquipo.AddJugador(j)
             PictureBox J1 = CrearPictureBoxJugador(Jug1);
             PictureBox J2 = CrearPictureBoxJugador(Jug2);
             PictureBox J3 = CrearPictureBoxJugador(Jug3);
@@ -391,6 +518,7 @@ namespace ProyectoSO
             vertical2.Image = Image.FromFile("plataforma2.png");
             vertical2.SizeMode = PictureBoxSizeMode.Zoom;
             vertical2.BackColor = Color.Transparent;
+
             // pared palanca 3
             paredPalanca3.Height = 200 / 2;
             paredPalanca3.Width = 50 / 2;
@@ -398,6 +526,18 @@ namespace ProyectoSO
             paredPalanca3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             paredPalanca3.SizeMode = PictureBoxSizeMode.Zoom;
             paredPalanca3.BackColor = Color.Transparent;
+            // plataforma vertical 4
+            vertical4.Width = 200 / 2;
+            vertical4.Height = 50 / 2;
+            vertical4.Image = Image.FromFile("plataforma4.png");
+            vertical4.SizeMode = PictureBoxSizeMode.Zoom;
+            vertical4.BackColor = Color.Transparent;
+            // plataforma vertical 5
+            vertical5.Width = 200 / 2;
+            vertical5.Height = 50 / 2;
+            vertical5.Image = Image.FromFile("plataforma5.png");
+            vertical5.SizeMode = PictureBoxSizeMode.Zoom;
+            vertical5.BackColor = Color.Transparent;
 
             // reseteo de las placas
             placa1_1.Width = 120 / 2;
@@ -410,15 +550,33 @@ namespace ProyectoSO
             placa1_2.Image = Image.FromFile("placa1_desactivada.png");
             placa1_2.SizeMode = PictureBoxSizeMode.Zoom;
             placa1_2.BackColor = Color.Transparent;
+
+            placa2_1.Width = 120 / 2;
+            placa2_1.Height = 36 / 2;
+            placa2_1.Image = Image.FromFile("placa2_desactivada.png");
+            placa2_1.SizeMode = PictureBoxSizeMode.Zoom;
+            placa2_1.BackColor = Color.Transparent;
+            placa2_2.Width = 120 / 2;
+            placa2_2.Height = 36 / 2;
+            placa2_2.Image = Image.FromFile("placa2_desactivada.png");
+            placa2_2.SizeMode = PictureBoxSizeMode.Zoom;
+            placa2_2.BackColor = Color.Transparent;
+
+            placa5_1.Width = 120 / 2;
+            placa5_1.Height = 36 / 2;
+            placa5_1.Image = Image.FromFile("placa5_desactivada.png");
+            placa5_1.SizeMode = PictureBoxSizeMode.Zoom;
+            placa5_1.BackColor = Color.Transparent;
+
             // reseteo de las palancas
-            // palanca 2
-            plataformaVertical2_activa = false;
-            palanca2.Width = 30;
-            palanca2.Height = 35;
-            palanca2.Image = Image.FromFile("palanca2_desactivada.png");
-            palanca2.SizeMode = PictureBoxSizeMode.Zoom;
-            palanca2.BackColor = Color.Transparent;
-            // palanca 2
+            // palanca 4
+            plataformaVertical4_activa = false;
+            palanca4.Width = 30;
+            palanca4.Height = 35;
+            palanca4.Image = Image.FromFile("palanca4_desactivada.png");
+            palanca4.SizeMode = PictureBoxSizeMode.Zoom;
+            palanca4.BackColor = Color.Transparent;
+            // palanca 3
             paredPalanca3_activa = false;
             palanca3.Width = 35;
             palanca3.Height = 30;
@@ -426,53 +584,25 @@ namespace ProyectoSO
             palanca3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             palanca3.SizeMode = PictureBoxSizeMode.Zoom;
             palanca3.BackColor = Color.Transparent;
-            // Portales
-            // Portal 1
-            PictureBox portal1_imagen = new PictureBox();
-            portal1_imagen.Width = 45;
-            portal1_imagen.Height = 80;
-            portal1_imagen.Location = new Point(portal1_inicio_hitbox.Location.X - 45 / 4, portal1_inicio_hitbox.Location.Y - 80 / 4);
-            portal1_imagen.Image = Image.FromFile("portal.gif");
-            portal1_imagen.SizeMode = PictureBoxSizeMode.Zoom;
-            portal1_imagen.BackColor = Color.Transparent;
-            this.Controls.Add(portal1_imagen);
-
-            portal1_final.Width = 50;
-            portal1_final.Height = 50;
-            portal1_final.Image = Image.FromFile("portal_salida.gif");
-            portal1_final.SizeMode = PictureBoxSizeMode.Zoom;
-            portal1_final.BackColor = Color.Transparent;
-
-            // Portal 2
-            PictureBox portal2_imagen = new PictureBox();
-            portal2_imagen.Width = 45;
-            portal2_imagen.Height = 80;
-            portal2_imagen.Location = new Point(portal2_inicio_hitbox.Location.X - 45 / 4, portal2_inicio_hitbox.Location.Y - 80 / 4);
-            portal2_imagen.Image = Image.FromFile("portal.gif");
-            portal2_imagen.SizeMode = PictureBoxSizeMode.Zoom;
-            portal2_imagen.BackColor = Color.Transparent;
-            this.Controls.Add(portal2_imagen);
-
-            portal2_final.Width = 50;
-            portal2_final.Height = 50;
-            portal2_final.Image = Image.FromFile("portal_salida.gif");
-            portal2_final.SizeMode = PictureBoxSizeMode.Zoom;
-            portal2_final.BackColor = Color.Transparent;
 
             foreach (Control x in this.Controls)
             {
                 // techos   --> 1 por cada plataforma que no se pueda atravesar desde abajo.
                 if ((string)x.Tag == "techo")
                 {
-                    //x.Visible = false;
+                    x.Visible = false;
                 }
                 if ((string)x.Tag == "pared_izquierda")
                 {
-                    //x.Visible = false;
+                    x.Visible = false;
                 }
                 if ((string)x.Tag == "pared_derecha")
                 {
-                    //x.Visible = false;
+                    x.Visible = false;
+                }
+                if ((string)x.Tag == "aire")
+                {
+                    x.Visible = false;
                 }
                 // Puntos
                 if ((string)x.Tag == "diamante1")
@@ -509,7 +639,7 @@ namespace ProyectoSO
                 // Plataformas
                 if ((string)x.Tag == "plataforma")
                 {
-                    x.BackgroundImage = Image.FromFile("plataforma_Mapa1.png");
+                    x.BackgroundImage = Image.FromFile("plataforma_Mapa3.png");
                     x.BringToFront(); // plataformas delante de todo
                 }
                 if ((string)x.Tag == "vidas")
@@ -534,8 +664,8 @@ namespace ProyectoSO
             vidasJ4_pb.BackgroundImage = Image.FromFile("vidas_cloud_3.png");
             vidasJ4_pb.BackColor = Color.Transparent;
             // Posiciones de los picturebox de las vidas
-            vidasJ1_pb.Top = 5;
-            vidasJ1_pb.Left = 5;
+            vidasJ1_pb.Top = 2;
+            vidasJ1_pb.Left = 12;
             vidasJ2_pb.Top = vidasJ1_pb.Bottom + 2;
             vidasJ2_pb.Left = vidasJ1_pb.Left;
             vidasJ3_pb.Top = vidasJ2_pb.Bottom;
@@ -556,21 +686,32 @@ namespace ProyectoSO
             puertaJ3.SendToBack();
             puertaJ4.BackColor = Color.Transparent;
             puertaJ4.SendToBack();
-
+            vidasJ1_pb.SendToBack();
+            vidasJ2_pb.SendToBack();
+            vidasJ3_pb.SendToBack();
+            vidasJ4_pb.SendToBack();
             // Traemos todas las placas y palancas delante de las plataformas
             placa1_1.BringToFront();
             placa1_2.BringToFront();
-            palanca2.BringToFront();
-            palanca3.BringToFront();
-            portal1_final.SendToBack();
-            portal1_imagen.SendToBack();
-            portal2_final.SendToBack();
-            portal2_imagen.SendToBack();
-            // Eliminamos visibilidades extras
-            portal1_inicio_hitbox.Visible = false;
-            portal2_inicio_hitbox.Visible = false;
-        }
+            placa2_1.BringToFront();
+            placa2_2.BringToFront();
+            placa5_1.BringToFront();
 
+            palanca4.BringToFront();
+            palanca3.BringToFront();
+
+            // Eliminamos visibilidades extras
+            paredPalanca3.Visible = true;
+            plataformaVertical1_Bot_limit.Visible = false;
+            plataformaVertical1_Top_limit.Visible = false;
+            plataformaVertical2_Bot_limit.Visible = false;
+            plataformaVertical2_Top_limit.Visible = false;
+            plataformaVertical4_Bot_limit.Visible = false;
+            plataformaVertical4_Top_limit.Visible = false;
+            plataformaVertical5_Bot_limit.Visible = false;
+            plataformaVertical5_Top_limit.Visible = false;
+
+        }
 
         // Animaciones y mensaje a enviar al mover MI PERSONAJE
         //  ---> ---> Activar el envío de mensajes
@@ -1628,6 +1769,205 @@ namespace ProyectoSO
             }
 
         }
+        private void ColisionesPersonajesPlaca2_1(Control x)
+        {
+            // Colisiones Jugador 1 - placa 1
+            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical2_activa1_1 == false)
+                {
+                    plataformaVertical2_activa1_1 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical2_activa1_1 == true)
+                {
+                    plataformaVertical2_activa1_1 = false;
+                }
+            }
+            // Colisiones Jugador 2 - placa 1
+            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical2_activa2_1 == false)
+                {
+                    plataformaVertical2_activa2_1 = true;
+
+                }
+            }
+            else
+            {
+                if (plataformaVertical2_activa2_1 == true)
+                {
+                    plataformaVertical2_activa2_1 = false;
+                }
+            }
+            // Colisiones Jugador 3 - placa 1
+            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical2_activa3_1 == false)
+                {
+                    plataformaVertical2_activa3_1 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical2_activa3_1 == true)
+                {
+                    plataformaVertical2_activa3_1 = false;
+                }
+            }
+            // Colisiones Jugador 4 - placa 1
+            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical2_activa4_1 == false)
+                {
+                    plataformaVertical2_activa4_1 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical2_activa4_1 == true)
+                {
+                    plataformaVertical2_activa4_1 = false;
+                }
+
+            }
+
+        }
+        private void ColisionesPersonajesPlaca2_2(Control x)
+        {
+            // Colisiones Jugador 1 - placa 1
+            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical2_activa1_2 == false)
+                {
+                    plataformaVertical2_activa1_2 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical2_activa1_2 == true)
+                {
+                    plataformaVertical2_activa1_2 = false;
+                }
+            }
+            // Colisiones Jugador 2 - placa 1
+            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical2_activa2_2 == false)
+                {
+                    plataformaVertical2_activa2_2 = true;
+
+                }
+            }
+            else
+            {
+                if (plataformaVertical2_activa2_2 == true)
+                {
+                    plataformaVertical2_activa2_2 = false;
+                }
+            }
+            // Colisiones Jugador 3 - placa 1
+            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical2_activa3_2 == false)
+                {
+                    plataformaVertical2_activa3_2 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical2_activa3_2 == true)
+                {
+                    plataformaVertical2_activa3_2 = false;
+                }
+            }
+            // Colisiones Jugador 4 - placa 1
+            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical2_activa4_2 == false)
+                {
+                    plataformaVertical2_activa4_2 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical2_activa4_2 == true)
+                {
+                    plataformaVertical2_activa4_2 = false;
+                }
+
+            }
+
+        }
+        private void ColisionesPersonajesPlaca5_1(Control x)
+        {
+            // Colisiones Jugador 1 - placa 1
+            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical5_activa1_1 == false)
+                {
+                    plataformaVertical5_activa1_1 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical5_activa1_1 == true)
+                {
+                    plataformaVertical5_activa1_1 = false;
+                }
+            }
+            // Colisiones Jugador 2 - placa 1
+            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical5_activa2_1 == false)
+                {
+                    plataformaVertical5_activa2_1 = true;
+
+                }
+            }
+            else
+            {
+                if (plataformaVertical5_activa2_1 == true)
+                {
+                    plataformaVertical5_activa2_1 = false;
+                }
+            }
+            // Colisiones Jugador 3 - placa 1
+            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical5_activa3_1 == false)
+                {
+                    plataformaVertical5_activa3_1 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical5_activa3_1 == true)
+                {
+                    plataformaVertical5_activa3_1 = false;
+                }
+            }
+            // Colisiones Jugador 4 - placa 1
+            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (plataformaVertical5_activa4_1 == false)
+                {
+                    plataformaVertical5_activa4_1 = true;
+                }
+            }
+            else
+            {
+                if (plataformaVertical5_activa4_1 == true)
+                {
+                    plataformaVertical5_activa4_1 = false;
+                }
+
+            }
+
+        }
+
         private void ColisionesPersonajesTecho(Control x)
         {
             // Colisiones Jugador 1 - plataforma
@@ -1709,44 +2049,44 @@ namespace ProyectoSO
                 Jug4.SetX(x.Right); // mueve directamente
             }
         }
-        private void ColisionesPersonajesPalanca2(Control x)
+        private void ColisionesPersonajesPalanca4(Control x)
         {
             // Colisiones Jugador 1 - palanca 2
             if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
             {
-                if (plataformaVertical2_activa == false)
+                if (plataformaVertical4_activa == false)
                 {
-                    plataformaVertical2_activa = true;
-                    palanca2.Image = Image.FromFile("palanca2_activada.png");
+                    plataformaVertical4_activa = true;
+                    palanca4.Image = Image.FromFile("palanca4_activada.png");
                 }
             }
 
             // Colisiones Jugador 2 - palanca 2
             if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
             {
-                if (plataformaVertical2_activa == false)
+                if (plataformaVertical4_activa == false)
                 {
-                    plataformaVertical2_activa = true;
-                    palanca2.Image = Image.FromFile("palanca2_activada.png");
+                    plataformaVertical4_activa = true;
+                    palanca4.Image = Image.FromFile("palanca4_activada.png");
                 }
             }
 
             // Colisiones Jugador 3 - palanca 2
             if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
             {
-                if (plataformaVertical2_activa == false)
+                if (plataformaVertical4_activa == false)
                 {
-                    plataformaVertical2_activa = true;
-                    palanca2.Image = Image.FromFile("palanca2_activada.png");
+                    plataformaVertical4_activa = true;
+                    palanca4.Image = Image.FromFile("palanca4_activada.png");
                 }
             }
             // Colisiones Jugador 4 - palanca 2
             if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
             {
-                if (plataformaVertical2_activa == false)
+                if (plataformaVertical4_activa == false)
                 {
-                    plataformaVertical2_activa = true;
-                    palanca2.Image = Image.FromFile("palanca2_activada.png");
+                    plataformaVertical4_activa = true;
+                    palanca4.Image = Image.FromFile("palanca4_activada.png");
                 }
             }
 
@@ -1797,92 +2137,7 @@ namespace ProyectoSO
             }
 
         }
-        private void ColisionesPersonajesPortal1(Control x)
-        {
-            // Colisiones Jugador 1 - portal 1
-            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
-            {
-                if ((string)x.Name == "portal1_inicio_hitbox")
-                {
-                    Jug1.SetX(portal1_final.Left);
-                    Jug1.SetY(portal1_final.Top);
-                    onPlatform_J1 = false;
-                }
-            }
-            // Colisiones Jugador 2 - portal 1
-            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
-            {
-                if ((string)x.Name == "portal1_inicio_hitbox")
-                {
-                    Jug2.SetX(portal1_final.Left);
-                    Jug2.SetY(portal1_final.Top);
-                    onPlatform_J2 = false;
-                }
-            }
-            // Colisiones Jugador 3 - portal 1
-            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
-            {
-                if ((string)x.Name == "portal1_inicio_hitbox")
-                {
-                    Jug3.SetX(portal1_final.Left);
-                    Jug3.SetY(portal1_final.Top);
-                    onPlatform_J3 = false;
-                }
-            }
-            // Colisiones Jugador 4 - portal 1
-            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
-            {
-                if ((string)x.Name == "portal1_inicio_hitbox")
-                {
-                    Jug4.SetX(portal1_final.Left);
-                    Jug4.SetY(portal1_final.Top);
-                    onPlatform_J4 = false;
-                }
-            }
-        }
-        private void ColisionesPersonajesPortal2(Control x)
-        {
-            // Colisiones Jugador 1 - portal 2
-            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
-            {
-                if ((string)x.Name == "portal2_inicio_hitbox")
-                {
-                    Jug1.SetX(portal2_final.Left);
-                    Jug1.SetY(portal2_final.Top);
-                    onPlatform_J1 = false;
-                }
-            }
-            // Colisiones Jugador 2 - portal 2
-            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
-            {
-                if ((string)x.Name == "portal2_inicio_hitbox")
-                {
-                    Jug2.SetX(portal2_final.Left);
-                    Jug2.SetY(portal2_final.Top);
-                    onPlatform_J2 = false;
-                }
-            }
-            // Colisiones Jugador 3 - portal 2
-            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
-            {
-                if ((string)x.Name == "portal2_inicio_hitbox")
-                {
-                    Jug3.SetX(portal2_final.Left);
-                    Jug3.SetY(portal2_final.Top);
-                    onPlatform_J3 = false;
-                }
-            }
-            // Colisiones Jugador 4 - portal 2
-            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
-            {
-                if ((string)x.Name == "portal2_inicio_hitbox")
-                {
-                    Jug4.SetX(portal2_final.Left);
-                    Jug4.SetY(portal2_final.Top);
-                    onPlatform_J4 = false;
-                }
-            }
-        }
+
         private void ColisionesPersonajesAcido(Control x)
         {
             // Jugador 1
@@ -2070,8 +2325,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J1 == true)
             { onPlatform_J1 = false; }
-            Jug1.SetX(30);
-            Jug1.SetY(200);
+            Jug1.SetX(10);
+            Jug1.SetY(660);
             //misPicsPersonajes[0].Image = Image.FromFile("vacio.png");
             if (vidas1 > 1)
             {
@@ -2099,8 +2354,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J2 == true)
             { onPlatform_J2 = false; }
-            Jug2.SetX(100);
-            Jug2.SetY(200);
+            Jug2.SetX(70);
+            Jug2.SetY(660);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas2 > 1)
             {
@@ -2129,8 +2384,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J3 == true)
             { onPlatform_J3 = false; }
-            Jug3.SetX(225);
-            Jug3.SetY(200);
+            Jug3.SetX(700);
+            Jug3.SetY(660);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas3 > 1)
             {
@@ -2158,8 +2413,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J4 == true)
             { onPlatform_J4 = false; }
-            Jug4.SetX(300);
-            Jug4.SetY(200);
+            Jug4.SetX(770);
+            Jug4.SetY(660);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas4 > 1)
             {
@@ -2185,23 +2440,65 @@ namespace ProyectoSO
         }
         // Funcion para calcular los puntos totales. 
         // "S", "A", "B", "C", "F"
-        private string CalcularPuntosTotales()
+        private string CalcularPuntosTotales() // para 2 jugadores
         {
             string letra;
-
-            int total_puntos = puntos1 + puntos2 + puntos3 + puntos4;
-            int total_restar_vidas = (3 - vidas1) + (3 - vidas2) + (3 - vidas3) + (3 - vidas4);
+            int total_puntos = 0;
+            int total_restar_vidas = 0;
             int total_tiempo = segundos;
+
+            if (jug1Juega == true)
+            {
+                if (jug2Juega == true)
+                { 
+                    total_puntos = puntos1 + puntos2;
+                    total_restar_vidas = (3 - vidas1) + (3 - vidas2);
+                }
+                else
+                {
+                    if (jug3Juega == true)
+                    { 
+                        total_puntos = puntos1 + puntos3;
+                        total_restar_vidas = (3 - vidas1) + (3 - vidas3);
+                    }
+                    else
+                    { 
+                        total_puntos = puntos1 + puntos4;
+                        total_restar_vidas = (3 - vidas1) + (3 - vidas4);
+                    }
+                }
+            }
+            else
+            {
+                if (jug2Juega == true)
+                {
+                    if (jug3Juega == true)
+                    {
+                        total_puntos = puntos2 + puntos3;
+                        total_restar_vidas = (3 - vidas2) + (3 - vidas3);
+                    }
+                    else
+                    {
+                        total_puntos = puntos2 + puntos4;
+                        total_restar_vidas = (3 - vidas2) + (3 - vidas4);
+                    }
+                }
+                else
+                {
+                    total_puntos = puntos3 + puntos4;
+                    total_restar_vidas = (3 - vidas3) + (3 - vidas4);
+                }
+            }
+          
 
             // 50% los puntos de los diamantes; poner dividiento los diamantes totales presentes
             // 50% puntos por tiempo: 60s como referencia
             // restaremos 20% dependiendo de las vidas: 12 vidas se pueden perder en total
-            double porcion_puntos = (Convert.ToDouble(total_puntos) / 4) * 0.5;
+            double porcion_puntos = (Convert.ToDouble(total_puntos) / 2) * 0.5;
             double porcion_tiempo = ((60 - Convert.ToDouble(total_tiempo)) / 60) * 0.5;
-            double porcion_restar_vidas = (Convert.ToDouble(total_restar_vidas) / 12) * 0.2;
+            double porcion_restar_vidas = (Convert.ToDouble(total_restar_vidas) / 6) * 0.2;
             double puntos_partida = porcion_puntos + porcion_tiempo - porcion_restar_vidas;
 
-            lbl_noColisionesPlataforma.Text = "Porcion puntos: " + porcion_puntos + "; Porcion timempo: " + porcion_tiempo + "; Porcion vidas: " + porcion_restar_vidas + "\nTotal: " + puntos_partida;
             if (puntos_partida >= 0.85 && puntos_partida <= 1)
             { letra = "S"; }
             else if (puntos_partida >= 0.6 && puntos_partida < 0.85)
@@ -2239,6 +2536,7 @@ namespace ProyectoSO
         }
         // función para representar el resultado de la partida y que se abra el panel con las estadísticas
         // Esta función se llama desde el main que la llama desde la selección de partida
+        //      --> particularizada para 2 jugadores
         public void FinDePartida(string resultado, string letra_resultado)
         {
             // Creamos controles.
@@ -2354,7 +2652,7 @@ namespace ProyectoSO
             else
             { vidas_fin1.Image = Image.FromFile("vidas_0.png"); }
             if (isGameOver_J1 == true)
-            {
+            { 
                 vidas_fin1.Image = Image.FromFile("vidas_0.png");
                 p1.Image = Image.FromFile(Jug1.GetAnimacionSaludo());
             }
@@ -2373,7 +2671,7 @@ namespace ProyectoSO
             else
             { vidas_fin2.Image = Image.FromFile("vidas_0.png"); }
             if (isGameOver_J2 == true)
-            {
+            { 
                 vidas_fin2.Image = Image.FromFile("vidas_0.png");
                 p2.Image = Image.FromFile(Jug2.GetAnimacionSaludo());
             }
@@ -2411,7 +2709,7 @@ namespace ProyectoSO
             else
             { vidas_fin4.Image = Image.FromFile("vidas_0.png"); }
             if (isGameOver_J4 == true)
-            {
+            { 
                 vidas_fin4.Image = Image.FromFile("vidas_0.png");
                 p4.Image = Image.FromFile(Jug4.GetAnimacionDerrotado());
             }
@@ -2423,27 +2721,38 @@ namespace ProyectoSO
                 panelResultado.Controls.Add(labelResultado);
                 panelResultado.Controls.Add(label_letraResultado);
 
-                panelResultado.Controls.Add(labelNombreJ1);
-                panelResultado.Controls.Add(labelNombreJ2);
-                panelResultado.Controls.Add(labelNombreJ3);
-                panelResultado.Controls.Add(labelNombreJ4);
-                panelResultado.Controls.Add(labelPuntosJ1);
-                panelResultado.Controls.Add(labelPuntosJ2);
-                panelResultado.Controls.Add(labelPuntosJ3);
-                panelResultado.Controls.Add(labelPuntosJ4);
                 panelResultado.Controls.Add(labelTiempo);
 
                 panelResultado.Controls.Add(botonCerrarPartida);
 
-                panelResultado.Controls.Add(p1);
-                panelResultado.Controls.Add(p2);
-                panelResultado.Controls.Add(p3);
-                panelResultado.Controls.Add(p4);
-                panelResultado.Controls.Add(vidas_fin1);
-                panelResultado.Controls.Add(vidas_fin2);
-                panelResultado.Controls.Add(vidas_fin3);
-                panelResultado.Controls.Add(vidas_fin4);
-
+                if (jug1Juega == true)
+                {
+                    panelResultado.Controls.Add(labelNombreJ1);
+                    panelResultado.Controls.Add(p1);
+                    panelResultado.Controls.Add(labelPuntosJ1);
+                    panelResultado.Controls.Add(vidas_fin1);
+                }
+                if (jug2Juega == true)
+                {
+                    panelResultado.Controls.Add(labelNombreJ2);
+                    panelResultado.Controls.Add(p2);
+                    panelResultado.Controls.Add(vidas_fin2);
+                    panelResultado.Controls.Add(labelPuntosJ2);
+                }
+                if (jug3Juega == true)
+                {
+                    panelResultado.Controls.Add(labelNombreJ3);
+                    panelResultado.Controls.Add(p3);
+                    panelResultado.Controls.Add(labelPuntosJ3);
+                    panelResultado.Controls.Add(vidas_fin3);
+                }
+                if (jug4Juega == true)
+                {
+                    panelResultado.Controls.Add(labelNombreJ4);
+                    panelResultado.Controls.Add(p4);
+                    panelResultado.Controls.Add(labelPuntosJ4);
+                    panelResultado.Controls.Add(vidas_fin4);
+                }
                 panelResultado.BringToFront();
             }));
         }
@@ -2454,7 +2763,5 @@ namespace ProyectoSO
             MessageBox.Show("La partida ha terminado.");
             this.Close();
         }
-
     }
-
 }

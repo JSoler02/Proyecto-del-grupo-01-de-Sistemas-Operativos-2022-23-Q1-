@@ -44,6 +44,8 @@ namespace ProyectoSO
         //prueba_Teclas[] form_prueba_tecl = new prueba_Teclas[10];
         List<Templo4> form_templo_4Jug = new List<Templo4>();
         List<Volcan4> form_volcan_4Jug = new List<Volcan4>();
+        List<Volcan2> form_volcan_2Jug = new List<Volcan2>();
+
         List<Cueva_Maritima> form_cueva_mar_4Jug = new List<Cueva_Maritima>();
         List<prueba_Teclas> form_prueba_tecl = new List<prueba_Teclas>();
 
@@ -182,7 +184,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8090;
+                puerto = 8080;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -395,6 +397,11 @@ namespace ProyectoSO
                                 t = new Thread(ts_mapa_volcan4);
                                 t.Start();
                                 break;
+                            case "Volcan (2Jug)":
+                                ThreadStart ts_mapa_volcan2 = delegate { PonerEnMarchaForm_Volcan2Jug(); };
+                                t = new Thread(ts_mapa_volcan2);
+                                t.Start();
+                                break;
                             case "PruebaTeclas":
                                 ThreadStart ts_mapa_pt = delegate { PonerEnMarchaForm_PruebaTecla(); };
                                 t = new Thread(ts_mapa_pt);
@@ -425,6 +432,12 @@ namespace ProyectoSO
                                     form_volcan_4Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -445,6 +458,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_4Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -469,6 +488,12 @@ namespace ProyectoSO
                                     form_volcan_4Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -491,6 +516,12 @@ namespace ProyectoSO
                                     form_volcan_4Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -510,6 +541,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_4Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -542,6 +579,12 @@ namespace ProyectoSO
                                     form_volcan_4Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
                     case 22:
@@ -561,6 +604,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_4Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -583,6 +632,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_4Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -718,6 +773,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_4Jug[idPartida].FinDePartida(resultado, letra_res);
+                                }));
+                                break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug[idPartida].FinDePartida(resultado, letra_res);
                                 }));
                                 break;
                         }
@@ -938,22 +999,31 @@ namespace ProyectoSO
         {
             Volcan4 t = new Volcan4(idPartida, server);
             t.MiPersonaje(formularios1[idPartida].DameMiPersonajeQueHeEscogido());
-            switch (formularios1[idPartida].DameMiPersonajeQueHeEscogido())
-            {
-                case 1:
-                    t.SetJug1Nombre(nombre);
-                    break;
-                case 2:
-                    t.SetJug2Nombre(nombre);
-                    break;
-                case 3:
-                    t.SetJug3Nombre(nombre);
-                    break;
-                case 4:
-                    t.SetJug4Nombre(nombre);
-                    break;
-            }   // pasamos nombre
+            // pasamos nombre
+            t.SetJug1Nombre(formularios1[idPartida].DameNombreJug1());
+            t.SetJug2Nombre(formularios1[idPartida].DameNombreJug2());
+            t.SetJug3Nombre(formularios1[idPartida].DameNombreJug3());
+            t.SetJug4Nombre(formularios1[idPartida].DameNombreJug4());
+
             form_volcan_4Jug.Add(t);
+            t.ShowDialog();
+        }
+        private void PonerEnMarchaForm_Volcan2Jug()
+        {
+            Volcan2 t = new Volcan2(idPartida, server);
+            t.MiPersonaje(formularios1[idPartida].DameMiPersonajeQueHeEscogido());
+            // pasamos nombre
+            t.SetJug1Nombre(formularios1[idPartida].DameNombreJug1());
+            t.SetJug2Nombre(formularios1[idPartida].DameNombreJug2());
+            t.SetJug3Nombre(formularios1[idPartida].DameNombreJug3());
+            t.SetJug4Nombre(formularios1[idPartida].DameNombreJug4());
+            // pasamos las variables bool que establecen qué jugadores juegan
+            t.SetJug1Juega(formularios1[idPartida].DameJug1Juega());
+            t.SetJug2Juega(formularios1[idPartida].DameJug2Juega());
+            t.SetJug3Juega(formularios1[idPartida].DameJug3Juega());
+            t.SetJug4Juega(formularios1[idPartida].DameJug4Juega());
+
+            form_volcan_2Jug.Add(t);
             t.ShowDialog();
         }
         private void PonerEnMarchaForm_PruebaTecla()

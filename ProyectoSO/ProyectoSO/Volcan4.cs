@@ -334,7 +334,7 @@ namespace ProyectoSO
                 EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
                 // Quitar esta función cuando esté ya trabajada. De momento está aquí para trabajarla.
                 // parámetros sacados de la seleccion de partida y del MENSAJE RECIBIDO
-                FinDePartida("SUPERADO", letra_miResultado);
+                // FinDePartida("SUPERADO", letra_miResultado);
             }
 
             if (isGameOver_J1 == true || isGameOver_J2 == true || isGameOver_J3 == true || isGameOver_J4 == true)
@@ -2539,6 +2539,11 @@ namespace ProyectoSO
             { vidas_fin1.Image = Image.FromFile("vidas_fire_1.png"); }
             else
             { vidas_fin1.Image = Image.FromFile("vidas_0.png"); }
+            if (isGameOver_J1 == true)
+            {
+                vidas_fin1.Image = Image.FromFile("vidas_0.png");
+                p1.Image = Image.FromFile(Jug1.GetAnimacionSaludo());
+            }
 
             vidas_fin2.Width = vidasJ2_pb.Width;
             vidas_fin2.Height = vidasJ2_pb.Height;
@@ -2553,6 +2558,11 @@ namespace ProyectoSO
             { vidas_fin2.Image = Image.FromFile("vidas_water_1.png"); }
             else
             { vidas_fin2.Image = Image.FromFile("vidas_0.png"); }
+            if (isGameOver_J2 == true)
+            {
+                vidas_fin2.Image = Image.FromFile("vidas_0.png");
+                p2.Image = Image.FromFile(Jug2.GetAnimacionSaludo());
+            }
 
             vidas_fin3.Width = vidasJ3_pb.Width;
             vidas_fin3.Height = vidasJ3_pb.Height;
@@ -2567,6 +2577,11 @@ namespace ProyectoSO
             { vidas_fin3.Image = Image.FromFile("vidas_rock_1.png"); }
             else
             { vidas_fin3.Image = Image.FromFile("vidas_0.png"); }
+            if (isGameOver_J3 == true)
+            {
+                vidas_fin3.Image = Image.FromFile("vidas_0.png");
+                p3.Image = Image.FromFile(Jug3.GetAnimacionSaludo());
+            }
 
             vidas_fin4.Width = vidasJ4_pb.Width;
             vidas_fin4.Height = vidasJ4_pb.Height;
@@ -2581,6 +2596,11 @@ namespace ProyectoSO
             { vidas_fin4.Image = Image.FromFile("vidas_cloud_1.png"); }
             else
             { vidas_fin4.Image = Image.FromFile("vidas_0.png"); }
+            if (isGameOver_J4 == true)
+            {
+                vidas_fin4.Image = Image.FromFile("vidas_0.png");
+                p4.Image = Image.FromFile(Jug4.GetAnimacionDerrotado());
+            }
             Invoke(new Action(() =>
             {
                 // Add the Panel control to the form.
