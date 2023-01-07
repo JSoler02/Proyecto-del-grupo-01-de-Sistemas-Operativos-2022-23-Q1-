@@ -91,6 +91,12 @@
     <Compile Include="Volcan2.Designer.cs">
       <DependentUpon>Volcan2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Volcan3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Volcan3.Designer.cs">
+      <DependentUpon>Volcan3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Volcan4.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Volcan2.resx">
       <DependentUpon>Volcan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Volcan3.resx">
+      <DependentUpon>Volcan3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Volcan4.resx">
       <DependentUpon>Volcan4.cs</DependentUpon>

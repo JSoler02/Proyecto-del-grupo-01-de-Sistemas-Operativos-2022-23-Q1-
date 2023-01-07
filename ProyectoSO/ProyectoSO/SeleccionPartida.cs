@@ -62,7 +62,9 @@ namespace ProyectoSO
 
             }
             else if (numJugadoresPartida == 3)
-            { }
+            {
+                comboBox_Mapa.Items.Add("Volcan (3Jug)");
+            }
             else // if (numJugadoresPartida == 2)
             {
                 comboBox_Mapa.Items.Add("Volcan (2Jug)");
@@ -416,7 +418,7 @@ namespace ProyectoSO
                 // hablar de partidas de menos de 4 jugadores
                 if (numJugadoresPartida == 4)
                 {
-                    if ((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))
+                    if (Estan4JugadoresListos() == true)
                     {
                         string mensaje_chat = "14/" + idPartida;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
@@ -429,15 +431,29 @@ namespace ProyectoSO
                 }
                 else if (numJugadoresPartida == 3)  // mirar qué personajes hay disponibles
                 {
-                    string mensaje_chat = "14/" + idPartida;
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                    server.Send(msg);
+                    if (Estan3JugadoresListos() == true)
+                    {
+                        string mensaje_chat = "14/" + idPartida;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+                        server.Send(msg);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Alguien no está listo.");
+                    }
                 }
                 else if (numJugadoresPartida == 2)  // mirar qué personajes hay disponibles
                 {
-                    string mensaje_chat = "14/" + idPartida;
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                    server.Send(msg);
+                    if (Estan2JugadoresListos() == true)
+                    {
+                        string mensaje_chat = "14/" + idPartida;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+                        server.Send(msg);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Alguien no está listo.");
+                    }
                 }
             }
             else
@@ -446,7 +462,57 @@ namespace ProyectoSO
             }
         }
         
-        
+        // funciones para ver si están los jugadores listos para cuando hay 4, 3 o 2 jugadores (mira todas las opciones)
+        private bool Estan4JugadoresListos()
+        { 
+            if ((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))
+            { return true; }
+            else
+            { return false;}
+        }
+        private bool Estan3JugadoresListos() // partida de 3jugadores --> solo 1 no puede jugar
+        {
+            // miramos primero si jug 1 juega
+            if (((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1))   //jug 4 no juega
+                || ((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))   //jug 3 no juega
+                || ((J1seleccionado == 1 || J1seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1)))   //jug 2 no juega
+            { 
+                return true;
+            }
+            else // jug 1 no juega --> juegan los otros 3
+            {
+                if ((J4seleccionado == 1 || J4seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1))
+                { return true; }
+                else
+                { return false; }
+            }
+        }
+        private bool Estan2JugadoresListos() // partida de 2jugadores --> solo 2 no puede jugar
+        {
+            // miramos primero si jug 1 juega
+            if (((J1seleccionado == 1 || J1seleccionado == -1) && (J2seleccionado == 1 || J2seleccionado == -1))   //jug 3 y jug 4 no juegan
+                || ((J1seleccionado == 1 || J1seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))   //jug 2 y jug 3 no juegan
+                || ((J1seleccionado == 1 || J1seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1)))   //jug 2 y jug 4 no juegan
+            {
+                return true;
+            }
+            else // jug 1 no juega
+            {
+                // miramos si jug 2 juega
+                if (((J2seleccionado == 1 || J2seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))   //jug 1 y jug 3 no juegan
+                   || ((J2seleccionado == 1 || J2seleccionado == -1) && (J3seleccionado == 1 || J3seleccionado == -1)))   //jug 1 y jug 4 no juegan
+                {
+                    return true;
+                }
+                else // no juega ni jug 1 ni 2 --> juega jug 3 y jug 4
+                {
+                    if ((J3seleccionado == 1 || J3seleccionado == -1) && (J4seleccionado == 1 || J4seleccionado == -1))
+                    { return true; }
+                    else
+                    { return false; }
+                }
+            }
+        }
         // Chat
         private void EnviarChatBut_Click(object sender, EventArgs e)
         {
