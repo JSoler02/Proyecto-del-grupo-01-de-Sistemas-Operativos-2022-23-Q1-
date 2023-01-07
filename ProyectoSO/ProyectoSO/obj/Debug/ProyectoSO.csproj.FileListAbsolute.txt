@@ -54,8 +54,6 @@ C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Pro
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Cueva_Maritima.resources
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.SeleccionPartida.resources
 C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Mapa2.resources
-C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Templo.resources
-C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan.resources
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Cueva_Maritima.resources
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Mapa2.resources
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.prueba_Teclas.resources
@@ -63,3 +61,9 @@ C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan4.resources
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan2.resources
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan3.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.CrearPartida.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.prueba_Teclas.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Templo4.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan2.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan3.resources
+C:\Users\Mariina\Documents\Project\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan4.resources

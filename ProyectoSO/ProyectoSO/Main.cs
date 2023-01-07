@@ -961,25 +961,18 @@ namespace ProyectoSO
         }
         private void CrearPartidaBut_Click(object sender, EventArgs e)
         {
+            
+            
             if (But_empezarPartida_activado == false)
             {
-                DialogResult r = MessageBox.Show("¿De cuántos jugadores quieres crear la partida?\n{2 jugadores}\t{3 jugadores}\t{4 jugadores}", "Creación de Partida", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (r == DialogResult.Yes)
-                {
-                    InvPartida = 2;
-                }
-                else if (r == DialogResult.No)
-                {
-                    InvPartida = 3;
-                }
-                else
-                {
-                    InvPartida = 4;
-                }
-                MessageBox.Show("Haz doble-click en los nombres de los jugadores que quieras invitar.");
+                CrearPartida f = new CrearPartida();
+                f.ShowDialog();
+                InvPartida = f.DameNum();
+                MessageBox.Show("Haz doble-click en "+ InvPartida + " nombres de los jugadores que quieras invitar.");
                 But_empezarPartida_activado = true;
             }
         }
+        
 
         private void GridConectados_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
