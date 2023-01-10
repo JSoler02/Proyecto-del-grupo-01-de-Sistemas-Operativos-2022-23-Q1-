@@ -18,7 +18,7 @@ namespace ProyectoSO
         int idPartida;
         Socket server; // declaramos socket
 
-        string mapa = "Cueva Maritima (4Jug)";
+        string mapa = "Cueva";
         // Mi personaje --> 1,2,3,4
         int miPersonajeQueControlo;
 
@@ -77,10 +77,10 @@ namespace ProyectoSO
         List<PictureBox> misPicsPersonajes = new List<PictureBox>();
         int numPics = 1;
 
-        Jugador Jug1 = new Jugador(1, 10, 660);
-        Jugador Jug2 = new Jugador(2, 70, 660);
-        Jugador Jug3 = new Jugador(3, 700, 660);
-        Jugador Jug4 = new Jugador(4, 770, 660);
+        Jugador Jug1 = new Jugador(1, 60, 713);
+        Jugador Jug2 = new Jugador(2, 120, 710);
+        Jugador Jug3 = new Jugador(3, 1200, 715);
+        Jugador Jug4 = new Jugador(4, 1260, 715);
         // variables del tiempo
         int segundos;
         private void tiempoJuego_Tick(object sender, EventArgs e)
@@ -120,7 +120,7 @@ namespace ProyectoSO
         }
         private void Cueva_Maritima_Load_1(object sender, EventArgs e)
         {
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             RestartGame();
         }
         private void pintarPersonajesEnSusPosiciones()
@@ -575,8 +575,8 @@ namespace ProyectoSO
             vidasJ4_pb.BackgroundImage = Image.FromFile("vidas_cloud_3.png");
             vidasJ4_pb.BackColor = Color.Transparent;
             // Posiciones de los picturebox de las vidas
-            vidasJ1_pb.Top = 2;
-            vidasJ1_pb.Left = 12;
+            vidasJ1_pb.Top = 19;
+            vidasJ1_pb.Left = 538;
             vidasJ2_pb.Top = vidasJ1_pb.Bottom + 2;
             vidasJ2_pb.Left = vidasJ1_pb.Left;
             vidasJ3_pb.Top = vidasJ2_pb.Bottom;

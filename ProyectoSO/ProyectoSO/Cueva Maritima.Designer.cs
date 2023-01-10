@@ -76,7 +76,6 @@
             this.vertical2 = new System.Windows.Forms.PictureBox();
             this.pictureBox35 = new System.Windows.Forms.PictureBox();
             this.pictureBox36 = new System.Windows.Forms.PictureBox();
-            this.pictureBox37 = new System.Windows.Forms.PictureBox();
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
             this.puertaJ1 = new System.Windows.Forms.PictureBox();
             this.puertaJ2 = new System.Windows.Forms.PictureBox();
@@ -114,6 +113,8 @@
             this.pictureBox74 = new System.Windows.Forms.PictureBox();
             this.label_tiempo = new System.Windows.Forms.Label();
             this.label_mensaje = new System.Windows.Forms.Label();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.pictureBox25 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -161,7 +162,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.vertical2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ2)).BeginInit();
@@ -197,12 +197,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox74)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox18
             // 
             this.pictureBox18.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox18.Location = new System.Drawing.Point(1, 976);
+            this.pictureBox18.Location = new System.Drawing.Point(25, 924);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(327, 39);
             this.pictureBox18.TabIndex = 238;
@@ -212,7 +214,7 @@
             // pictureBox21
             // 
             this.pictureBox21.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox21.Location = new System.Drawing.Point(327, 1004);
+            this.pictureBox21.Location = new System.Drawing.Point(350, 954);
             this.pictureBox21.Name = "pictureBox21";
             this.pictureBox21.Size = new System.Drawing.Size(115, 10);
             this.pictureBox21.TabIndex = 245;
@@ -223,7 +225,7 @@
             // 
             this.pictureBox19.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox19.Image")));
-            this.pictureBox19.Location = new System.Drawing.Point(331, 987);
+            this.pictureBox19.Location = new System.Drawing.Point(355, 935);
             this.pictureBox19.Name = "pictureBox19";
             this.pictureBox19.Size = new System.Drawing.Size(109, 26);
             this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -234,7 +236,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox1.Location = new System.Drawing.Point(440, 976);
+            this.pictureBox1.Location = new System.Drawing.Point(464, 924);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(125, 39);
             this.pictureBox1.TabIndex = 246;
@@ -244,7 +246,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox2.Location = new System.Drawing.Point(558, 1004);
+            this.pictureBox2.Location = new System.Drawing.Point(580, 953);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(115, 10);
             this.pictureBox2.TabIndex = 248;
@@ -255,7 +257,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(562, 987);
+            this.pictureBox3.Location = new System.Drawing.Point(586, 935);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(109, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -266,7 +268,7 @@
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox4.Location = new System.Drawing.Point(668, 976);
+            this.pictureBox4.Location = new System.Drawing.Point(692, 924);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(403, 39);
             this.pictureBox4.TabIndex = 249;
@@ -276,7 +278,7 @@
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox5.Location = new System.Drawing.Point(1299, 1003);
+            this.pictureBox5.Location = new System.Drawing.Point(1327, 952);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(115, 10);
             this.pictureBox5.TabIndex = 254;
@@ -287,7 +289,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(1303, 986);
+            this.pictureBox6.Location = new System.Drawing.Point(1327, 936);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(109, 26);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -298,7 +300,7 @@
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox7.Location = new System.Drawing.Point(1181, 975);
+            this.pictureBox7.Location = new System.Drawing.Point(1205, 923);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(125, 39);
             this.pictureBox7.TabIndex = 252;
@@ -308,7 +310,7 @@
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox8.Location = new System.Drawing.Point(1068, 1003);
+            this.pictureBox8.Location = new System.Drawing.Point(1092, 953);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(115, 10);
             this.pictureBox8.TabIndex = 251;
@@ -319,7 +321,7 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(1072, 986);
+            this.pictureBox9.Location = new System.Drawing.Point(1096, 934);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(109, 26);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -330,7 +332,7 @@
             // pictureBox10
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox10.Location = new System.Drawing.Point(1411, 973);
+            this.pictureBox10.Location = new System.Drawing.Point(1435, 924);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(327, 39);
             this.pictureBox10.TabIndex = 255;
@@ -340,7 +342,7 @@
             // vidasJ4_pb
             // 
             this.vidasJ4_pb.BackColor = System.Drawing.Color.Maroon;
-            this.vidasJ4_pb.Location = new System.Drawing.Point(688, 109);
+            this.vidasJ4_pb.Location = new System.Drawing.Point(738, 127);
             this.vidasJ4_pb.Name = "vidasJ4_pb";
             this.vidasJ4_pb.Size = new System.Drawing.Size(132, 30);
             this.vidasJ4_pb.TabIndex = 259;
@@ -350,7 +352,7 @@
             // vidasJ3_pb
             // 
             this.vidasJ3_pb.BackColor = System.Drawing.Color.Maroon;
-            this.vidasJ3_pb.Location = new System.Drawing.Point(688, 73);
+            this.vidasJ3_pb.Location = new System.Drawing.Point(738, 91);
             this.vidasJ3_pb.Name = "vidasJ3_pb";
             this.vidasJ3_pb.Size = new System.Drawing.Size(132, 30);
             this.vidasJ3_pb.TabIndex = 258;
@@ -360,7 +362,7 @@
             // vidasJ2_pb
             // 
             this.vidasJ2_pb.BackColor = System.Drawing.Color.Maroon;
-            this.vidasJ2_pb.Location = new System.Drawing.Point(688, 37);
+            this.vidasJ2_pb.Location = new System.Drawing.Point(738, 55);
             this.vidasJ2_pb.Name = "vidasJ2_pb";
             this.vidasJ2_pb.Size = new System.Drawing.Size(132, 30);
             this.vidasJ2_pb.TabIndex = 257;
@@ -370,7 +372,7 @@
             // vidasJ1_pb
             // 
             this.vidasJ1_pb.BackColor = System.Drawing.Color.Maroon;
-            this.vidasJ1_pb.Location = new System.Drawing.Point(688, 1);
+            this.vidasJ1_pb.Location = new System.Drawing.Point(738, 19);
             this.vidasJ1_pb.Name = "vidasJ1_pb";
             this.vidasJ1_pb.Size = new System.Drawing.Size(132, 30);
             this.vidasJ1_pb.TabIndex = 256;
@@ -381,7 +383,7 @@
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox11.Image = global::ProyectoSO.Properties.Resources.diamante_fire;
-            this.pictureBox11.Location = new System.Drawing.Point(696, 928);
+            this.pictureBox11.Location = new System.Drawing.Point(720, 876);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(25, 25);
             this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -393,7 +395,7 @@
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox12.Image = global::ProyectoSO.Properties.Resources.diamante_water;
-            this.pictureBox12.Location = new System.Drawing.Point(495, 928);
+            this.pictureBox12.Location = new System.Drawing.Point(519, 876);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(25, 25);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -405,7 +407,7 @@
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox13.Image = global::ProyectoSO.Properties.Resources.diamante_cloud;
-            this.pictureBox13.Location = new System.Drawing.Point(1027, 928);
+            this.pictureBox13.Location = new System.Drawing.Point(1051, 876);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(25, 25);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -419,7 +421,7 @@
             this.diamante3.BackColor = System.Drawing.Color.Goldenrod;
             this.diamante3.ErrorImage = null;
             this.diamante3.Image = global::ProyectoSO.Properties.Resources.diamante_rock;
-            this.diamante3.Location = new System.Drawing.Point(1231, 928);
+            this.diamante3.Location = new System.Drawing.Point(1255, 876);
             this.diamante3.Name = "diamante3";
             this.diamante3.Size = new System.Drawing.Size(25, 25);
             this.diamante3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -430,9 +432,9 @@
             // pictureBox15
             // 
             this.pictureBox15.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox15.Location = new System.Drawing.Point(854, 743);
+            this.pictureBox15.Location = new System.Drawing.Point(878, 417);
             this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(31, 236);
+            this.pictureBox15.Size = new System.Drawing.Size(31, 510);
             this.pictureBox15.TabIndex = 265;
             this.pictureBox15.TabStop = false;
             this.pictureBox15.Tag = "plataforma";
@@ -440,7 +442,7 @@
             // pictureBox14
             // 
             this.pictureBox14.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox14.Location = new System.Drawing.Point(290, 722);
+            this.pictureBox14.Location = new System.Drawing.Point(314, 670);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(1161, 23);
             this.pictureBox14.TabIndex = 266;
@@ -450,7 +452,7 @@
             // pictureBox16
             // 
             this.pictureBox16.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox16.Location = new System.Drawing.Point(1525, 831);
+            this.pictureBox16.Location = new System.Drawing.Point(1549, 779);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(213, 33);
             this.pictureBox16.TabIndex = 267;
@@ -460,7 +462,7 @@
             // pictureBox20
             // 
             this.pictureBox20.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox20.Location = new System.Drawing.Point(1525, 632);
+            this.pictureBox20.Location = new System.Drawing.Point(1549, 580);
             this.pictureBox20.Name = "pictureBox20";
             this.pictureBox20.Size = new System.Drawing.Size(213, 23);
             this.pictureBox20.TabIndex = 269;
@@ -470,7 +472,7 @@
             // pictureBox17
             // 
             this.pictureBox17.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox17.Location = new System.Drawing.Point(1, 831);
+            this.pictureBox17.Location = new System.Drawing.Point(25, 779);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(189, 23);
             this.pictureBox17.TabIndex = 270;
@@ -480,7 +482,7 @@
             // placa1_1
             // 
             this.placa1_1.BackColor = System.Drawing.Color.DeepPink;
-            this.placa1_1.Location = new System.Drawing.Point(908, 959);
+            this.placa1_1.Location = new System.Drawing.Point(932, 907);
             this.placa1_1.Name = "placa1_1";
             this.placa1_1.Size = new System.Drawing.Size(106, 20);
             this.placa1_1.TabIndex = 279;
@@ -490,7 +492,7 @@
             // placa2_1
             // 
             this.placa2_1.BackColor = System.Drawing.Color.Indigo;
-            this.placa2_1.Location = new System.Drawing.Point(732, 959);
+            this.placa2_1.Location = new System.Drawing.Point(756, 907);
             this.placa2_1.Name = "placa2_1";
             this.placa2_1.Size = new System.Drawing.Size(106, 20);
             this.placa2_1.TabIndex = 280;
@@ -500,7 +502,7 @@
             // pictureBox63
             // 
             this.pictureBox63.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox63.Location = new System.Drawing.Point(1465, 167);
+            this.pictureBox63.Location = new System.Drawing.Point(1489, 115);
             this.pictureBox63.Name = "pictureBox63";
             this.pictureBox63.Size = new System.Drawing.Size(10, 312);
             this.pictureBox63.TabIndex = 328;
@@ -510,7 +512,7 @@
             // plataformaVertical1_Bot_limit
             // 
             this.plataformaVertical1_Bot_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical1_Bot_limit.Location = new System.Drawing.Point(1560, 547);
+            this.plataformaVertical1_Bot_limit.Location = new System.Drawing.Point(1584, 495);
             this.plataformaVertical1_Bot_limit.Name = "plataformaVertical1_Bot_limit";
             this.plataformaVertical1_Bot_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical1_Bot_limit.TabIndex = 326;
@@ -519,7 +521,7 @@
             // plataformaVertical1_Top_limit
             // 
             this.plataformaVertical1_Top_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical1_Top_limit.Location = new System.Drawing.Point(1525, 148);
+            this.plataformaVertical1_Top_limit.Location = new System.Drawing.Point(1549, 96);
             this.plataformaVertical1_Top_limit.Name = "plataformaVertical1_Top_limit";
             this.plataformaVertical1_Top_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical1_Top_limit.TabIndex = 327;
@@ -528,7 +530,7 @@
             // vertical1
             // 
             this.vertical1.BackColor = System.Drawing.Color.HotPink;
-            this.vertical1.Location = new System.Drawing.Point(1509, 239);
+            this.vertical1.Location = new System.Drawing.Point(1533, 187);
             this.vertical1.Name = "vertical1";
             this.vertical1.Size = new System.Drawing.Size(100, 30);
             this.vertical1.TabIndex = 325;
@@ -538,7 +540,7 @@
             // pictureBox52
             // 
             this.pictureBox52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox52.Location = new System.Drawing.Point(1637, 165);
+            this.pictureBox52.Location = new System.Drawing.Point(1661, 113);
             this.pictureBox52.Name = "pictureBox52";
             this.pictureBox52.Size = new System.Drawing.Size(10, 324);
             this.pictureBox52.TabIndex = 324;
@@ -548,7 +550,7 @@
             // pictureBox23
             // 
             this.pictureBox23.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox23.Location = new System.Drawing.Point(1225, 284);
+            this.pictureBox23.Location = new System.Drawing.Point(1249, 232);
             this.pictureBox23.Name = "pictureBox23";
             this.pictureBox23.Size = new System.Drawing.Size(31, 442);
             this.pictureBox23.TabIndex = 329;
@@ -558,7 +560,7 @@
             // pictureBox24
             // 
             this.pictureBox24.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox24.Location = new System.Drawing.Point(1090, 269);
+            this.pictureBox24.Location = new System.Drawing.Point(1114, 217);
             this.pictureBox24.Name = "pictureBox24";
             this.pictureBox24.Size = new System.Drawing.Size(369, 23);
             this.pictureBox24.TabIndex = 330;
@@ -568,7 +570,7 @@
             // placa1_2
             // 
             this.placa1_2.BackColor = System.Drawing.Color.DeepPink;
-            this.placa1_2.Location = new System.Drawing.Point(1274, 249);
+            this.placa1_2.Location = new System.Drawing.Point(1298, 197);
             this.placa1_2.Name = "placa1_2";
             this.placa1_2.Size = new System.Drawing.Size(106, 20);
             this.placa1_2.TabIndex = 331;
@@ -578,7 +580,7 @@
             // placa4_1
             // 
             this.placa4_1.BackColor = System.Drawing.Color.Aqua;
-            this.placa4_1.Location = new System.Drawing.Point(1117, 249);
+            this.placa4_1.Location = new System.Drawing.Point(1141, 197);
             this.placa4_1.Name = "placa4_1";
             this.placa4_1.Size = new System.Drawing.Size(106, 20);
             this.placa4_1.TabIndex = 332;
@@ -588,7 +590,7 @@
             // placa2_2
             // 
             this.placa2_2.BackColor = System.Drawing.Color.Indigo;
-            this.placa2_2.Location = new System.Drawing.Point(321, 249);
+            this.placa2_2.Location = new System.Drawing.Point(345, 197);
             this.placa2_2.Name = "placa2_2";
             this.placa2_2.Size = new System.Drawing.Size(106, 20);
             this.placa2_2.TabIndex = 336;
@@ -598,7 +600,7 @@
             // placa3_1
             // 
             this.placa3_1.BackColor = System.Drawing.Color.Lime;
-            this.placa3_1.Location = new System.Drawing.Point(478, 249);
+            this.placa3_1.Location = new System.Drawing.Point(502, 197);
             this.placa3_1.Name = "placa3_1";
             this.placa3_1.Size = new System.Drawing.Size(106, 20);
             this.placa3_1.TabIndex = 335;
@@ -608,7 +610,7 @@
             // pictureBox29
             // 
             this.pictureBox29.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox29.Location = new System.Drawing.Point(215, 269);
+            this.pictureBox29.Location = new System.Drawing.Point(239, 217);
             this.pictureBox29.Name = "pictureBox29";
             this.pictureBox29.Size = new System.Drawing.Size(403, 23);
             this.pictureBox29.TabIndex = 334;
@@ -618,7 +620,7 @@
             // pictureBox30
             // 
             this.pictureBox30.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox30.Location = new System.Drawing.Point(429, 284);
+            this.pictureBox30.Location = new System.Drawing.Point(453, 232);
             this.pictureBox30.Name = "pictureBox30";
             this.pictureBox30.Size = new System.Drawing.Size(31, 442);
             this.pictureBox30.TabIndex = 333;
@@ -628,7 +630,7 @@
             // pictureBox31
             // 
             this.pictureBox31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox31.Location = new System.Drawing.Point(27, 167);
+            this.pictureBox31.Location = new System.Drawing.Point(44, 115);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(10, 312);
             this.pictureBox31.TabIndex = 341;
@@ -638,7 +640,7 @@
             // plataformaVertical2_Bot_limit
             // 
             this.plataformaVertical2_Bot_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical2_Bot_limit.Location = new System.Drawing.Point(122, 547);
+            this.plataformaVertical2_Bot_limit.Location = new System.Drawing.Point(139, 495);
             this.plataformaVertical2_Bot_limit.Name = "plataformaVertical2_Bot_limit";
             this.plataformaVertical2_Bot_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical2_Bot_limit.TabIndex = 339;
@@ -647,7 +649,7 @@
             // plataformaVertical2_Top_limit
             // 
             this.plataformaVertical2_Top_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical2_Top_limit.Location = new System.Drawing.Point(95, 148);
+            this.plataformaVertical2_Top_limit.Location = new System.Drawing.Point(112, 96);
             this.plataformaVertical2_Top_limit.Name = "plataformaVertical2_Top_limit";
             this.plataformaVertical2_Top_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical2_Top_limit.TabIndex = 340;
@@ -656,7 +658,7 @@
             // vertical2
             // 
             this.vertical2.BackColor = System.Drawing.Color.BlueViolet;
-            this.vertical2.Location = new System.Drawing.Point(71, 239);
+            this.vertical2.Location = new System.Drawing.Point(88, 187);
             this.vertical2.Name = "vertical2";
             this.vertical2.Size = new System.Drawing.Size(100, 30);
             this.vertical2.TabIndex = 338;
@@ -666,7 +668,7 @@
             // pictureBox35
             // 
             this.pictureBox35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox35.Location = new System.Drawing.Point(199, 165);
+            this.pictureBox35.Location = new System.Drawing.Point(216, 113);
             this.pictureBox35.Name = "pictureBox35";
             this.pictureBox35.Size = new System.Drawing.Size(10, 324);
             this.pictureBox35.TabIndex = 337;
@@ -676,27 +678,17 @@
             // pictureBox36
             // 
             this.pictureBox36.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox36.Location = new System.Drawing.Point(1, 632);
+            this.pictureBox36.Location = new System.Drawing.Point(25, 580);
             this.pictureBox36.Name = "pictureBox36";
             this.pictureBox36.Size = new System.Drawing.Size(213, 23);
             this.pictureBox36.TabIndex = 342;
             this.pictureBox36.TabStop = false;
             this.pictureBox36.Tag = "plataforma";
             // 
-            // pictureBox37
-            // 
-            this.pictureBox37.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox37.Location = new System.Drawing.Point(854, 467);
-            this.pictureBox37.Name = "pictureBox37";
-            this.pictureBox37.Size = new System.Drawing.Size(31, 259);
-            this.pictureBox37.TabIndex = 343;
-            this.pictureBox37.TabStop = false;
-            this.pictureBox37.Tag = "plataforma";
-            // 
             // pictureBox38
             // 
             this.pictureBox38.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox38.Location = new System.Drawing.Point(714, 447);
+            this.pictureBox38.Location = new System.Drawing.Point(738, 395);
             this.pictureBox38.Name = "pictureBox38";
             this.pictureBox38.Size = new System.Drawing.Size(324, 23);
             this.pictureBox38.TabIndex = 344;
@@ -706,7 +698,7 @@
             // puertaJ1
             // 
             this.puertaJ1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.puertaJ1.Location = new System.Drawing.Point(539, 646);
+            this.puertaJ1.Location = new System.Drawing.Point(563, 594);
             this.puertaJ1.Name = "puertaJ1";
             this.puertaJ1.Size = new System.Drawing.Size(45, 80);
             this.puertaJ1.TabIndex = 345;
@@ -716,7 +708,7 @@
             // puertaJ2
             // 
             this.puertaJ2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.puertaJ2.Location = new System.Drawing.Point(657, 646);
+            this.puertaJ2.Location = new System.Drawing.Point(681, 594);
             this.puertaJ2.Name = "puertaJ2";
             this.puertaJ2.Size = new System.Drawing.Size(45, 80);
             this.puertaJ2.TabIndex = 346;
@@ -726,7 +718,7 @@
             // puertaJ3
             // 
             this.puertaJ3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.puertaJ3.Location = new System.Drawing.Point(1007, 646);
+            this.puertaJ3.Location = new System.Drawing.Point(1031, 594);
             this.puertaJ3.Name = "puertaJ3";
             this.puertaJ3.Size = new System.Drawing.Size(45, 80);
             this.puertaJ3.TabIndex = 347;
@@ -736,7 +728,7 @@
             // puertaJ4
             // 
             this.puertaJ4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.puertaJ4.Location = new System.Drawing.Point(1136, 646);
+            this.puertaJ4.Location = new System.Drawing.Point(1160, 594);
             this.puertaJ4.Name = "puertaJ4";
             this.puertaJ4.Size = new System.Drawing.Size(45, 80);
             this.puertaJ4.TabIndex = 348;
@@ -746,7 +738,7 @@
             // pictureBox40
             // 
             this.pictureBox40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox40.Location = new System.Drawing.Point(512, 342);
+            this.pictureBox40.Location = new System.Drawing.Point(515, 290);
             this.pictureBox40.Name = "pictureBox40";
             this.pictureBox40.Size = new System.Drawing.Size(10, 298);
             this.pictureBox40.TabIndex = 353;
@@ -756,7 +748,7 @@
             // plataformaVertical3_Bot_limit
             // 
             this.plataformaVertical3_Bot_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical3_Bot_limit.Location = new System.Drawing.Point(590, 657);
+            this.plataformaVertical3_Bot_limit.Location = new System.Drawing.Point(593, 605);
             this.plataformaVertical3_Bot_limit.Name = "plataformaVertical3_Bot_limit";
             this.plataformaVertical3_Bot_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical3_Bot_limit.TabIndex = 351;
@@ -765,7 +757,7 @@
             // plataformaVertical3_Top_limit
             // 
             this.plataformaVertical3_Top_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical3_Top_limit.Location = new System.Drawing.Point(572, 323);
+            this.plataformaVertical3_Top_limit.Location = new System.Drawing.Point(575, 271);
             this.plataformaVertical3_Top_limit.Name = "plataformaVertical3_Top_limit";
             this.plataformaVertical3_Top_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical3_Top_limit.TabIndex = 352;
@@ -774,7 +766,7 @@
             // vertical3
             // 
             this.vertical3.BackColor = System.Drawing.Color.Lime;
-            this.vertical3.Location = new System.Drawing.Point(556, 414);
+            this.vertical3.Location = new System.Drawing.Point(559, 362);
             this.vertical3.Name = "vertical3";
             this.vertical3.Size = new System.Drawing.Size(100, 30);
             this.vertical3.TabIndex = 350;
@@ -784,7 +776,7 @@
             // pictureBox46
             // 
             this.pictureBox46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox46.Location = new System.Drawing.Point(684, 340);
+            this.pictureBox46.Location = new System.Drawing.Point(687, 288);
             this.pictureBox46.Name = "pictureBox46";
             this.pictureBox46.Size = new System.Drawing.Size(10, 299);
             this.pictureBox46.TabIndex = 349;
@@ -794,7 +786,7 @@
             // pictureBox47
             // 
             this.pictureBox47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox47.Location = new System.Drawing.Point(1044, 340);
+            this.pictureBox47.Location = new System.Drawing.Point(1068, 288);
             this.pictureBox47.Name = "pictureBox47";
             this.pictureBox47.Size = new System.Drawing.Size(10, 298);
             this.pictureBox47.TabIndex = 358;
@@ -804,7 +796,7 @@
             // plataformaVertical4_Bot_limit
             // 
             this.plataformaVertical4_Bot_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical4_Bot_limit.Location = new System.Drawing.Point(1084, 657);
+            this.plataformaVertical4_Bot_limit.Location = new System.Drawing.Point(1118, 605);
             this.plataformaVertical4_Bot_limit.Name = "plataformaVertical4_Bot_limit";
             this.plataformaVertical4_Bot_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical4_Bot_limit.TabIndex = 356;
@@ -813,7 +805,7 @@
             // plataformaVertical4_Top_limit
             // 
             this.plataformaVertical4_Top_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical4_Top_limit.Location = new System.Drawing.Point(1084, 323);
+            this.plataformaVertical4_Top_limit.Location = new System.Drawing.Point(1118, 271);
             this.plataformaVertical4_Top_limit.Name = "plataformaVertical4_Top_limit";
             this.plataformaVertical4_Top_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical4_Top_limit.TabIndex = 357;
@@ -822,7 +814,7 @@
             // vertical4
             // 
             this.vertical4.BackColor = System.Drawing.Color.Aqua;
-            this.vertical4.Location = new System.Drawing.Point(1068, 414);
+            this.vertical4.Location = new System.Drawing.Point(1102, 362);
             this.vertical4.Name = "vertical4";
             this.vertical4.Size = new System.Drawing.Size(100, 30);
             this.vertical4.TabIndex = 355;
@@ -832,7 +824,7 @@
             // pictureBox51
             // 
             this.pictureBox51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox51.Location = new System.Drawing.Point(1196, 340);
+            this.pictureBox51.Location = new System.Drawing.Point(1230, 288);
             this.pictureBox51.Name = "pictureBox51";
             this.pictureBox51.Size = new System.Drawing.Size(10, 299);
             this.pictureBox51.TabIndex = 354;
@@ -844,7 +836,7 @@
             this.pictureBox54.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox54.ErrorImage = null;
             this.pictureBox54.Image = global::ProyectoSO.Properties.Resources.diamante_rock;
-            this.pictureBox54.Location = new System.Drawing.Point(752, 414);
+            this.pictureBox54.Location = new System.Drawing.Point(776, 362);
             this.pictureBox54.Name = "pictureBox54";
             this.pictureBox54.Size = new System.Drawing.Size(25, 25);
             this.pictureBox54.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -856,7 +848,7 @@
             // 
             this.pictureBox55.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox55.Image = global::ProyectoSO.Properties.Resources.diamante_cloud;
-            this.pictureBox55.Location = new System.Drawing.Point(766, 669);
+            this.pictureBox55.Location = new System.Drawing.Point(790, 617);
             this.pictureBox55.Name = "pictureBox55";
             this.pictureBox55.Size = new System.Drawing.Size(25, 25);
             this.pictureBox55.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -869,7 +861,7 @@
             // 
             this.pictureBox56.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox56.Image = global::ProyectoSO.Properties.Resources.diamante_water;
-            this.pictureBox56.Location = new System.Drawing.Point(961, 419);
+            this.pictureBox56.Location = new System.Drawing.Point(985, 367);
             this.pictureBox56.Name = "pictureBox56";
             this.pictureBox56.Size = new System.Drawing.Size(25, 25);
             this.pictureBox56.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -881,7 +873,7 @@
             // 
             this.pictureBox57.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox57.Image = global::ProyectoSO.Properties.Resources.diamante_fire;
-            this.pictureBox57.Location = new System.Drawing.Point(946, 669);
+            this.pictureBox57.Location = new System.Drawing.Point(970, 617);
             this.pictureBox57.Name = "pictureBox57";
             this.pictureBox57.Size = new System.Drawing.Size(25, 25);
             this.pictureBox57.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -892,9 +884,9 @@
             // pictureBox58
             // 
             this.pictureBox58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox58.Location = new System.Drawing.Point(1728, -107);
+            this.pictureBox58.Location = new System.Drawing.Point(1752, -1);
             this.pictureBox58.Name = "pictureBox58";
-            this.pictureBox58.Size = new System.Drawing.Size(10, 1119);
+            this.pictureBox58.Size = new System.Drawing.Size(10, 1036);
             this.pictureBox58.TabIndex = 363;
             this.pictureBox58.TabStop = false;
             this.pictureBox58.Tag = "aire";
@@ -902,9 +894,9 @@
             // pictureBox59
             // 
             this.pictureBox59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox59.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox59.Location = new System.Drawing.Point(25, -1);
             this.pictureBox59.Name = "pictureBox59";
-            this.pictureBox59.Size = new System.Drawing.Size(10, 1011);
+            this.pictureBox59.Size = new System.Drawing.Size(10, 961);
             this.pictureBox59.TabIndex = 364;
             this.pictureBox59.TabStop = false;
             this.pictureBox59.Tag = "pared_izquierda";
@@ -912,7 +904,7 @@
             // pictureBox60
             // 
             this.pictureBox60.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox60.Location = new System.Drawing.Point(290, 743);
+            this.pictureBox60.Location = new System.Drawing.Point(314, 691);
             this.pictureBox60.Name = "pictureBox60";
             this.pictureBox60.Size = new System.Drawing.Size(1161, 10);
             this.pictureBox60.TabIndex = 366;
@@ -922,7 +914,7 @@
             // pictureBox61
             // 
             this.pictureBox61.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox61.Location = new System.Drawing.Point(12, 854);
+            this.pictureBox61.Location = new System.Drawing.Point(36, 802);
             this.pictureBox61.Name = "pictureBox61";
             this.pictureBox61.Size = new System.Drawing.Size(178, 10);
             this.pictureBox61.TabIndex = 367;
@@ -932,7 +924,7 @@
             // pictureBox62
             // 
             this.pictureBox62.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox62.Location = new System.Drawing.Point(1525, 863);
+            this.pictureBox62.Location = new System.Drawing.Point(1549, 811);
             this.pictureBox62.Name = "pictureBox62";
             this.pictureBox62.Size = new System.Drawing.Size(202, 10);
             this.pictureBox62.TabIndex = 368;
@@ -942,7 +934,7 @@
             // pictureBox64
             // 
             this.pictureBox64.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox64.Location = new System.Drawing.Point(1525, 646);
+            this.pictureBox64.Location = new System.Drawing.Point(1549, 594);
             this.pictureBox64.Name = "pictureBox64";
             this.pictureBox64.Size = new System.Drawing.Size(202, 10);
             this.pictureBox64.TabIndex = 369;
@@ -952,7 +944,7 @@
             // pictureBox65
             // 
             this.pictureBox65.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox65.Location = new System.Drawing.Point(11, 654);
+            this.pictureBox65.Location = new System.Drawing.Point(35, 602);
             this.pictureBox65.Name = "pictureBox65";
             this.pictureBox65.Size = new System.Drawing.Size(202, 10);
             this.pictureBox65.TabIndex = 370;
@@ -962,7 +954,7 @@
             // pictureBox66
             // 
             this.pictureBox66.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox66.Location = new System.Drawing.Point(215, 292);
+            this.pictureBox66.Location = new System.Drawing.Point(239, 240);
             this.pictureBox66.Name = "pictureBox66";
             this.pictureBox66.Size = new System.Drawing.Size(403, 10);
             this.pictureBox66.TabIndex = 371;
@@ -972,7 +964,7 @@
             // pictureBox67
             // 
             this.pictureBox67.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox67.Location = new System.Drawing.Point(1090, 292);
+            this.pictureBox67.Location = new System.Drawing.Point(1114, 240);
             this.pictureBox67.Name = "pictureBox67";
             this.pictureBox67.Size = new System.Drawing.Size(369, 10);
             this.pictureBox67.TabIndex = 372;
@@ -982,7 +974,7 @@
             // pictureBox68
             // 
             this.pictureBox68.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox68.Location = new System.Drawing.Point(714, 469);
+            this.pictureBox68.Location = new System.Drawing.Point(738, 417);
             this.pictureBox68.Name = "pictureBox68";
             this.pictureBox68.Size = new System.Drawing.Size(324, 10);
             this.pictureBox68.TabIndex = 373;
@@ -992,7 +984,7 @@
             // pictureBox69
             // 
             this.pictureBox69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox69.Location = new System.Drawing.Point(1255, 301);
+            this.pictureBox69.Location = new System.Drawing.Point(1279, 249);
             this.pictureBox69.Name = "pictureBox69";
             this.pictureBox69.Size = new System.Drawing.Size(10, 425);
             this.pictureBox69.TabIndex = 374;
@@ -1002,7 +994,7 @@
             // pictureBox70
             // 
             this.pictureBox70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox70.Location = new System.Drawing.Point(1217, 301);
+            this.pictureBox70.Location = new System.Drawing.Point(1241, 249);
             this.pictureBox70.Name = "pictureBox70";
             this.pictureBox70.Size = new System.Drawing.Size(10, 425);
             this.pictureBox70.TabIndex = 375;
@@ -1012,7 +1004,7 @@
             // pictureBox71
             // 
             this.pictureBox71.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox71.Location = new System.Drawing.Point(450, 301);
+            this.pictureBox71.Location = new System.Drawing.Point(474, 249);
             this.pictureBox71.Name = "pictureBox71";
             this.pictureBox71.Size = new System.Drawing.Size(10, 425);
             this.pictureBox71.TabIndex = 376;
@@ -1022,7 +1014,7 @@
             // pictureBox72
             // 
             this.pictureBox72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox72.Location = new System.Drawing.Point(420, 301);
+            this.pictureBox72.Location = new System.Drawing.Point(444, 249);
             this.pictureBox72.Name = "pictureBox72";
             this.pictureBox72.Size = new System.Drawing.Size(10, 425);
             this.pictureBox72.TabIndex = 377;
@@ -1032,7 +1024,7 @@
             // pictureBox73
             // 
             this.pictureBox73.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox73.Location = new System.Drawing.Point(846, 479);
+            this.pictureBox73.Location = new System.Drawing.Point(870, 427);
             this.pictureBox73.Name = "pictureBox73";
             this.pictureBox73.Size = new System.Drawing.Size(10, 500);
             this.pictureBox73.TabIndex = 378;
@@ -1042,7 +1034,7 @@
             // pictureBox74
             // 
             this.pictureBox74.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox74.Location = new System.Drawing.Point(885, 479);
+            this.pictureBox74.Location = new System.Drawing.Point(909, 427);
             this.pictureBox74.Name = "pictureBox74";
             this.pictureBox74.Size = new System.Drawing.Size(10, 500);
             this.pictureBox74.TabIndex = 379;
@@ -1051,7 +1043,7 @@
             // 
             // label_tiempo
             // 
-            this.label_tiempo.Location = new System.Drawing.Point(1034, 31);
+            this.label_tiempo.Location = new System.Drawing.Point(1048, 39);
             this.label_tiempo.Name = "label_tiempo";
             this.label_tiempo.Size = new System.Drawing.Size(100, 23);
             this.label_tiempo.TabIndex = 380;
@@ -1060,18 +1052,40 @@
             // 
             // label_mensaje
             // 
-            this.label_mensaje.Location = new System.Drawing.Point(882, 31);
+            this.label_mensaje.Location = new System.Drawing.Point(909, 39);
             this.label_mensaje.Name = "label_mensaje";
             this.label_mensaje.Size = new System.Drawing.Size(129, 46);
             this.label_mensaje.TabIndex = 381;
             this.label_mensaje.Text = "label1";
+            // 
+            // pictureBox22
+            // 
+            this.pictureBox22.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox22.Location = new System.Drawing.Point(1761, -6);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(31, 969);
+            this.pictureBox22.TabIndex = 382;
+            this.pictureBox22.TabStop = false;
+            this.pictureBox22.Tag = "plataforma";
+            // 
+            // pictureBox25
+            // 
+            this.pictureBox25.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox25.Location = new System.Drawing.Point(-2, -6);
+            this.pictureBox25.Name = "pictureBox25";
+            this.pictureBox25.Size = new System.Drawing.Size(31, 969);
+            this.pictureBox25.TabIndex = 383;
+            this.pictureBox25.TabStop = false;
+            this.pictureBox25.Tag = "plataforma";
             // 
             // Cueva_Maritima
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(1739, 1013);
+            this.ClientSize = new System.Drawing.Size(1792, 962);
+            this.Controls.Add(this.pictureBox25);
+            this.Controls.Add(this.pictureBox22);
             this.Controls.Add(this.label_mensaje);
             this.Controls.Add(this.label_tiempo);
             this.Controls.Add(this.pictureBox74);
@@ -1109,7 +1123,6 @@
             this.Controls.Add(this.puertaJ2);
             this.Controls.Add(this.puertaJ1);
             this.Controls.Add(this.pictureBox38);
-            this.Controls.Add(this.pictureBox37);
             this.Controls.Add(this.pictureBox36);
             this.Controls.Add(this.pictureBox31);
             this.Controls.Add(this.plataformaVertical2_Bot_limit);
@@ -1210,7 +1223,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.vertical2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ2)).EndInit();
@@ -1246,6 +1258,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox74)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1299,7 +1313,6 @@
         private System.Windows.Forms.PictureBox vertical2;
         private System.Windows.Forms.PictureBox pictureBox35;
         private System.Windows.Forms.PictureBox pictureBox36;
-        private System.Windows.Forms.PictureBox pictureBox37;
         private System.Windows.Forms.PictureBox pictureBox38;
         private System.Windows.Forms.PictureBox puertaJ1;
         private System.Windows.Forms.PictureBox puertaJ2;
@@ -1337,5 +1350,7 @@
         private System.Windows.Forms.PictureBox pictureBox74;
         private System.Windows.Forms.Label label_tiempo;
         private System.Windows.Forms.Label label_mensaje;
+        private System.Windows.Forms.PictureBox pictureBox22;
+        private System.Windows.Forms.PictureBox pictureBox25;
     }
 }

@@ -408,7 +408,7 @@ namespace ProyectoSO
                                 t = new Thread(ts_mapa_volcan2);
                                 t.Start();
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 ThreadStart ts_mapa_cuevaMaritima = delegate { PonerEnMarchaForm_CuevaMaritima(); };
                                 t = new Thread(ts_mapa_cuevaMaritima);
                                 t.Start();
@@ -455,7 +455,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
@@ -495,7 +495,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
@@ -535,7 +535,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
@@ -575,7 +575,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
@@ -614,7 +614,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
@@ -662,7 +662,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
@@ -701,7 +701,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
@@ -741,7 +741,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
@@ -894,7 +894,7 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].FinDePartida(resultado, letra_res);
                                 }));
                                 break;
-                            case "Cueva Maritima (4Jug)":
+                            case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].FinDePartida(resultado, letra_res);
