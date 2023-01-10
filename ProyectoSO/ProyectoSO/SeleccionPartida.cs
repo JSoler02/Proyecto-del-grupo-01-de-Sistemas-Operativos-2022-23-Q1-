@@ -59,7 +59,7 @@ namespace ProyectoSO
             {
                 comboBox_Mapa.Items.Add("Templo");
                 comboBox_Mapa.Items.Add("Volcan");
-
+                comboBox_Mapa.Items.Add("Cueva Maritima (4Jug)");
             }
             else if (numJugadoresPartida == 3)
             {
@@ -68,6 +68,8 @@ namespace ProyectoSO
             else // if (numJugadoresPartida == 2)
             {
                 comboBox_Mapa.Items.Add("Volcan (2Jug)");
+                comboBox_Mapa.Items.Add("Cueva Maritima (4Jug)");
+
             }
 
             //picurebox1 -- Fireboy

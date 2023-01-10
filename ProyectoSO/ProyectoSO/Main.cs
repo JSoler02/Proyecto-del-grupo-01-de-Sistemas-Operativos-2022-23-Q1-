@@ -21,7 +21,7 @@ namespace ProyectoSO
 
         // Variables de desarrollo
         int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
-        int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
+        int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
         string nombre;
@@ -408,6 +408,11 @@ namespace ProyectoSO
                                 t = new Thread(ts_mapa_volcan2);
                                 t.Start();
                                 break;
+                            case "Cueva Maritima (4Jug)":
+                                ThreadStart ts_mapa_cuevaMaritima = delegate { PonerEnMarchaForm_CuevaMaritima(); };
+                                t = new Thread(ts_mapa_cuevaMaritima);
+                                t.Start();
+                                break;
                             case "PruebaTeclas":
                                 ThreadStart ts_mapa_pt = delegate { PonerEnMarchaForm_PruebaTecla(); };
                                 t = new Thread(ts_mapa_pt);
@@ -450,6 +455,12 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -482,6 +493,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_2Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -518,6 +535,12 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -552,6 +575,12 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -583,6 +612,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_2Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -627,6 +662,12 @@ namespace ProyectoSO
                                     form_volcan_2Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
                     case 22:
@@ -658,6 +699,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_2Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -692,6 +739,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_2Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -839,6 +892,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_2Jug[idPartida].FinDePartida(resultado, letra_res);
+                                }));
+                                break;
+                            case "Cueva Maritima (4Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug[idPartida].FinDePartida(resultado, letra_res);
                                 }));
                                 break;
                         }
@@ -1096,6 +1155,24 @@ namespace ProyectoSO
             t.SetJug4Juega(formularios1[idPartida].DameJug4Juega());
 
             form_volcan_2Jug.Add(t);
+            t.ShowDialog();
+        }
+        private void PonerEnMarchaForm_CuevaMaritima()
+        {
+            Cueva_Maritima t = new Cueva_Maritima(idPartida, server);
+            t.MiPersonaje(formularios1[idPartida].DameMiPersonajeQueHeEscogido());
+            // pasamos nombre
+            t.SetJug1Nombre(formularios1[idPartida].DameNombreJug1());
+            t.SetJug2Nombre(formularios1[idPartida].DameNombreJug2());
+            t.SetJug3Nombre(formularios1[idPartida].DameNombreJug3());
+            t.SetJug4Nombre(formularios1[idPartida].DameNombreJug4());
+            // pasamos las variables bool que establecen qué jugadores juegan
+            t.SetJug1Juega(formularios1[idPartida].DameJug1Juega());
+            t.SetJug2Juega(formularios1[idPartida].DameJug2Juega());
+            t.SetJug3Juega(formularios1[idPartida].DameJug3Juega());
+            t.SetJug4Juega(formularios1[idPartida].DameJug4Juega());
+
+            form_cueva_mar_4Jug.Add(t);
             t.ShowDialog();
         }
         private void PonerEnMarchaForm_PruebaTecla()
