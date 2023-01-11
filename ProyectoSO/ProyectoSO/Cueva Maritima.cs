@@ -68,8 +68,6 @@ namespace ProyectoSO
         bool plataformaVertical4_activa3_1; bool plataformaVertical4_activa4_1; 
         bool plataformaVertical4_ACT;
 
-        bool plataformaVertical4_activa;
-        bool paredPalanca3_activa;
 
 
         // Personajes/PictureBoxes
@@ -85,7 +83,8 @@ namespace ProyectoSO
         int segundos;
         private void tiempoJuego_Tick(object sender, EventArgs e)
         {
-
+            segundos++;
+            label_tiempo.Text = "Tiempo: " + segundos;
         }
 
         // funciones para inicializar este cliente
@@ -119,7 +118,7 @@ namespace ProyectoSO
         }
         private void Cueva_Maritima_Load_1(object sender, EventArgs e)
         {
-            //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             RestartGame();
         }
         private void pintarPersonajesEnSusPosiciones()
@@ -136,7 +135,227 @@ namespace ProyectoSO
 
         private void MainGameTimerEvent(object sender, EventArgs e)
         {
+            pintarPersonajesEnSusPosiciones();
+            movimientosPersonajesConCadaTick();
 
+            // Control de los Picturebox
+            foreach (Control x in this.Controls)
+            {
+                // Plataformas
+                if ((string)x.Tag == "plataforma")
+                {
+                    ColisionesPersonajesPlataformas(x);
+                    //NoColisionesPersonajesPlataformas();
+                }
+                // aire = no plataformas
+                if ((string)x.Tag == "aire")
+                {
+                    ColisionesPersonajesAire(x);
+                }
+                // placas
+                if ((string)x.Tag == "placa1_1")
+                {
+                    ColisionesPersonajesPlaca1_1(x);
+                }
+                if ((string)x.Tag == "placa1_2")
+                {
+                    ColisionesPersonajesPlaca1_2(x);
+                }
+                if ((string)x.Tag == "placa2_1")
+                {
+                    ColisionesPersonajesPlaca2_1(x);
+                }
+                if ((string)x.Tag == "placa2_2")
+                {
+                    ColisionesPersonajesPlaca2_2(x);
+                }
+                if ((string)x.Tag == "placa3_1")
+                {
+                    ColisionesPersonajesPlaca3_1(x);
+                }
+                if ((string)x.Tag == "placa4_1")
+                {
+                    ColisionesPersonajesPlaca4_1(x);
+                }
+                // techo
+                if ((string)x.Tag == "techo")
+                {
+                    ColisionesPersonajesTecho(x);
+                }
+                // pared izquierda
+                if ((string)x.Tag == "pared_izquierda")
+                {
+                    ColisionesPersonajesParedIzquierda(x);
+                }
+                // pared izquierda
+                if ((string)x.Tag == "pared_derecha")
+                {
+                    ColisionesPersonajesParedDerecha(x);
+                }
+
+                // Puntos
+                if ((string)x.Tag == "diamante1")
+                {
+                    if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false; // se eliminan los diamantes
+                        puntos1++;
+                    }
+                }
+                if ((string)x.Tag == "diamante2")
+                {
+                    if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false; // se eliminan los diamantes
+                        puntos2++;
+                    }
+                }
+                if ((string)x.Tag == "diamante3")
+                {
+                    if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false; // se eliminan los diamantes
+                        puntos3++;
+                    }
+                }
+                if ((string)x.Tag == "diamante4")
+                {
+                    if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
+                    {
+                        x.Visible = false; // se eliminan los diamantes
+                        puntos4++;
+                    }
+                }
+                // enemigos
+                if ((string)x.Tag == "acido")
+                {
+                    ColisionesPersonajesAcido(x);
+                }
+                // puerta final
+                if ((string)x.Tag == "puerta")
+                {
+                    ColisionesPersonajesPuertas(x);
+                }
+
+            }
+
+            // Plataforma vertical 1
+            if ((plataformaVertical1_activa1_1 || plataformaVertical1_activa1_2) || (plataformaVertical1_activa2_1 || plataformaVertical1_activa2_2) || (plataformaVertical1_activa3_1 || plataformaVertical1_activa3_2) || (plataformaVertical1_activa4_1 || plataformaVertical1_activa4_2))
+            { plataformaVertical1_ACT = true; }
+            else
+            { plataformaVertical1_ACT = false; }
+            if (plataformaVertical1_ACT)
+            {
+                placa1_1.Image = Image.FromFile("placa1_activada.png");
+                placa1_2.Image = Image.FromFile("placa1_activada.png");
+                //if (plataformaVertical1_final == false)
+                //{
+                vertical1.Top += verticalSpeed_v1;
+                if ((vertical1.Bounds.IntersectsWith(plataformaVertical1_Bot_limit.Bounds) || vertical1.Bounds.IntersectsWith(plataformaVertical1_Top_limit.Bounds)))
+                {
+                    //plataformaVertical1_final = true;
+                    verticalSpeed_v1 = -verticalSpeed_v1;
+                }
+                //}
+            }
+            else
+            {
+                placa1_1.Image = Image.FromFile("placa1_desactivada.png");
+                placa1_2.Image = Image.FromFile("placa1_desactivada.png");
+            }
+            // Plataforma vertical 2
+            if ((plataformaVertical2_activa1_1 || plataformaVertical2_activa1_2) || (plataformaVertical2_activa2_1 || plataformaVertical2_activa2_2) || (plataformaVertical2_activa3_1 || plataformaVertical2_activa3_2) || (plataformaVertical2_activa4_1 || plataformaVertical2_activa4_2))
+            { plataformaVertical2_ACT = true; }
+            else
+            { plataformaVertical2_ACT = false; }
+            if (plataformaVertical2_ACT)
+            {
+                placa2_1.Image = Image.FromFile("placa2_activada.png");
+                placa2_2.Image = Image.FromFile("placa2_activada.png");
+                //if (plataformaVertical2_final == false)
+                //{
+                vertical2.Top += verticalSpeed_v2;
+                if ((vertical2.Bounds.IntersectsWith(plataformaVertical2_Bot_limit.Bounds) || vertical2.Bounds.IntersectsWith(plataformaVertical2_Top_limit.Bounds)))
+                {
+                    //plataformaVertical2_final = true;
+                    verticalSpeed_v2 = -verticalSpeed_v2;
+                }
+                //}
+            }
+            else
+            {
+                placa2_1.Image = Image.FromFile("placa2_desactivada.png");
+                placa2_2.Image = Image.FromFile("placa2_desactivada.png");
+            }
+            // Plataforma vertical 3
+            if ((plataformaVertical3_activa1_1) || (plataformaVertical3_activa2_1) || (plataformaVertical3_activa3_1) || (plataformaVertical3_activa4_1))
+            { plataformaVertical3_ACT = true; }
+            else
+            { plataformaVertical3_ACT = false; }
+            if (plataformaVertical3_ACT)
+            {
+                placa3_1.Image = Image.FromFile("placa3_activada.png");
+                //if (plataformaVertical2_final == false)
+                //{
+                vertical3.Top += verticalSpeed_v3;
+                if ((vertical3.Bounds.IntersectsWith(plataformaVertical3_Bot_limit.Bounds) || vertical3.Bounds.IntersectsWith(plataformaVertical3_Top_limit.Bounds)))
+                {
+                    //plataformaVertical2_final = true;
+                    verticalSpeed_v3 = -verticalSpeed_v3;
+                }
+                //}
+            }
+            else
+            {
+                placa3_1.Image = Image.FromFile("placa3_desactivada.png");
+            }
+            // Plataforma vertical 4
+            if ((plataformaVertical4_activa1_1) || (plataformaVertical4_activa2_1) || (plataformaVertical4_activa4_1) || (plataformaVertical4_activa4_1))
+            { plataformaVertical4_ACT = true; }
+            else
+            { plataformaVertical4_ACT = false; }
+            if (plataformaVertical4_ACT)
+            {
+                placa4_1.Image = Image.FromFile("placa4_activada.png");
+                //if (plataformaVertical2_final == false)
+                //{
+                vertical4.Top += verticalSpeed_v4;
+                if ((vertical4.Bounds.IntersectsWith(plataformaVertical4_Bot_limit.Bounds) || vertical4.Bounds.IntersectsWith(plataformaVertical4_Top_limit.Bounds)))
+                {
+                    //plataformaVertical2_final = true;
+                    verticalSpeed_v4 = -verticalSpeed_v4;
+                }
+                //}
+            }
+            else
+            {
+                placa4_1.Image = Image.FromFile("placa4_desactivada.png");
+            }
+
+
+            // Todos los jugadores en las puertas
+            // Solo el jugador 1 envía el mensaje al servidor para que este le
+            // devuelva el mensaje de fin de partida con el panel de las estadísticas y el resultado de la partida
+            if (estaEnPuerta_J1 == true && estaEnPuerta_J2 == true && estaEnPuerta_J3 == true && estaEnPuerta_J4 == true)
+            {
+                string letra_miResultado = CalcularPuntosTotales();
+                EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
+                // Quitar esta función cuando esté ya trabajada. De momento está aquí para trabajarla.
+                // parámetros sacados de la seleccion de partida y del MENSAJE RECIBIDO
+                // FinDePartida("SUPERADO", letra_miResultado);
+            }
+
+            if (isGameOver_J1 == true || isGameOver_J2 == true || isGameOver_J3 == true || isGameOver_J4 == true)
+            {
+                if (isGameOver_J1 == true && miPersonajeQueControlo == 1)
+                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
+                else if (isGameOver_J2 == true && miPersonajeQueControlo == 2)
+                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
+                else if (isGameOver_J3 == true && miPersonajeQueControlo == 3)
+                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
+                else if (isGameOver_J4 == true && miPersonajeQueControlo == 4)
+                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
+            }
         }
         private void KeyIsDown(object sender, KeyEventArgs e)
         {

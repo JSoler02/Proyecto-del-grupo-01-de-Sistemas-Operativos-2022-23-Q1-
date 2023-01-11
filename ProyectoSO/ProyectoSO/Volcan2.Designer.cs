@@ -32,12 +32,6 @@ namespace ProyectoSO
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Volcan2));
             this.pictureBox107 = new System.Windows.Forms.PictureBox();
-            this.tiempoJuego = new System.Windows.Forms.Timer(this.components);
-            this.MainTimerJuego = new System.Windows.Forms.Timer(this.components);
-            this.J1derrotado = new System.Windows.Forms.Timer(this.components);
-            this.J2derrotado = new System.Windows.Forms.Timer(this.components);
-            this.J3derrotado = new System.Windows.Forms.Timer(this.components);
-            this.J4derrotado = new System.Windows.Forms.Timer(this.components);
             this.pictureBox108 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox96 = new System.Windows.Forms.PictureBox();
@@ -174,6 +168,12 @@ namespace ProyectoSO
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox90 = new System.Windows.Forms.PictureBox();
+            this.J4derrotado = new System.Windows.Forms.Timer(this.components);
+            this.J3derrotado = new System.Windows.Forms.Timer(this.components);
+            this.J2derrotado = new System.Windows.Forms.Timer(this.components);
+            this.J1derrotado = new System.Windows.Forms.Timer(this.components);
+            this.MainTimerJuego = new System.Windows.Forms.Timer(this.components);
+            this.tiempoJuego = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox107)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox108)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -320,38 +320,6 @@ namespace ProyectoSO
             this.pictureBox107.TabIndex = 337;
             this.pictureBox107.TabStop = false;
             this.pictureBox107.Tag = "techo";
-            // 
-            // tiempoJuego
-            // 
-            this.tiempoJuego.Enabled = true;
-            this.tiempoJuego.Interval = 1000;
-            this.tiempoJuego.Tick += new System.EventHandler(this.tiempoJuego_Tick);
-            // 
-            // MainTimerJuego
-            // 
-            this.MainTimerJuego.Enabled = true;
-            this.MainTimerJuego.Interval = 30;
-            this.MainTimerJuego.Tick += new System.EventHandler(this.MainGameTimerEvent);
-            // 
-            // J1derrotado
-            // 
-            this.J1derrotado.Interval = 700;
-            this.J1derrotado.Tick += new System.EventHandler(this.J1derrotado_Tick);
-            // 
-            // J2derrotado
-            // 
-            this.J2derrotado.Interval = 700;
-            this.J2derrotado.Tick += new System.EventHandler(this.J2derrotado_Tick);
-            // 
-            // J3derrotado
-            // 
-            this.J3derrotado.Interval = 700;
-            this.J3derrotado.Tick += new System.EventHandler(this.J3derrotado_Tick);
-            // 
-            // J4derrotado
-            // 
-            this.J4derrotado.Interval = 700;
-            this.J4derrotado.Tick += new System.EventHandler(this.J4derrotado_Tick);
             // 
             // pictureBox108
             // 
@@ -1719,6 +1687,38 @@ namespace ProyectoSO
             this.pictureBox90.TabStop = false;
             this.pictureBox90.Tag = "techo";
             // 
+            // J4derrotado
+            // 
+            this.J4derrotado.Interval = 700;
+            this.J4derrotado.Tick += new System.EventHandler(this.J4derrotado_Tick);
+            // 
+            // J3derrotado
+            // 
+            this.J3derrotado.Interval = 700;
+            this.J3derrotado.Tick += new System.EventHandler(this.J3derrotado_Tick);
+            // 
+            // J2derrotado
+            // 
+            this.J2derrotado.Interval = 700;
+            this.J2derrotado.Tick += new System.EventHandler(this.J2derrotado_Tick);
+            // 
+            // J1derrotado
+            // 
+            this.J1derrotado.Interval = 700;
+            this.J1derrotado.Tick += new System.EventHandler(this.J1derrotado_Tick);
+            // 
+            // MainTimerJuego
+            // 
+            this.MainTimerJuego.Enabled = true;
+            this.MainTimerJuego.Interval = 30;
+            this.MainTimerJuego.Tick += new System.EventHandler(this.MainGameTimerEvent);
+            // 
+            // tiempoJuego
+            // 
+            this.tiempoJuego.Enabled = true;
+            this.tiempoJuego.Interval = 1000;
+            this.tiempoJuego.Tick += new System.EventHandler(this.tiempoJuego_Tick);
+            // 
             // Volcan2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2009,12 +2009,6 @@ namespace ProyectoSO
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox107;
-        private System.Windows.Forms.Timer tiempoJuego;
-        private System.Windows.Forms.Timer MainTimerJuego;
-        private System.Windows.Forms.Timer J1derrotado;
-        private System.Windows.Forms.Timer J2derrotado;
-        private System.Windows.Forms.Timer J3derrotado;
-        private System.Windows.Forms.Timer J4derrotado;
         private System.Windows.Forms.PictureBox pictureBox108;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox96;
@@ -2151,5 +2145,11 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox90;
+        private System.Windows.Forms.Timer J4derrotado;
+        private System.Windows.Forms.Timer J3derrotado;
+        private System.Windows.Forms.Timer J2derrotado;
+        private System.Windows.Forms.Timer J1derrotado;
+        private System.Windows.Forms.Timer MainTimerJuego;
+        private System.Windows.Forms.Timer tiempoJuego;
     }
 }
