@@ -542,4 +542,22 @@
         AAAAAAAAAAAAAAAAAAAA
 </value>
   </data>
+  <metadata name="tiempoJuego.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>295, 60</value>
+  </metadata>
+  <metadata name="J3derrotado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>440, 60</value>
+  </metadata>
+  <metadata name="J1derrotado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>579, 60</value>
+  </metadata>
+  <metadata name="MainTimerJuego.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>718, 60</value>
+  </metadata>
+  <metadata name="J4derrotado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>888, 60</value>
+  </metadata>
+  <metadata name="J2derrotado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1027, 60</value>
+  </metadata>
 </root>

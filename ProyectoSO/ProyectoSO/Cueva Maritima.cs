@@ -85,8 +85,7 @@ namespace ProyectoSO
         int segundos;
         private void tiempoJuego_Tick(object sender, EventArgs e)
         {
-            segundos++;
-            label_tiempo.Text = "Tiempo: " + segundos;
+
         }
 
         // funciones para inicializar este cliente
@@ -137,225 +136,7 @@ namespace ProyectoSO
 
         private void MainGameTimerEvent(object sender, EventArgs e)
         {
-            pintarPersonajesEnSusPosiciones();
-            movimientosPersonajesConCadaTick();
 
-            // Control de los Picturebox
-            foreach (Control x in this.Controls)
-            {
-                // Plataformas
-                if ((string)x.Tag == "plataforma")
-                {
-                    ColisionesPersonajesPlataformas(x); 
-                    //NoColisionesPersonajesPlataformas();
-                }
-                // aire = no plataformas
-                if ((string)x.Tag == "aire")
-                {
-                    ColisionesPersonajesAire(x);
-                }
-                // placas
-                if ((string)x.Tag == "placa1_1")
-                {
-                    ColisionesPersonajesPlaca1_1(x);
-                }
-                if ((string)x.Tag == "placa1_2")
-                {
-                    ColisionesPersonajesPlaca1_2(x);
-                }
-                if ((string)x.Tag == "placa2_1")
-                {
-                    ColisionesPersonajesPlaca2_1(x);
-                }
-                if ((string)x.Tag == "placa2_2")
-                {
-                    ColisionesPersonajesPlaca2_2(x);
-                }
-                if ((string)x.Tag == "placa3_1")
-                {
-                    ColisionesPersonajesPlaca3_1(x);
-                }
-                if ((string)x.Tag == "placa4_1")
-                {
-                    ColisionesPersonajesPlaca4_1(x);
-                }
-                // techo
-                if ((string)x.Tag == "techo")
-                {
-                    ColisionesPersonajesTecho(x);
-                }
-                // pared izquierda
-                if ((string)x.Tag == "pared_izquierda")
-                {
-                    ColisionesPersonajesParedIzquierda(x);
-                }
-                // pared izquierda
-                if ((string)x.Tag == "pared_derecha")
-                {
-                    ColisionesPersonajesParedDerecha(x);
-                }
-
-                // Puntos
-                if ((string)x.Tag == "diamante1")
-                {
-                    if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
-                    {
-                        x.Visible = false; // se eliminan los diamantes
-                        puntos1++;
-                    }
-                }
-                if ((string)x.Tag == "diamante2")
-                {
-                    if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
-                    {
-                        x.Visible = false; // se eliminan los diamantes
-                        puntos2++;
-                    }
-                }
-                if ((string)x.Tag == "diamante3")
-                {
-                    if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
-                    {
-                        x.Visible = false; // se eliminan los diamantes
-                        puntos3++;
-                    }
-                }
-                if ((string)x.Tag == "diamante4")
-                {
-                    if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds) && x.Visible == true)
-                    {
-                        x.Visible = false; // se eliminan los diamantes
-                        puntos4++;
-                    }
-                }
-                // enemigos
-                if ((string)x.Tag == "acido")
-                {
-                    ColisionesPersonajesAcido(x);
-                }
-                // puerta final
-                if ((string)x.Tag == "puerta")
-                {
-                    ColisionesPersonajesPuertas(x);
-                }
-            }
-
-            // Plataforma vertical 1
-            if ((plataformaVertical1_activa1_1 || plataformaVertical1_activa1_2) || (plataformaVertical1_activa2_1 || plataformaVertical1_activa2_2) || (plataformaVertical1_activa3_1 || plataformaVertical1_activa3_2) || (plataformaVertical1_activa4_1 || plataformaVertical1_activa4_2))
-            { plataformaVertical1_ACT = true; }
-            else
-            { plataformaVertical1_ACT = false; }
-            if (plataformaVertical1_ACT)
-            {
-                placa1_1.Image = Image.FromFile("placa1_activada.png");
-                placa1_2.Image = Image.FromFile("placa1_activada.png");
-                //if (plataformaVertical1_final == false)
-                //{
-                vertical1.Top += verticalSpeed_v1;
-                if ((vertical1.Bounds.IntersectsWith(plataformaVertical1_Bot_limit.Bounds) || vertical1.Bounds.IntersectsWith(plataformaVertical1_Top_limit.Bounds)))
-                {
-                    //plataformaVertical1_final = true;
-                    verticalSpeed_v1 = -verticalSpeed_v1;
-                }
-                //}
-            }
-            else
-            {
-                placa1_1.Image = Image.FromFile("placa1_desactivada.png");
-                placa1_2.Image = Image.FromFile("placa1_desactivada.png");
-            }
-            // Plataforma vertical 2
-            if ((plataformaVertical2_activa1_1 || plataformaVertical2_activa1_2) || (plataformaVertical2_activa2_1 || plataformaVertical2_activa2_2) || (plataformaVertical2_activa3_1 || plataformaVertical2_activa3_2) || (plataformaVertical2_activa4_1 || plataformaVertical2_activa4_2))
-            { plataformaVertical2_ACT = true; }
-            else
-            { plataformaVertical2_ACT = false; }
-            if (plataformaVertical2_ACT)
-            {
-                placa2_1.Image = Image.FromFile("placa2_activada.png");
-                placa2_2.Image = Image.FromFile("placa2_activada.png");
-                //if (plataformaVertical1_final == false)
-                //{
-                vertical2.Top += verticalSpeed_v1;
-                if ((vertical2.Bounds.IntersectsWith(plataformaVertical2_Bot_limit.Bounds) || vertical2.Bounds.IntersectsWith(plataformaVertical2_Top_limit.Bounds)))
-                {
-                    //plataformaVertical1_final = true;
-                    verticalSpeed_v2 = -verticalSpeed_v2;
-                }
-                //}
-            }
-            else
-            {
-                placa2_1.Image = Image.FromFile("placa2_desactivada.png");
-                placa2_2.Image = Image.FromFile("placa2_desactivada.png");
-            }
-            // Plataforma vertical 3
-            if ((plataformaVertical3_activa1_1) || (plataformaVertical3_activa2_1) || (plataformaVertical3_activa3_1) || (plataformaVertical3_activa4_1))
-            { plataformaVertical3_ACT = true; }
-            else
-            { plataformaVertical3_ACT = false; }
-            if (plataformaVertical3_ACT)
-            {
-                placa3_1.Image = Image.FromFile("placa3_activada.png");
-                //if (plataformaVertical1_final == false)
-                //{
-                vertical3.Top += verticalSpeed_v1;
-                if ((vertical3.Bounds.IntersectsWith(plataformaVertical3_Bot_limit.Bounds) || vertical3.Bounds.IntersectsWith(plataformaVertical3_Top_limit.Bounds)))
-                {
-                    //plataformaVertical1_final = true;
-                    verticalSpeed_v3 = -verticalSpeed_v3;
-                }
-                //}
-            }
-            else
-            {
-                placa3_1.Image = Image.FromFile("placa3_desactivada.png");
-            }
-            // Plataforma vertical 4
-            if ((plataformaVertical4_activa1_1) || (plataformaVertical4_activa2_1) || (plataformaVertical4_activa3_1) || (plataformaVertical4_activa4_1))
-            { plataformaVertical4_ACT = true; }
-            else
-            { plataformaVertical4_ACT = false; }
-            if (plataformaVertical4_ACT)
-            {
-                placa4_1.Image = Image.FromFile("placa4_activada.png");
-                //if (plataformaVertical1_final == false)
-                //{
-                vertical4.Top += verticalSpeed_v1;
-                if ((vertical4.Bounds.IntersectsWith(plataformaVertical4_Bot_limit.Bounds) || vertical4.Bounds.IntersectsWith(plataformaVertical4_Top_limit.Bounds)))
-                {
-                    //plataformaVertical1_final = true;
-                    verticalSpeed_v4 = -verticalSpeed_v4;
-                }
-                //}
-            }
-            else
-            {
-                placa4_1.Image = Image.FromFile("placa4_desactivada.png");
-            }
-
-            // Todos los jugadores en las puertas
-            // Solo el jugador 1 envía el mensaje al servidor para que este le
-            // devuelva el mensaje de fin de partida con el panel de las estadísticas y el resultado de la partida
-            if (estaEnPuerta_J1 == true && estaEnPuerta_J2 == true && estaEnPuerta_J3 == true && estaEnPuerta_J4 == true)
-            {
-                string letra_miResultado = CalcularPuntosTotales();
-                EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
-                // Quitar esta función cuando esté ya trabajada. De momento está aquí para trabajarla.
-                // parámetros sacados de la seleccion de partida y del MENSAJE RECIBIDO
-                // FinDePartida("SUPERADO", letra_miResultado);
-            }
-
-            if (isGameOver_J1 == true || isGameOver_J2 == true || isGameOver_J3 == true || isGameOver_J4 == true)
-            {
-                if (isGameOver_J1 == true && miPersonajeQueControlo == 1)
-                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
-                else if (isGameOver_J2 == true && miPersonajeQueControlo == 2)
-                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
-                else if (isGameOver_J3 == true && miPersonajeQueControlo == 3)
-                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
-                else if (isGameOver_J4 == true && miPersonajeQueControlo == 4)
-                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
-            }
         }
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
@@ -2003,7 +1784,7 @@ namespace ProyectoSO
                 }
                 permitirAnimaciones_J1 = false;
 
-                //J1derrotado.Start();
+                J1derrotado.Start();
             }
             // Jugador 2
             if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
@@ -2014,7 +1795,7 @@ namespace ProyectoSO
                 }
                 permitirAnimaciones_J2 = false;
 
-                //J2derrotado.Start();
+                J2derrotado.Start();
             }
             // Jugador 3
             if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
@@ -2025,7 +1806,7 @@ namespace ProyectoSO
                 }
                 permitirAnimaciones_J3 = false;
 
-                //J3derrotado.Start();
+                J3derrotado.Start();
             }
             // Jugador 4
             if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
@@ -2036,7 +1817,7 @@ namespace ProyectoSO
                 }
                 permitirAnimaciones_J4 = false;
 
-                //J4derrotado.Start();
+                J4derrotado.Start();
             }
         }
         private void ColisionesPersonajesPuertas(Control x)
@@ -2199,8 +1980,7 @@ namespace ProyectoSO
                 misPicsPersonajes[0].Image = Image.FromFile("vacio.png");
 
             }
-            //J1derrotado.Stop();
-
+            J1derrotado.Stop();
         }
         private void J2derrotado_Tick(object sender, EventArgs e)
         {
@@ -2229,8 +2009,7 @@ namespace ProyectoSO
                 misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
 
             }
-            //J2derrotado.Stop();
-
+            J2derrotado.Stop();
         }
         private void J3derrotado_Tick(object sender, EventArgs e)
         {
@@ -2259,7 +2038,7 @@ namespace ProyectoSO
                 misPicsPersonajes[2].Image = Image.FromFile("vacio.png");
 
             }
-            //J3derrotado.Stop();
+            J3derrotado.Stop();
         }
         private void J4derrotado_Tick(object sender, EventArgs e)
         {
@@ -2285,10 +2064,8 @@ namespace ProyectoSO
                 isGameOver_J4 = true;
                 //MessageBox.Show("J2 ha muerto...");
                 misPicsPersonajes[3].Image = Image.FromFile("vacio.png");
-
-
             }
-            //J4derrotado.Stop();
+            J4derrotado.Stop();
         }
         // Funcion para calcular los puntos totales. 
         // "S", "A", "B", "C", "F"
@@ -2321,8 +2098,8 @@ namespace ProyectoSO
         // función para enviar el mensaje de fin de partida + parar el timer principal
         private void EnvíoMensajeFinDePartida(string result_partida, string letra_resultado)
         {
-            //tiempoJuego.Stop();
-            //MainTimerJuego.Stop();
+            tiempoJuego.Stop();
+            MainTimerJuego.Stop();
             if (result_partida != "No Superado...")
             {
                 // Solo envía el mensaje al servidor el jugador 1

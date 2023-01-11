@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cueva_Maritima));
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
@@ -115,6 +116,12 @@
             this.label_mensaje = new System.Windows.Forms.Label();
             this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
+            this.tiempoJuego = new System.Windows.Forms.Timer(this.components);
+            this.J3derrotado = new System.Windows.Forms.Timer(this.components);
+            this.J1derrotado = new System.Windows.Forms.Timer(this.components);
+            this.MainTimerJuego = new System.Windows.Forms.Timer(this.components);
+            this.J4derrotado = new System.Windows.Forms.Timer(this.components);
+            this.J2derrotado = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -1078,6 +1085,32 @@
             this.pictureBox25.TabStop = false;
             this.pictureBox25.Tag = "plataforma";
             // 
+            // tiempoJuego
+            // 
+            this.tiempoJuego.Enabled = true;
+            this.tiempoJuego.Interval = 1000;
+            // 
+            // J3derrotado
+            // 
+            this.J3derrotado.Interval = 700;
+            // 
+            // J1derrotado
+            // 
+            this.J1derrotado.Interval = 700;
+            // 
+            // MainTimerJuego
+            // 
+            this.MainTimerJuego.Enabled = true;
+            this.MainTimerJuego.Interval = 30;
+            // 
+            // J4derrotado
+            // 
+            this.J4derrotado.Interval = 700;
+            // 
+            // J2derrotado
+            // 
+            this.J2derrotado.Interval = 700;
+            // 
             // Cueva_Maritima
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1352,5 +1385,11 @@
         private System.Windows.Forms.Label label_mensaje;
         private System.Windows.Forms.PictureBox pictureBox22;
         private System.Windows.Forms.PictureBox pictureBox25;
+        private System.Windows.Forms.Timer tiempoJuego;
+        private System.Windows.Forms.Timer J3derrotado;
+        private System.Windows.Forms.Timer J1derrotado;
+        private System.Windows.Forms.Timer MainTimerJuego;
+        private System.Windows.Forms.Timer J4derrotado;
+        private System.Windows.Forms.Timer J2derrotado;
     }
 }
