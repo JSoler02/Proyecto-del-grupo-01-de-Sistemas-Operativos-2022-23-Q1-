@@ -20,8 +20,8 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
-        int julia = 1;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
+        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
+        int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
         string nombre;
@@ -185,7 +185,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8090;
+                puerto = 8080;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else

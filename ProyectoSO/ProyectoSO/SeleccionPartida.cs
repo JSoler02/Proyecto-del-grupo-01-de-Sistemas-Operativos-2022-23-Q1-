@@ -421,9 +421,7 @@ namespace ProyectoSO
                 {
                     if (Estan4JugadoresListos() == true)
                     {
-                        string mensaje_chat = "14/" + idPartida;
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                        server.Send(msg);
+                        EnviarMensajeEmpiezaPartida();
                     }
                     else
                     {
@@ -434,9 +432,7 @@ namespace ProyectoSO
                 {
                     if (Estan3JugadoresListos() == true)
                     {
-                        string mensaje_chat = "14/" + idPartida;
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                        server.Send(msg);
+                        EnviarMensajeEmpiezaPartida();
                     }
                     else
                     {
@@ -447,9 +443,7 @@ namespace ProyectoSO
                 {
                     if (Estan2JugadoresListos() == true)
                     {
-                        string mensaje_chat = "14/" + idPartida;
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
-                        server.Send(msg);
+                        EnviarMensajeEmpiezaPartida();
                     }
                     else
                     {
@@ -463,6 +457,12 @@ namespace ProyectoSO
             }
         }
         
+        private void EnviarMensajeEmpiezaPartida()
+        {
+            string mensaje_chat = "14/" + idPartida + "/" + DameNombreJug1() + "/" + DameNombreJug2() + "/" + DameNombreJug3() + "/" + DameNombreJug4();
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
+            server.Send(msg);
+        }
         // funciones para ver si están los jugadores listos para cuando hay 4, 3 o 2 jugadores (mira todas las opciones)
         private bool Estan4JugadoresListos()
         { 

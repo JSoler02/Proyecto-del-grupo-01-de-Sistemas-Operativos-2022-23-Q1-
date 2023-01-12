@@ -398,13 +398,13 @@ namespace ProyectoSO
             if (isGameOver_J1 == true || isGameOver_J2 == true || isGameOver_J3 == true || isGameOver_J4 == true)
             {
                 if (isGameOver_J1 == true && miPersonajeQueControlo == 1)
-                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
+                { EnvíoMensajeFinDePartida("No Superado", "F"); }
                 else if (isGameOver_J2 == true && miPersonajeQueControlo == 2)
-                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
+                { EnvíoMensajeFinDePartida("No Superado", "F"); }
                 else if (isGameOver_J3 == true && miPersonajeQueControlo == 3)
-                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
+                { EnvíoMensajeFinDePartida("No Superado", "F"); }
                 else if (isGameOver_J4 == true && miPersonajeQueControlo == 4)
-                { EnvíoMensajeFinDePartida("No Superado...", "F"); }
+                { EnvíoMensajeFinDePartida("No Superado", "F"); }
             }
 
         }
@@ -2488,12 +2488,12 @@ namespace ProyectoSO
         {
             tiempoJuego.Stop();
             MainTimerJuego.Stop();
-            if (result_partida != "No Superado...")
+            if (result_partida != "No Superado")
             {
                 // Solo envía el mensaje al servidor el jugador 1
                 if (miPersonajeQueControlo == 1)
                 {
-                    string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado;
+                    string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
                     label_mensaje.Text = mensaje;
@@ -2502,7 +2502,7 @@ namespace ProyectoSO
             else
             {
                 // Envía el mensaje el personaje que controla al jugador sin vidas
-                string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado;
+                string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
                 label_mensaje.Text = mensaje;
@@ -2554,7 +2554,7 @@ namespace ProyectoSO
             labelResultado.AutoSize = true;
             labelResultado.TextAlign = ContentAlignment.MiddleCenter;
             labelResultado.Location = new Point(panelResultado.Width / 2 - labelResultado.Width, 30);
-            label_letraResultado.Text = letra_resultado;
+            label_letraResultado.Text = letra_resultado + "/" + segundos;
             label_letraResultado.Font = new Font("Arial Black", 35, FontStyle.Bold);
             label_letraResultado.BorderStyle = BorderStyle.FixedSingle;
             label_letraResultado.AutoSize = true;

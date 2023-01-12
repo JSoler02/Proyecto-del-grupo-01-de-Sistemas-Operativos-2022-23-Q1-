@@ -1,5 +1,5 @@
-//Incluir esta libreria para poder hacer las llamadas en shiva2.upc.es
-//#include <my_global.h>
+	//Incluir esta libreria para poder hacer las llamadas en shiva2.upc.es
+	//#include <my_global.h>
 #include <mysql.h>
 #include <string.h>
 #include <unistd.h>
@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <pthread.h>
-
+	
 typedef struct{
 	char nombre[20];
 	int socket;
@@ -21,10 +21,16 @@ typedef struct{
 	int num;
 }ListaConectados;
 
+// estructura de jugador = conectado pero con nPersonaje
+typedef struct{
+	char nombre[20];
+	int socket;
+	int posicion;
+}Jugador;
 // Estructura de partida. Tiene como maximo 4 jugadores
 // campo ocupado = 0: si libre; ocupado=1: si ocupado
 typedef struct {
-	Conectado jugadores[4];
+	Jugador jugadores[4];
 	int numjugadores;
 	int invitaciones;
 	int ocupado;
@@ -58,7 +64,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8090;
+		puerto = 8080;
 	}
 	else 
 	{
@@ -107,7 +113,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 { //Devuelve la posicion o -1 si no lo encuentra
 	int i = 0;
 	int encontrado = 0;
-	//b￯﾿ﾯ￯ﾾ﾿￯ﾾﾺsqueda
+	//b\uffef\uffbf\uffaf\uffef\uffbe\uffbf\uffef\uffbe\uffbasqueda
 	while ((i<lista->num)&&(encontrado == 0))
 	{
 		if (strcmp(lista->conectados[i].nombre, nombre) ==0)
@@ -125,7 +131,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 
 
 int EliminaConectado (ListaConectados *lista, char nombre[20])	
-{ // Devuelve 0 si elimina y -1 si el usuario no est￯﾿ﾯ￯ﾾ﾿￯ﾾﾡ en la lista
+{ // Devuelve 0 si elimina y -1 si el usuario no est\uffef\uffbf\uffaf\uffef\uffbe\uffbf\uffef\uffbe\uffa1 en la lista
 	// Elimina el socket de la lista global de sockets
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
@@ -220,9 +226,9 @@ int BuscarPartidaLibre(Partida lista[20])
 }
 
 
-// Elimina la partida de la lista: pone a 0 el t￯﾿ﾩrmino ocupado 
+// Elimina la partida de la lista: pone a 0 el t\uffef\uffbf\uffa9rmino ocupado 
 // de la partida que le venga como parametro. Eliminamos (ponemos a -1)
-// tambi￯﾿ﾩn los sockets de la lista de partidas
+// tambi\uffef\uffbf\uffa9n los sockets de la lista de partidas
 void AcabaPartida (Partida lista[20], int idpartida)	
 {
 	lista[idpartida].numjugadores = 0;
@@ -230,12 +236,13 @@ void AcabaPartida (Partida lista[20], int idpartida)
 	for (int i=0;i < 4;i++)
 	{
 		lista[idpartida].jugadores[i].socket = -1;
+		lista[idpartida].jugadores[i].posicion = -1;		
 		strcpy(lista[idpartida].jugadores[i].nombre, "");
 	}
 }
 
 // Esta funcion establece el numero de invitaciones que se necesitan para empezar la Partida
-// adem￡s pone al anfitrion en la partida
+// adem\uffe1s pone al anfitrion en la partida
 void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char jugador[20], int n_invitaciones)
 {
 	if (lista[idpartida].ocupado == 0)
@@ -243,7 +250,7 @@ void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char j
 		AcabaPartida(lista, idpartida);
 		lista[idpartida].ocupado = 1;
 	}
-	printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
+	//printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 	
 	int s1 = DameSocket(&listaconectados,jugador);
 	lista[idpartida].jugadores[lista[idpartida].numjugadores].socket = s1;
@@ -252,19 +259,19 @@ void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char j
 	lista[idpartida].invitaciones = n_invitaciones;
 	printf("En esta partida: [%d] se necesitan %d invitaciones aceptadas\n", idpartida, lista[idpartida].invitaciones);
 	
-	printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
+	//printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 	
 }
-//Pone al jugador en partida. (menos al anfitri￳n)
+//Pone al jugador en partida. (menos al anfitri\ufff3n)
 void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 {
-	printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);	
+	//printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);	
 	int s1 = DameSocket(&listaconectados,jugador);
 	lista[idpartida].jugadores[lista[idpartida].numjugadores].socket = s1;
 	strcpy(lista[idpartida].jugadores[lista[idpartida].numjugadores].nombre, jugador);
 	lista[idpartida].numjugadores = lista[idpartida].numjugadores +1;
 	
-	printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
+	//printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 }
 
 // Actualiza la decision sobre la Partida
@@ -276,6 +283,26 @@ int  AceptaInvitacionYDameFaltantes(Partida lista[20], int idpartida)
 	lista[idpartida].invitaciones = n_invitaciones_Faltantes;
 	printf ("Ahora faltan %d para empezar la partida [%d]\n", n_invitaciones_Faltantes, idpartida);
 	return n_invitaciones_Faltantes;
+}
+
+// funcion que pone la posicion (nJugador) en la posicon del jugador de la Partida
+void PonPosicionJugadorPartida(Partida lista[20], int idpartida, char jugador[20], int posicion)
+{
+	// buscamos el nombre y su posicon relativa en la lista de jugadores de la partida
+	int encontrado = 0;
+	int x = 0;
+	while (encontrado == 0 && x<lista[idpartida].numjugadores)
+	{
+		if (strcmp(lista[idpartida].jugadores[x].nombre, jugador) ==0)
+		{
+			encontrado = 1;
+		}
+		if (encontrado == 0)
+			x= x+1;
+	}
+	// ponemos la posicon de personaje
+	if (encontrado == 1)
+		lista[idpartida].jugadores[x].posicion = posicion;
 }
 // Esta funcion hace el LogIn. Necesita un nombre y una contrasenya
 // Devuelve 0 si todo OK. Devuelve -1 si no es correcto. Devuelve 1 si contrasenya incorrecta
@@ -516,6 +543,78 @@ void EnviarListaConectadosNotificacion(char respuesta[512])
 		write (listaconectados.conectados[j].socket, respuesta, strlen(respuesta));
 }
 
+// Esta funcion crea una partida y la a￱ade en la base de datos. Tambien la relaciona con el historial de jugadores
+// Devuelve 0 si todo OK. Devuelve -1 si no se hace correctamente.
+int PonPartidaYHistorialEnBBDD(int idpartida, char mapa[30], char result[30], char nota[5], int tiempo)
+{
+	char cons[500];
+	//Hacemos la consulta del insert en las PARTIDAS
+	
+	//COnsultamos el ID MAX
+	strcpy(cons, "SELECT MAX(partida.id) FROM (partida);");
+	err = mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	
+	int id_max;
+	char id_max_s[20];
+	id_max = atoi(row[0])+1;
+	sprintf(id_max_s,"%d",id_max);	
+	
+	// Hacemos insert
+	sprintf(cons, "INSERT INTO partida VALUES (%s, '%s', '%s', '%s', %d);", id_max_s, mapa, result, nota, tiempo);
+	//printf("%s\n",cons);
+	
+	err = mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+		return -1;
+	}
+	
+	
+
+	//Hacemos la consulta del insert en el Historial
+	for (int i=0; i< listaPartidas[idpartida].numjugadores; i++)
+	{
+		char cons2[500];
+		char nombre_jugador[60];
+		strcpy(nombre_jugador,  listaPartidas[idpartida].jugadores[i].nombre);
+		
+		//COnsultamos el ID del jugador de la partida
+		sprintf(cons2, "SELECT (jugador.id) FROM (jugador) WHERE jugador.username = '%s';", nombre_jugador);
+		//printf("%s\n",cons2);
+		
+		err = mysql_query (conn, cons2);
+		if (err!=0) {
+			printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+			exit (1);
+		}
+		
+		resultado = mysql_store_result (conn); 
+		row = mysql_fetch_row (resultado);
+		
+		int id_esteJug;
+		id_esteJug = atoi(row[0]);
+		int id_partida_ahora = id_max;
+		// Hacemos insert
+		sprintf(cons2, "INSERT INTO historial VALUES (%d, %d, %d);", id_esteJug, id_partida_ahora, listaPartidas[idpartida].jugadores[i].posicion);
+		//printf("%s\n",cons2);
+		
+		err = mysql_query (conn, cons2);
+		if (err!=0) {
+			printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+			return -1;
+		}
+	}
+	return 0;
+	
+}
+
 void *AtenderCliente (void *socket)
 {
 	int sock_conn, ret;
@@ -709,7 +808,7 @@ void *AtenderCliente (void *socket)
 					for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 					{
 						//if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
-							write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+						write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
 					}
 					printf("Notificacion: %s\n", notificacion);
 				}
@@ -727,23 +826,23 @@ void *AtenderCliente (void *socket)
 			}
 		}
 		
-/*		else if (codigo == 9) */// click boton acabar partida
-/*		{ */// 9/idpartida --> el username ja el tenim
-			
-/*			p = strtok(NULL, "/");*/
-/*			int idpartida = atoi(p);*/
-			
-/*			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)*/
-/*			{*/
-/*				sprintf(notificacion, "9/%d", idpartida);*/
-/*				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));*/
-/*				printf("%s\n",notificacion);*/
-/*			}*/
-			
-/*			pthread_mutex_lock (&mutex);*/
-/*			AcabaPartida (listaPartidas, idpartida);	*/
-/*			pthread_mutex_unlock (&mutex);*/
-/*		}*/
+		/*		else if (codigo == 9) */// click boton acabar partida
+		/*		{ */// 9/idpartida --> el username ja el tenim
+		
+		/*			p = strtok(NULL, "/");*/
+		/*			int idpartida = atoi(p);*/
+		
+		/*			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)*/
+		/*			{*/
+		/*				sprintf(notificacion, "9/%d", idpartida);*/
+		/*				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));*/
+		/*				printf("%s\n",notificacion);*/
+		/*			}*/
+		
+		/*			pthread_mutex_lock (&mutex);*/
+		/*			AcabaPartida (listaPartidas, idpartida);	*/
+		/*			pthread_mutex_unlock (&mutex);*/
+		/*		}*/
 		else if (codigo == 10) // seleccion de personaje
 		{
 			p = strtok(NULL, "/");
@@ -798,8 +897,23 @@ void *AtenderCliente (void *socket)
 		}
 		else if (codigo == 14)
 		{
+			// 14/idpartida/nombreJ1/nombreJ2/nombreJ3/nombreJ4
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
+			char J[20];
+			
+			// Ponemos las posiciones de los jugadores
+			for (int x=0; x<4; x++)
+			{
+				p = strtok (NULL, "/");
+				strcpy(J, p);
+				pthread_mutex_lock (&mutex);
+				PonPosicionJugadorPartida(listaPartidas, idpartida, J, x+1);
+				pthread_mutex_unlock (&mutex);
+			}
+			
+			//printf ("Esta partida tiene a los jugadores: %s, %s, %s, %s\n", listaPartidas[idpartida].jugadores[0].nombre, listaPartidas[idpartida].jugadores[1].nombre,listaPartidas[idpartida].jugadores[2].nombre, listaPartidas[idpartida].jugadores[3].nombre);
+			//printf ("en esta posicion: %d,%d,%d,%d\n", listaPartidas[idpartida].jugadores[0].posicion,  listaPartidas[idpartida].jugadores[1].posicion,  listaPartidas[idpartida].jugadores[2].posicion, listaPartidas[idpartida].jugadores[3].posicion);
 			
 			sprintf(notificacion, "14/%d", idpartida);
 			
@@ -965,30 +1079,38 @@ void *AtenderCliente (void *socket)
 		// - - - - - - - - - - FIN:  movimientos de los personajes de otros - - - - - - -- - - - -- 
 		
 		else if (codigo == 50)	// fin de partida 
-		{	// "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado
+		{	// "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + tiempo
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
 			char map[30];
 			p = strtok(NULL, "/");
 			strcpy(map, p);
 			char resultado[30];
-			char letra_result[2];
+			char letra_result[5];
 			p = strtok (NULL, "/");
 			strcpy (resultado, p);
 			p= strtok (NULL, "/"); 
 			strcpy(letra_result, p);
-			sprintf(notificacion, "50/%d/%s/%s/%s", idpartida,map, resultado, letra_result);
+			p= strtok(NULL, "/");
+			int tiempo= atoi(p);
 			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			// ponemos la partida en la BASE DE DATOS
+			int res_bd = PonPartidaYHistorialEnBBDD(idpartida, map, resultado, letra_result, tiempo);
+			if (res_bd == 0) // BBDD ok
 			{
-				write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+				sprintf(notificacion, "50/%d/%s/%s/%s", idpartida,map, resultado, letra_result);
+				
+				for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+				{
+					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+				}
+				printf("Notificacion: %s\n", notificacion);
+				
+				// acabamos la partida
+				pthread_mutex_lock (&mutex);
+				AcabaPartida (listaPartidas, idpartida);	
+				pthread_mutex_unlock (&mutex);
 			}
-			printf("Notificacion: %s\n", notificacion);
-			
-			// acabamos la partida
-			pthread_mutex_lock (&mutex);
-			AcabaPartida (listaPartidas, idpartida);	
-			pthread_mutex_unlock (&mutex);
 		}
 		else if (codigo == 35) // prueba teclas 
 		{
@@ -1056,7 +1178,7 @@ void *AtenderCliente (void *socket)
 				printf ("Este jugador tiene este socket: %d\n", listaPartidas[idpartida].jugadores[j].socket);
 				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
 				{
-					printf ("Este jugador al que le env￭an el mensaje tiene este socket: %d\n", listaPartidas[idpartida].jugadores[j].socket);
+					printf ("Este jugador al que le env\uffedan el mensaje tiene este socket: %d\n", listaPartidas[idpartida].jugadores[j].socket);
 					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
 				}
 			}
@@ -1189,5 +1311,3 @@ int main(int argc, char *argv[])
 		printf("[%d]", i);
 	}
 }
-	
-	
