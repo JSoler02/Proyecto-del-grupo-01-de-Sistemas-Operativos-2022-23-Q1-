@@ -41,16 +41,19 @@ namespace ProyectoSO
             this.PuntMax_But = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.PartidasMapa_But = new System.Windows.Forms.Button();
-            this.PartidasDia_But = new System.Windows.Forms.Button();
+            this.TiempoMaxPartida_But = new System.Windows.Forms.Button();
             this.GridConectados = new System.Windows.Forms.DataGridView();
             this.lbl_lista_con = new System.Windows.Forms.Label();
             this.CrearPartidaBut = new System.Windows.Forms.Button();
             this.mapaTbx = new System.Windows.Forms.TextBox();
-            this.fechaTbox = new System.Windows.Forms.TextBox();
             this.timer_personaj = new System.Windows.Forms.Timer(this.components);
             this.timer_saludo = new System.Windows.Forms.Timer(this.components);
+            this.info_mapas_pb = new System.Windows.Forms.PictureBox();
+            this.data_mapas_info = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info_mapas_pb)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_mapas_info)).BeginInit();
             this.SuspendLayout();
             // 
             // desconnectButton
@@ -158,15 +161,15 @@ namespace ProyectoSO
             this.PartidasMapa_But.UseVisualStyleBackColor = true;
             this.PartidasMapa_But.Click += new System.EventHandler(this.PartidasMapa_But_Click);
             // 
-            // PartidasDia_But
+            // TiempoMaxPartida_But
             // 
-            this.PartidasDia_But.Location = new System.Drawing.Point(343, 483);
-            this.PartidasDia_But.Name = "PartidasDia_But";
-            this.PartidasDia_But.Size = new System.Drawing.Size(165, 69);
-            this.PartidasDia_But.TabIndex = 16;
-            this.PartidasDia_But.Text = "Partidas del dia (dd/mm/aa)";
-            this.PartidasDia_But.UseVisualStyleBackColor = true;
-            this.PartidasDia_But.Click += new System.EventHandler(this.PartidasDia_But_Click);
+            this.TiempoMaxPartida_But.Location = new System.Drawing.Point(343, 483);
+            this.TiempoMaxPartida_But.Name = "TiempoMaxPartida_But";
+            this.TiempoMaxPartida_But.Size = new System.Drawing.Size(165, 69);
+            this.TiempoMaxPartida_But.TabIndex = 16;
+            this.TiempoMaxPartida_But.Text = "Tiempo Máximo en partida";
+            this.TiempoMaxPartida_But.UseVisualStyleBackColor = true;
+            this.TiempoMaxPartida_But.Click += new System.EventHandler(this.TiempoMaxPartida_But_Click);
             // 
             // GridConectados
             // 
@@ -202,17 +205,10 @@ namespace ProyectoSO
             // 
             // mapaTbx
             // 
-            this.mapaTbx.Location = new System.Drawing.Point(180, 558);
+            this.mapaTbx.Location = new System.Drawing.Point(198, 558);
             this.mapaTbx.Name = "mapaTbx";
-            this.mapaTbx.Size = new System.Drawing.Size(142, 22);
+            this.mapaTbx.Size = new System.Drawing.Size(139, 22);
             this.mapaTbx.TabIndex = 13;
-            // 
-            // fechaTbox
-            // 
-            this.fechaTbox.Location = new System.Drawing.Point(354, 559);
-            this.fechaTbox.Name = "fechaTbox";
-            this.fechaTbox.Size = new System.Drawing.Size(142, 22);
-            this.fechaTbox.TabIndex = 24;
             // 
             // timer_personaj
             // 
@@ -223,16 +219,41 @@ namespace ProyectoSO
             // 
             this.timer_saludo.Tick += new System.EventHandler(this.timer_saludo_Tick);
             // 
+            // info_mapas_pb
+            // 
+            this.info_mapas_pb.Image = global::ProyectoSO.Properties.Resources.information;
+            this.info_mapas_pb.Location = new System.Drawing.Point(165, 552);
+            this.info_mapas_pb.Name = "info_mapas_pb";
+            this.info_mapas_pb.Size = new System.Drawing.Size(27, 29);
+            this.info_mapas_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.info_mapas_pb.TabIndex = 25;
+            this.info_mapas_pb.TabStop = false;
+            this.info_mapas_pb.MouseEnter += new System.EventHandler(this.info_mapas_pb_MouseEnter);
+            // 
+            // data_mapas_info
+            // 
+            this.data_mapas_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.data_mapas_info.ColumnHeadersVisible = false;
+            this.data_mapas_info.GridColor = System.Drawing.Color.BlanchedAlmond;
+            this.data_mapas_info.Location = new System.Drawing.Point(559, 401);
+            this.data_mapas_info.Name = "data_mapas_info";
+            this.data_mapas_info.RowHeadersWidth = 51;
+            this.data_mapas_info.RowTemplate.Height = 24;
+            this.data_mapas_info.Size = new System.Drawing.Size(123, 180);
+            this.data_mapas_info.TabIndex = 26;
+            this.data_mapas_info.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 593);
-            this.Controls.Add(this.fechaTbox);
+            this.Controls.Add(this.data_mapas_info);
+            this.Controls.Add(this.info_mapas_pb);
             this.Controls.Add(this.mapaTbx);
             this.Controls.Add(this.CrearPartidaBut);
             this.Controls.Add(this.GridConectados);
-            this.Controls.Add(this.PartidasDia_But);
+            this.Controls.Add(this.TiempoMaxPartida_But);
             this.Controls.Add(this.PartidasMapa_But);
             this.Controls.Add(this.lbl_lista_con);
             this.Controls.Add(this.label3);
@@ -246,6 +267,8 @@ namespace ProyectoSO
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.info_mapas_pb)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.data_mapas_info)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,18 +286,19 @@ namespace ProyectoSO
         private System.Windows.Forms.Button PuntMax_But;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button PartidasMapa_But;
-        private System.Windows.Forms.Button PartidasDia_But;
+        private System.Windows.Forms.Button TiempoMaxPartida_But;
         private System.Windows.Forms.DataGridView GridConectados;
         private System.Windows.Forms.Label lbl_lista_con;
         private System.Windows.Forms.Button CrearPartidaBut;
         private System.Windows.Forms.TextBox mapaTbx;
-        private System.Windows.Forms.TextBox fechaTbox;
         private System.Windows.Forms.Timer timer_personaj;
         private System.Windows.Forms.PictureBox J1;
         private System.Windows.Forms.PictureBox J2;
         private System.Windows.Forms.PictureBox J3;
         private System.Windows.Forms.PictureBox J4;
         private System.Windows.Forms.Timer timer_saludo;
+        private System.Windows.Forms.PictureBox info_mapas_pb;
+        private System.Windows.Forms.DataGridView data_mapas_info;
     }
 }
 

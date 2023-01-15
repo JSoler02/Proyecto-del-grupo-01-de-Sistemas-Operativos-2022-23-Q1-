@@ -59,6 +59,7 @@ namespace ProyectoSO
         int dice;
         Panel panelTituloJuego = new Panel();
 
+        
         private void Main_Load(object sender, EventArgs e)
         {
             // Proceso del título del juego       --> TheELEMENTS
@@ -97,12 +98,24 @@ namespace ProyectoSO
                 panelTituloJuego.Click += panelTituloJuego_Click;   //ponemos el evento al boton que hemos creado
 
             }
+            data_mapas_info.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            data_mapas_info.RowHeadersVisible = false;
+            data_mapas_info.ColumnHeadersVisible = true;
+            data_mapas_info.ColumnCount = 1;
+            data_mapas_info.Columns[0].HeaderText = "Mapas";
+            data_mapas_info.ReadOnly = true;
+            data_mapas_info.Rows.Add("Templo");
+            data_mapas_info.Rows.Add("Volcan");
+            data_mapas_info.Rows.Add("Volcan (3Jug)");
+            data_mapas_info.Rows.Add("Volcan (2Jug)");
+            data_mapas_info.Rows.Add("Cueva");
+            data_mapas_info.ClearSelection();
 
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
             PartidasMapa_But.Visible = false;
-            PartidasDia_But.Visible = false;
+            TiempoMaxPartida_But.Visible = false;
             desconnectButton.Visible = false;
             GridConectados.Visible = false;
             passwordBox.PasswordChar = ('*');
@@ -113,9 +126,10 @@ namespace ProyectoSO
             GridConectados.Columns[0].HeaderText = "Username";
             GridConectados.ReadOnly = true;
             CrearPartidaBut.Visible = false;
-            fechaTbox.Visible = false;
             mapaTbx.Visible = false;
-            conectado = false;
+            info_mapas_pb.Visible = false;
+            data_mapas_info.Visible = false;
+           conectado = false;
 
             InicioPersonajesImagenes();
 
@@ -185,7 +199,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8080;
+                puerto = 8070;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -266,7 +280,7 @@ namespace ProyectoSO
                         MessageBox.Show(mensaje);
                         break;
 
-                    case 3: //consulta 1 --> Puntos maximos de Maria
+                    case 3: //consulta 1 --> Puntos maximos de usuario
                         mensaje = trozos[1];
                         MessageBox.Show("Tu puntuación máxima es: " + mensaje);
                         break;
@@ -276,9 +290,9 @@ namespace ProyectoSO
                         MessageBox.Show("En el mapa " + mapaTbx.Text + " has jugado " + mensaje + " partidas.");
                         break;
 
-                    case 5: //consulta 3 --> Nombre de los jugadores que han jugado como J1 en "templo"
+                    case 5: //consulta 3 --> timepo max que has estado en partida
                         mensaje = trozos[1];
-                        MessageBox.Show("Ese dia jugaste en los mapas: " + mensaje);
+                        MessageBox.Show("Has jugado un máximo de " + mensaje + " segundos en una partida.");
                         break;
                     case 6: // Notificación de la Lista de Conectados
 
@@ -913,12 +927,13 @@ namespace ProyectoSO
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
             PartidasMapa_But.Visible = false;
-            PartidasDia_But.Visible = false;
+            TiempoMaxPartida_But.Visible = false;
             GridConectados.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;
             mapaTbx.Visible = false;
-            fechaTbox.Visible = false;
+            info_mapas_pb.Visible = false;
+            data_mapas_info.Visible = false;
         
             CrearPartidaBut.Visible = false;
             panel1.Visible = true;
@@ -952,16 +967,19 @@ namespace ProyectoSO
 
         private void PartidasMapa_But_Click(object sender, EventArgs e)
         {
+            data_mapas_info.Visible = false;
             string mensaje = "4/" + mapaTbx.Text;
+            if (mapaTbx.Text == "")
+            { mensaje = "4/MapaVacio"; }
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
         }
 
-        private void PartidasDia_But_Click(object sender, EventArgs e)
+        private void TiempoMaxPartida_But_Click(object sender, EventArgs e)
         {
-            string mensaje = "5/" + fechaTbox.Text;
+            string mensaje = "5/";
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -1209,7 +1227,7 @@ namespace ProyectoSO
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
             PartidasMapa_But.Visible = false;
-            PartidasDia_But.Visible = false;
+            TiempoMaxPartida_But.Visible = false;
             GridConectados.Visible = false;
             //panel1.Visible = true;
             desconnectButton.Visible = false;
@@ -1245,14 +1263,14 @@ namespace ProyectoSO
                 lbl_lista_con.Visible = false;
                 PuntMax_But.Visible = true;
                 PartidasMapa_But.Visible = true;
-                PartidasDia_But.Visible = true;
+                TiempoMaxPartida_But.Visible = true;
                 desconnectButton.Visible = true;
                 panel1.Visible = false;
                 GridConectados.Visible = true;
                 CrearPartidaBut.Visible = true;
-                fechaTbox.Visible = true;
                 mapaTbx.Visible = true;
-                this.BackColor = Color.Green;
+                info_mapas_pb.Visible = true;
+               this.BackColor = Color.Green;
                 this.Controls.Remove(Jug1);
                 this.Controls.Remove(Jug2);
                 this.Controls.Remove(Jug3);
@@ -1274,6 +1292,12 @@ namespace ProyectoSO
             Jug4.Image = Image.FromFile("Cloudgirl_corriendo_der.gif");
 
             timer_saludo.Stop();
+        }
+
+        private void info_mapas_pb_MouseEnter(object sender, EventArgs e)
+        {
+            data_mapas_info.Visible = true;
+            data_mapas_info.ClearSelection();
         }
     }
 }

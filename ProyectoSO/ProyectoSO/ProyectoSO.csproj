@@ -174,5 +174,8 @@
   <ItemGroup>
     <None Include="bin\Debug\diamante_cloud.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

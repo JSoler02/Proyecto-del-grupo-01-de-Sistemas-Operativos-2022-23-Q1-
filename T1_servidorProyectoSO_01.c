@@ -64,7 +64,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8080;
+		puerto = 8070;
 	}
 	else 
 	{
@@ -527,6 +527,174 @@ int Consulta3(char resp[500])
 	}
 }
 
+// Nos dice la puntuacion maxima que ha conseguido el usuario en sus partidas
+void Consulta1Buena(char nombre[20], char nota[20])
+{
+	char cons[500];
+	char name [20];
+
+	//quiere saber la puntuacion maxima de usuario
+	strcpy (name, nombre);
+	
+	//sprintf(cons, "SELECT MAX(historial.puntos) FROM (jugador, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s');", name);
+	// consulta SQL para obtener una tabla con todos los datos
+	// miramos primero si hay una "S"; luego si hay una "A", una "B", una "C", y por ￺ltimo una "F".
+	sprintf(cons, "SELECT (partida.nota) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id AND partida.nota = 'S';", name);
+	err = mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+		sprintf(nota,"No hay datos");
+	}
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	if (row == NULL)
+	{
+		//printf ("No se han obtenido datos en la consulta\n");
+		// miramos las "A"
+		char consA[500];
+		sprintf(consA, "SELECT (partida.nota) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id AND partida.nota = 'A';", name);
+		err = mysql_query (conn, consA);
+		if (err!=0) {
+			printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+			sprintf(nota,"No hay datos");
+		}
+		resultado = mysql_store_result (conn);
+		row = mysql_fetch_row (resultado);
+		if (row == NULL)
+		{
+			//printf ("No se han obtenido datos en la consulta\n");
+			// miramos las "B"
+			char consB[500];
+			sprintf(consB, "SELECT (partida.nota) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id AND partida.nota = 'B';", name);
+			err = mysql_query (conn, consB);
+			if (err!=0) {
+				printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+				sprintf(nota,"No hay datos");
+			}
+			resultado = mysql_store_result (conn);
+			row = mysql_fetch_row (resultado);
+			if (row == NULL)
+			{
+				//printf ("No se han obtenido datos en la consulta\n");
+				// miramos las "C"
+				char consC[500];
+				sprintf(consC, "SELECT (partida.nota) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id AND partida.nota = 'C';", name);
+				err = mysql_query (conn, consC);
+				if (err!=0) {
+					printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+					sprintf(nota,"No hay datos");
+				}
+				resultado = mysql_store_result (conn);
+				row = mysql_fetch_row (resultado);
+				if (row == NULL)
+				{
+					//printf ("No se han obtenido datos en la consulta\n");
+					// miramos las "F"
+					char consF[500];
+					sprintf(consF, "SELECT (partida.nota) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id AND partida.nota = 'F';", name);
+					err = mysql_query (conn, consF);
+					if (err!=0) {
+						printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+						sprintf(nota,"No hay datos");
+					}
+					resultado = mysql_store_result (conn);
+					row = mysql_fetch_row (resultado);
+					if (row == NULL)
+					{				
+						sprintf (nota, "No hay datos");	
+					}
+					else	
+					{
+						sprintf (nota, "F");
+					}
+					
+				}
+				else	
+				{
+					sprintf (nota, "C");
+				}
+				
+			}
+			else	
+			{
+				sprintf (nota, "B");
+			}			
+		}
+		else	
+		{
+			sprintf (nota, "A");
+		}
+	}
+	else	
+	{
+		sprintf (nota, "S");
+	}
+}
+// cantidad de partidas que el usuario ha jugado en el mapa que escoja
+void Consulta2Buena(char resp[500], char map[30], char nombre[20])
+{
+	char cons[500];
+	char name[20];
+	strcpy (name, nombre);
+	
+	// Ahora vamos a realizar la consulta
+	sprintf (cons,"SELECT COUNT(historial.id_p) FROM (jugador, partida,historial) WHERE jugador.username ='%s' AND jugador.id = historial.id_j AND historial.id_p = partida.id AND partida.mapa = '%s';", name, map);
+	
+	err=mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+		sprintf(resp,"No hay datos");
+	}
+	// Recogemos el resultado
+	resultado = mysql_store_result (conn); 
+	row = mysql_fetch_row (resultado);
+	
+	if (row == NULL)
+	{
+		printf ("No se han obtenido datos en la consulta\n");
+		sprintf(resp,"No hay datos");
+	}
+	else
+	{
+		sprintf (resp, "%d", atoi(row[0]));	
+	}
+	
+}
+
+
+// Nos dice la puntuacion maxima que ha conseguido el usuario en sus partidas
+void Consulta3Buena(char nombre[20], char resp[500])
+{
+	char cons[500];
+	char name [20];
+	
+	//quiere saber la puntuacion maxima de usuario
+	strcpy (name, nombre);
+	
+	// consulta SQL para obtener una tabla con todos los datos
+
+	sprintf(cons, "SELECT MAX(partida.duracion) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id;", name);
+	err = mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
+		sprintf(resp,"No hay datos");
+	}
+	
+	// Recogemos el resultado
+	resultado = mysql_store_result (conn); 
+	row = mysql_fetch_row (resultado);
+	
+	if (row == NULL)
+	{
+		printf ("No se han obtenido datos en la consulta\n");
+		sprintf(resp,"No hay datos");
+	}
+	else
+	{
+		sprintf (resp, "%d", atoi(row[0]));	
+	}
+}
+
 void EnviarListaConectadosNotificacion(char respuesta[512])
 {
 	char res[512];
@@ -728,21 +896,36 @@ void *AtenderCliente (void *socket)
 		
 		else if (codigo == 3)
 		{
-			int max = Consulta1();
-			sprintf(respuesta, "3/%d", max);
+			/*int max = Consulta1(username);
+			sprintf(respuesta, "3/%d", max);*/
+			
+			char nota[20];
+			Consulta1Buena(username, nota);
+			sprintf(respuesta, "3/%s", nota);
 		}
 		
-		else if (codigo == 4)
+		else if (codigo == 4) //4/mapa
 		{
+/*			strcpy(res, "");*/
+/*			Consulta2(res);*/
+/*			sprintf(respuesta, "4/%s", res);*/
+			char map[30];
+			p = strtok(NULL, "/");
+			strcpy(map, p);
+			
 			strcpy(res, "");
-			Consulta2(res);
+			Consulta2Buena(res, map,username);
 			sprintf(respuesta, "4/%s", res);
 			//printf(respuesta);
 		}
 		else if (codigo == 5)	
 		{
+/*			strcpy(res, "");*/
+/*			Consulta3(res);*/
+/*			sprintf(respuesta, "5/%s", res);*/
+			
 			strcpy(res, "");
-			Consulta3(res);
+			Consulta3Buena(username,res);
 			sprintf(respuesta, "5/%s", res);
 		}
 		else if (codigo == 7)
