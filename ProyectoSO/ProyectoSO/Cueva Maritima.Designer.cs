@@ -1376,8 +1376,8 @@
             this.Name = "Cueva_Maritima";
             this.Text = "Cueva_Maritima";
             this.Load += new System.EventHandler(this.Cueva_Maritima_Load_1);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cueva_Maritima_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Cueva_Maritima_KeyUp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();

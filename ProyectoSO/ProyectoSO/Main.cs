@@ -199,7 +199,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8070;
+                puerto = 8080;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -1045,7 +1045,7 @@ namespace ProyectoSO
                 CrearPartida f = new CrearPartida();
                 f.ShowDialog();
                 InvPartida = f.DameNum();
-                MessageBox.Show("Haz doble-click en "+ InvPartida + " nombres de los jugadores que quieras invitar.");
+                MessageBox.Show("Haz doble-click en "+ (InvPartida - 1) + " nombres de los jugadores que quieras invitar.");
                 But_empezarPartida_activado = true;
             }
         }

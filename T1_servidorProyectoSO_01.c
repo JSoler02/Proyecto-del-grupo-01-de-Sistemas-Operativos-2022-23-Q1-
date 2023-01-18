@@ -56,7 +56,7 @@ int sockets[100];
 
 //Variables de desarrollo
 int shiva = 0; //1: si Shiva; 0: si MaqVirtual
-//Esta funcion devuelve el puerto y el Host 
+//Esta funcion retorna el puerto y el rellena host con el Host 
 // dependiendo de si estamos en el entorno de desarrollo o el de produccion
 int DamePuertoYHost (int shiva, char host[50])
 {
@@ -64,7 +64,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8070;
+		puerto = 8080;
 	}
 	else 
 	{

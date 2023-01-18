@@ -25,6 +25,12 @@ namespace ProyectoSO
         // Variables bool para partidas de menos de 4 jugadores
         bool jug1Juega, jug2Juega, jug3Juega, jug4Juega;
 
+        // Variables bool para el envío de mensajes: flechas
+        // para enviar solo 1 vez el mensaje
+        bool tecla_arriba = true;
+        bool tecla_derecha = true;
+        bool tecla_izquierda = true;
+
         // Variables globales que se crean en False
         bool goLeft_J1, goRight_J1, jumping_J1, isGameOver_J1, onPlatform_J1;
         bool goLeft_J2, goRight_J2, jumping_J2, isGameOver_J2, onPlatform_J2;
@@ -424,21 +430,41 @@ namespace ProyectoSO
         {
             if (e.KeyCode == Keys.Left)
             {
-                TeclaIzquierdaClicada();
+                //if ((jumping_J1 == true) || (jumping_J2 == true) || (jumping_J3 == true) || (jumping_J4 == true))
+                //{
+                if (e.KeyCode == Keys.Up)
+                {
+                    TeclaArribaConIzquierdaClicada();
+                }
+                //}
+                else
+                {
+                    TeclaIzquierdaClicada();
+                }
             }
             if (e.KeyCode == Keys.Right)
             {
-                TeclaDerechaClicada();
+                //if ((jumping_J1 == true) || (jumping_J2 == true) || (jumping_J3 == true) || (jumping_J4 == true))
+                //{
+                if (e.KeyCode == Keys.Up)
+                {
+                    TeclaArribaConDerechaClicada();
+                }
+                //}
+                else
+                {
+                    TeclaDerechaClicada();
+                }
             }
             if (e.KeyCode == Keys.Up)
             {
-                if ((jumping_J1 == false) || (jumping_J2 == false) || (jumping_J3 == false) || (jumping_J4 == false))
-                {
-                    if ((goLeft_J1 == true) || (goLeft_J2 == true) || (goLeft_J3 == true) || (goLeft_J4 == true))
+                //if ((jumping_J1 == false) || (jumping_J2 == false) || (jumping_J3 == false) || (jumping_J4 == false))
+                //{
+                    if (e.KeyCode == Keys.Left)//((goLeft_J1 == true) || (goLeft_J2 == true) || (goLeft_J3 == true) || (goLeft_J4 == true))
                     {
                         TeclaArribaConIzquierdaClicada();
                     }
-                    else if ((goRight_J1 == true) || (goRight_J2 == true) || (goRight_J3 == true) || (goRight_J4 == true))
+                    else if (e.KeyCode == Keys.Right)//((goRight_J1 == true) || (goRight_J2 == true) || (goRight_J3 == true) || (goRight_J4 == true))
                     {
                         TeclaArribaConDerechaClicada();
                     }
@@ -446,7 +472,7 @@ namespace ProyectoSO
                     {
                         TeclaArribaSolaClicada();
                     }
-                }
+                //}
             }
 
         }
@@ -461,16 +487,10 @@ namespace ProyectoSO
             {
                 TeclaDerechaDejadaDeClicar();
             }
-            if ((jumping_J1 == true) || (jumping_J2 == true) || (jumping_J3 == true) || (jumping_J4 == true))
+            if (e.KeyCode == Keys.Up)
             {
                 TeclaArribaDejadaDeClicar();
             }
-            //// Cuando le demos al enter y tengamos GameOver reempezamos
-            //if (e.KeyCode == Keys.Enter && isGameOver_J1 == true)
-            //{
-            //    RestartGame();
-            //}
-
         }
         private void RestartGame()
         {
@@ -714,11 +734,12 @@ namespace ProyectoSO
         }
 
         // Animaciones y mensaje a enviar al mover MI PERSONAJE
-        //  ---> ---> Activar el envío de mensajes
         private void TeclaArribaSolaClicada()
         {
-            switch (miPersonajeQueControlo)
+            if (tecla_arriba == true)
             {
+                switch (miPersonajeQueControlo)
+                {
                 case 1:
                     if (permitirAnimaciones_J1 == true)
                     {
@@ -747,18 +768,23 @@ namespace ProyectoSO
                     }
                     jumping_J4 = true;
                     break;
+                }
+            
+                string mensaje = "19/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                label_mensaje.Text = mensaje;
+                tecla_arriba = false;
             }
-            string mensaje = "19/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            label_mensaje.Text = mensaje;
         }
         private void TeclaArribaConIzquierdaClicada()
         {
-            switch (miPersonajeQueControlo)
+            if (tecla_arriba == true && tecla_izquierda == true)
             {
+                switch (miPersonajeQueControlo)
+                {
                 case 1:
-                    if (permitirAnimaciones_J1 == true)
+                    if (permitirAnimaciones_J1 == true )
                     {
                         misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionSalto_H_Izq());
                     }
@@ -787,16 +813,22 @@ namespace ProyectoSO
                     }
                     jumping_J4 = true;
                     break;
+                }
+           
+                string mensaje = "21/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                label_mensaje.Text = mensaje;
+                tecla_arriba = false;
+                tecla_izquierda = false;
             }
-            string mensaje = "21/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            label_mensaje.Text = mensaje;
         }
         private void TeclaArribaConDerechaClicada()
         {
-            switch (miPersonajeQueControlo)
+            if (tecla_arriba == true && tecla_derecha == true)
             {
+                switch (miPersonajeQueControlo)
+                {
                 case 1:
                     if (permitirAnimaciones_J1 == true)
                     {
@@ -825,216 +857,242 @@ namespace ProyectoSO
                     }
                     jumping_J4 = true;
                     break;
+                }
+            
+                string mensaje = "22/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                label_mensaje.Text = mensaje;
+                tecla_arriba = false;
+                tecla_derecha = false;
             }
-            string mensaje = "22/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            label_mensaje.Text = mensaje;
         }
         private void TeclaArribaDejadaDeClicar()
         {
-            switch (miPersonajeQueControlo)
+            if (tecla_arriba == false)
             {
-                case 1:
-                    if (permitirAnimaciones_J1 == true)
-                    {
-                        misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionCae());
-                        if (onPlatform_J1 == true)
-                        { misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionNormal()); }
-                    }
-                    jumping_J1 = false;
-                    break;
-                case 2:
-                    if (permitirAnimaciones_J2 == true)
-                    {
-                        misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionCae());
-                        if (onPlatform_J2 == true)
-                        { misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionNormal()); }
-                    }
-                    jumping_J2 = false;
-                    break;
-                case 3:
-                    if (permitirAnimaciones_J3 == true)
-                    {
-                        misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionCae());
-                        if (onPlatform_J3 == true)
-                        { misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionNormal()); }
-                    }
-                    jumping_J3 = false;
-                    break;
-                case 4:
-                    if (permitirAnimaciones_J4 == true)
-                    {
-                        misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionCae());
-                        if (onPlatform_J4 == true)
-                        { misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionNormal()); }
-                    }
-                    jumping_J4 = false;
-                    break;
+                switch (miPersonajeQueControlo)
+                {
+                    case 1:
+                        if (permitirAnimaciones_J1 == true)
+                        {
+                            misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionCae());
+                            if (onPlatform_J1 == true)
+                            { misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionNormal()); }
+                        }
+                        jumping_J1 = false;
+                        break;
+                    case 2:
+                        if (permitirAnimaciones_J2 == true)
+                        {
+                            misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionCae());
+                            if (onPlatform_J2 == true)
+                            { misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionNormal()); }
+                        }
+                        jumping_J2 = false;
+                        break;
+                    case 3:
+                        if (permitirAnimaciones_J3 == true)
+                        {
+                            misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionCae());
+                            if (onPlatform_J3 == true)
+                            { misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionNormal()); }
+                        }
+                        jumping_J3 = false;
+                        break;
+                    case 4:
+                        if (permitirAnimaciones_J4 == true)
+                        {
+                            misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionCae());
+                            if (onPlatform_J4 == true)
+                            { misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionNormal()); }
+                        }
+                        jumping_J4 = false;
+                        break;
+                }
+                string mensaje = "23/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                label_mensaje.Text = mensaje;
+                tecla_arriba = true;
             }
-            string mensaje = "23/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            label_mensaje.Text = mensaje;
         }
         private void TeclaIzquierdaClicada()
         {
-            switch (miPersonajeQueControlo)
+            if (tecla_izquierda == true)
             {
-                case 1:
-                    goLeft_J1 = true;
-                    if (permitirAnimaciones_J1 == true)
-                    {
-                        misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionCorriendo_Izq());
-                    }
-                    break;
-                case 2:
-                    goLeft_J2 = true;
-                    if (permitirAnimaciones_J2 == true)
-                    {
-                        misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionCorriendo_Izq());
-                    }
-                    break;
-                case 3:
-                    goLeft_J3 = true;
-                    if (permitirAnimaciones_J3 == true)
-                    {
-                        misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionCorriendo_Izq());
-                    }
-                    break;
-                case 4:
-                    goLeft_J4 = true;
-                    if (permitirAnimaciones_J4 == true)
-                    {
-                        misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionCorriendo_Izq());
-                    }
-                    break;
+                switch (miPersonajeQueControlo)
+                {
+                    case 1:
+                        goLeft_J1 = true;
+                        if (permitirAnimaciones_J1 == true)
+                        {
+                            misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionCorriendo_Izq());
+                        }
+                        break;
+                    case 2:
+                        goLeft_J2 = true;
+                        if (permitirAnimaciones_J2 == true)
+                        {
+                            misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionCorriendo_Izq());
+                        }
+                        break;
+                    case 3:
+                        goLeft_J3 = true;
+                        if (permitirAnimaciones_J3 == true)
+                        {
+                            misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionCorriendo_Izq());
+                        }
+                        break;
+                    case 4:
+                        goLeft_J4 = true;
+                        if (permitirAnimaciones_J4 == true)
+                        {
+                            misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionCorriendo_Izq());
+                        }
+                        break;
+                }
+           
+                string mensaje = "15/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                label_mensaje.Text = mensaje;
+                tecla_izquierda = false;
             }
-            string mensaje = "15/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            label_mensaje.Text = mensaje;
         }
         private void TeclaIzquierdaDejadaDeClicar()
         {
-            switch (miPersonajeQueControlo)
+            if (tecla_izquierda == false)
             {
-                case 1:
-                    goLeft_J1 = false;
-                    if (permitirAnimaciones_J1 == true)
-                    {
-                        misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionNormal());
-                    }
-                    break;
-                case 2:
-                    goLeft_J2 = false;
-                    if (permitirAnimaciones_J2 == true)
-                    {
+                switch (miPersonajeQueControlo)
+                {
+                    case 1:
+                        goLeft_J1 = false;
+                        if (permitirAnimaciones_J1 == true)
+                        {
+                            misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionNormal());
+                        }
+                        break;
+                    case 2:
+                        goLeft_J2 = false;
+                        if (permitirAnimaciones_J2 == true)
+                        {
 
-                        misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionNormal());
-                    }
-                    break;
-                case 3:
-                    goLeft_J3 = false;
-                    if (permitirAnimaciones_J3 == true)
-                    {
+                            misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionNormal());
+                        }
+                        break;
+                    case 3:
+                        goLeft_J3 = false;
+                        if (permitirAnimaciones_J3 == true)
+                        {
 
-                        misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionNormal());
-                    }
-                    break;
-                case 4:
-                    goLeft_J4 = false;
-                    if (permitirAnimaciones_J4 == true)
-                    {
+                            misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionNormal());
+                        }
+                        break;
+                    case 4:
+                        goLeft_J4 = false;
+                        if (permitirAnimaciones_J4 == true)
+                        {
 
-                        misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionNormal());
-                    }
-                    break;
+                            misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionNormal());
+                        }
+                        break;
+                }
+                string mensaje = "16/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                label_mensaje.Text = mensaje;
+                tecla_izquierda = true;
             }
-            string mensaje = "16/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            label_mensaje.Text = mensaje;
         }
         private void TeclaDerechaClicada()
         {
-            switch (miPersonajeQueControlo)
+            if (tecla_derecha == true)
             {
-                case 1:
-                    goRight_J1 = true;
-                    if (permitirAnimaciones_J1 == true)
-                    {
-                        misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionCorriendo_Der());
-                    }
-                    break;
-                case 2:
-                    goRight_J2 = true;
-                    if (permitirAnimaciones_J2 == true)
-                    {
-                        misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionCorriendo_Der());
-                    }
-                    break;
-                case 3:
-                    goRight_J3 = true;
-                    if (permitirAnimaciones_J3 == true)
-                    {
-                        misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionCorriendo_Der());
-                    }
-                    break;
-                case 4:
-                    goRight_J4 = true;
-                    if (permitirAnimaciones_J4 == true)
-                    {
-                        misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionCorriendo_Der());
-                    }
-                    break;
+                switch (miPersonajeQueControlo)
+                {
+                    case 1:
+                        goRight_J1 = true;
+                        if (permitirAnimaciones_J1 == true)
+                        {
+                            misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionCorriendo_Der());
+                        }
+                        break;
+                    case 2:
+                        goRight_J2 = true;
+                        if (permitirAnimaciones_J2 == true)
+                        {
+                            misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionCorriendo_Der());
+                        }
+                        break;
+                    case 3:
+                        goRight_J3 = true;
+                        if (permitirAnimaciones_J3 == true)
+                        {
+                            misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionCorriendo_Der());
+                        }
+                        break;
+                    case 4:
+                        goRight_J4 = true;
+                        if (permitirAnimaciones_J4 == true)
+                        {
+                            misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionCorriendo_Der());
+                        }
+                        break;
+                }
+           
+                string mensaje = "17/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                label_mensaje.Text = mensaje;
+                tecla_derecha = false;
             }
-            string mensaje = "17/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            label_mensaje.Text = mensaje;
         }
         private void TeclaDerechaDejadaDeClicar()
         {
-            switch (miPersonajeQueControlo)
+            if (tecla_derecha == false)
             {
-                case 1:
-                    goRight_J1 = false;
-                    if (permitirAnimaciones_J1 == true)
-                    {
+                switch (miPersonajeQueControlo)
+                {
+                    case 1:
+                        goRight_J1 = false;
+                        if (permitirAnimaciones_J1 == true)
+                        {
 
-                        misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionNormal());
-                    }
-                    break;
-                case 2:
-                    goRight_J2 = false;
-                    if (permitirAnimaciones_J2 == true)
-                    {
+                            misPicsPersonajes[0].Image = Image.FromFile(Jug1.GetAnimacionNormal());
+                        }
+                        break;
+                    case 2:
+                        goRight_J2 = false;
+                        if (permitirAnimaciones_J2 == true)
+                        {
 
-                        misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionNormal());
-                    }
-                    break;
-                case 3:
-                    goRight_J3 = false;
-                    if (permitirAnimaciones_J3 == true)
-                    {
+                            misPicsPersonajes[1].Image = Image.FromFile(Jug2.GetAnimacionNormal());
+                        }
+                        break;
+                    case 3:
+                        goRight_J3 = false;
+                        if (permitirAnimaciones_J3 == true)
+                        {
 
-                        misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionNormal());
-                    }
-                    break;
-                case 4:
-                    goRight_J4 = false;
-                    if (permitirAnimaciones_J4 == true)
-                    {
+                            misPicsPersonajes[2].Image = Image.FromFile(Jug3.GetAnimacionNormal());
+                        }
+                        break;
+                    case 4:
+                        goRight_J4 = false;
+                        if (permitirAnimaciones_J4 == true)
+                        {
 
-                        misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionNormal());
-                    }
-                    break;
+                            misPicsPersonajes[3].Image = Image.FromFile(Jug4.GetAnimacionNormal());
+                        }
+                        break;
+                }
+                string mensaje = "18/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                label_mensaje.Text = mensaje;
+                tecla_derecha = true;
             }
-            string mensaje = "18/" + idPartida + "/" + mapa + "/" + miPersonajeQueControlo;
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            label_mensaje.Text = mensaje;
         }
 
         // Simulacion de control de los otros personajes
@@ -1197,7 +1255,6 @@ namespace ProyectoSO
                 }
             }));
         }
-
         public void TeclaIzquierdaClicada_Otro(int otropersonaje)
         {
             Invoke(new Action(() =>
@@ -1977,6 +2034,7 @@ namespace ProyectoSO
                 {
                     Jug1.SetY(x.Bottom); // mueve directamente abajo del techo al colisionar
                 }
+                jumping_J1 = false;
             }
             // Colisiones Jugador 2 - plataforma
             if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
@@ -1985,6 +2043,8 @@ namespace ProyectoSO
                 {
                     Jug2.SetY(x.Bottom); // mueve directamente abajo del techo al colisionar
                 }
+                jumping_J2 = false;
+
             }
             // Colisiones Jugador 3 - plataforma
             if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
@@ -1993,6 +2053,8 @@ namespace ProyectoSO
                 {
                     Jug3.SetY(x.Bottom); // mueve directamente abajo del techo al colisionar
                 }
+                jumping_J3 = false;
+
             }
             // Colisiones Jugador 4 - plataforma
             if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
@@ -2001,6 +2063,8 @@ namespace ProyectoSO
                 {
                     Jug4.SetY(x.Bottom); // mueve directamente abajo del techo al colisionar
                 }
+                jumping_J4 = false;
+
             }
         }
         private void ColisionesPersonajesParedIzquierda(Control x)
@@ -2009,21 +2073,25 @@ namespace ProyectoSO
             if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
             {
                 Jug1.SetX(x.Left - Jug1.GetAnchoNormal()); // mueve directamente
+                goLeft_J1 = false;
             }
             // Colisiones Jugador 2 - plataforma
             if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
             {
                 Jug2.SetX(x.Left - Jug2.GetAnchoNormal()); // mueve directamente
+                goLeft_J2 = false;
             }
             // Colisiones Jugador 3 - plataforma
             if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
             {
                 Jug3.SetX(x.Left - Jug3.GetAnchoNormal()); // mueve directamente
+                goLeft_J3 = false;
             }
             // Colisiones Jugador 4 - plataforma
             if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
             {
                 Jug4.SetX(x.Left - Jug4.GetAnchoNormal()); // mueve directamente
+                goLeft_J4= false;
             }
         }
         private void ColisionesPersonajesParedDerecha(Control x)
@@ -2032,23 +2100,28 @@ namespace ProyectoSO
             if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
             {
                 Jug1.SetX(x.Right); // mueve directamente
+                goRight_J1 = false;
             }
             // Colisiones Jugador 2 - plataforma
             if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
             {
                 Jug2.SetX(x.Right); // mueve directamente
+                goRight_J2 = false;
             }
             // Colisiones Jugador 3 - plataforma
             if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
             {
                 Jug3.SetX(x.Right); // mueve directamente
+                goRight_J3 = false;
             }
             // Colisiones Jugador 4 - plataforma
             if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
             {
                 Jug4.SetX(x.Right); // mueve directamente
+                goRight_J4 = false;
             }
         }
+
         private void ColisionesPersonajesPalanca4(Control x)
         {
             // Colisiones Jugador 1 - palanca 2
@@ -2580,7 +2653,7 @@ namespace ProyectoSO
             labelResultado.AutoSize = true;
             labelResultado.TextAlign = ContentAlignment.MiddleCenter;
             labelResultado.Location = new Point(panelResultado.Width / 2 - labelResultado.Width, 30);
-            label_letraResultado.Text = letra_resultado + "/" + segundos;
+            label_letraResultado.Text = letra_resultado; 
             label_letraResultado.Font = new Font("Arial Black", 35, FontStyle.Bold);
             label_letraResultado.BorderStyle = BorderStyle.FixedSingle;
             label_letraResultado.AutoSize = true;
@@ -2716,7 +2789,7 @@ namespace ProyectoSO
             Invoke(new Action(() =>
             {
                 // Add the Panel control to the form.
-                this.Controls.Add(panelResultado);
+                this.tiempoJuego.Stop(); this.Controls.Add(panelResultado);
                 // Add the Label controls to the Panel.
                 panelResultado.Controls.Add(labelResultado);
                 panelResultado.Controls.Add(label_letraResultado);

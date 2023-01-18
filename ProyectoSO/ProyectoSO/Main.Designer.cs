@@ -222,7 +222,7 @@ namespace ProyectoSO
             // info_mapas_pb
             // 
             this.info_mapas_pb.Image = global::ProyectoSO.Properties.Resources.information;
-            this.info_mapas_pb.Location = new System.Drawing.Point(165, 552);
+            this.info_mapas_pb.Location = new System.Drawing.Point(165, 558);
             this.info_mapas_pb.Name = "info_mapas_pb";
             this.info_mapas_pb.Size = new System.Drawing.Size(27, 29);
             this.info_mapas_pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
