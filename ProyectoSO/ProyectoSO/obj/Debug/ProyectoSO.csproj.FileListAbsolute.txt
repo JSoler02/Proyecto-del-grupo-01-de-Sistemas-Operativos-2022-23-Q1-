@@ -72,3 +72,4 @@ C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Pro
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan3.resources
 C:\Users\julia\OneDrive\Escriptori\UNIVERSITAT\CURS 2022-2023\QT\SO\PROJECTE\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1-\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.Volcan4.resources
 C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.CrearPartida.resources
+C:\Users\vigam\OneDrive\Desktop\Universitat\3A\SO\_JuegoSO\Proyecto-del-grupo-01-de-Sistemas-Operativos-2022-23-Q1\ProyectoSO\ProyectoSO\obj\Debug\ProyectoSO.TemploHelado.resources

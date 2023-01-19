@@ -2387,8 +2387,9 @@ namespace ProyectoSO
         {
             if (onPlatform_J1 == true)
             { onPlatform_J1 = false; }
-            Jug1.SetX(10);
-            Jug1.SetY(660);
+            Jug1.SetX(665);
+            Jug1.SetY(50);
+
             //misPicsPersonajes[0].Image = Image.FromFile("vacio.png");
             if (vidas1 > 1)
             {
@@ -2416,8 +2417,9 @@ namespace ProyectoSO
         {
             if (onPlatform_J2 == true)
             { onPlatform_J2 = false; }
-            Jug2.SetX(70);
-            Jug2.SetY(660);
+            Jug2.SetX(740);
+            Jug2.SetY(50);
+          
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas2 > 1)
             {
@@ -2446,8 +2448,9 @@ namespace ProyectoSO
         {
             if (onPlatform_J3 == true)
             { onPlatform_J3 = false; }
-            Jug3.SetX(700);
-            Jug3.SetY(660);
+            Jug3.SetX(810);
+            Jug3.SetY(50);
+           
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas3 > 1)
             {
@@ -2475,8 +2478,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J4 == true)
             { onPlatform_J4 = false; }
-            Jug4.SetX(770);
-            Jug4.SetY(660);
+            Jug4.SetX(900);
+            Jug4.SetY(50);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas4 > 1)
             {
