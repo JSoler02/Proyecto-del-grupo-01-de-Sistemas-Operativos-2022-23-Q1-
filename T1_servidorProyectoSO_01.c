@@ -677,7 +677,8 @@ void Consulta3Buena(char nombre[20], char resp[500])
 	sprintf(cons, "SELECT MAX(partida.duracion) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id;", name);
 	err = mysql_query (conn, cons);
 	printf("Res Despu￩s de Consulta: %s\n", resp);
-
+	sprintf(resp,"No hay datos");
+/*	printf("Res Despu￩s de Consulta y de poner cosas: %s\n", resp);*/
 	if (err!=0) {
 		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
 		exit (1);
@@ -696,6 +697,28 @@ void Consulta3Buena(char nombre[20], char resp[500])
 		printf ("Si se han obtenido datos en la consulta: atoi(row[0])=%d \n", atoi(row[0]));
 		sprintf (resp, "%d", atoi(row[0]));	
 	}
+}
+
+// Esta funcion, sirve para eliminar un usuario
+// necesita el nombre del usuario a eliminar
+// pone En respuesta "Usuario Eliminado" o "Error al eliminar"
+void EliminarUsuarioBD (char resp[500], char nombre[20])
+{
+	char cons[500];
+	char name[20];
+	strcpy (name, nombre);
+	
+	// Ahora vamos a realizar la consulta
+	sprintf (cons,"DELETE FROM jugador WHERE jugador.username = '%s';", name);
+	
+	err=mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	
+	sprintf (resp, "Usuario eliminado");	
+	
 }
 
 void EnviarListaConectadosNotificacion(char respuesta[512])
@@ -927,10 +950,12 @@ void *AtenderCliente (void *socket)
 /*			Consulta3(res);*/
 /*			sprintf(respuesta, "5/%s", res);*/
 			
-			strcpy(res, "");
+			strcpy(res, "No hay datos");
 			printf("Res Antes: %s\n", res);
 			Consulta3Buena(username,res);
 			printf("Res Despu￩s: %s\n", res);
+			if (strcmp(res, "")==0)
+				sprintf (res, "No hay datos");
 			sprintf(respuesta, "5/%s", res);
 		}
 		else if (codigo == 7)
@@ -1014,23 +1039,7 @@ void *AtenderCliente (void *socket)
 			}
 		}
 		
-		/*		else if (codigo == 9) */// click boton acabar partida
-		/*		{ */// 9/idpartida --> el username ja el tenim
-		
-		/*			p = strtok(NULL, "/");*/
-		/*			int idpartida = atoi(p);*/
-		
-		/*			for (int i = 0; i < listaPartidas[idpartida].numjugadores; i++)*/
-		/*			{*/
-		/*				sprintf(notificacion, "9/%d", idpartida);*/
-		/*				write (listaPartidas[idpartida].jugadores[i].socket, notificacion, strlen(notificacion));*/
-		/*				printf("%s\n",notificacion);*/
-		/*			}*/
-		
-		/*			pthread_mutex_lock (&mutex);*/
-		/*			AcabaPartida (listaPartidas, idpartida);	*/
-		/*			pthread_mutex_unlock (&mutex);*/
-		/*		}*/
+	
 		else if (codigo == 10) // seleccion de personaje
 		{
 			p = strtok(NULL, "/");
@@ -1265,7 +1274,14 @@ void *AtenderCliente (void *socket)
 			printf("Notificacion: %s\n", notificacion);
 		}
 		// - - - - - - - - - - FIN:  movimientos de los personajes de otros - - - - - - -- - - - -- 
-		
+		else if (codigo == 25) // click boton Eliminar usuario
+		{ 					// 9/ --> el username ja el tenim
+			
+			strcpy(res, "");
+			EliminarUsuarioBD(res,username);
+			sprintf(respuesta, "25/%s", res);
+			
+		}
 		else if (codigo == 50)	// fin de partida 
 		{	// "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + tiempo
 			p = strtok(NULL, "/");
@@ -1299,112 +1315,6 @@ void *AtenderCliente (void *socket)
 				AcabaPartida (listaPartidas, idpartida);	
 				pthread_mutex_unlock (&mutex);
 			}
-		}
-		else if (codigo == 35) // prueba teclas 
-		{
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
-			char map[30];
-			p = strtok(NULL, "/");
-			strcpy(map, p);
-			
-			sprintf(notificacion, "35/%d/%s", idpartida, map);
-			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
-			{
-				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
-					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
-			}
-			printf("Notificacion: %s\n", notificacion);
-		}
-		else if (codigo == 36) // prueba teclas 
-		{
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
-			char map[30];
-			p = strtok(NULL, "/");
-			strcpy(map, p);
-			
-			sprintf(notificacion, "36/%d/%s", idpartida, map);
-			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
-			{
-				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
-					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
-			}
-			printf("Notificacion: %s\n", notificacion);
-		}
-		else if (codigo == 37) // prueba teclas 
-		{
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
-			char map[30];
-			p = strtok(NULL, "/");
-			strcpy(map, p);
-			
-			sprintf(notificacion, "37/%d/%s", idpartida, map);
-			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
-			{
-				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
-					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
-			}
-			printf("Notificacion: %s\n", notificacion);
-		}
-		else if (codigo == 38) // prueba teclas 
-		{
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
-			char map[30];
-			p = strtok(NULL, "/");
-			strcpy(map, p);
-			
-			sprintf(notificacion, "38/%d/%s", idpartida, map);
-			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
-			{
-				printf ("Este jugador tiene este socket: %d\n", listaPartidas[idpartida].jugadores[j].socket);
-				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
-				{
-					printf ("Este jugador al que le env\uffedan el mensaje tiene este socket: %d\n", listaPartidas[idpartida].jugadores[j].socket);
-					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
-				}
-			}
-			printf("Notificacion: %s\n", notificacion);
-		}
-		else if (codigo == 39) // prueba teclas 
-		{
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
-			char map[30];
-			p = strtok(NULL, "/");
-			strcpy(map, p);
-			
-			sprintf(notificacion, "39/%d/%s", idpartida, map);
-			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
-			{
-				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
-					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
-			}
-			printf("Notificacion: %s\n", notificacion);
-		}
-		else if (codigo == 40) // prueba teclas 
-		{
-			p = strtok(NULL, "/");
-			int idpartida = atoi(p);
-			char map[30];
-			p = strtok(NULL, "/");
-			strcpy(map, p);
-			
-			sprintf(notificacion, "40/%d/%s", idpartida, map);
-			
-			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
-			{
-				if (listaPartidas[idpartida].jugadores[j].socket != sock_conn)
-					write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
-			}
-			printf("Notificacion: %s\n", notificacion);
 		}
 		
 		else //if (codigo == 20)

@@ -114,6 +114,7 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
+            eliminar_but.Visible = false;
             PartidasMapa_But.Visible = false;
             TiempoMaxPartida_But.Visible = false;
             desconnectButton.Visible = false;
@@ -764,118 +765,50 @@ namespace ProyectoSO
                         }
                         break;
                     //  *   *   *   *   *   *   *   *   *   *   *   *   *   FIN: Movimientos de los personajes   *   *   *   *   *   *   *   *  *   *
-                    //  *   *   *   *   *   *   *   *   *   *   *   *   *  INICIO:  Movimientos de los personajes   *   *   *   *   *   *   *   *   *   
+                    case 25:    // elimnar cuenta y desconectar el usuario
+                                // 9/Usuario Eliminado
+                        mensaje = trozos[1];
+                        MessageBox.Show(mensaje);
 
-                    case 35:
-                        // 35/idpartida/mapa
-                        idPartida = Convert.ToInt32(trozos[1]);
-                        mapa = trozos[2];
-                        
-                        switch (mapa)
+                        Invoke(new Action(() =>
                         {
-                            case "Templo":
+                            //Mensaje de desconexión
+                            label3.Visible = false;
+                            lbl_lista_con.Visible = false;
+                            PuntMax_But.Visible = false;
+                            eliminar_but.Visible = false;
+                            PartidasMapa_But.Visible = false;
+                            TiempoMaxPartida_But.Visible = false;
+                            GridConectados.Visible = false;
+                            //panel1.Visible = true;
+                            desconnectButton.Visible = false;
+                            mapaTbx.Visible = false;
+                            info_mapas_pb.Visible = false;
+                            data_mapas_info.Visible = false;
 
-                                break;
-                            case "PruebaTeclas":
-                                Invoke(new Action(() =>
-                                {
-                                    form_prueba_tecl[idPartida].TocaIzquierda_otro();
-                                }));
-                                break;
-                        }
+                            CrearPartidaBut.Visible = false;
+                            panel1.Visible = true;
+
+                            InicioPersonajesImagenes();
+
+                            string mensaje2 = "0/" + Convert.ToString(idPartida);
+
+                            byte[] msg3 = System.Text.Encoding.ASCII.GetBytes(mensaje2);
+                            server.Send(msg3);
+
+                            // Nos desconectamos
+                            atender.Abort(); // cerramos thread
+
+                            this.BackColor = Color.LightGray;
+                            server.Shutdown(SocketShutdown.Both);
+                            server.Close();
+
+                            NumInvitados = 0;
+                            conectado = false;
+
+                        }));
                         break;
-        
-                    case 36:
-                        // 36/idpartida/mapa
-                        idPartida = Convert.ToInt32(trozos[1]);
-                        mapa = trozos[2];
 
-                        switch (mapa)
-                        {
-                            case "Templo":
-
-                                break;
-                            case "PruebaTeclas":
-                                Invoke(new Action(() =>
-                                {
-                                    form_prueba_tecl[idPartida].SueltaIzquierda_otro();
-                                }));
-                                break;
-                        }
-                        break;
-                    case 37:
-                        // 37/idpartida/mapa
-                        idPartida = Convert.ToInt32(trozos[1]);
-                        mapa = trozos[2];
-
-                        switch (mapa)
-                        {
-                            case "Templo":
-
-                                break;
-                            case "PruebaTeclas":
-                                Invoke(new Action(() =>
-                                {
-                                    form_prueba_tecl[idPartida].TocaDerecha_otro();
-                                }));
-                                break;
-                        }
-                        break;
-                    case 38:
-                        // 38/idpartida/
-                        idPartida = Convert.ToInt32(trozos[1]);
-                        mapa = trozos[2];
-
-                        switch (mapa)
-                        {
-                            case "Templo":
-
-                                break;
-                            case "PruebaTeclas":
-                                Invoke(new Action(() =>
-                                {
-                                    form_prueba_tecl[idPartida].SueltaDerecha_otro();
-                                }));
-                                break;
-                        }
-                        break;
-                    case 39:
-                        // 39/idpartida/
-                        idPartida = Convert.ToInt32(trozos[1]);
-                        mapa = trozos[2];
-
-                        switch (mapa)
-                        {
-                            case "Templo":
-
-                                break;
-                            case "PruebaTeclas":
-                                Invoke(new Action(() =>
-                                {
-                                    form_prueba_tecl[idPartida].TocaArriba_otro();
-                                }));
-                                break;
-                        }
-                        break;
-                    case 40:
-                        // 40/idpartida/
-                        idPartida = Convert.ToInt32(trozos[1]);
-                        mapa = trozos[2];
-
-                        switch (mapa)
-                        {
-                            case "Templo":
-
-                                break;
-                            case "PruebaTeclas":
-                                Invoke(new Action(() =>
-                                {
-                                    form_prueba_tecl[idPartida].SueltaArriba_otro();
-                                }));
-                                break;
-                        }
-                        break;
-                    //  *   *   *   *   *   *   *   *   *   *   *   *   *   FIN: Movimientos de los personajes   *   *   *   *   *   *   *   *  *   *
                     case 50:
                         //"50/%d/%s/%s/%s", idpartida,map, resultado, letra_result);
                         idPartida = Convert.ToInt32(trozos[1]);
@@ -926,6 +859,7 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
+            eliminar_but.Visible = false;
             PartidasMapa_But.Visible = false;
             TiempoMaxPartida_But.Visible = false;
             GridConectados.Visible = false;
@@ -1226,6 +1160,7 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
+            eliminar_but.Visible = false;
             PartidasMapa_But.Visible = false;
             TiempoMaxPartida_But.Visible = false;
             GridConectados.Visible = false;
@@ -1262,6 +1197,7 @@ namespace ProyectoSO
                 label3.Visible = true;
                 lbl_lista_con.Visible = false;
                 PuntMax_But.Visible = true;
+                eliminar_but.Visible = true;
                 PartidasMapa_But.Visible = true;
                 TiempoMaxPartida_But.Visible = true;
                 desconnectButton.Visible = true;
@@ -1298,6 +1234,13 @@ namespace ProyectoSO
         {
             data_mapas_info.Visible = true;
             data_mapas_info.ClearSelection();
+        }
+
+        private void eliminar_but_Click(object sender, EventArgs e)
+        {
+            string mensaje = "25/";
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
         }
     }
 }

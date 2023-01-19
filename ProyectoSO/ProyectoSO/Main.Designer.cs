@@ -50,6 +50,7 @@ namespace ProyectoSO
             this.timer_saludo = new System.Windows.Forms.Timer(this.components);
             this.info_mapas_pb = new System.Windows.Forms.PictureBox();
             this.data_mapas_info = new System.Windows.Forms.DataGridView();
+            this.eliminar_but = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_mapas_pb)).BeginInit();
@@ -243,11 +244,22 @@ namespace ProyectoSO
             this.data_mapas_info.TabIndex = 26;
             this.data_mapas_info.Visible = false;
             // 
+            // eliminar_but
+            // 
+            this.eliminar_but.Location = new System.Drawing.Point(11, 12);
+            this.eliminar_but.Name = "eliminar_but";
+            this.eliminar_but.Size = new System.Drawing.Size(139, 29);
+            this.eliminar_but.TabIndex = 27;
+            this.eliminar_but.Text = "Eliminar Cuenta";
+            this.eliminar_but.UseVisualStyleBackColor = true;
+            this.eliminar_but.Click += new System.EventHandler(this.eliminar_but_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 593);
+            this.Controls.Add(this.eliminar_but);
             this.Controls.Add(this.data_mapas_info);
             this.Controls.Add(this.info_mapas_pb);
             this.Controls.Add(this.mapaTbx);
@@ -299,6 +311,7 @@ namespace ProyectoSO
         private System.Windows.Forms.Timer timer_saludo;
         private System.Windows.Forms.PictureBox info_mapas_pb;
         private System.Windows.Forms.DataGridView data_mapas_info;
+        private System.Windows.Forms.Button eliminar_but;
     }
 }
 
