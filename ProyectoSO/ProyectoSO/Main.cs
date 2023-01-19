@@ -925,7 +925,7 @@ namespace ProyectoSO
             if (conectado == true)
             {
                 
-                MessageBox.Show("Conectado con el servidor");
+                //MessageBox.Show("Conectado con el servidor");
 
                 //panel1.Visible = true;
                 string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
@@ -940,7 +940,7 @@ namespace ProyectoSO
                 int conexion = ConectarConServidor();
                 if (conexion == 0)
                 {
-                    MessageBox.Show("Conectado con el servidor");
+                    //MessageBox.Show("Conectado con el servidor");
 
                     //panel1.Visible = true;
                     string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
@@ -958,7 +958,7 @@ namespace ProyectoSO
             int conexion = ConectarConServidor();
             if (conexion == 0)
             {
-                MessageBox.Show("Conectado con el servidor");
+                //MessageBox.Show("Conectado con el servidor");
                 string mensaje = "2/" + usernameBox.Text + "/" + passwordBox.Text;
                 // pasar los datos de username, y contraseña en una cadena de texto. 
                 // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
