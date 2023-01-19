@@ -97,6 +97,12 @@
     <Compile Include="Volcan2.Designer.cs">
       <DependentUpon>Volcan2.cs</DependentUpon>
     </Compile>
+    <Compile Include="TemploHelado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemploHelado.Designer.cs">
+      <DependentUpon>TemploHelado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Volcan3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Volcan2.resx">
       <DependentUpon>Volcan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TemploHelado.resx">
+      <DependentUpon>TemploHelado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Volcan3.resx">
       <DependentUpon>Volcan3.cs</DependentUpon>

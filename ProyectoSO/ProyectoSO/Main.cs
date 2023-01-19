@@ -46,6 +46,7 @@ namespace ProyectoSO
         List<Volcan4> form_volcan_4Jug = new List<Volcan4>();
         List<Volcan3> form_volcan_3Jug = new List<Volcan3>();
         List<Volcan2> form_volcan_2Jug = new List<Volcan2>();
+        List<TemploHelado> form_templohelado = new List<TemploHelado>();
 
         List<Cueva_Maritima> form_cueva_mar_4Jug = new List<Cueva_Maritima>();
         List<prueba_Teclas> form_prueba_tecl = new List<prueba_Teclas>();
@@ -105,6 +106,7 @@ namespace ProyectoSO
             data_mapas_info.Columns[0].HeaderText = "Mapas";
             data_mapas_info.ReadOnly = true;
             data_mapas_info.Rows.Add("Templo");
+            data_mapas_info.Rows.Add("Templo Helado");
             data_mapas_info.Rows.Add("Volcan");
             data_mapas_info.Rows.Add("Volcan (3Jug)");
             data_mapas_info.Rows.Add("Volcan (2Jug)");
@@ -428,6 +430,11 @@ namespace ProyectoSO
                                 t = new Thread(ts_mapa_cuevaMaritima);
                                 t.Start();
                                 break;
+                            case "Templo Helado":
+                                ThreadStart ts_mapa_templohelado = delegate { PonerEnMarchaForm_TemploHelado(); };
+                                t = new Thread(ts_mapa_templohelado);
+                                t.Start();
+                                break;
                             case "PruebaTeclas":
                                 ThreadStart ts_mapa_pt = delegate { PonerEnMarchaForm_PruebaTecla(); };
                                 t = new Thread(ts_mapa_pt);
@@ -476,6 +483,12 @@ namespace ProyectoSO
                                     form_cueva_mar_4Jug[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].TeclaIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -514,6 +527,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].TeclaIzquierdaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -556,6 +575,12 @@ namespace ProyectoSO
                                     form_cueva_mar_4Jug[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].TeclaDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -596,6 +621,12 @@ namespace ProyectoSO
                                     form_cueva_mar_4Jug[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].TeclaDerechaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
 
@@ -633,6 +664,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].TeclaArribaSolaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -683,6 +720,12 @@ namespace ProyectoSO
                                     form_cueva_mar_4Jug[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].TeclaArribaConIzquierdaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
                         }
                         break;
                     case 22:
@@ -720,6 +763,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].TeclaArribaConDerechaClicada_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -760,6 +809,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
+                                }));
+                                break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].TeclaArribaDejadaDeClicar_Otro(Convert.ToInt32(trozos[3]));
                                 }));
                                 break;
                         }
@@ -845,6 +900,12 @@ namespace ProyectoSO
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].FinDePartida(resultado, letra_res);
+                                }));
+                                break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado[idPartida].FinDePartida(resultado, letra_res);
                                 }));
                                 break;
                         }
@@ -1107,6 +1168,24 @@ namespace ProyectoSO
             t.SetJug4Juega(formularios1[idPartida].DameJug4Juega());
 
             form_volcan_2Jug.Add(t);
+            t.ShowDialog();
+        }
+        private void PonerEnMarchaForm_TemploHelado()
+        {
+            TemploHelado t = new TemploHelado(idPartida, server);
+            t.MiPersonaje(formularios1[idPartida].DameMiPersonajeQueHeEscogido());
+            // pasamos nombre
+            t.SetJug1Nombre(formularios1[idPartida].DameNombreJug1());
+            t.SetJug2Nombre(formularios1[idPartida].DameNombreJug2());
+            t.SetJug3Nombre(formularios1[idPartida].DameNombreJug3());
+            t.SetJug4Nombre(formularios1[idPartida].DameNombreJug4());
+            // pasamos las variables bool que establecen qué jugadores juegan
+            t.SetJug1Juega(formularios1[idPartida].DameJug1Juega());
+            t.SetJug2Juega(formularios1[idPartida].DameJug2Juega());
+            t.SetJug3Juega(formularios1[idPartida].DameJug3Juega());
+            t.SetJug4Juega(formularios1[idPartida].DameJug4Juega());
+
+            form_templohelado.Add(t);
             t.ShowDialog();
         }
         private void PonerEnMarchaForm_CuevaMaritima()

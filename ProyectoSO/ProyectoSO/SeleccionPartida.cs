@@ -64,6 +64,7 @@ namespace ProyectoSO
             else if (numJugadoresPartida == 3)
             {
                 comboBox_Mapa.Items.Add("Volcan (3Jug)");
+                comboBox_Mapa.Items.Add("Templo Helado");
             }
             else // if (numJugadoresPartida == 2)
             {
