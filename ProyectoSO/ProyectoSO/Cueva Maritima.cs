@@ -2393,12 +2393,38 @@ namespace ProyectoSO
             if (result_partida != "No Superado")
             {
                 // Solo envía el mensaje al servidor el jugador 1
-                if (miPersonajeQueControlo == 1)
+                if (jug1Juega == true)
                 {
-                    string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
-                    label_mensaje.Text = mensaje;
+                    if (miPersonajeQueControlo == 1)
+                    {
+                        string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
+                        label_mensaje.Text = mensaje;
+                    }
+                }
+                else
+                {
+                    if (jug2Juega == true)
+                    {
+                        if (miPersonajeQueControlo == 2)
+                        {
+                            string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                            server.Send(msg);
+                            label_mensaje.Text = mensaje;
+                        }
+                    }
+                    else
+                    {
+                        if (miPersonajeQueControlo == 3)
+                        {
+                            string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                            server.Send(msg);
+                            label_mensaje.Text = mensaje;
+                        }
+                    }
                 }
             }
             else

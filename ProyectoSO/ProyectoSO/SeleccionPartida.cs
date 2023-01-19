@@ -69,7 +69,9 @@ namespace ProyectoSO
             else // if (numJugadoresPartida == 2)
             {
                 comboBox_Mapa.Items.Add("Volcan (2Jug)");
+                comboBox_Mapa.Items.Add("Templo (2Jug)");
                 comboBox_Mapa.Items.Add("Cueva");
+                comboBox_Mapa.Items.Add("Templo Helado (2Jug)");
             }
 
             //picurebox1 -- Fireboy

@@ -51,6 +51,7 @@ namespace ProyectoSO
             this.info_mapas_pb = new System.Windows.Forms.PictureBox();
             this.data_mapas_info = new System.Windows.Forms.DataGridView();
             this.eliminar_but = new System.Windows.Forms.Button();
+            this.label_notificacion = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_mapas_pb)).BeginInit();
@@ -236,11 +237,11 @@ namespace ProyectoSO
             this.data_mapas_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_mapas_info.ColumnHeadersVisible = false;
             this.data_mapas_info.GridColor = System.Drawing.Color.BlanchedAlmond;
-            this.data_mapas_info.Location = new System.Drawing.Point(559, 401);
+            this.data_mapas_info.Location = new System.Drawing.Point(525, 400);
             this.data_mapas_info.Name = "data_mapas_info";
             this.data_mapas_info.RowHeadersWidth = 51;
             this.data_mapas_info.RowTemplate.Height = 24;
-            this.data_mapas_info.Size = new System.Drawing.Size(123, 180);
+            this.data_mapas_info.Size = new System.Drawing.Size(157, 180);
             this.data_mapas_info.TabIndex = 26;
             this.data_mapas_info.Visible = false;
             // 
@@ -254,11 +255,23 @@ namespace ProyectoSO
             this.eliminar_but.UseVisualStyleBackColor = true;
             this.eliminar_but.Click += new System.EventHandler(this.eliminar_but_Click);
             // 
+            // label_notificacion
+            // 
+            this.label_notificacion.BackColor = System.Drawing.Color.PowderBlue;
+            this.label_notificacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label_notificacion.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.label_notificacion.Location = new System.Drawing.Point(11, 65);
+            this.label_notificacion.Name = "label_notificacion";
+            this.label_notificacion.Size = new System.Drawing.Size(307, 83);
+            this.label_notificacion.TabIndex = 28;
+            this.label_notificacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 593);
+            this.Controls.Add(this.label_notificacion);
             this.Controls.Add(this.eliminar_but);
             this.Controls.Add(this.data_mapas_info);
             this.Controls.Add(this.info_mapas_pb);
@@ -312,6 +325,7 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox info_mapas_pb;
         private System.Windows.Forms.DataGridView data_mapas_info;
         private System.Windows.Forms.Button eliminar_but;
+        private System.Windows.Forms.Label label_notificacion;
     }
 }
 

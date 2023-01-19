@@ -2471,7 +2471,7 @@ namespace ProyectoSO
             { letra = "C"; }
             return (letra);
         }
-        // función para enviar el mensaje de fin de partida + parar el timer principal
+        // función para enviar el mensaje de fin de partida + parar el timer principal ----- 4 Jug
         private void EnvíoMensajeFinDePartida(string result_partida, string letra_resultado)
         {
             tiempoJuego.Stop();

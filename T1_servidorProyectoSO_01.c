@@ -55,7 +55,7 @@ int i;
 int sockets[100];
 
 //Variables de desarrollo
-int shiva = 1; //1: si Shiva; 0: si MaqVirtual
+int shiva = 0; //1: si Shiva; 0: si MaqVirtual
 //Esta funcion retorna el puerto y el rellena host con el Host 
 // dependiendo de si estamos en el entorno de desarrollo o el de produccion
 int DamePuertoYHost (int shiva, char host[50])
@@ -64,7 +64,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8090;
+		puerto = 8095;
 	}
 	else 
 	{
@@ -557,6 +557,7 @@ void Consulta2Buena(char resp[500], char map[30], char nombre[20])
 void Consulta3Buena(char nombre[20], char resp[500])
 {
 	char cons[500];
+	char cons2[500];
 	char name [20];
 	
 	//quiere saber la puntuacion maxima de usuario
@@ -564,12 +565,11 @@ void Consulta3Buena(char nombre[20], char resp[500])
 	
 	// consulta SQL para obtener una tabla con todos los datos
 	
-	printf("Res Antes de Consulta: %s\n", resp);
-	sprintf(cons, "SELECT MAX(partida.duracion) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id;", name);
-	err = mysql_query (conn, cons);
-	printf("Res Despu￩s de Consulta: %s\n", resp);
-	sprintf(resp,"No hay datos");
-/*	printf("Res Despu￩s de Consulta y de poner cosas: %s\n", resp);*/
+	// primero hacemos una consulta para saber si hay datos de este jugador y sus partidas
+	// Ahora vamos a realizar la consulta
+	sprintf (cons2,"SELECT COUNT(historial.id_p) FROM (jugador, historial) WHERE jugador.username ='%s' AND jugador.id = historial.id_j;", name);
+	
+	err=mysql_query (conn, cons2);
 	if (err!=0) {
 		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
 		exit (1);
@@ -580,14 +580,43 @@ void Consulta3Buena(char nombre[20], char resp[500])
 	
 	if (row == NULL)
 	{
-		printf ("No se han obtenido datos en la consulta\n");
 		sprintf(resp,"No hay datos");
 	}
 	else
 	{
-		printf ("Si se han obtenido datos en la consulta: atoi(row[0])=%d \n", atoi(row[0]));
-		sprintf (resp, "%d", atoi(row[0]));	
+		if (atoi(row[0]) == 0)
+		{
+			sprintf(resp,"No hay datos");
+		}
+		else
+		{
+			//printf("Res Antes de Consulta: %s\n", resp);
+			sprintf(cons, "SELECT MAX(partida.duracion) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id;", name);
+			err = mysql_query (conn, cons);
+			//printf("Res Despu￩s de Consulta: %s\n", resp);
+			//sprintf(resp,"No hay datos");
+			/*	printf("Res Despu￩s de Consulta y de poner cosas: %s\n", resp);*/
+			if (err!=0) {
+				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			// Recogemos el resultado
+			resultado = mysql_store_result (conn); 
+			row = mysql_fetch_row (resultado);
+			
+			if (row == NULL)
+			{
+				//printf ("No se han obtenido datos en la consulta\n");
+				sprintf(resp,"No hay datos");
+			}
+			else
+			{
+				//printf ("Si se han obtenido datos en la consulta: atoi(row[0])=%d \n", atoi(row[0]));
+				sprintf (resp, "%d", atoi(row[0]));	
+			}
+		}
 	}
+	
 }
 
 // Esta funcion, sirve para eliminar un usuario
@@ -899,7 +928,7 @@ void *AtenderCliente (void *socket)
 				pthread_mutex_lock (&mutex);			
 				int n_invitaciones_faltantes =  AceptaInvitacionYDameFaltantes(listaPartidas, idpartida);
 				pthread_mutex_unlock (&mutex);
-				printf("Para la partida [%d] ahora faltan %d invitaciones para aceptar", idpartida, n_invitaciones_faltantes);
+				printf("Para la partida [%d] ahora faltan %d invitaciones para aceptar\n", idpartida, n_invitaciones_faltantes);
 				// Enviamos al invitador que el invitado ha aceptado la invitacion
 				sprintf(notificacion, "8/%s/%s/%d", invitado, decision, idpartida);				
 				write (listaPartidas[idpartida].jugadores[0].socket, notificacion, strlen(notificacion));
@@ -907,7 +936,7 @@ void *AtenderCliente (void *socket)
 				
 				if (n_invitaciones_faltantes <= 0)	// empieza la partida para todos
 				{
-					printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);					
+					printf ("Ya no faltan invitaciones. Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);					
 					sprintf(notificacion, "9/%d/%s/%d", idpartida, listaPartidas[idpartida].jugadores[0].nombre,  listaPartidas[idpartida].numjugadores) ; 
 					printf("Notificacion: %s\n", notificacion);	
 					for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)

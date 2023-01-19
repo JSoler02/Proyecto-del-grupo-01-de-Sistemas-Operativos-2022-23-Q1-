@@ -13,12 +13,12 @@ using System.Threading; // libreria de threads
 
 namespace ProyectoSO
 {
-    public partial class TemploHelado : Form
+    public partial class TemploHelado2 : Form
     {
         int idPartida;
         Socket server; // declaramos socket
 
-        string mapa = "Templo Helado";
+        string mapa = "Templo Helado (2Jug)";
         // Mi personaje --> 1,2,3,4
         int miPersonajeQueControlo;
 
@@ -116,7 +116,7 @@ namespace ProyectoSO
         { this.jug3Juega = valor; }
         public void SetJug4Juega(bool valor)
         { this.jug4Juega = valor; }
-        public TemploHelado(int idPartida, Socket server)
+        public TemploHelado2(int idPartida, Socket server)
         {
             InitializeComponent();
             this.idPartida = idPartida; // num de form que em donen --> l'afegeixo en els missatges de peticio de servei
@@ -391,11 +391,11 @@ namespace ProyectoSO
             }
 
             // Todos los jugadores en las puertas
-            // Solo el jugador 1 envía el mensaje al servidor para que este le
+            // Solo el jugador 1 (si está, si no el siguiente) envía el mensaje al servidor para que este le
             // devuelva el mensaje de fin de partida con el panel de las estadísticas y el resultado de la partida
             if (jug1Juega == true)
             {
-                if ((estaEnPuerta_J1 == true && estaEnPuerta_J2 == true && estaEnPuerta_J3 == true) || (estaEnPuerta_J1 == true && estaEnPuerta_J3 == true && estaEnPuerta_J4 == true) || (estaEnPuerta_J1 == true && estaEnPuerta_J4 == true && estaEnPuerta_J2 == true))
+                if ((estaEnPuerta_J1 == true && estaEnPuerta_J2 == true) || (estaEnPuerta_J1 == true && estaEnPuerta_J3 == true) || (estaEnPuerta_J1 == true && estaEnPuerta_J4 == true))
                 {
                     string letra_miResultado = CalcularPuntosTotales();
                     EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
@@ -404,11 +404,19 @@ namespace ProyectoSO
                     //FinDePartida("SUPERADO", letra_miResultado);
                 }
             }
-            else // no juega el J1 --> juegan los otros 3
+            else // no juega el J1
             {
                 if (jug2Juega == true)
                 {
-                    if (estaEnPuerta_J2 == true && estaEnPuerta_J3 == true && estaEnPuerta_J4 == true)
+                    if ((estaEnPuerta_J2 == true && estaEnPuerta_J3 == true) || (estaEnPuerta_J2 == true && estaEnPuerta_J4 == true))
+                    {
+                        string letra_miResultado = CalcularPuntosTotales();
+                        EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
+                    }
+                }
+                else // no juega el J2
+                {
+                    if (jug3Juega == true && (estaEnPuerta_J3 == true && estaEnPuerta_J4 == true))
                     {
                         string letra_miResultado = CalcularPuntosTotales();
                         EnvíoMensajeFinDePartida("SUPERADO", letra_miResultado);
@@ -2442,7 +2450,7 @@ namespace ProyectoSO
         }
         // Funcion para calcular los puntos totales. 
         // "S", "A", "B", "C", "F"
-        private string CalcularPuntosTotales() // para 3 jugadores
+        private string CalcularPuntosTotales() // para 2 jugadores
         {
             string letra;
             int total_puntos = 0;
@@ -2453,36 +2461,52 @@ namespace ProyectoSO
             {
                 if (jug2Juega == true)
                 {
+                    total_puntos = puntos1 + puntos2;
+                    total_restar_vidas = (3 - vidas1) + (3 - vidas2);
+                }
+                else
+                {
                     if (jug3Juega == true)
                     {
-                        total_puntos = puntos1 + puntos2 + puntos3;
-                        total_restar_vidas = (3 - vidas1) + (3 - vidas2) + (3 - vidas3);
+                        total_puntos = puntos1 + puntos3;
+                        total_restar_vidas = (3 - vidas1) + (3 - vidas3);
                     }
                     else
                     {
-                        total_puntos = puntos1 + puntos2 + puntos4;
-                        total_restar_vidas = (3 - vidas1) + (3 - vidas2) + (3 - vidas4);
+                        total_puntos = puntos1 + puntos4;
+                        total_restar_vidas = (3 - vidas1) + (3 - vidas4);
                     }
-                }
-                else
-                { 
-                    total_puntos = puntos1 + puntos3 + puntos4;
-                    total_restar_vidas = (3 - vidas1) + (3 - vidas3) + (3 - vidas4);
                 }
             }
             else
             {
-                total_puntos = puntos2 + puntos3 + puntos4;
-                total_restar_vidas = (3 - vidas2) + (3 - vidas3) + (3 - vidas4);
+                if (jug2Juega == true)
+                {
+                    if (jug3Juega == true)
+                    {
+                        total_puntos = puntos2 + puntos3;
+                        total_restar_vidas = (3 - vidas2) + (3 - vidas3);
+                    }
+                    else
+                    {
+                        total_puntos = puntos2 + puntos4;
+                        total_restar_vidas = (3 - vidas2) + (3 - vidas4);
+                    }
+                }
+                else
+                {
+                    total_puntos = puntos3 + puntos4;
+                    total_restar_vidas = (3 - vidas3) + (3 - vidas4);
+                }
             }
 
 
             // 50% los puntos de los diamantes; poner dividiento los diamantes totales presentes
             // 50% puntos por tiempo: 60s como referencia
             // restaremos 20% dependiendo de las vidas: 12 vidas se pueden perder en total
-            double porcion_puntos = (Convert.ToDouble(total_puntos) / 3) * 0.5;
+            double porcion_puntos = (Convert.ToDouble(total_puntos) / 2) * 0.5;
             double porcion_tiempo = ((60 - Convert.ToDouble(total_tiempo)) / 60) * 0.5;
-            double porcion_restar_vidas = (Convert.ToDouble(total_restar_vidas) / 9) * 0.2;
+            double porcion_restar_vidas = (Convert.ToDouble(total_restar_vidas) / 6) * 0.2;
             double puntos_partida = porcion_puntos + porcion_tiempo - porcion_restar_vidas;
 
             if (puntos_partida >= 0.85 && puntos_partida <= 1)
