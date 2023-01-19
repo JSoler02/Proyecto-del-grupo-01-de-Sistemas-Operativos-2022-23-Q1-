@@ -64,7 +64,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8080;
+		puerto = 8090;
 	}
 	else 
 	{
@@ -543,7 +543,7 @@ void Consulta1Buena(char nombre[20], char nota[20])
 	err = mysql_query (conn, cons);
 	if (err!=0) {
 		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-		sprintf(nota,"No hay datos");
+		exit (1);
 	}
 	resultado = mysql_store_result (conn);
 	row = mysql_fetch_row (resultado);
@@ -643,7 +643,7 @@ void Consulta2Buena(char resp[500], char map[30], char nombre[20])
 	err=mysql_query (conn, cons);
 	if (err!=0) {
 		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
-		sprintf(resp,"No hay datos");
+		exit (1);
 	}
 	// Recogemos el resultado
 	resultado = mysql_store_result (conn); 
@@ -672,14 +672,16 @@ void Consulta3Buena(char nombre[20], char resp[500])
 	strcpy (name, nombre);
 	
 	// consulta SQL para obtener una tabla con todos los datos
-
+	
+	printf("Res Antes de Consulta: %s\n", resp);
 	sprintf(cons, "SELECT MAX(partida.duracion) FROM (jugador, partida, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s') AND historial.id_p = partida.id;", name);
 	err = mysql_query (conn, cons);
+	printf("Res Despu￩s de Consulta: %s\n", resp);
+
 	if (err!=0) {
-		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-		sprintf(resp,"No hay datos");
+		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+		exit (1);
 	}
-	
 	// Recogemos el resultado
 	resultado = mysql_store_result (conn); 
 	row = mysql_fetch_row (resultado);
@@ -691,6 +693,7 @@ void Consulta3Buena(char nombre[20], char resp[500])
 	}
 	else
 	{
+		printf ("Si se han obtenido datos en la consulta: atoi(row[0])=%d \n", atoi(row[0]));
 		sprintf (resp, "%d", atoi(row[0]));	
 	}
 }
@@ -925,7 +928,9 @@ void *AtenderCliente (void *socket)
 /*			sprintf(respuesta, "5/%s", res);*/
 			
 			strcpy(res, "");
+			printf("Res Antes: %s\n", res);
 			Consulta3Buena(username,res);
+			printf("Res Despu￩s: %s\n", res);
 			sprintf(respuesta, "5/%s", res);
 		}
 		else if (codigo == 7)

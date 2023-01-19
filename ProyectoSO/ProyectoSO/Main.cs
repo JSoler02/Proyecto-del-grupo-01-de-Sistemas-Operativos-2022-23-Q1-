@@ -199,7 +199,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8080;
+                puerto = 8090;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
