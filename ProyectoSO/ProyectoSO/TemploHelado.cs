@@ -72,7 +72,8 @@ namespace ProyectoSO
         bool plataformaVertical5_ACT;
 
         bool plataformaVertical4_activa;
-        bool paredPalanca3_activa;
+        bool paredPalanca3_activa; bool paredPalanca4_activa;
+
 
 
         // Personajes/PictureBoxes
@@ -355,15 +356,15 @@ namespace ProyectoSO
                 //placa5_1.Image = Image.FromFile("placa5_desactivada.png");
                 //placa5_2.Image = Image.FromFile("placa5_desactivada.png");
             }
-            // Plataforma vertical 4
-            if (plataformaVertical4_activa == true)
-            {
-                vertical4.Top += verticalSpeed_v4;
-                if ((vertical4.Bounds.IntersectsWith(plataformaVertical4_Bot_limit.Bounds) || vertical4.Bounds.IntersectsWith(plataformaVertical4_Top_limit.Bounds)))
-                {
-                    verticalSpeed_v4 = -verticalSpeed_v4;
-                }
-            }
+            //// Plataforma vertical 4
+            //if (plataformaVertical4_activa == true)
+            //{
+            //    vertical4.Top += verticalSpeed_v4;
+            //    if ((vertical4.Bounds.IntersectsWith(plataformaVertical4_Bot_limit.Bounds) || vertical4.Bounds.IntersectsWith(plataformaVertical4_Top_limit.Bounds)))
+            //    {
+            //        verticalSpeed_v4 = -verticalSpeed_v4;
+            //    }
+            //}
             // Pared Palanca 3
             if (paredPalanca3_activa == true)
             {
@@ -373,6 +374,17 @@ namespace ProyectoSO
                 }
                 if (paredPalanca3.Height <= 1)
                 { this.Controls.Remove(paredPalanca3); }
+            }
+
+            // Pared Palanca 4
+            if (paredPalanca4_activa == true)
+            {
+                while (paredPalanca4.Height > 1)    // se parará el timer para hacer esta acción
+                {
+                    paredPalanca4.Height = paredPalanca4.Height - 1;
+                }
+                if (paredPalanca4.Height <= 1)
+                { this.Controls.Remove(paredPalanca4); }
             }
 
             // Todos los jugadores en las puertas
@@ -536,12 +548,19 @@ namespace ProyectoSO
             paredPalanca3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             paredPalanca3.SizeMode = PictureBoxSizeMode.Zoom;
             paredPalanca3.BackColor = Color.Transparent;
+            // pared palanca 4
+            paredPalanca4.Height = 200 / 2;
+            paredPalanca4.Width = 50 / 2;
+            paredPalanca4.Image = Image.FromFile("plataforma4.png");
+            paredPalanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            paredPalanca4.SizeMode = PictureBoxSizeMode.Zoom;
+            paredPalanca4.BackColor = Color.Transparent;
             // plataforma vertical 4
-            vertical4.Width = 200 / 2;
-            vertical4.Height = 50 / 2;
-            vertical4.Image = Image.FromFile("plataforma4.png");
-            vertical4.SizeMode = PictureBoxSizeMode.Zoom;
-            vertical4.BackColor = Color.Transparent;
+            //vertical4.Width = 200 / 2;
+            //vertical4.Height = 50 / 2;
+            //vertical4.Image = Image.FromFile("plataforma4.png");
+            //vertical4.SizeMode = PictureBoxSizeMode.Zoom;
+            //vertical4.BackColor = Color.Transparent;
             // plataforma vertical 5
             //vertical5.Width = 200 / 2;
             //vertical5.Height = 50 / 2;
@@ -712,12 +731,14 @@ namespace ProyectoSO
 
             // Eliminamos visibilidades extras
             paredPalanca3.Visible = true;
+            paredPalanca4.Visible = true;
+
             plataformaVertical1_Bot_limit.Visible = false;
             plataformaVertical1_Top_limit.Visible = false;
             plataformaVertical2_Bot_limit.Visible = false;
             plataformaVertical2_Top_limit.Visible = false;
-            plataformaVertical4_Bot_limit.Visible = false;
-            plataformaVertical4_Top_limit.Visible = false;
+            //plataformaVertical4_Bot_limit.Visible = false;
+            //plataformaVertical4_Top_limit.Visible = false;
             //plataformaVertical5_Bot_limit.Visible = false;
             //plataformaVertical5_Top_limit.Visible = false;
 
@@ -2111,48 +2132,6 @@ namespace ProyectoSO
                 goRight_J4 = false;
             }
         }
-        private void ColisionesPersonajesPalanca4(Control x)
-        {
-            // Colisiones Jugador 1 - palanca 2
-            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
-            {
-                if (plataformaVertical4_activa == false)
-                {
-                    plataformaVertical4_activa = true;
-                    palanca4.Image = Image.FromFile("palanca4_activada.png");
-                }
-            }
-
-            // Colisiones Jugador 2 - palanca 2
-            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
-            {
-                if (plataformaVertical4_activa == false)
-                {
-                    plataformaVertical4_activa = true;
-                    palanca4.Image = Image.FromFile("palanca4_activada.png");
-                }
-            }
-
-            // Colisiones Jugador 3 - palanca 2
-            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
-            {
-                if (plataformaVertical4_activa == false)
-                {
-                    plataformaVertical4_activa = true;
-                    palanca4.Image = Image.FromFile("palanca4_activada.png");
-                }
-            }
-            // Colisiones Jugador 4 - palanca 2
-            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
-            {
-                if (plataformaVertical4_activa == false)
-                {
-                    plataformaVertical4_activa = true;
-                    palanca4.Image = Image.FromFile("palanca4_activada.png");
-                }
-            }
-
-        }
         private void ColisionesPersonajesPalanca3(Control x)
         {
             // Colisiones Jugador 1 - palanca 3
@@ -2195,6 +2174,53 @@ namespace ProyectoSO
                     paredPalanca3_activa = true;
                     palanca3.Image = Image.FromFile("palanca3_activada.png");
                     palanca3.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                }
+            }
+
+        }
+
+        private void ColisionesPersonajesPalanca4(Control x)
+        {
+            // Colisiones Jugador 1 - palanca 4
+            if (misPicsPersonajes[0].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (paredPalanca4_activa == false)
+                {
+                    paredPalanca4_activa = true;
+                    palanca4.Image = Image.FromFile("palanca4_activada.png");
+                    palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                }
+            }
+
+            // Colisiones Jugador 2 - palanca 4
+            if (misPicsPersonajes[1].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (paredPalanca4_activa == false)
+                {
+                    paredPalanca4_activa = true;
+                    palanca4.Image = Image.FromFile("palanca4_activada.png");
+                    palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                }
+            }
+
+            // Colisiones Jugador 3 - palanca 4
+            if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (paredPalanca4_activa == false)
+                {
+                    paredPalanca4_activa = true;
+                    palanca4.Image = Image.FromFile("palanca4_activada.png");
+                    palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                }
+            }
+            // Colisiones Jugador 4 - palanca 4
+            if (misPicsPersonajes[3].Bounds.IntersectsWith(x.Bounds))
+            {
+                if (paredPalanca4_activa == false)
+                {
+                    paredPalanca4_activa = true;
+                    palanca4.Image = Image.FromFile("palanca4_activada.png");
+                    palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
             }
 
