@@ -284,78 +284,78 @@ namespace ProyectoSO
 
             }
 
-            // Plataforma vertical 1
-            if ((plataformaVertical1_activa1_1 || plataformaVertical1_activa1_2) || (plataformaVertical1_activa2_1 || plataformaVertical1_activa2_2) || (plataformaVertical1_activa3_1 || plataformaVertical1_activa3_2) || (plataformaVertical1_activa4_1 || plataformaVertical1_activa4_2))
-            { plataformaVertical1_ACT = true; }
-            else
-            { plataformaVertical1_ACT = false; }
-            if (plataformaVertical1_ACT)
-            {
-                placa1_1.Image = Image.FromFile("placa1_activada.png");
-                placa1_2.Image = Image.FromFile("placa1_activada.png");
-                //if (plataformaVertical1_final == false)
-                //{
-                vertical1.Top += verticalSpeed_v1;
-                if ((vertical1.Bounds.IntersectsWith(plataformaVertical1_Bot_limit.Bounds) || vertical1.Bounds.IntersectsWith(plataformaVertical1_Top_limit.Bounds)))
-                {
-                    //plataformaVertical1_final = true;
-                    verticalSpeed_v1 = -verticalSpeed_v1;
-                }
-                //}
-            }
-            else
-            {
-                placa1_1.Image = Image.FromFile("placa1_desactivada.png");
-                placa1_2.Image = Image.FromFile("placa1_desactivada.png");
-            }
-            // Plataforma vertical 2
-            if ((plataformaVertical2_activa1_1 || plataformaVertical2_activa1_2) || (plataformaVertical2_activa2_1 || plataformaVertical2_activa2_2) || (plataformaVertical2_activa3_1 || plataformaVertical2_activa3_2) || (plataformaVertical2_activa4_1 || plataformaVertical2_activa4_2))
-            { plataformaVertical2_ACT = true; }
-            else
-            { plataformaVertical2_ACT = false; }
-            if (plataformaVertical2_ACT)
-            {
-                placa2_1.Image = Image.FromFile("placa2_activada.png");
-                //placa2_2.Image = Image.FromFile("placa2_activada.png");
-                //if (plataformaVertical2_final == false)
-                //{
-                vertical2.Top += verticalSpeed_v2;
-                if ((vertical2.Bounds.IntersectsWith(plataformaVertical2_Bot_limit.Bounds) || vertical2.Bounds.IntersectsWith(plataformaVertical2_Top_limit.Bounds)))
-                {
-                    //plataformaVertical2_final = true;
-                    verticalSpeed_v2 = -verticalSpeed_v2;
-                }
-                //}
-            }
-            else
-            {
-                placa2_1.Image = Image.FromFile("placa2_desactivada.png");
-                //placa2_2.Image = Image.FromFile("placa2_desactivada.png");
-            }
-            // Plataforma vertical 5
-            if ((plataformaVertical5_activa1_1 || plataformaVertical5_activa1_2) || (plataformaVertical5_activa2_1 || plataformaVertical5_activa2_2) || (plataformaVertical5_activa3_1 || plataformaVertical5_activa3_2) || (plataformaVertical5_activa4_1 || plataformaVertical5_activa4_2))
-            { plataformaVertical5_ACT = true; }
-            else
-            { plataformaVertical5_ACT = false; }
-            if (plataformaVertical5_ACT)
-            {
-                //placa5_1.Image = Image.FromFile("placa5_activada.png");
-                //placa5_2.Image = Image.FromFile("placa5_activada.png");
-                //if (plataformaVertical5_final == false)
-                //{
-                //vertical5.Top += verticalSpeed_v5;
-                //if ((vertical5.Bounds.IntersectsWith(plataformaVertical5_Bot_limit.Bounds) || vertical5.Bounds.IntersectsWith(plataformaVertical5_Top_limit.Bounds)))
-                //{
-                //    //plataformaVertical5_final = true;
-                //    verticalSpeed_v5 = -verticalSpeed_v5;
-                //}
-                //}
-            }
-            else
-            {
-                //placa5_1.Image = Image.FromFile("placa5_desactivada.png");
-                //placa5_2.Image = Image.FromFile("placa5_desactivada.png");
-            }
+            //// Plataforma vertical 1
+            //if ((plataformaVertical1_activa1_1 || plataformaVertical1_activa1_2) || (plataformaVertical1_activa2_1 || plataformaVertical1_activa2_2) || (plataformaVertical1_activa3_1 || plataformaVertical1_activa3_2) || (plataformaVertical1_activa4_1 || plataformaVertical1_activa4_2))
+            //{ plataformaVertical1_ACT = true; }
+            //else
+            //{ plataformaVertical1_ACT = false; }
+            //if (plataformaVertical1_ACT)
+            //{
+            //    placa1_1.Image = Image.FromFile("placa1_activada.png");
+            //    placa1_2.Image = Image.FromFile("placa1_activada.png");
+            //    //if (plataformaVertical1_final == false)
+            //    //{
+            //    vertical1.Top += verticalSpeed_v1;
+            //    if ((vertical1.Bounds.IntersectsWith(plataformaVertical1_Bot_limit.Bounds) || vertical1.Bounds.IntersectsWith(plataformaVertical1_Top_limit.Bounds)))
+            //    {
+            //        //plataformaVertical1_final = true;
+            //        verticalSpeed_v1 = -verticalSpeed_v1;
+            //    }
+            //    //}
+            //}
+            //else
+            //{
+            //    placa1_1.Image = Image.FromFile("placa1_desactivada.png");
+            //    placa1_2.Image = Image.FromFile("placa1_desactivada.png");
+            //}
+            //// Plataforma vertical 2
+            //if ((plataformaVertical2_activa1_1 || plataformaVertical2_activa1_2) || (plataformaVertical2_activa2_1 || plataformaVertical2_activa2_2) || (plataformaVertical2_activa3_1 || plataformaVertical2_activa3_2) || (plataformaVertical2_activa4_1 || plataformaVertical2_activa4_2))
+            //{ plataformaVertical2_ACT = true; }
+            //else
+            //{ plataformaVertical2_ACT = false; }
+            //if (plataformaVertical2_ACT)
+            //{
+            //    placa2_1.Image = Image.FromFile("placa2_activada.png");
+            //    //placa2_2.Image = Image.FromFile("placa2_activada.png");
+            //    //if (plataformaVertical2_final == false)
+            //    //{
+            //    vertical2.Top += verticalSpeed_v2;
+            //    if ((vertical2.Bounds.IntersectsWith(plataformaVertical2_Bot_limit.Bounds) || vertical2.Bounds.IntersectsWith(plataformaVertical2_Top_limit.Bounds)))
+            //    {
+            //        //plataformaVertical2_final = true;
+            //        verticalSpeed_v2 = -verticalSpeed_v2;
+            //    }
+            //    //}
+            //}
+            //else
+            //{
+            //    placa2_1.Image = Image.FromFile("placa2_desactivada.png");
+            //    //placa2_2.Image = Image.FromFile("placa2_desactivada.png");
+            //}
+            //// Plataforma vertical 5
+            //if ((plataformaVertical5_activa1_1 || plataformaVertical5_activa1_2) || (plataformaVertical5_activa2_1 || plataformaVertical5_activa2_2) || (plataformaVertical5_activa3_1 || plataformaVertical5_activa3_2) || (plataformaVertical5_activa4_1 || plataformaVertical5_activa4_2))
+            //{ plataformaVertical5_ACT = true; }
+            //else
+            //{ plataformaVertical5_ACT = false; }
+            //if (plataformaVertical5_ACT)
+            //{
+            //    //placa5_1.Image = Image.FromFile("placa5_activada.png");
+            //    //placa5_2.Image = Image.FromFile("placa5_activada.png");
+            //    //if (plataformaVertical5_final == false)
+            //    //{
+            //    //vertical5.Top += verticalSpeed_v5;
+            //    //if ((vertical5.Bounds.IntersectsWith(plataformaVertical5_Bot_limit.Bounds) || vertical5.Bounds.IntersectsWith(plataformaVertical5_Top_limit.Bounds)))
+            //    //{
+            //    //    //plataformaVertical5_final = true;
+            //    //    verticalSpeed_v5 = -verticalSpeed_v5;
+            //    //}
+            //    //}
+            //}
+            //else
+            //{
+            //    //placa5_1.Image = Image.FromFile("placa5_desactivada.png");
+            //    //placa5_2.Image = Image.FromFile("placa5_desactivada.png");
+            //}
             //// Plataforma vertical 4
             //if (plataformaVertical4_activa == true)
             //{
@@ -379,11 +379,11 @@ namespace ProyectoSO
             // Pared Palanca 4
             if (paredPalanca4_activa == true)
             {
-                while (paredPalanca4.Height > 1)    // se parará el timer para hacer esta acción
+                while (paredPalanca4.Width > 1)    // se parará el timer para hacer esta acción
                 {
-                    paredPalanca4.Height = paredPalanca4.Height - 1;
+                    paredPalanca4.Width = paredPalanca4.Width - 1;
                 }
-                if (paredPalanca4.Height <= 1)
+                if (paredPalanca4.Width <= 1)
                 { this.Controls.Remove(paredPalanca4); }
             }
 
@@ -529,17 +529,17 @@ namespace ProyectoSO
 
             // Plataformas
             // plataforma vertical 1
-            vertical1.Width = 200 / 2;
-            vertical1.Height = 50 / 2;
-            vertical1.Image = Image.FromFile("plataforma1.png");
-            vertical1.SizeMode = PictureBoxSizeMode.Zoom;
-            vertical1.BackColor = Color.Transparent;
-            // plataforma vertical 2
-            vertical2.Width = 200 / 2;
-            vertical2.Height = 50 / 2;
-            vertical2.Image = Image.FromFile("plataforma2.png");
-            vertical2.SizeMode = PictureBoxSizeMode.Zoom;
-            vertical2.BackColor = Color.Transparent;
+            //vertical1.Width = 200 / 2;
+            //vertical1.Height = 50 / 2;
+            //vertical1.Image = Image.FromFile("plataforma1.png");
+            //vertical1.SizeMode = PictureBoxSizeMode.Zoom;
+            //vertical1.BackColor = Color.Transparent;
+            //// plataforma vertical 2
+            //vertical2.Width = 200 / 2;
+            //vertical2.Height = 50 / 2;
+            //vertical2.Image = Image.FromFile("plataforma2.png");
+            //vertical2.SizeMode = PictureBoxSizeMode.Zoom;
+            //vertical2.BackColor = Color.Transparent;
 
             // pared palanca 3
             paredPalanca3.Height = 200 / 2;
@@ -549,10 +549,10 @@ namespace ProyectoSO
             paredPalanca3.SizeMode = PictureBoxSizeMode.Zoom;
             paredPalanca3.BackColor = Color.Transparent;
             // pared palanca 4
-            paredPalanca4.Height = 200 / 2;
-            paredPalanca4.Width = 50 / 2;
+            paredPalanca4.Height = 50 / 2;
+            paredPalanca4.Width = 200 / 2;
             paredPalanca4.Image = Image.FromFile("plataforma4.png");
-            paredPalanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            //paredPalanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             paredPalanca4.SizeMode = PictureBoxSizeMode.Zoom;
             paredPalanca4.BackColor = Color.Transparent;
             // plataforma vertical 4
@@ -569,22 +569,22 @@ namespace ProyectoSO
             //vertical5.BackColor = Color.Transparent;
 
             // reseteo de las placas
-            placa1_1.Width = 120 / 2;
-            placa1_1.Height = 36 / 2;
-            placa1_1.Image = Image.FromFile("placa1_desactivada.png");
-            placa1_1.SizeMode = PictureBoxSizeMode.Zoom;
-            placa1_1.BackColor = Color.Transparent;
-            placa1_2.Width = 120 / 2;
-            placa1_2.Height = 36 / 2;
-            placa1_2.Image = Image.FromFile("placa1_desactivada.png");
-            placa1_2.SizeMode = PictureBoxSizeMode.Zoom;
-            placa1_2.BackColor = Color.Transparent;
+            //placa1_1.Width = 120 / 2;
+            //placa1_1.Height = 36 / 2;
+            //placa1_1.Image = Image.FromFile("placa1_desactivada.png");
+            //placa1_1.SizeMode = PictureBoxSizeMode.Zoom;
+            //placa1_1.BackColor = Color.Transparent;
+            //placa1_2.Width = 120 / 2;
+            //placa1_2.Height = 36 / 2;
+            //placa1_2.Image = Image.FromFile("placa1_desactivada.png");
+            //placa1_2.SizeMode = PictureBoxSizeMode.Zoom;
+            //placa1_2.BackColor = Color.Transparent;
 
-            placa2_1.Width = 120 / 2;
-            placa2_1.Height = 36 / 2;
-            placa2_1.Image = Image.FromFile("placa2_desactivada.png");
-            placa2_1.SizeMode = PictureBoxSizeMode.Zoom;
-            placa2_1.BackColor = Color.Transparent;
+            //placa2_1.Width = 120 / 2;
+            //placa2_1.Height = 36 / 2;
+            //placa2_1.Image = Image.FromFile("placa2_desactivada.png");
+            //placa2_1.SizeMode = PictureBoxSizeMode.Zoom;
+            //placa2_1.BackColor = Color.Transparent;
             //placa2_2.Width = 120 / 2;
             //placa2_2.Height = 36 / 2;
             //placa2_2.Image = Image.FromFile("placa2_desactivada.png");
@@ -720,9 +720,9 @@ namespace ProyectoSO
             vidasJ3_pb.SendToBack();
             vidasJ4_pb.SendToBack();
             // Traemos todas las placas y palancas delante de las plataformas
-            placa1_1.BringToFront();
-            placa1_2.BringToFront();
-            placa2_1.BringToFront();
+            //placa1_1.BringToFront();
+            //placa1_2.BringToFront();
+            //placa2_1.BringToFront();
             //placa2_2.BringToFront();
             //placa5_1.BringToFront();
 
@@ -733,10 +733,10 @@ namespace ProyectoSO
             paredPalanca3.Visible = true;
             paredPalanca4.Visible = true;
 
-            plataformaVertical1_Bot_limit.Visible = false;
-            plataformaVertical1_Top_limit.Visible = false;
-            plataformaVertical2_Bot_limit.Visible = false;
-            plataformaVertical2_Top_limit.Visible = false;
+            //plataformaVertical1_Bot_limit.Visible = false;
+            //plataformaVertical1_Top_limit.Visible = false;
+            //plataformaVertical2_Bot_limit.Visible = false;
+            //plataformaVertical2_Top_limit.Visible = false;
             //plataformaVertical4_Bot_limit.Visible = false;
             //plataformaVertical4_Top_limit.Visible = false;
             //plataformaVertical5_Bot_limit.Visible = false;
@@ -1560,30 +1560,6 @@ namespace ProyectoSO
                         Jug1.SetY(x.Top - Jug1.GetAlturaNormal()); // mueve directamente arriba de la plataforma al saltar
                     }
                 }
-                else
-                {  // Para asegurar que Jugador esté pegado a plataforma horizontal cuando no se mueva
-                    if ((string)x.Name == "horizontal1" && (goLeft_J1 == false || goRight_J1 == false))
-                    {
-                        Jug1.SetX(Jug1.GetX() - horizontalSpeed); // se moverá con la velocidad de la plataforma
-                    }
-                    // Para asegurar que Jugador esté pegado a la plataforma vertical
-                    if ((string)x.Name == "vertical2")
-                    {
-                        Jug1.SetY(vertical2.Top - Jug1.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical1")
-                    {
-                        Jug1.SetY(vertical1.Top - Jug1.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical4")
-                    {
-                        Jug1.SetY(vertical1.Top - Jug1.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical5")
-                    {
-                        Jug1.SetY(vertical1.Top - Jug1.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                }
             }
             //else
             //{
@@ -1605,30 +1581,6 @@ namespace ProyectoSO
                         Jug2.SetY(x.Top - Jug2.GetAlturaNormal()); // mueve directamente arriba de la plataforma al saltar
                     }
                 }
-                else
-                {// Para asegurar que Jugador esté pegado a plataforma horizontal cuando no se mueva
-                    if ((string)x.Name == "horizontal1" && (goLeft_J2 == false || goRight_J2 == false))
-                    {
-                        Jug2.SetX(Jug2.GetX() - horizontalSpeed); // se moverá con la velocidad de la plataforma
-                    }
-                    // Para asegurar que Jugador esté pegado a la plataforma vertical
-                    if ((string)x.Name == "vertical2")
-                    {
-                        Jug2.SetY(vertical2.Top - Jug2.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical1")
-                    {
-                        Jug2.SetY(vertical1.Top - Jug2.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical4")
-                    {
-                        Jug2.SetY(vertical1.Top - Jug2.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical5")
-                    {
-                        Jug2.SetY(vertical1.Top - Jug2.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                }
             }
             // Colisiones Jugador 3 - plataforma
             if (misPicsPersonajes[2].Bounds.IntersectsWith(x.Bounds))
@@ -1640,30 +1592,6 @@ namespace ProyectoSO
                     {
                         onPlatform_J3 = true;
                         Jug3.SetY(x.Top - Jug3.GetAlturaNormal()); // mueve directamente arriba de la plataforma al saltar
-                    }
-                }
-                else
-                {// Para asegurar que Jugador esté pegado a plataforma horizontal cuando no se mueva
-                    if ((string)x.Name == "horizontal1" && (goLeft_J3 == false || goRight_J3 == false))
-                    {
-                        Jug3.SetX(Jug3.GetX() - horizontalSpeed); // se moverá con la velocidad de la plataforma
-                    }
-                    // Para asegurar que Jugador esté pegado a la plataforma vertical
-                    if ((string)x.Name == "vertical2")
-                    {
-                        Jug3.SetY(vertical2.Top - Jug3.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical1")
-                    {
-                        Jug3.SetY(vertical1.Top - Jug3.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical4")
-                    {
-                        Jug3.SetY(vertical1.Top - Jug2.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical5")
-                    {
-                        Jug3.SetY(vertical1.Top - Jug2.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
                     }
                 }
             }
@@ -1679,30 +1607,7 @@ namespace ProyectoSO
                         Jug4.SetY(x.Top - Jug4.GetAlturaNormal()); // mueve directamente arriba de la plataforma al saltar
                     }
                 }
-                else
-                {// Para asegurar que Jugador esté pegado a plataforma horizontal cuando no se mueva
-                    if ((string)x.Name == "horizontal1" && (goLeft_J4 == false || goRight_J4 == false))
-                    {
-                        Jug4.SetX(Jug4.GetX() - horizontalSpeed); // se moverá con la velocidad de la plataforma
-                    }
-                    // Para asegurar que Jugador esté pegado a la plataforma vertical
-                    if ((string)x.Name == "vertical2")
-                    {
-                        Jug4.SetY(vertical2.Top - Jug4.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical1")
-                    {
-                        Jug4.SetY(vertical1.Top - Jug4.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical4")
-                    {
-                        Jug4.SetY(vertical1.Top - Jug4.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                    if ((string)x.Name == "vertical5")
-                    {
-                        Jug4.SetY(vertical1.Top - Jug4.GetAlturaNormal()); // se moverá con la velocidad de la plataforma
-                    }
-                }
+               
             }
         }
         private void ColisionesPersonajesPlaca1_1(Control x)
