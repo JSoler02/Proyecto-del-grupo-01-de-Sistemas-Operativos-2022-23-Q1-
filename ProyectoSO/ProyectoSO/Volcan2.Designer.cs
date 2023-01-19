@@ -1298,9 +1298,9 @@ namespace ProyectoSO
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox6.Location = new System.Drawing.Point(13, 950);
+            this.pictureBox6.Location = new System.Drawing.Point(13, 951);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(428, 39);
+            this.pictureBox6.Size = new System.Drawing.Size(428, 38);
             this.pictureBox6.TabIndex = 238;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Tag = "plataforma";

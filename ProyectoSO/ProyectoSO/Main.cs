@@ -306,8 +306,8 @@ namespace ProyectoSO
                            GridConectados.Rows.Clear();
                            for (int i = 0; i < num; i++)
                            {
-                               string nombre2 = Convert.ToString(trozos[i + 2].Split('\0')[0]);
-                               GridConectados.Rows.Add(nombre2);
+                               string nombre = Convert.ToString(trozos[i + 2].Split('\0')[0]);
+                               GridConectados.Rows.Add(nombre);
                            }
                             //GridConectados.Refresh();
                             GridConectados.ClearSelection();

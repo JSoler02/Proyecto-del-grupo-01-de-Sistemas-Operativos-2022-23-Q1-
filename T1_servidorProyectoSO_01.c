@@ -55,7 +55,7 @@ int i;
 int sockets[100];
 
 //Variables de desarrollo
-int shiva = 0; //1: si Shiva; 0: si MaqVirtual
+int shiva = 1; //1: si Shiva; 0: si MaqVirtual
 //Esta funcion retorna el puerto y el rellena host con el Host 
 // dependiendo de si estamos en el entorno de desarrollo o el de produccion
 int DamePuertoYHost (int shiva, char host[50])
@@ -417,115 +417,6 @@ int CrearUsuario(char user[60], char passw[60])
 	
 }
 
-// Nos dice la puntuacion maxima que ha conseguido Maria en sus partidas
-int Consulta1()
-{
-	char cons[500];
-	char name [20];
-	int max;
-	//quiere saber la puntuacion maxima de Maria
-	strcpy (name, "'Maria'");
-	
-	// consulta SQL para obtener una tabla con todos los datos
-	strcpy(cons, "SELECT MAX(historial.puntos) FROM (jugador, historial) WHERE historial.id_j= (SELECT jugador.id FROM (jugador) WHERE jugador.username = ");
-	strcat(cons, name);
-	strcat(cons, ");");
-	err = mysql_query (conn, cons);
-	if (err!=0) {
-		printf ("Error al consultar datos de la base %u %s\n", mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-	resultado = mysql_store_result (conn);
-	
-	row = mysql_fetch_row (resultado);
-	if (row == NULL)
-		printf ("No se han obtenido datos en la consulta\n");
-	else
-		max = atoi (row[0]);
-	
-	return max;
-}
-
-// ID de las Partidas en las que Juan ha jugado mas de 120 s
-void Consulta2(char resp[500])
-{
-	char cons[500];
-	char name[20];
-	strcpy (name, "'Juan'");
-	
-	// Ahora vamos a realizar la consulta
-	strcpy (cons,"SELECT partida.id FROM (jugador, partida, historial) WHERE jugador.username ="); 
-	strcat (cons, name);
-	strcat (cons," AND jugador.id = historial.id_j AND historial.id_p = partida.id AND partida.id IN (SELECT partida.id FROM (partida) WHERE partida.duracion > 120);");
-	
-	err=mysql_query (conn, cons);
-	
-	if (err!=0) {
-		printf ("Error al consultar datos de la base %u %s\n",
-				mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-	// Recogemos el resultado
-	resultado = mysql_store_result (conn); 
-	row = mysql_fetch_row (resultado);
-	//int id_max;
-	
-	if (row == NULL)
-		printf ("No se han obtenido datos en la consulta\n");
-	else
-	{
-		while (row != NULL)
-		{
-			// obtenemos la siguiente fila
-			//id_max = row[0];
-			
-			sprintf(resp, "%d " ,atoi(row[0]));
-			row = mysql_fetch_row (resultado);
-			/*sprintf (respuesta,"%s/%s",respuesta, row[0]);*/
-			
-		}
-	}
-	
-}
-
-// Rellena el vector resp con los nombre de los jugadores que han jugado 
-// como J1 en el mapa "templo"
-// Devuelve 0 si OK. Devuelve -1 si va mal
-int Consulta3(char resp[500])
-{
-	char map [60];
-	char cons[512];
-	//Jugadores que han jugado en templo como J1
-	strcpy(map, "'templo'");
-	// Ahora vamos a realizar la consulta
-	
-	strcpy (cons,"SELECT jugador.username FROM (jugador, partida, historial) WHERE partida.mapa = "); 
-	strcat (cons, map);
-	strcat (cons," AND historial.id_p = partida.id AND historial.id_j = jugador.id AND historial.posicion = 1;");
-	// hacemos la consulta 
-	err=mysql_query (conn, cons); 
-	if (err!=0) {
-		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
-		return -1;
-	}
-	
-	//recogemos el resultado de la consulta 
-	resultado = mysql_store_result (conn); 
-	row = mysql_fetch_row (resultado);
-	if (row == NULL)
-		printf ("No se han obtenido datos en la consulta\n");
-	else
-	{
-		while (row != NULL)
-		{
-			printf("Username: %s\n", row[0]);
-			sprintf (resp, "%s %s", resp, row[0]);
-			// obtenemos la siguiente fila
-			row = mysql_fetch_row (resultado);
-		}
-		return 0;
-	}
-}
 
 // Nos dice la puntuacion maxima que ha conseguido el usuario en sus partidas
 void Consulta1Buena(char nombre[20], char nota[20])
@@ -1016,6 +907,7 @@ void *AtenderCliente (void *socket)
 				
 				if (n_invitaciones_faltantes <= 0)	// empieza la partida para todos
 				{
+					printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);					
 					sprintf(notificacion, "9/%d/%s/%d", idpartida, listaPartidas[idpartida].jugadores[0].nombre,  listaPartidas[idpartida].numjugadores) ; 
 					printf("Notificacion: %s\n", notificacion);	
 					for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
@@ -1370,6 +1262,9 @@ int main(int argc, char *argv[])
 	char host[50];
 	int puerto = DamePuertoYHost(shiva, host);
 	serv_adr.sin_port = htons(puerto);
+	
+	setsockopt(sock_listen, SOL_SOCKET, SO_REUSEADDR, &(int){1}, sizeof(int));
+	
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind\n");
 	if (listen(sock_listen, 3) < 0)

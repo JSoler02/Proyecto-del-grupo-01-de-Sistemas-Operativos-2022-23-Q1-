@@ -42,7 +42,6 @@ namespace ProyectoSO
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox96 = new System.Windows.Forms.PictureBox();
             this.pictureBox93 = new System.Windows.Forms.PictureBox();
-            this.pictureBox89 = new System.Windows.Forms.PictureBox();
             this.pictureBox85 = new System.Windows.Forms.PictureBox();
             this.pictureBox80 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -53,18 +52,14 @@ namespace ProyectoSO
             this.pictureBox67 = new System.Windows.Forms.PictureBox();
             this.pictureBox63 = new System.Windows.Forms.PictureBox();
             this.pictureBox62 = new System.Windows.Forms.PictureBox();
-            this.pictureBox79 = new System.Windows.Forms.PictureBox();
-            this.pictureBox61 = new System.Windows.Forms.PictureBox();
             this.pictureBox74 = new System.Windows.Forms.PictureBox();
             this.pictureBox101 = new System.Windows.Forms.PictureBox();
             this.pictureBox100 = new System.Windows.Forms.PictureBox();
             this.pictureBox99 = new System.Windows.Forms.PictureBox();
             this.pictureBox73 = new System.Windows.Forms.PictureBox();
-            this.pictureBox72 = new System.Windows.Forms.PictureBox();
             this.pictureBox60 = new System.Windows.Forms.PictureBox();
             this.pictureBox59 = new System.Windows.Forms.PictureBox();
             this.pictureBox57 = new System.Windows.Forms.PictureBox();
-            this.pictureBox83 = new System.Windows.Forms.PictureBox();
             this.pictureBox82 = new System.Windows.Forms.PictureBox();
             this.pictureBox81 = new System.Windows.Forms.PictureBox();
             this.pictureBox56 = new System.Windows.Forms.PictureBox();
@@ -104,9 +99,7 @@ namespace ProyectoSO
             this.palanca3 = new System.Windows.Forms.PictureBox();
             this.paredPalanca3 = new System.Windows.Forms.PictureBox();
             this.pictureBox78 = new System.Windows.Forms.PictureBox();
-            this.pictureBox42 = new System.Windows.Forms.PictureBox();
             this.pictureBox77 = new System.Windows.Forms.PictureBox();
-            this.pictureBox43 = new System.Windows.Forms.PictureBox();
             this.pictureBox39 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox38 = new System.Windows.Forms.PictureBox();
@@ -119,7 +112,6 @@ namespace ProyectoSO
             this.pictureBox29 = new System.Windows.Forms.PictureBox();
             this.pictureBox102 = new System.Windows.Forms.PictureBox();
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
-            this.pictureBox28 = new System.Windows.Forms.PictureBox();
             this.pictureBox24 = new System.Windows.Forms.PictureBox();
             this.pictureBox27 = new System.Windows.Forms.PictureBox();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
@@ -137,12 +129,9 @@ namespace ProyectoSO
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.pictureBox98 = new System.Windows.Forms.PictureBox();
             this.pictureBox95 = new System.Windows.Forms.PictureBox();
-            this.pictureBox88 = new System.Windows.Forms.PictureBox();
-            this.pictureBox71 = new System.Windows.Forms.PictureBox();
             this.pictureBox69 = new System.Windows.Forms.PictureBox();
             this.pictureBox97 = new System.Windows.Forms.PictureBox();
             this.pictureBox94 = new System.Windows.Forms.PictureBox();
-            this.pictureBox86 = new System.Windows.Forms.PictureBox();
             this.pictureBox70 = new System.Windows.Forms.PictureBox();
             this.pictureBox68 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
@@ -154,8 +143,6 @@ namespace ProyectoSO
             this.puertaJ3 = new System.Windows.Forms.PictureBox();
             this.puertaJ2 = new System.Windows.Forms.PictureBox();
             this.puertaJ1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox84 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
@@ -175,12 +162,35 @@ namespace ProyectoSO
             this.pictureBox90 = new System.Windows.Forms.PictureBox();
             this.pictureBox91 = new System.Windows.Forms.PictureBox();
             this.pictureBox92 = new System.Windows.Forms.PictureBox();
+            this.pictureBox44 = new System.Windows.Forms.PictureBox();
+            this.pictureBox45 = new System.Windows.Forms.PictureBox();
+            this.pictureBox46 = new System.Windows.Forms.PictureBox();
+            this.pictureBox47 = new System.Windows.Forms.PictureBox();
+            this.pictureBox89 = new System.Windows.Forms.PictureBox();
+            this.pictureBox105 = new System.Windows.Forms.PictureBox();
+            this.pictureBox109 = new System.Windows.Forms.PictureBox();
+            this.pictureBox110 = new System.Windows.Forms.PictureBox();
+            this.pictureBox111 = new System.Windows.Forms.PictureBox();
+            this.pictureBox112 = new System.Windows.Forms.PictureBox();
+            this.pictureBox113 = new System.Windows.Forms.PictureBox();
+            this.pictureBox114 = new System.Windows.Forms.PictureBox();
+            this.pictureBox115 = new System.Windows.Forms.PictureBox();
+            this.pictureBox116 = new System.Windows.Forms.PictureBox();
+            this.pictureBox71 = new System.Windows.Forms.PictureBox();
+            this.pictureBox117 = new System.Windows.Forms.PictureBox();
+            this.pictureBox118 = new System.Windows.Forms.PictureBox();
+            this.pictureBox119 = new System.Windows.Forms.PictureBox();
+            this.pictureBox86 = new System.Windows.Forms.PictureBox();
+            this.pictureBox88 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox28 = new System.Windows.Forms.PictureBox();
+            this.pictureBox42 = new System.Windows.Forms.PictureBox();
+            this.pictureBox43 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox107)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox108)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox96)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox93)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox89)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox85)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox80)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -191,18 +201,14 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox67)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox79)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox74)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox101)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox100)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox99)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox83)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox82)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox81)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
@@ -240,9 +246,7 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.palanca3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paredPalanca3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox78)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).BeginInit();
@@ -255,7 +259,6 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox102)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
@@ -273,12 +276,9 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox98)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox95)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox88)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox69)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox97)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox94)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox86)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox70)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox68)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
@@ -290,8 +290,6 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox84)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
@@ -311,14 +309,38 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox90)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox91)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox92)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox89)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox105)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox109)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox110)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox111)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox112)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox113)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox114)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox115)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox116)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox117)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox118)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox119)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox86)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox88)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox107
             // 
             this.pictureBox107.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox107.Location = new System.Drawing.Point(662, 551);
+            this.pictureBox107.Location = new System.Drawing.Point(487, 461);
             this.pictureBox107.Name = "pictureBox107";
-            this.pictureBox107.Size = new System.Drawing.Size(51, 10);
+            this.pictureBox107.Size = new System.Drawing.Size(36, 10);
             this.pictureBox107.TabIndex = 337;
             this.pictureBox107.TabStop = false;
             this.pictureBox107.Tag = "techo";
@@ -358,7 +380,7 @@ namespace ProyectoSO
             // pictureBox108
             // 
             this.pictureBox108.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox108.Location = new System.Drawing.Point(662, 526);
+            this.pictureBox108.Location = new System.Drawing.Point(487, 436);
             this.pictureBox108.Name = "pictureBox108";
             this.pictureBox108.Size = new System.Drawing.Size(52, 35);
             this.pictureBox108.TabIndex = 336;
@@ -370,7 +392,7 @@ namespace ProyectoSO
             this.pictureBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pictureBox16.Location = new System.Drawing.Point(1704, 878);
             this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(10, 83);
+            this.pictureBox16.Size = new System.Drawing.Size(10, 27);
             this.pictureBox16.TabIndex = 335;
             this.pictureBox16.TabStop = false;
             this.pictureBox16.Tag = "pared_izquierda";
@@ -395,20 +417,10 @@ namespace ProyectoSO
             this.pictureBox93.TabStop = false;
             this.pictureBox93.Tag = "pared_izquierda";
             // 
-            // pictureBox89
-            // 
-            this.pictureBox89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox89.Location = new System.Drawing.Point(717, 332);
-            this.pictureBox89.Name = "pictureBox89";
-            this.pictureBox89.Size = new System.Drawing.Size(10, 24);
-            this.pictureBox89.TabIndex = 332;
-            this.pictureBox89.TabStop = false;
-            this.pictureBox89.Tag = "pared_derecha";
-            // 
             // pictureBox85
             // 
             this.pictureBox85.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox85.Location = new System.Drawing.Point(1360, 439);
+            this.pictureBox85.Location = new System.Drawing.Point(1410, 431);
             this.pictureBox85.Name = "pictureBox85";
             this.pictureBox85.Size = new System.Drawing.Size(10, 31);
             this.pictureBox85.TabIndex = 331;
@@ -448,7 +460,7 @@ namespace ProyectoSO
             // pictureBox64
             // 
             this.pictureBox64.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox64.Location = new System.Drawing.Point(1489, 911);
+            this.pictureBox64.Location = new System.Drawing.Point(1476, 849);
             this.pictureBox64.Name = "pictureBox64";
             this.pictureBox64.Size = new System.Drawing.Size(10, 24);
             this.pictureBox64.TabIndex = 327;
@@ -468,9 +480,9 @@ namespace ProyectoSO
             // pictureBox66
             // 
             this.pictureBox66.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox66.Location = new System.Drawing.Point(1542, 952);
+            this.pictureBox66.Location = new System.Drawing.Point(1542, 911);
             this.pictureBox66.Name = "pictureBox66";
-            this.pictureBox66.Size = new System.Drawing.Size(309, 39);
+            this.pictureBox66.Size = new System.Drawing.Size(309, 80);
             this.pictureBox66.TabIndex = 325;
             this.pictureBox66.TabStop = false;
             this.pictureBox66.Tag = "plataforma";
@@ -490,9 +502,9 @@ namespace ProyectoSO
             // pictureBox63
             // 
             this.pictureBox63.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox63.Location = new System.Drawing.Point(223, 504);
+            this.pictureBox63.Location = new System.Drawing.Point(223, 458);
             this.pictureBox63.Name = "pictureBox63";
-            this.pictureBox63.Size = new System.Drawing.Size(10, 312);
+            this.pictureBox63.Size = new System.Drawing.Size(10, 358);
             this.pictureBox63.TabIndex = 323;
             this.pictureBox63.TabStop = false;
             this.pictureBox63.Tag = "aire";
@@ -507,30 +519,10 @@ namespace ProyectoSO
             this.pictureBox62.TabStop = false;
             this.pictureBox62.Tag = "aire";
             // 
-            // pictureBox79
-            // 
-            this.pictureBox79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox79.Location = new System.Drawing.Point(1130, 89);
-            this.pictureBox79.Name = "pictureBox79";
-            this.pictureBox79.Size = new System.Drawing.Size(10, 18);
-            this.pictureBox79.TabIndex = 311;
-            this.pictureBox79.TabStop = false;
-            this.pictureBox79.Tag = "aire";
-            // 
-            // pictureBox61
-            // 
-            this.pictureBox61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox61.Location = new System.Drawing.Point(1292, 96);
-            this.pictureBox61.Name = "pictureBox61";
-            this.pictureBox61.Size = new System.Drawing.Size(10, 18);
-            this.pictureBox61.TabIndex = 312;
-            this.pictureBox61.TabStop = false;
-            this.pictureBox61.Tag = "aire";
-            // 
             // pictureBox74
             // 
             this.pictureBox74.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox74.Location = new System.Drawing.Point(1479, 664);
+            this.pictureBox74.Location = new System.Drawing.Point(1497, 583);
             this.pictureBox74.Name = "pictureBox74";
             this.pictureBox74.Size = new System.Drawing.Size(10, 18);
             this.pictureBox74.TabIndex = 313;
@@ -540,7 +532,7 @@ namespace ProyectoSO
             // pictureBox101
             // 
             this.pictureBox101.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox101.Location = new System.Drawing.Point(1614, 746);
+            this.pictureBox101.Location = new System.Drawing.Point(1527, 753);
             this.pictureBox101.Name = "pictureBox101";
             this.pictureBox101.Size = new System.Drawing.Size(10, 18);
             this.pictureBox101.TabIndex = 314;
@@ -560,7 +552,7 @@ namespace ProyectoSO
             // pictureBox99
             // 
             this.pictureBox99.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox99.Location = new System.Drawing.Point(1809, 651);
+            this.pictureBox99.Location = new System.Drawing.Point(1668, 514);
             this.pictureBox99.Name = "pictureBox99";
             this.pictureBox99.Size = new System.Drawing.Size(10, 18);
             this.pictureBox99.TabIndex = 322;
@@ -570,22 +562,12 @@ namespace ProyectoSO
             // pictureBox73
             // 
             this.pictureBox73.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox73.Location = new System.Drawing.Point(1623, 651);
+            this.pictureBox73.Location = new System.Drawing.Point(1684, 661);
             this.pictureBox73.Name = "pictureBox73";
             this.pictureBox73.Size = new System.Drawing.Size(10, 18);
             this.pictureBox73.TabIndex = 317;
             this.pictureBox73.TabStop = false;
             this.pictureBox73.Tag = "aire";
-            // 
-            // pictureBox72
-            // 
-            this.pictureBox72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox72.Location = new System.Drawing.Point(1443, 772);
-            this.pictureBox72.Name = "pictureBox72";
-            this.pictureBox72.Size = new System.Drawing.Size(10, 18);
-            this.pictureBox72.TabIndex = 318;
-            this.pictureBox72.TabStop = false;
-            this.pictureBox72.Tag = "aire";
             // 
             // pictureBox60
             // 
@@ -617,22 +599,12 @@ namespace ProyectoSO
             this.pictureBox57.TabStop = false;
             this.pictureBox57.Tag = "aire";
             // 
-            // pictureBox83
-            // 
-            this.pictureBox83.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox83.Location = new System.Drawing.Point(1024, 222);
-            this.pictureBox83.Name = "pictureBox83";
-            this.pictureBox83.Size = new System.Drawing.Size(10, 38);
-            this.pictureBox83.TabIndex = 310;
-            this.pictureBox83.TabStop = false;
-            this.pictureBox83.Tag = "aire";
-            // 
             // pictureBox82
             // 
             this.pictureBox82.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox82.Location = new System.Drawing.Point(1005, 384);
+            this.pictureBox82.Location = new System.Drawing.Point(1005, 236);
             this.pictureBox82.Name = "pictureBox82";
-            this.pictureBox82.Size = new System.Drawing.Size(14, 113);
+            this.pictureBox82.Size = new System.Drawing.Size(10, 261);
             this.pictureBox82.TabIndex = 309;
             this.pictureBox82.TabStop = false;
             this.pictureBox82.Tag = "aire";
@@ -660,7 +632,7 @@ namespace ProyectoSO
             // pictureBox106
             // 
             this.pictureBox106.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox106.Location = new System.Drawing.Point(627, 490);
+            this.pictureBox106.Location = new System.Drawing.Point(522, 490);
             this.pictureBox106.Name = "pictureBox106";
             this.pictureBox106.Size = new System.Drawing.Size(10, 18);
             this.pictureBox106.TabIndex = 304;
@@ -739,7 +711,7 @@ namespace ProyectoSO
             // 
             // label_mensaje
             // 
-            this.label_mensaje.Location = new System.Drawing.Point(220, 24);
+            this.label_mensaje.Location = new System.Drawing.Point(193, 30);
             this.label_mensaje.Name = "label_mensaje";
             this.label_mensaje.Size = new System.Drawing.Size(129, 46);
             this.label_mensaje.TabIndex = 297;
@@ -771,7 +743,7 @@ namespace ProyectoSO
             // 
             this.d3.BackColor = System.Drawing.Color.Goldenrod;
             this.d3.Image = global::ProyectoSO.Properties.Resources.diamante_rock;
-            this.d3.Location = new System.Drawing.Point(46, 321);
+            this.d3.Location = new System.Drawing.Point(82, 187);
             this.d3.Name = "d3";
             this.d3.Size = new System.Drawing.Size(25, 25);
             this.d3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -815,7 +787,7 @@ namespace ProyectoSO
             // plataformaVertical4_Bot_limit
             // 
             this.plataformaVertical4_Bot_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical4_Bot_limit.Location = new System.Drawing.Point(196, 358);
+            this.plataformaVertical4_Bot_limit.Location = new System.Drawing.Point(212, 351);
             this.plataformaVertical4_Bot_limit.Name = "plataformaVertical4_Bot_limit";
             this.plataformaVertical4_Bot_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical4_Bot_limit.TabIndex = 289;
@@ -833,7 +805,7 @@ namespace ProyectoSO
             // vertical5
             // 
             this.vertical5.BackColor = System.Drawing.Color.HotPink;
-            this.vertical5.Location = new System.Drawing.Point(1514, 232);
+            this.vertical5.Location = new System.Drawing.Point(1497, 356);
             this.vertical5.Name = "vertical5";
             this.vertical5.Size = new System.Drawing.Size(100, 30);
             this.vertical5.TabIndex = 287;
@@ -843,7 +815,7 @@ namespace ProyectoSO
             // plataformaVertical4_Top_limit
             // 
             this.plataformaVertical4_Top_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical4_Top_limit.Location = new System.Drawing.Point(196, 26);
+            this.plataformaVertical4_Top_limit.Location = new System.Drawing.Point(223, 24);
             this.plataformaVertical4_Top_limit.Name = "plataformaVertical4_Top_limit";
             this.plataformaVertical4_Top_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical4_Top_limit.TabIndex = 291;
@@ -852,7 +824,7 @@ namespace ProyectoSO
             // vertical4
             // 
             this.vertical4.BackColor = System.Drawing.Color.HotPink;
-            this.vertical4.Location = new System.Drawing.Point(167, 271);
+            this.vertical4.Location = new System.Drawing.Point(212, 237);
             this.vertical4.Name = "vertical4";
             this.vertical4.Size = new System.Drawing.Size(100, 30);
             this.vertical4.TabIndex = 286;
@@ -872,7 +844,7 @@ namespace ProyectoSO
             // pictureBox49
             // 
             this.pictureBox49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox49.Location = new System.Drawing.Point(669, 871);
+            this.pictureBox49.Location = new System.Drawing.Point(669, 849);
             this.pictureBox49.Name = "pictureBox49";
             this.pictureBox49.Size = new System.Drawing.Size(10, 24);
             this.pictureBox49.TabIndex = 284;
@@ -940,7 +912,7 @@ namespace ProyectoSO
             // placa1_2
             // 
             this.placa1_2.BackColor = System.Drawing.Color.DeepPink;
-            this.placa1_2.Location = new System.Drawing.Point(757, 937);
+            this.placa1_2.Location = new System.Drawing.Point(742, 894);
             this.placa1_2.Name = "placa1_2";
             this.placa1_2.Size = new System.Drawing.Size(106, 20);
             this.placa1_2.TabIndex = 277;
@@ -959,7 +931,7 @@ namespace ProyectoSO
             // plataformaVertical1_Top_limit
             // 
             this.plataformaVertical1_Top_limit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.plataformaVertical1_Top_limit.Location = new System.Drawing.Point(283, 528);
+            this.plataformaVertical1_Top_limit.Location = new System.Drawing.Point(283, 541);
             this.plataformaVertical1_Top_limit.Name = "plataformaVertical1_Top_limit";
             this.plataformaVertical1_Top_limit.Size = new System.Drawing.Size(66, 20);
             this.plataformaVertical1_Top_limit.TabIndex = 276;
@@ -968,7 +940,7 @@ namespace ProyectoSO
             // placa5_1
             // 
             this.placa5_1.BackColor = System.Drawing.Color.DeepPink;
-            this.placa5_1.Location = new System.Drawing.Point(28, 232);
+            this.placa5_1.Location = new System.Drawing.Point(28, 322);
             this.placa5_1.Name = "placa5_1";
             this.placa5_1.Size = new System.Drawing.Size(106, 20);
             this.placa5_1.TabIndex = 274;
@@ -978,7 +950,7 @@ namespace ProyectoSO
             // vertical1
             // 
             this.vertical1.BackColor = System.Drawing.Color.HotPink;
-            this.vertical1.Location = new System.Drawing.Point(267, 576);
+            this.vertical1.Location = new System.Drawing.Point(267, 592);
             this.vertical1.Name = "vertical1";
             this.vertical1.Size = new System.Drawing.Size(100, 30);
             this.vertical1.TabIndex = 273;
@@ -1008,42 +980,22 @@ namespace ProyectoSO
             // pictureBox78
             // 
             this.pictureBox78.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox78.Location = new System.Drawing.Point(1185, 145);
+            this.pictureBox78.Location = new System.Drawing.Point(1078, 145);
             this.pictureBox78.Name = "pictureBox78";
-            this.pictureBox78.Size = new System.Drawing.Size(73, 10);
+            this.pictureBox78.Size = new System.Drawing.Size(358, 10);
             this.pictureBox78.TabIndex = 269;
             this.pictureBox78.TabStop = false;
             this.pictureBox78.Tag = "techo";
             // 
-            // pictureBox42
-            // 
-            this.pictureBox42.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox42.Location = new System.Drawing.Point(1347, 152);
-            this.pictureBox42.Name = "pictureBox42";
-            this.pictureBox42.Size = new System.Drawing.Size(105, 10);
-            this.pictureBox42.TabIndex = 270;
-            this.pictureBox42.TabStop = false;
-            this.pictureBox42.Tag = "techo";
-            // 
             // pictureBox77
             // 
             this.pictureBox77.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox77.Location = new System.Drawing.Point(1185, 116);
+            this.pictureBox77.Location = new System.Drawing.Point(1078, 116);
             this.pictureBox77.Name = "pictureBox77";
-            this.pictureBox77.Size = new System.Drawing.Size(74, 39);
+            this.pictureBox77.Size = new System.Drawing.Size(359, 39);
             this.pictureBox77.TabIndex = 267;
             this.pictureBox77.TabStop = false;
             this.pictureBox77.Tag = "plataforma";
-            // 
-            // pictureBox43
-            // 
-            this.pictureBox43.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox43.Location = new System.Drawing.Point(1347, 123);
-            this.pictureBox43.Name = "pictureBox43";
-            this.pictureBox43.Size = new System.Drawing.Size(106, 39);
-            this.pictureBox43.TabIndex = 268;
-            this.pictureBox43.TabStop = false;
-            this.pictureBox43.Tag = "plataforma";
             // 
             // pictureBox39
             // 
@@ -1060,7 +1012,7 @@ namespace ProyectoSO
             this.pictureBox5.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox5.Location = new System.Drawing.Point(1228, 459);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(134, 10);
+            this.pictureBox5.Size = new System.Drawing.Size(176, 10);
             this.pictureBox5.TabIndex = 266;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Tag = "techo";
@@ -1080,7 +1032,7 @@ namespace ProyectoSO
             this.pictureBox37.BackColor = System.Drawing.Color.Olive;
             this.pictureBox37.Location = new System.Drawing.Point(1228, 430);
             this.pictureBox37.Name = "pictureBox37";
-            this.pictureBox37.Size = new System.Drawing.Size(135, 39);
+            this.pictureBox37.Size = new System.Drawing.Size(177, 39);
             this.pictureBox37.TabIndex = 263;
             this.pictureBox37.TabStop = false;
             this.pictureBox37.Tag = "plataforma";
@@ -1090,7 +1042,7 @@ namespace ProyectoSO
             this.pictureBox35.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox35.Location = new System.Drawing.Point(890, 352);
             this.pictureBox35.Name = "pictureBox35";
-            this.pictureBox35.Size = new System.Drawing.Size(125, 10);
+            this.pictureBox35.Size = new System.Drawing.Size(47, 10);
             this.pictureBox35.TabIndex = 262;
             this.pictureBox35.TabStop = false;
             this.pictureBox35.Tag = "techo";
@@ -1100,7 +1052,7 @@ namespace ProyectoSO
             this.pictureBox36.BackColor = System.Drawing.Color.Olive;
             this.pictureBox36.Location = new System.Drawing.Point(890, 323);
             this.pictureBox36.Name = "pictureBox36";
-            this.pictureBox36.Size = new System.Drawing.Size(126, 39);
+            this.pictureBox36.Size = new System.Drawing.Size(48, 39);
             this.pictureBox36.TabIndex = 261;
             this.pictureBox36.TabStop = false;
             this.pictureBox36.Tag = "plataforma";
@@ -1108,9 +1060,9 @@ namespace ProyectoSO
             // pictureBox33
             // 
             this.pictureBox33.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox33.Location = new System.Drawing.Point(446, 172);
+            this.pictureBox33.Location = new System.Drawing.Point(608, 183);
             this.pictureBox33.Name = "pictureBox33";
-            this.pictureBox33.Size = new System.Drawing.Size(125, 10);
+            this.pictureBox33.Size = new System.Drawing.Size(85, 10);
             this.pictureBox33.TabIndex = 260;
             this.pictureBox33.TabStop = false;
             this.pictureBox33.Tag = "techo";
@@ -1118,9 +1070,9 @@ namespace ProyectoSO
             // pictureBox34
             // 
             this.pictureBox34.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox34.Location = new System.Drawing.Point(446, 143);
+            this.pictureBox34.Location = new System.Drawing.Point(574, 152);
             this.pictureBox34.Name = "pictureBox34";
-            this.pictureBox34.Size = new System.Drawing.Size(126, 39);
+            this.pictureBox34.Size = new System.Drawing.Size(98, 39);
             this.pictureBox34.TabIndex = 259;
             this.pictureBox34.TabStop = false;
             this.pictureBox34.Tag = "plataforma";
@@ -1128,9 +1080,9 @@ namespace ProyectoSO
             // pictureBox103
             // 
             this.pictureBox103.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox103.Location = new System.Drawing.Point(757, 460);
+            this.pictureBox103.Location = new System.Drawing.Point(822, 416);
             this.pictureBox103.Name = "pictureBox103";
-            this.pictureBox103.Size = new System.Drawing.Size(125, 10);
+            this.pictureBox103.Size = new System.Drawing.Size(57, 10);
             this.pictureBox103.TabIndex = 257;
             this.pictureBox103.TabStop = false;
             this.pictureBox103.Tag = "techo";
@@ -1138,9 +1090,9 @@ namespace ProyectoSO
             // pictureBox29
             // 
             this.pictureBox29.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox29.Location = new System.Drawing.Point(597, 350);
+            this.pictureBox29.Location = new System.Drawing.Point(585, 352);
             this.pictureBox29.Name = "pictureBox29";
-            this.pictureBox29.Size = new System.Drawing.Size(125, 10);
+            this.pictureBox29.Size = new System.Drawing.Size(182, 10);
             this.pictureBox29.TabIndex = 256;
             this.pictureBox29.TabStop = false;
             this.pictureBox29.Tag = "techo";
@@ -1148,9 +1100,9 @@ namespace ProyectoSO
             // pictureBox102
             // 
             this.pictureBox102.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox102.Location = new System.Drawing.Point(757, 431);
+            this.pictureBox102.Location = new System.Drawing.Point(822, 387);
             this.pictureBox102.Name = "pictureBox102";
-            this.pictureBox102.Size = new System.Drawing.Size(126, 39);
+            this.pictureBox102.Size = new System.Drawing.Size(58, 39);
             this.pictureBox102.TabIndex = 255;
             this.pictureBox102.TabStop = false;
             this.pictureBox102.Tag = "plataforma";
@@ -1158,29 +1110,19 @@ namespace ProyectoSO
             // pictureBox30
             // 
             this.pictureBox30.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox30.Location = new System.Drawing.Point(597, 321);
+            this.pictureBox30.Location = new System.Drawing.Point(585, 323);
             this.pictureBox30.Name = "pictureBox30";
-            this.pictureBox30.Size = new System.Drawing.Size(126, 39);
+            this.pictureBox30.Size = new System.Drawing.Size(183, 39);
             this.pictureBox30.TabIndex = 253;
             this.pictureBox30.TabStop = false;
             this.pictureBox30.Tag = "plataforma";
-            // 
-            // pictureBox28
-            // 
-            this.pictureBox28.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox28.Location = new System.Drawing.Point(12, 271);
-            this.pictureBox28.Name = "pictureBox28";
-            this.pictureBox28.Size = new System.Drawing.Size(125, 10);
-            this.pictureBox28.TabIndex = 252;
-            this.pictureBox28.TabStop = false;
-            this.pictureBox28.Tag = "techo";
             // 
             // pictureBox24
             // 
             this.pictureBox24.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox24.Location = new System.Drawing.Point(12, 436);
             this.pictureBox24.Name = "pictureBox24";
-            this.pictureBox24.Size = new System.Drawing.Size(482, 10);
+            this.pictureBox24.Size = new System.Drawing.Size(449, 10);
             this.pictureBox24.TabIndex = 251;
             this.pictureBox24.TabStop = false;
             this.pictureBox24.Tag = "techo";
@@ -1188,9 +1130,9 @@ namespace ProyectoSO
             // pictureBox27
             // 
             this.pictureBox27.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox27.Location = new System.Drawing.Point(12, 242);
+            this.pictureBox27.Location = new System.Drawing.Point(12, 332);
             this.pictureBox27.Name = "pictureBox27";
-            this.pictureBox27.Size = new System.Drawing.Size(126, 39);
+            this.pictureBox27.Size = new System.Drawing.Size(126, 82);
             this.pictureBox27.TabIndex = 249;
             this.pictureBox27.TabStop = false;
             this.pictureBox27.Tag = "plataforma";
@@ -1230,7 +1172,7 @@ namespace ProyectoSO
             // pictureBox22
             // 
             this.pictureBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox22.Location = new System.Drawing.Point(497, 871);
+            this.pictureBox22.Location = new System.Drawing.Point(485, 849);
             this.pictureBox22.Name = "pictureBox22";
             this.pictureBox22.Size = new System.Drawing.Size(10, 24);
             this.pictureBox22.TabIndex = 246;
@@ -1240,7 +1182,7 @@ namespace ProyectoSO
             // pictureBox58
             // 
             this.pictureBox58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox58.Location = new System.Drawing.Point(1228, 911);
+            this.pictureBox58.Location = new System.Drawing.Point(1227, 871);
             this.pictureBox58.Name = "pictureBox58";
             this.pictureBox58.Size = new System.Drawing.Size(10, 24);
             this.pictureBox58.TabIndex = 245;
@@ -1270,9 +1212,9 @@ namespace ProyectoSO
             // pictureBox20
             // 
             this.pictureBox20.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox20.Location = new System.Drawing.Point(545, 950);
+            this.pictureBox20.Location = new System.Drawing.Point(545, 911);
             this.pictureBox20.Name = "pictureBox20";
-            this.pictureBox20.Size = new System.Drawing.Size(75, 39);
+            this.pictureBox20.Size = new System.Drawing.Size(75, 78);
             this.pictureBox20.TabIndex = 242;
             this.pictureBox20.TabStop = false;
             this.pictureBox20.Tag = "plataforma";
@@ -1292,9 +1234,9 @@ namespace ProyectoSO
             // pictureBox40
             // 
             this.pictureBox40.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox40.Location = new System.Drawing.Point(1281, 952);
+            this.pictureBox40.Location = new System.Drawing.Point(1281, 911);
             this.pictureBox40.Name = "pictureBox40";
-            this.pictureBox40.Size = new System.Drawing.Size(155, 39);
+            this.pictureBox40.Size = new System.Drawing.Size(155, 80);
             this.pictureBox40.TabIndex = 241;
             this.pictureBox40.TabStop = false;
             this.pictureBox40.Tag = "plataforma";
@@ -1302,9 +1244,9 @@ namespace ProyectoSO
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox6.Location = new System.Drawing.Point(13, 951);
+            this.pictureBox6.Location = new System.Drawing.Point(13, 911);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(428, 39);
+            this.pictureBox6.Size = new System.Drawing.Size(428, 79);
             this.pictureBox6.TabIndex = 238;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Tag = "plataforma";
@@ -1324,9 +1266,9 @@ namespace ProyectoSO
             // pictureBox18
             // 
             this.pictureBox18.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox18.Location = new System.Drawing.Point(722, 951);
+            this.pictureBox18.Location = new System.Drawing.Point(722, 911);
             this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(459, 39);
+            this.pictureBox18.Size = new System.Drawing.Size(459, 79);
             this.pictureBox18.TabIndex = 237;
             this.pictureBox18.TabStop = false;
             this.pictureBox18.Tag = "plataforma";
@@ -1344,39 +1286,19 @@ namespace ProyectoSO
             // pictureBox95
             // 
             this.pictureBox95.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox95.Location = new System.Drawing.Point(1657, 732);
+            this.pictureBox95.Location = new System.Drawing.Point(1588, 761);
             this.pictureBox95.Name = "pictureBox95";
-            this.pictureBox95.Size = new System.Drawing.Size(138, 10);
+            this.pictureBox95.Size = new System.Drawing.Size(103, 10);
             this.pictureBox95.TabIndex = 233;
             this.pictureBox95.TabStop = false;
             this.pictureBox95.Tag = "techo";
             // 
-            // pictureBox88
-            // 
-            this.pictureBox88.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox88.Location = new System.Drawing.Point(1489, 605);
-            this.pictureBox88.Name = "pictureBox88";
-            this.pictureBox88.Size = new System.Drawing.Size(91, 10);
-            this.pictureBox88.TabIndex = 235;
-            this.pictureBox88.TabStop = false;
-            this.pictureBox88.Tag = "techo";
-            // 
-            // pictureBox71
-            // 
-            this.pictureBox71.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox71.Location = new System.Drawing.Point(1340, 732);
-            this.pictureBox71.Name = "pictureBox71";
-            this.pictureBox71.Size = new System.Drawing.Size(122, 10);
-            this.pictureBox71.TabIndex = 236;
-            this.pictureBox71.TabStop = false;
-            this.pictureBox71.Tag = "techo";
-            // 
             // pictureBox69
             // 
             this.pictureBox69.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox69.Location = new System.Drawing.Point(1514, 806);
+            this.pictureBox69.Location = new System.Drawing.Point(1514, 732);
             this.pictureBox69.Name = "pictureBox69";
-            this.pictureBox69.Size = new System.Drawing.Size(79, 10);
+            this.pictureBox69.Size = new System.Drawing.Size(68, 10);
             this.pictureBox69.TabIndex = 234;
             this.pictureBox69.TabStop = false;
             this.pictureBox69.Tag = "techo";
@@ -1394,29 +1316,19 @@ namespace ProyectoSO
             // pictureBox94
             // 
             this.pictureBox94.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox94.Location = new System.Drawing.Point(1657, 703);
+            this.pictureBox94.Location = new System.Drawing.Point(1588, 732);
             this.pictureBox94.Name = "pictureBox94";
-            this.pictureBox94.Size = new System.Drawing.Size(139, 39);
+            this.pictureBox94.Size = new System.Drawing.Size(126, 39);
             this.pictureBox94.TabIndex = 229;
             this.pictureBox94.TabStop = false;
             this.pictureBox94.Tag = "plataforma";
             // 
-            // pictureBox86
-            // 
-            this.pictureBox86.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox86.Location = new System.Drawing.Point(1489, 576);
-            this.pictureBox86.Name = "pictureBox86";
-            this.pictureBox86.Size = new System.Drawing.Size(92, 39);
-            this.pictureBox86.TabIndex = 228;
-            this.pictureBox86.TabStop = false;
-            this.pictureBox86.Tag = "plataforma";
-            // 
             // pictureBox70
             // 
             this.pictureBox70.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox70.Location = new System.Drawing.Point(1340, 703);
+            this.pictureBox70.Location = new System.Drawing.Point(1313, 612);
             this.pictureBox70.Name = "pictureBox70";
-            this.pictureBox70.Size = new System.Drawing.Size(123, 39);
+            this.pictureBox70.Size = new System.Drawing.Size(76, 39);
             this.pictureBox70.TabIndex = 227;
             this.pictureBox70.TabStop = false;
             this.pictureBox70.Tag = "plataforma";
@@ -1424,7 +1336,7 @@ namespace ProyectoSO
             // pictureBox68
             // 
             this.pictureBox68.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox68.Location = new System.Drawing.Point(1514, 777);
+            this.pictureBox68.Location = new System.Drawing.Point(1514, 703);
             this.pictureBox68.Name = "pictureBox68";
             this.pictureBox68.Size = new System.Drawing.Size(80, 39);
             this.pictureBox68.TabIndex = 226;
@@ -1446,7 +1358,7 @@ namespace ProyectoSO
             this.pictureBox14.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox14.Location = new System.Drawing.Point(840, 612);
             this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(491, 10);
+            this.pictureBox14.Size = new System.Drawing.Size(458, 10);
             this.pictureBox14.TabIndex = 225;
             this.pictureBox14.TabStop = false;
             this.pictureBox14.Tag = "techo";
@@ -1521,26 +1433,6 @@ namespace ProyectoSO
             this.puertaJ1.TabStop = false;
             this.puertaJ1.Tag = "puerta";
             // 
-            // pictureBox84
-            // 
-            this.pictureBox84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox84.Location = new System.Drawing.Point(1009, 326);
-            this.pictureBox84.Name = "pictureBox84";
-            this.pictureBox84.Size = new System.Drawing.Size(10, 31);
-            this.pictureBox84.TabIndex = 216;
-            this.pictureBox84.TabStop = false;
-            this.pictureBox84.Tag = "pared_derecha";
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox10.Location = new System.Drawing.Point(1100, 123);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(10, 45);
-            this.pictureBox10.TabIndex = 217;
-            this.pictureBox10.TabStop = false;
-            this.pictureBox10.Tag = "pared_derecha";
-            // 
             // pictureBox11
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -1584,9 +1476,9 @@ namespace ProyectoSO
             // pictureBox52
             // 
             this.pictureBox52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox52.Location = new System.Drawing.Point(395, 502);
+            this.pictureBox52.Location = new System.Drawing.Point(395, 461);
             this.pictureBox52.Name = "pictureBox52";
-            this.pictureBox52.Size = new System.Drawing.Size(10, 324);
+            this.pictureBox52.Size = new System.Drawing.Size(10, 365);
             this.pictureBox52.TabIndex = 211;
             this.pictureBox52.TabStop = false;
             this.pictureBox52.Tag = "aire";
@@ -1604,9 +1496,9 @@ namespace ProyectoSO
             // pictureBox50
             // 
             this.pictureBox50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox50.Location = new System.Drawing.Point(167, 44);
+            this.pictureBox50.Location = new System.Drawing.Point(177, 74);
             this.pictureBox50.Name = "pictureBox50";
-            this.pictureBox50.Size = new System.Drawing.Size(10, 145);
+            this.pictureBox50.Size = new System.Drawing.Size(10, 239);
             this.pictureBox50.TabIndex = 209;
             this.pictureBox50.TabStop = false;
             this.pictureBox50.Tag = "aire";
@@ -1614,7 +1506,7 @@ namespace ProyectoSO
             // pictureBox48
             // 
             this.pictureBox48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox48.Location = new System.Drawing.Point(395, 116);
+            this.pictureBox48.Location = new System.Drawing.Point(339, 145);
             this.pictureBox48.Name = "pictureBox48";
             this.pictureBox48.Size = new System.Drawing.Size(10, 18);
             this.pictureBox48.TabIndex = 208;
@@ -1646,7 +1538,7 @@ namespace ProyectoSO
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pictureBox3.Location = new System.Drawing.Point(867, 183);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(10, 255);
+            this.pictureBox3.Size = new System.Drawing.Size(10, 211);
             this.pictureBox3.TabIndex = 205;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Tag = "pared_izquierda";
@@ -1684,7 +1576,7 @@ namespace ProyectoSO
             // pictureBox76
             // 
             this.pictureBox76.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.pictureBox76.Location = new System.Drawing.Point(776, 528);
+            this.pictureBox76.Location = new System.Drawing.Point(776, 453);
             this.pictureBox76.Name = "pictureBox76";
             this.pictureBox76.Size = new System.Drawing.Size(10, 18);
             this.pictureBox76.TabIndex = 338;
@@ -1696,7 +1588,7 @@ namespace ProyectoSO
             this.pictureBox87.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pictureBox87.Location = new System.Drawing.Point(886, 612);
             this.pictureBox87.Name = "pictureBox87";
-            this.pictureBox87.Size = new System.Drawing.Size(10, 175);
+            this.pictureBox87.Size = new System.Drawing.Size(10, 143);
             this.pictureBox87.TabIndex = 342;
             this.pictureBox87.TabStop = false;
             this.pictureBox87.Tag = "pared_izquierda";
@@ -1704,9 +1596,9 @@ namespace ProyectoSO
             // pictureBox90
             // 
             this.pictureBox90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pictureBox90.Location = new System.Drawing.Point(918, 612);
+            this.pictureBox90.Location = new System.Drawing.Point(614, 925);
             this.pictureBox90.Name = "pictureBox90";
-            this.pictureBox90.Size = new System.Drawing.Size(10, 176);
+            this.pictureBox90.Size = new System.Drawing.Size(10, 56);
             this.pictureBox90.TabIndex = 341;
             this.pictureBox90.TabStop = false;
             this.pictureBox90.Tag = "pared_derecha";
@@ -1714,7 +1606,7 @@ namespace ProyectoSO
             // pictureBox91
             // 
             this.pictureBox91.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox91.Location = new System.Drawing.Point(890, 796);
+            this.pictureBox91.Location = new System.Drawing.Point(890, 745);
             this.pictureBox91.Name = "pictureBox91";
             this.pictureBox91.Size = new System.Drawing.Size(36, 10);
             this.pictureBox91.TabIndex = 340;
@@ -1726,10 +1618,250 @@ namespace ProyectoSO
             this.pictureBox92.BackColor = System.Drawing.Color.Olive;
             this.pictureBox92.Location = new System.Drawing.Point(890, 612);
             this.pictureBox92.Name = "pictureBox92";
-            this.pictureBox92.Size = new System.Drawing.Size(37, 188);
+            this.pictureBox92.Size = new System.Drawing.Size(37, 143);
             this.pictureBox92.TabIndex = 339;
             this.pictureBox92.TabStop = false;
             this.pictureBox92.Tag = "plataforma";
+            // 
+            // pictureBox44
+            // 
+            this.pictureBox44.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox44.Location = new System.Drawing.Point(482, 172);
+            this.pictureBox44.Name = "pictureBox44";
+            this.pictureBox44.Size = new System.Drawing.Size(98, 39);
+            this.pictureBox44.TabIndex = 259;
+            this.pictureBox44.TabStop = false;
+            this.pictureBox44.Tag = "plataforma";
+            // 
+            // pictureBox45
+            // 
+            this.pictureBox45.BackColor = System.Drawing.Color.Goldenrod;
+            this.pictureBox45.Location = new System.Drawing.Point(510, 201);
+            this.pictureBox45.Name = "pictureBox45";
+            this.pictureBox45.Size = new System.Drawing.Size(78, 10);
+            this.pictureBox45.TabIndex = 260;
+            this.pictureBox45.TabStop = false;
+            this.pictureBox45.Tag = "techo";
+            // 
+            // pictureBox46
+            // 
+            this.pictureBox46.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox46.Location = new System.Drawing.Point(395, 187);
+            this.pictureBox46.Name = "pictureBox46";
+            this.pictureBox46.Size = new System.Drawing.Size(98, 39);
+            this.pictureBox46.TabIndex = 259;
+            this.pictureBox46.TabStop = false;
+            this.pictureBox46.Tag = "plataforma";
+            // 
+            // pictureBox47
+            // 
+            this.pictureBox47.BackColor = System.Drawing.Color.Goldenrod;
+            this.pictureBox47.Location = new System.Drawing.Point(395, 216);
+            this.pictureBox47.Name = "pictureBox47";
+            this.pictureBox47.Size = new System.Drawing.Size(97, 10);
+            this.pictureBox47.TabIndex = 260;
+            this.pictureBox47.TabStop = false;
+            this.pictureBox47.Tag = "techo";
+            // 
+            // pictureBox89
+            // 
+            this.pictureBox89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pictureBox89.Location = new System.Drawing.Point(510, 89);
+            this.pictureBox89.Name = "pictureBox89";
+            this.pictureBox89.Size = new System.Drawing.Size(10, 18);
+            this.pictureBox89.TabIndex = 207;
+            this.pictureBox89.TabStop = false;
+            this.pictureBox89.Tag = "aire";
+            // 
+            // pictureBox105
+            // 
+            this.pictureBox105.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pictureBox105.Location = new System.Drawing.Point(431, 116);
+            this.pictureBox105.Name = "pictureBox105";
+            this.pictureBox105.Size = new System.Drawing.Size(10, 18);
+            this.pictureBox105.TabIndex = 207;
+            this.pictureBox105.TabStop = false;
+            this.pictureBox105.Tag = "aire";
+            // 
+            // pictureBox109
+            // 
+            this.pictureBox109.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pictureBox109.Location = new System.Drawing.Point(1540, 935);
+            this.pictureBox109.Name = "pictureBox109";
+            this.pictureBox109.Size = new System.Drawing.Size(10, 44);
+            this.pictureBox109.TabIndex = 335;
+            this.pictureBox109.TabStop = false;
+            this.pictureBox109.Tag = "pared_izquierda";
+            // 
+            // pictureBox110
+            // 
+            this.pictureBox110.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pictureBox110.Location = new System.Drawing.Point(1276, 925);
+            this.pictureBox110.Name = "pictureBox110";
+            this.pictureBox110.Size = new System.Drawing.Size(10, 65);
+            this.pictureBox110.TabIndex = 335;
+            this.pictureBox110.TabStop = false;
+            this.pictureBox110.Tag = "pared_izquierda";
+            // 
+            // pictureBox111
+            // 
+            this.pictureBox111.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pictureBox111.Location = new System.Drawing.Point(718, 920);
+            this.pictureBox111.Name = "pictureBox111";
+            this.pictureBox111.Size = new System.Drawing.Size(10, 65);
+            this.pictureBox111.TabIndex = 335;
+            this.pictureBox111.TabStop = false;
+            this.pictureBox111.Tag = "pared_izquierda";
+            // 
+            // pictureBox112
+            // 
+            this.pictureBox112.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pictureBox112.Location = new System.Drawing.Point(540, 922);
+            this.pictureBox112.Name = "pictureBox112";
+            this.pictureBox112.Size = new System.Drawing.Size(10, 65);
+            this.pictureBox112.TabIndex = 335;
+            this.pictureBox112.TabStop = false;
+            this.pictureBox112.Tag = "pared_izquierda";
+            // 
+            // pictureBox113
+            // 
+            this.pictureBox113.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox113.Location = new System.Drawing.Point(431, 927);
+            this.pictureBox113.Name = "pictureBox113";
+            this.pictureBox113.Size = new System.Drawing.Size(10, 56);
+            this.pictureBox113.TabIndex = 343;
+            this.pictureBox113.TabStop = false;
+            this.pictureBox113.Tag = "pared_derecha";
+            // 
+            // pictureBox114
+            // 
+            this.pictureBox114.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox114.Location = new System.Drawing.Point(1175, 929);
+            this.pictureBox114.Name = "pictureBox114";
+            this.pictureBox114.Size = new System.Drawing.Size(10, 56);
+            this.pictureBox114.TabIndex = 343;
+            this.pictureBox114.TabStop = false;
+            this.pictureBox114.Tag = "pared_derecha";
+            // 
+            // pictureBox115
+            // 
+            this.pictureBox115.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox115.Location = new System.Drawing.Point(1426, 925);
+            this.pictureBox115.Name = "pictureBox115";
+            this.pictureBox115.Size = new System.Drawing.Size(10, 56);
+            this.pictureBox115.TabIndex = 343;
+            this.pictureBox115.TabStop = false;
+            this.pictureBox115.Tag = "pared_derecha";
+            // 
+            // pictureBox116
+            // 
+            this.pictureBox116.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox116.Location = new System.Drawing.Point(1384, 640);
+            this.pictureBox116.Name = "pictureBox116";
+            this.pictureBox116.Size = new System.Drawing.Size(76, 39);
+            this.pictureBox116.TabIndex = 227;
+            this.pictureBox116.TabStop = false;
+            this.pictureBox116.Tag = "plataforma";
+            // 
+            // pictureBox71
+            // 
+            this.pictureBox71.BackColor = System.Drawing.Color.Goldenrod;
+            this.pictureBox71.Location = new System.Drawing.Point(1333, 646);
+            this.pictureBox71.Name = "pictureBox71";
+            this.pictureBox71.Size = new System.Drawing.Size(39, 10);
+            this.pictureBox71.TabIndex = 235;
+            this.pictureBox71.TabStop = false;
+            this.pictureBox71.Tag = "techo";
+            // 
+            // pictureBox117
+            // 
+            this.pictureBox117.BackColor = System.Drawing.Color.Goldenrod;
+            this.pictureBox117.Location = new System.Drawing.Point(1403, 672);
+            this.pictureBox117.Name = "pictureBox117";
+            this.pictureBox117.Size = new System.Drawing.Size(39, 10);
+            this.pictureBox117.TabIndex = 235;
+            this.pictureBox117.TabStop = false;
+            this.pictureBox117.Tag = "techo";
+            // 
+            // pictureBox118
+            // 
+            this.pictureBox118.BackColor = System.Drawing.Color.Goldenrod;
+            this.pictureBox118.Location = new System.Drawing.Point(1468, 703);
+            this.pictureBox118.Name = "pictureBox118";
+            this.pictureBox118.Size = new System.Drawing.Size(39, 10);
+            this.pictureBox118.TabIndex = 345;
+            this.pictureBox118.TabStop = false;
+            this.pictureBox118.Tag = "techo";
+            // 
+            // pictureBox119
+            // 
+            this.pictureBox119.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox119.Location = new System.Drawing.Point(1449, 671);
+            this.pictureBox119.Name = "pictureBox119";
+            this.pictureBox119.Size = new System.Drawing.Size(76, 39);
+            this.pictureBox119.TabIndex = 344;
+            this.pictureBox119.TabStop = false;
+            this.pictureBox119.Tag = "plataforma";
+            // 
+            // pictureBox86
+            // 
+            this.pictureBox86.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pictureBox86.Location = new System.Drawing.Point(1360, 682);
+            this.pictureBox86.Name = "pictureBox86";
+            this.pictureBox86.Size = new System.Drawing.Size(10, 18);
+            this.pictureBox86.TabIndex = 313;
+            this.pictureBox86.TabStop = false;
+            this.pictureBox86.Tag = "aire";
+            // 
+            // pictureBox88
+            // 
+            this.pictureBox88.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pictureBox88.Location = new System.Drawing.Point(1583, 640);
+            this.pictureBox88.Name = "pictureBox88";
+            this.pictureBox88.Size = new System.Drawing.Size(10, 18);
+            this.pictureBox88.TabIndex = 313;
+            this.pictureBox88.TabStop = false;
+            this.pictureBox88.Tag = "aire";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox10.Location = new System.Drawing.Point(540, 461);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(107, 35);
+            this.pictureBox10.TabIndex = 336;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Tag = "plataforma";
+            // 
+            // pictureBox28
+            // 
+            this.pictureBox28.BackColor = System.Drawing.Color.Goldenrod;
+            this.pictureBox28.Location = new System.Drawing.Point(540, 486);
+            this.pictureBox28.Name = "pictureBox28";
+            this.pictureBox28.Size = new System.Drawing.Size(87, 10);
+            this.pictureBox28.TabIndex = 337;
+            this.pictureBox28.TabStop = false;
+            this.pictureBox28.Tag = "techo";
+            // 
+            // pictureBox42
+            // 
+            this.pictureBox42.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox42.Location = new System.Drawing.Point(641, 495);
+            this.pictureBox42.Name = "pictureBox42";
+            this.pictureBox42.Size = new System.Drawing.Size(106, 39);
+            this.pictureBox42.TabIndex = 255;
+            this.pictureBox42.TabStop = false;
+            this.pictureBox42.Tag = "plataforma";
+            // 
+            // pictureBox43
+            // 
+            this.pictureBox43.BackColor = System.Drawing.Color.Goldenrod;
+            this.pictureBox43.Location = new System.Drawing.Point(641, 524);
+            this.pictureBox43.Name = "pictureBox43";
+            this.pictureBox43.Size = new System.Drawing.Size(105, 10);
+            this.pictureBox43.TabIndex = 257;
+            this.pictureBox43.TabStop = false;
+            this.pictureBox43.Tag = "techo";
             // 
             // Volcan3
             // 
@@ -1737,17 +1869,27 @@ namespace ProyectoSO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCoral;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.pictureBox118);
+            this.Controls.Add(this.pictureBox119);
+            this.Controls.Add(this.pictureBox115);
+            this.Controls.Add(this.pictureBox114);
+            this.Controls.Add(this.pictureBox113);
             this.Controls.Add(this.pictureBox87);
             this.Controls.Add(this.pictureBox90);
             this.Controls.Add(this.pictureBox91);
             this.Controls.Add(this.pictureBox92);
             this.Controls.Add(this.pictureBox76);
+            this.Controls.Add(this.pictureBox28);
             this.Controls.Add(this.pictureBox107);
+            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox108);
+            this.Controls.Add(this.pictureBox112);
+            this.Controls.Add(this.pictureBox111);
+            this.Controls.Add(this.pictureBox110);
+            this.Controls.Add(this.pictureBox109);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.pictureBox96);
             this.Controls.Add(this.pictureBox93);
-            this.Controls.Add(this.pictureBox89);
             this.Controls.Add(this.pictureBox85);
             this.Controls.Add(this.pictureBox80);
             this.Controls.Add(this.pictureBox4);
@@ -1758,18 +1900,16 @@ namespace ProyectoSO
             this.Controls.Add(this.pictureBox67);
             this.Controls.Add(this.pictureBox63);
             this.Controls.Add(this.pictureBox62);
-            this.Controls.Add(this.pictureBox79);
-            this.Controls.Add(this.pictureBox61);
+            this.Controls.Add(this.pictureBox88);
+            this.Controls.Add(this.pictureBox86);
             this.Controls.Add(this.pictureBox74);
             this.Controls.Add(this.pictureBox101);
             this.Controls.Add(this.pictureBox100);
             this.Controls.Add(this.pictureBox99);
             this.Controls.Add(this.pictureBox73);
-            this.Controls.Add(this.pictureBox72);
             this.Controls.Add(this.pictureBox60);
             this.Controls.Add(this.pictureBox59);
             this.Controls.Add(this.pictureBox57);
-            this.Controls.Add(this.pictureBox83);
             this.Controls.Add(this.pictureBox82);
             this.Controls.Add(this.pictureBox81);
             this.Controls.Add(this.pictureBox56);
@@ -1809,22 +1949,25 @@ namespace ProyectoSO
             this.Controls.Add(this.palanca3);
             this.Controls.Add(this.paredPalanca3);
             this.Controls.Add(this.pictureBox78);
-            this.Controls.Add(this.pictureBox42);
             this.Controls.Add(this.pictureBox77);
-            this.Controls.Add(this.pictureBox43);
             this.Controls.Add(this.pictureBox39);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox38);
             this.Controls.Add(this.pictureBox37);
             this.Controls.Add(this.pictureBox35);
             this.Controls.Add(this.pictureBox36);
+            this.Controls.Add(this.pictureBox47);
+            this.Controls.Add(this.pictureBox45);
             this.Controls.Add(this.pictureBox33);
+            this.Controls.Add(this.pictureBox46);
+            this.Controls.Add(this.pictureBox44);
             this.Controls.Add(this.pictureBox34);
+            this.Controls.Add(this.pictureBox43);
             this.Controls.Add(this.pictureBox103);
             this.Controls.Add(this.pictureBox29);
+            this.Controls.Add(this.pictureBox42);
             this.Controls.Add(this.pictureBox102);
             this.Controls.Add(this.pictureBox30);
-            this.Controls.Add(this.pictureBox28);
             this.Controls.Add(this.pictureBox24);
             this.Controls.Add(this.pictureBox27);
             this.Controls.Add(this.pictureBox26);
@@ -1842,12 +1985,12 @@ namespace ProyectoSO
             this.Controls.Add(this.pictureBox18);
             this.Controls.Add(this.pictureBox98);
             this.Controls.Add(this.pictureBox95);
-            this.Controls.Add(this.pictureBox88);
+            this.Controls.Add(this.pictureBox117);
             this.Controls.Add(this.pictureBox71);
             this.Controls.Add(this.pictureBox69);
             this.Controls.Add(this.pictureBox97);
             this.Controls.Add(this.pictureBox94);
-            this.Controls.Add(this.pictureBox86);
+            this.Controls.Add(this.pictureBox116);
             this.Controls.Add(this.pictureBox70);
             this.Controls.Add(this.pictureBox68);
             this.Controls.Add(this.pictureBox17);
@@ -1859,8 +2002,6 @@ namespace ProyectoSO
             this.Controls.Add(this.puertaJ3);
             this.Controls.Add(this.puertaJ2);
             this.Controls.Add(this.puertaJ1);
-            this.Controls.Add(this.pictureBox84);
-            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox13);
@@ -1869,6 +2010,8 @@ namespace ProyectoSO
             this.Controls.Add(this.pictureBox51);
             this.Controls.Add(this.pictureBox50);
             this.Controls.Add(this.pictureBox48);
+            this.Controls.Add(this.pictureBox105);
+            this.Controls.Add(this.pictureBox89);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
@@ -1885,7 +2028,6 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox96)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox93)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox89)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox85)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox80)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -1896,18 +2038,14 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox67)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox63)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox62)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox79)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox74)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox101)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox100)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox99)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox73)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox72)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox83)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox82)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox81)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
@@ -1945,9 +2083,7 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.palanca3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paredPalanca3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox78)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox38)).EndInit();
@@ -1960,7 +2096,6 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox102)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
@@ -1978,12 +2113,9 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox98)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox95)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox88)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox69)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox97)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox94)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox86)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox70)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox68)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
@@ -1995,8 +2127,6 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.puertaJ1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox84)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
@@ -2016,6 +2146,30 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox90)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox91)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox92)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox89)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox105)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox109)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox110)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox111)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox112)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox113)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox114)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox115)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox116)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox71)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox117)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox118)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox119)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox86)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox88)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2033,7 +2187,6 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox96;
         private System.Windows.Forms.PictureBox pictureBox93;
-        private System.Windows.Forms.PictureBox pictureBox89;
         private System.Windows.Forms.PictureBox pictureBox85;
         private System.Windows.Forms.PictureBox pictureBox80;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -2044,18 +2197,14 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox67;
         private System.Windows.Forms.PictureBox pictureBox63;
         private System.Windows.Forms.PictureBox pictureBox62;
-        private System.Windows.Forms.PictureBox pictureBox79;
-        private System.Windows.Forms.PictureBox pictureBox61;
         private System.Windows.Forms.PictureBox pictureBox74;
         private System.Windows.Forms.PictureBox pictureBox101;
         private System.Windows.Forms.PictureBox pictureBox100;
         private System.Windows.Forms.PictureBox pictureBox99;
         private System.Windows.Forms.PictureBox pictureBox73;
-        private System.Windows.Forms.PictureBox pictureBox72;
         private System.Windows.Forms.PictureBox pictureBox60;
         private System.Windows.Forms.PictureBox pictureBox59;
         private System.Windows.Forms.PictureBox pictureBox57;
-        private System.Windows.Forms.PictureBox pictureBox83;
         private System.Windows.Forms.PictureBox pictureBox82;
         private System.Windows.Forms.PictureBox pictureBox81;
         private System.Windows.Forms.PictureBox pictureBox56;
@@ -2095,9 +2244,7 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox palanca3;
         private System.Windows.Forms.PictureBox paredPalanca3;
         private System.Windows.Forms.PictureBox pictureBox78;
-        private System.Windows.Forms.PictureBox pictureBox42;
         private System.Windows.Forms.PictureBox pictureBox77;
-        private System.Windows.Forms.PictureBox pictureBox43;
         private System.Windows.Forms.PictureBox pictureBox39;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox38;
@@ -2110,7 +2257,6 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox29;
         private System.Windows.Forms.PictureBox pictureBox102;
         private System.Windows.Forms.PictureBox pictureBox30;
-        private System.Windows.Forms.PictureBox pictureBox28;
         private System.Windows.Forms.PictureBox pictureBox24;
         private System.Windows.Forms.PictureBox pictureBox27;
         private System.Windows.Forms.PictureBox pictureBox26;
@@ -2128,12 +2274,9 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.PictureBox pictureBox98;
         private System.Windows.Forms.PictureBox pictureBox95;
-        private System.Windows.Forms.PictureBox pictureBox88;
-        private System.Windows.Forms.PictureBox pictureBox71;
         private System.Windows.Forms.PictureBox pictureBox69;
         private System.Windows.Forms.PictureBox pictureBox97;
         private System.Windows.Forms.PictureBox pictureBox94;
-        private System.Windows.Forms.PictureBox pictureBox86;
         private System.Windows.Forms.PictureBox pictureBox70;
         private System.Windows.Forms.PictureBox pictureBox68;
         private System.Windows.Forms.PictureBox pictureBox17;
@@ -2145,8 +2288,6 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox puertaJ3;
         private System.Windows.Forms.PictureBox puertaJ2;
         private System.Windows.Forms.PictureBox puertaJ1;
-        private System.Windows.Forms.PictureBox pictureBox84;
-        private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
@@ -2166,5 +2307,29 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox90;
         private System.Windows.Forms.PictureBox pictureBox91;
         private System.Windows.Forms.PictureBox pictureBox92;
+        private System.Windows.Forms.PictureBox pictureBox44;
+        private System.Windows.Forms.PictureBox pictureBox45;
+        private System.Windows.Forms.PictureBox pictureBox46;
+        private System.Windows.Forms.PictureBox pictureBox47;
+        private System.Windows.Forms.PictureBox pictureBox89;
+        private System.Windows.Forms.PictureBox pictureBox105;
+        private System.Windows.Forms.PictureBox pictureBox109;
+        private System.Windows.Forms.PictureBox pictureBox110;
+        private System.Windows.Forms.PictureBox pictureBox111;
+        private System.Windows.Forms.PictureBox pictureBox112;
+        private System.Windows.Forms.PictureBox pictureBox113;
+        private System.Windows.Forms.PictureBox pictureBox114;
+        private System.Windows.Forms.PictureBox pictureBox115;
+        private System.Windows.Forms.PictureBox pictureBox116;
+        private System.Windows.Forms.PictureBox pictureBox71;
+        private System.Windows.Forms.PictureBox pictureBox117;
+        private System.Windows.Forms.PictureBox pictureBox118;
+        private System.Windows.Forms.PictureBox pictureBox119;
+        private System.Windows.Forms.PictureBox pictureBox86;
+        private System.Windows.Forms.PictureBox pictureBox88;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox28;
+        private System.Windows.Forms.PictureBox pictureBox42;
+        private System.Windows.Forms.PictureBox pictureBox43;
     }
 }
