@@ -1234,6 +1234,7 @@ namespace ProyectoSO
                             //else
                             //{
                             EnviarJugadoresPartida(invitados);
+                            GridConectados.ClearSelection();
                             invitados = "";
                             But_empezarPartida_activado = false;
                             //}
@@ -1430,6 +1431,7 @@ namespace ProyectoSO
             server.Send(msg);
             InvPartida = 0;
             NumInvitados = 0;
+            
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)

@@ -48,9 +48,7 @@
             this.vidasJ2_pb = new System.Windows.Forms.PictureBox();
             this.vidasJ1_pb = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.diamante3 = new System.Windows.Forms.PictureBox();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
@@ -93,9 +91,7 @@
             this.vertical4 = new System.Windows.Forms.PictureBox();
             this.pictureBox51 = new System.Windows.Forms.PictureBox();
             this.pictureBox54 = new System.Windows.Forms.PictureBox();
-            this.pictureBox55 = new System.Windows.Forms.PictureBox();
             this.pictureBox56 = new System.Windows.Forms.PictureBox();
-            this.pictureBox57 = new System.Windows.Forms.PictureBox();
             this.pictureBox58 = new System.Windows.Forms.PictureBox();
             this.pictureBox59 = new System.Windows.Forms.PictureBox();
             this.pictureBox60 = new System.Windows.Forms.PictureBox();
@@ -135,6 +131,13 @@
             this.pictureBox43 = new System.Windows.Forms.PictureBox();
             this.pictureBox44 = new System.Windows.Forms.PictureBox();
             this.pictureBox45 = new System.Windows.Forms.PictureBox();
+            this.pictureBox48 = new System.Windows.Forms.PictureBox();
+            this.pictureBox49 = new System.Windows.Forms.PictureBox();
+            this.pictureBox50 = new System.Windows.Forms.PictureBox();
+            this.pictureBox53 = new System.Windows.Forms.PictureBox();
+            this.pictureBox75 = new System.Windows.Forms.PictureBox();
+            this.pictureBox76 = new System.Windows.Forms.PictureBox();
+            this.pictureBox77 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -153,9 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vidasJ2_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vidasJ1_pb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diamante3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -198,9 +199,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vertical4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
@@ -232,6 +231,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox75)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox76)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox18
@@ -424,18 +430,6 @@
             this.pictureBox11.TabStop = false;
             this.pictureBox11.Tag = "diamante1";
             // 
-            // pictureBox12
-            // 
-            this.pictureBox12.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox12.Image = global::ProyectoSO.Properties.Resources.diamante_water;
-            this.pictureBox12.Location = new System.Drawing.Point(519, 876);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox12.TabIndex = 262;
-            this.pictureBox12.TabStop = false;
-            this.pictureBox12.Tag = "diamante2";
-            // 
             // pictureBox13
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.Goldenrod;
@@ -448,19 +442,6 @@
             this.pictureBox13.TabStop = false;
             this.pictureBox13.Tag = "diamante4";
             this.pictureBox13.WaitOnLoad = true;
-            // 
-            // diamante3
-            // 
-            this.diamante3.BackColor = System.Drawing.Color.Goldenrod;
-            this.diamante3.ErrorImage = null;
-            this.diamante3.Image = global::ProyectoSO.Properties.Resources.diamante_rock;
-            this.diamante3.Location = new System.Drawing.Point(1255, 876);
-            this.diamante3.Name = "diamante3";
-            this.diamante3.Size = new System.Drawing.Size(25, 25);
-            this.diamante3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.diamante3.TabIndex = 264;
-            this.diamante3.TabStop = false;
-            this.diamante3.Tag = "diamante3";
             // 
             // pictureBox15
             // 
@@ -877,19 +858,6 @@
             this.pictureBox54.TabStop = false;
             this.pictureBox54.Tag = "diamante3";
             // 
-            // pictureBox55
-            // 
-            this.pictureBox55.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox55.Image = global::ProyectoSO.Properties.Resources.diamante_cloud;
-            this.pictureBox55.Location = new System.Drawing.Point(790, 617);
-            this.pictureBox55.Name = "pictureBox55";
-            this.pictureBox55.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox55.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox55.TabIndex = 360;
-            this.pictureBox55.TabStop = false;
-            this.pictureBox55.Tag = "diamante4";
-            this.pictureBox55.WaitOnLoad = true;
-            // 
             // pictureBox56
             // 
             this.pictureBox56.BackColor = System.Drawing.Color.Goldenrod;
@@ -902,27 +870,15 @@
             this.pictureBox56.TabStop = false;
             this.pictureBox56.Tag = "diamante2";
             // 
-            // pictureBox57
-            // 
-            this.pictureBox57.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox57.Image = global::ProyectoSO.Properties.Resources.diamante_fire;
-            this.pictureBox57.Location = new System.Drawing.Point(970, 617);
-            this.pictureBox57.Name = "pictureBox57";
-            this.pictureBox57.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox57.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox57.TabIndex = 362;
-            this.pictureBox57.TabStop = false;
-            this.pictureBox57.Tag = "diamante1";
-            // 
             // pictureBox58
             // 
-            this.pictureBox58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pictureBox58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.pictureBox58.Location = new System.Drawing.Point(1752, -1);
             this.pictureBox58.Name = "pictureBox58";
             this.pictureBox58.Size = new System.Drawing.Size(10, 1036);
             this.pictureBox58.TabIndex = 363;
             this.pictureBox58.TabStop = false;
-            this.pictureBox58.Tag = "aire";
+            this.pictureBox58.Tag = "pared_derecha";
             // 
             // pictureBox59
             // 
@@ -937,9 +893,9 @@
             // pictureBox60
             // 
             this.pictureBox60.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox60.Location = new System.Drawing.Point(314, 691);
+            this.pictureBox60.Location = new System.Drawing.Point(344, 691);
             this.pictureBox60.Name = "pictureBox60";
-            this.pictureBox60.Size = new System.Drawing.Size(1161, 10);
+            this.pictureBox60.Size = new System.Drawing.Size(1106, 10);
             this.pictureBox60.TabIndex = 366;
             this.pictureBox60.TabStop = false;
             this.pictureBox60.Tag = "techo";
@@ -949,7 +905,7 @@
             this.pictureBox61.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox61.Location = new System.Drawing.Point(36, 802);
             this.pictureBox61.Name = "pictureBox61";
-            this.pictureBox61.Size = new System.Drawing.Size(215, 10);
+            this.pictureBox61.Size = new System.Drawing.Size(195, 10);
             this.pictureBox61.TabIndex = 367;
             this.pictureBox61.TabStop = false;
             this.pictureBox61.Tag = "techo";
@@ -957,9 +913,9 @@
             // pictureBox62
             // 
             this.pictureBox62.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox62.Location = new System.Drawing.Point(1549, 811);
+            this.pictureBox62.Location = new System.Drawing.Point(1569, 811);
             this.pictureBox62.Name = "pictureBox62";
-            this.pictureBox62.Size = new System.Drawing.Size(202, 10);
+            this.pictureBox62.Size = new System.Drawing.Size(182, 11);
             this.pictureBox62.TabIndex = 368;
             this.pictureBox62.TabStop = false;
             this.pictureBox62.Tag = "techo";
@@ -967,9 +923,9 @@
             // pictureBox64
             // 
             this.pictureBox64.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox64.Location = new System.Drawing.Point(1549, 594);
+            this.pictureBox64.Location = new System.Drawing.Point(1572, 594);
             this.pictureBox64.Name = "pictureBox64";
-            this.pictureBox64.Size = new System.Drawing.Size(202, 10);
+            this.pictureBox64.Size = new System.Drawing.Size(179, 10);
             this.pictureBox64.TabIndex = 369;
             this.pictureBox64.TabStop = false;
             this.pictureBox64.Tag = "techo";
@@ -979,7 +935,7 @@
             this.pictureBox65.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox65.Location = new System.Drawing.Point(35, 602);
             this.pictureBox65.Name = "pictureBox65";
-            this.pictureBox65.Size = new System.Drawing.Size(202, 10);
+            this.pictureBox65.Size = new System.Drawing.Size(186, 10);
             this.pictureBox65.TabIndex = 370;
             this.pictureBox65.TabStop = false;
             this.pictureBox65.Tag = "techo";
@@ -987,9 +943,9 @@
             // pictureBox66
             // 
             this.pictureBox66.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox66.Location = new System.Drawing.Point(239, 240);
+            this.pictureBox66.Location = new System.Drawing.Point(259, 240);
             this.pictureBox66.Name = "pictureBox66";
-            this.pictureBox66.Size = new System.Drawing.Size(403, 10);
+            this.pictureBox66.Size = new System.Drawing.Size(363, 10);
             this.pictureBox66.TabIndex = 371;
             this.pictureBox66.TabStop = false;
             this.pictureBox66.Tag = "techo";
@@ -997,9 +953,9 @@
             // pictureBox67
             // 
             this.pictureBox67.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox67.Location = new System.Drawing.Point(1114, 240);
+            this.pictureBox67.Location = new System.Drawing.Point(1133, 240);
             this.pictureBox67.Name = "pictureBox67";
-            this.pictureBox67.Size = new System.Drawing.Size(369, 10);
+            this.pictureBox67.Size = new System.Drawing.Size(337, 10);
             this.pictureBox67.TabIndex = 372;
             this.pictureBox67.TabStop = false;
             this.pictureBox67.Tag = "techo";
@@ -1115,27 +1071,33 @@
             // 
             this.tiempoJuego.Enabled = true;
             this.tiempoJuego.Interval = 1000;
+            this.tiempoJuego.Tick += new System.EventHandler(this.tiempoJuego_Tick);
             // 
             // J3derrotado
             // 
             this.J3derrotado.Interval = 700;
+            this.J3derrotado.Tick += new System.EventHandler(this.J3derrotado_Tick);
             // 
             // J1derrotado
             // 
             this.J1derrotado.Interval = 700;
+            this.J1derrotado.Tick += new System.EventHandler(this.J1derrotado_Tick);
             // 
             // MainTimerJuego
             // 
             this.MainTimerJuego.Enabled = true;
             this.MainTimerJuego.Interval = 30;
+            this.MainTimerJuego.Tick += new System.EventHandler(this.MainGameTimerEvent);
             // 
             // J4derrotado
             // 
             this.J4derrotado.Interval = 700;
+            this.J4derrotado.Tick += new System.EventHandler(this.J4derrotado_Tick);
             // 
             // J2derrotado
             // 
             this.J2derrotado.Interval = 700;
+            this.J2derrotado.Tick += new System.EventHandler(this.J2derrotado_Tick);
             // 
             // pictureBox26
             // 
@@ -1260,24 +1222,97 @@
             // pictureBox45
             // 
             this.pictureBox45.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox45.Location = new System.Drawing.Point(-2, 960);
+            this.pictureBox45.Location = new System.Drawing.Point(-2, 954);
             this.pictureBox45.Name = "pictureBox45";
-            this.pictureBox45.Size = new System.Drawing.Size(1848, 313);
+            this.pictureBox45.Size = new System.Drawing.Size(1945, 319);
             this.pictureBox45.TabIndex = 396;
             this.pictureBox45.TabStop = false;
             this.pictureBox45.Tag = "plataforma";
+            // 
+            // pictureBox48
+            // 
+            this.pictureBox48.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox48.Location = new System.Drawing.Point(1526, 799);
+            this.pictureBox48.Name = "pictureBox48";
+            this.pictureBox48.Size = new System.Drawing.Size(37, 13);
+            this.pictureBox48.TabIndex = 267;
+            this.pictureBox48.TabStop = false;
+            this.pictureBox48.Tag = "plataforma";
+            // 
+            // pictureBox49
+            // 
+            this.pictureBox49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pictureBox49.Location = new System.Drawing.Point(1432, 779);
+            this.pictureBox49.Name = "pictureBox49";
+            this.pictureBox49.Size = new System.Drawing.Size(38, 10);
+            this.pictureBox49.TabIndex = 391;
+            this.pictureBox49.TabStop = false;
+            this.pictureBox49.Tag = "aire";
+            // 
+            // pictureBox50
+            // 
+            this.pictureBox50.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox50.Location = new System.Drawing.Point(1472, 691);
+            this.pictureBox50.Name = "pictureBox50";
+            this.pictureBox50.Size = new System.Drawing.Size(43, 23);
+            this.pictureBox50.TabIndex = 267;
+            this.pictureBox50.TabStop = false;
+            this.pictureBox50.Tag = "plataforma";
+            // 
+            // pictureBox53
+            // 
+            this.pictureBox53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pictureBox53.Location = new System.Drawing.Point(1456, 698);
+            this.pictureBox53.Name = "pictureBox53";
+            this.pictureBox53.Size = new System.Drawing.Size(10, 10);
+            this.pictureBox53.TabIndex = 392;
+            this.pictureBox53.TabStop = false;
+            this.pictureBox53.Tag = "aire";
+            // 
+            // pictureBox75
+            // 
+            this.pictureBox75.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox75.Location = new System.Drawing.Point(247, 790);
+            this.pictureBox75.Name = "pictureBox75";
+            this.pictureBox75.Size = new System.Drawing.Size(37, 13);
+            this.pictureBox75.TabIndex = 267;
+            this.pictureBox75.TabStop = false;
+            this.pictureBox75.Tag = "plataforma";
+            // 
+            // pictureBox76
+            // 
+            this.pictureBox76.BackColor = System.Drawing.Color.Olive;
+            this.pictureBox76.Location = new System.Drawing.Point(271, 684);
+            this.pictureBox76.Name = "pictureBox76";
+            this.pictureBox76.Size = new System.Drawing.Size(43, 23);
+            this.pictureBox76.TabIndex = 267;
+            this.pictureBox76.TabStop = false;
+            this.pictureBox76.Tag = "plataforma";
+            // 
+            // pictureBox77
+            // 
+            this.pictureBox77.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pictureBox77.Location = new System.Drawing.Point(314, 698);
+            this.pictureBox77.Name = "pictureBox77";
+            this.pictureBox77.Size = new System.Drawing.Size(10, 10);
+            this.pictureBox77.TabIndex = 392;
+            this.pictureBox77.TabStop = false;
+            this.pictureBox77.Tag = "aire";
             // 
             // Cueva_Maritima
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(1792, 1055);
+            this.BackColor = System.Drawing.Color.RoyalBlue;
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Controls.Add(this.pictureBox45);
             this.Controls.Add(this.pictureBox44);
             this.Controls.Add(this.pictureBox43);
             this.Controls.Add(this.pictureBox42);
+            this.Controls.Add(this.pictureBox77);
+            this.Controls.Add(this.pictureBox53);
             this.Controls.Add(this.pictureBox41);
+            this.Controls.Add(this.pictureBox49);
             this.Controls.Add(this.pictureBox39);
             this.Controls.Add(this.pictureBox37);
             this.Controls.Add(this.pictureBox34);
@@ -1306,9 +1341,7 @@
             this.Controls.Add(this.pictureBox60);
             this.Controls.Add(this.pictureBox59);
             this.Controls.Add(this.pictureBox58);
-            this.Controls.Add(this.pictureBox57);
             this.Controls.Add(this.pictureBox56);
-            this.Controls.Add(this.pictureBox55);
             this.Controls.Add(this.pictureBox54);
             this.Controls.Add(this.pictureBox47);
             this.Controls.Add(this.plataformaVertical4_Bot_limit);
@@ -1348,12 +1381,14 @@
             this.Controls.Add(this.placa1_1);
             this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.pictureBox20);
+            this.Controls.Add(this.pictureBox76);
+            this.Controls.Add(this.pictureBox50);
+            this.Controls.Add(this.pictureBox75);
+            this.Controls.Add(this.pictureBox48);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox15);
-            this.Controls.Add(this.diamante3);
             this.Controls.Add(this.pictureBox13);
-            this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.vidasJ4_pb);
             this.Controls.Add(this.vidasJ3_pb);
@@ -1372,9 +1407,9 @@
             this.Controls.Add(this.pictureBox21);
             this.Controls.Add(this.pictureBox19);
             this.Controls.Add(this.pictureBox18);
-            this.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "Cueva_Maritima";
-            this.Text = "Cueva_Maritima";
+            this.Text = "Cueva";
             this.Load += new System.EventHandler(this.Cueva_Maritima_Load_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
@@ -1396,9 +1431,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vidasJ2_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vidasJ1_pb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diamante3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
@@ -1441,9 +1474,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vertical4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox51)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox54)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox55)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox56)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox57)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox58)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox59)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).EndInit();
@@ -1475,6 +1506,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox53)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox75)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox76)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1499,9 +1537,7 @@
         private System.Windows.Forms.PictureBox vidasJ2_pb;
         private System.Windows.Forms.PictureBox vidasJ1_pb;
         private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox13;
-        private System.Windows.Forms.PictureBox diamante3;
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox16;
@@ -1544,9 +1580,7 @@
         private System.Windows.Forms.PictureBox vertical4;
         private System.Windows.Forms.PictureBox pictureBox51;
         private System.Windows.Forms.PictureBox pictureBox54;
-        private System.Windows.Forms.PictureBox pictureBox55;
         private System.Windows.Forms.PictureBox pictureBox56;
-        private System.Windows.Forms.PictureBox pictureBox57;
         private System.Windows.Forms.PictureBox pictureBox58;
         private System.Windows.Forms.PictureBox pictureBox59;
         private System.Windows.Forms.PictureBox pictureBox60;
@@ -1586,5 +1620,12 @@
         private System.Windows.Forms.PictureBox pictureBox43;
         private System.Windows.Forms.PictureBox pictureBox44;
         private System.Windows.Forms.PictureBox pictureBox45;
+        private System.Windows.Forms.PictureBox pictureBox48;
+        private System.Windows.Forms.PictureBox pictureBox49;
+        private System.Windows.Forms.PictureBox pictureBox50;
+        private System.Windows.Forms.PictureBox pictureBox53;
+        private System.Windows.Forms.PictureBox pictureBox75;
+        private System.Windows.Forms.PictureBox pictureBox76;
+        private System.Windows.Forms.PictureBox pictureBox77;
     }
 }

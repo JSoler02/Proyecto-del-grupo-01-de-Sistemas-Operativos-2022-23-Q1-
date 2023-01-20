@@ -576,7 +576,7 @@ namespace ProyectoSO
                 // Plataformas
                 if ((string)x.Tag == "plataforma")
                 {
-                    x.BackgroundImage = Image.FromFile("plataforma_Mapa1.png");
+                    x.BackgroundImage = Image.FromFile("plataforma_Mapa4.png");
                     x.BringToFront(); // plataformas delante de todo
                 }
                 if ((string)x.Tag == "vidas")
@@ -2248,8 +2248,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J1 == true)
             { onPlatform_J1 = false; }
-            Jug1.SetX(10);
-            Jug1.SetY(660);
+            Jug1.SetX(60);
+            Jug1.SetY(700);
             //misPicsPersonajes[0].Image = Image.FromFile("vacio.png");
             if (vidas1 > 1)
             {
@@ -2276,8 +2276,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J2 == true)
             { onPlatform_J2 = false; }
-            Jug2.SetX(70);
-            Jug2.SetY(660);
+            Jug2.SetX(120);
+            Jug2.SetY(700);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas2 > 1)
             {
@@ -2305,8 +2305,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J3 == true)
             { onPlatform_J3 = false; }
-            Jug3.SetX(700);
-            Jug3.SetY(660);
+            Jug3.SetX(1200);
+            Jug3.SetY(700);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas3 > 1)
             {
@@ -2334,8 +2334,8 @@ namespace ProyectoSO
         {
             if (onPlatform_J4 == true)
             { onPlatform_J4 = false; }
-            Jug4.SetX(770);
-            Jug4.SetY(660);
+            Jug4.SetX(1260);
+            Jug4.SetY(700);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas4 > 1)
             {
@@ -2393,38 +2393,12 @@ namespace ProyectoSO
             if (result_partida != "No Superado")
             {
                 // Solo envía el mensaje al servidor el jugador 1
-                if (jug1Juega == true)
+                if (miPersonajeQueControlo == 1)
                 {
-                    if (miPersonajeQueControlo == 1)
-                    {
-                        string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                        server.Send(msg);
-                        label_mensaje.Text = mensaje;
-                    }
-                }
-                else
-                {
-                    if (jug2Juega == true)
-                    {
-                        if (miPersonajeQueControlo == 2)
-                        {
-                            string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                            server.Send(msg);
-                            label_mensaje.Text = mensaje;
-                        }
-                    }
-                    else
-                    {
-                        if (miPersonajeQueControlo == 3)
-                        {
-                            string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                            server.Send(msg);
-                            label_mensaje.Text = mensaje;
-                        }
-                    }
+                    string mensaje = "50/" + idPartida + "/" + mapa + "/" + result_partida + "/" + letra_resultado + "/" + segundos;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+                    label_mensaje.Text = mensaje;
                 }
             }
             else

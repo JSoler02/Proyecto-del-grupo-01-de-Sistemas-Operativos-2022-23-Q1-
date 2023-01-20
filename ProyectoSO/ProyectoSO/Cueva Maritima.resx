@@ -543,24 +543,24 @@
 </value>
   </data>
   <metadata name="tiempoJuego.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>295, 60</value>
+    <value>65, 19</value>
   </metadata>
   <metadata name="J3derrotado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>440, 60</value>
+    <value>210, 19</value>
   </metadata>
   <metadata name="J1derrotado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>579, 60</value>
+    <value>349, 19</value>
   </metadata>
   <metadata name="MainTimerJuego.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>718, 60</value>
+    <value>488, 19</value>
   </metadata>
   <metadata name="J4derrotado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>888, 60</value>
+    <value>658, 19</value>
   </metadata>
   <metadata name="J2derrotado.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1027, 60</value>
+    <value>797, 19</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>73</value>
   </metadata>
 </root>
