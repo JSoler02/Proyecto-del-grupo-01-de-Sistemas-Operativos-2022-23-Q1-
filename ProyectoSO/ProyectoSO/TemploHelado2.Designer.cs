@@ -117,6 +117,14 @@ namespace ProyectoSO
             this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.aire_pal_4 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.pictureBox28 = new System.Windows.Forms.PictureBox();
+            this.pictureBox29 = new System.Windows.Forms.PictureBox();
+            this.pictureBox30 = new System.Windows.Forms.PictureBox();
+            this.pictureBox35 = new System.Windows.Forms.PictureBox();
+            this.pictureBox36 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox107)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox96)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox85)).BeginInit();
@@ -195,6 +203,14 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aire_pal_4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox107
@@ -842,7 +858,7 @@ namespace ProyectoSO
             // pictureBox44
             // 
             this.pictureBox44.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox44.Location = new System.Drawing.Point(367, 172);
+            this.pictureBox44.Location = new System.Drawing.Point(367, 187);
             this.pictureBox44.Name = "pictureBox44";
             this.pictureBox44.Size = new System.Drawing.Size(208, 39);
             this.pictureBox44.TabIndex = 259;
@@ -852,7 +868,7 @@ namespace ProyectoSO
             // pictureBox45
             // 
             this.pictureBox45.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox45.Location = new System.Drawing.Point(395, 201);
+            this.pictureBox45.Location = new System.Drawing.Point(395, 216);
             this.pictureBox45.Name = "pictureBox45";
             this.pictureBox45.Size = new System.Drawing.Size(165, 10);
             this.pictureBox45.TabIndex = 260;
@@ -1022,9 +1038,9 @@ namespace ProyectoSO
             // aire_pal_4
             // 
             this.aire_pal_4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.aire_pal_4.Location = new System.Drawing.Point(744, 364);
+            this.aire_pal_4.Location = new System.Drawing.Point(809, 364);
             this.aire_pal_4.Name = "aire_pal_4";
-            this.aire_pal_4.Size = new System.Drawing.Size(110, 13);
+            this.aire_pal_4.Size = new System.Drawing.Size(45, 12);
             this.aire_pal_4.TabIndex = 306;
             this.aire_pal_4.TabStop = false;
             this.aire_pal_4.Tag = "aire";
@@ -1039,12 +1055,97 @@ namespace ProyectoSO
             this.pictureBox10.TabStop = false;
             this.pictureBox10.Tag = "aire";
             // 
+            // pictureBox17
+            // 
+            this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox17.Location = new System.Drawing.Point(1516, 681);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox17.TabIndex = 346;
+            this.pictureBox17.TabStop = false;
+            this.pictureBox17.Tag = "pared_derecha";
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox14.Location = new System.Drawing.Point(1451, 656);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox14.TabIndex = 346;
+            this.pictureBox14.TabStop = false;
+            this.pictureBox14.Tag = "pared_derecha";
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pictureBox21.Location = new System.Drawing.Point(1243, 433);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox21.TabIndex = 334;
+            this.pictureBox21.TabStop = false;
+            this.pictureBox21.Tag = "pared_izquierda";
+            // 
+            // pictureBox28
+            // 
+            this.pictureBox28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pictureBox28.Location = new System.Drawing.Point(569, 165);
+            this.pictureBox28.Name = "pictureBox28";
+            this.pictureBox28.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox28.TabIndex = 334;
+            this.pictureBox28.TabStop = false;
+            this.pictureBox28.Tag = "pared_izquierda";
+            // 
+            // pictureBox29
+            // 
+            this.pictureBox29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.pictureBox29.Location = new System.Drawing.Point(363, 201);
+            this.pictureBox29.Name = "pictureBox29";
+            this.pictureBox29.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox29.TabIndex = 334;
+            this.pictureBox29.TabStop = false;
+            this.pictureBox29.Tag = "pared_izquierda";
+            // 
+            // pictureBox30
+            // 
+            this.pictureBox30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox30.Location = new System.Drawing.Point(744, 423);
+            this.pictureBox30.Name = "pictureBox30";
+            this.pictureBox30.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox30.TabIndex = 346;
+            this.pictureBox30.TabStop = false;
+            this.pictureBox30.Tag = "pared_derecha";
+            // 
+            // pictureBox35
+            // 
+            this.pictureBox35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox35.Location = new System.Drawing.Point(1451, 125);
+            this.pictureBox35.Name = "pictureBox35";
+            this.pictureBox35.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox35.TabIndex = 346;
+            this.pictureBox35.TabStop = false;
+            this.pictureBox35.Tag = "pared_derecha";
+            // 
+            // pictureBox36
+            // 
+            this.pictureBox36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox36.Location = new System.Drawing.Point(569, 202);
+            this.pictureBox36.Name = "pictureBox36";
+            this.pictureBox36.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox36.TabIndex = 346;
+            this.pictureBox36.TabStop = false;
+            this.pictureBox36.Tag = "pared_derecha";
+            // 
             // TemploHelado2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.pictureBox36);
+            this.Controls.Add(this.pictureBox35);
+            this.Controls.Add(this.pictureBox30);
+            this.Controls.Add(this.pictureBox14);
+            this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.pictureBox118);
             this.Controls.Add(this.pictureBox119);
             this.Controls.Add(this.pictureBox115);
@@ -1054,6 +1155,9 @@ namespace ProyectoSO
             this.Controls.Add(this.pictureBox107);
             this.Controls.Add(this.pictureBox20);
             this.Controls.Add(this.pictureBox109);
+            this.Controls.Add(this.pictureBox29);
+            this.Controls.Add(this.pictureBox28);
+            this.Controls.Add(this.pictureBox21);
             this.Controls.Add(this.pictureBox96);
             this.Controls.Add(this.pictureBox85);
             this.Controls.Add(this.pictureBox80);
@@ -1208,6 +1312,14 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aire_pal_4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1300,5 +1412,13 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox25;
         private System.Windows.Forms.PictureBox aire_pal_4;
         private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.PictureBox pictureBox21;
+        private System.Windows.Forms.PictureBox pictureBox28;
+        private System.Windows.Forms.PictureBox pictureBox29;
+        private System.Windows.Forms.PictureBox pictureBox30;
+        private System.Windows.Forms.PictureBox pictureBox35;
+        private System.Windows.Forms.PictureBox pictureBox36;
     }
 }
