@@ -133,6 +133,7 @@ namespace ProyectoSO
             this.pictureBox64 = new System.Windows.Forms.PictureBox();
             this.pictureBox29 = new System.Windows.Forms.PictureBox();
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
+            this.abandonar_but = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox60)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox61)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.palanca3)).BeginInit();
@@ -1221,12 +1222,23 @@ namespace ProyectoSO
             this.pictureBox30.TabStop = false;
             this.pictureBox30.Tag = "aire";
             // 
+            // abandonar_but
+            // 
+            this.abandonar_but.Location = new System.Drawing.Point(1804, 25);
+            this.abandonar_but.Name = "abandonar_but";
+            this.abandonar_but.Size = new System.Drawing.Size(109, 32);
+            this.abandonar_but.TabIndex = 350;
+            this.abandonar_but.Text = "Abandonar";
+            this.abandonar_but.UseVisualStyleBackColor = true;
+            this.abandonar_but.Click += new System.EventHandler(this.abandonar_but_Click);
+            // 
             // Templo4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Aquamarine;
             this.ClientSize = new System.Drawing.Size(1924, 1003);
+            this.Controls.Add(this.abandonar_but);
             this.Controls.Add(this.pictureBox60);
             this.Controls.Add(this.pictureBox61);
             this.Controls.Add(this.palanca3);
@@ -1526,5 +1538,6 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox64;
         private System.Windows.Forms.PictureBox pictureBox29;
         private System.Windows.Forms.PictureBox pictureBox30;
+        private System.Windows.Forms.Button abandonar_but;
     }
 }

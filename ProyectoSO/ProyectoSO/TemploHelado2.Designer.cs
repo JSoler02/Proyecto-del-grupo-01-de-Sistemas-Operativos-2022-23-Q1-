@@ -125,6 +125,7 @@ namespace ProyectoSO
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox35 = new System.Windows.Forms.PictureBox();
             this.pictureBox36 = new System.Windows.Forms.PictureBox();
+            this.abandonar_but = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox107)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox96)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox85)).BeginInit();
@@ -1135,12 +1136,23 @@ namespace ProyectoSO
             this.pictureBox36.TabStop = false;
             this.pictureBox36.Tag = "pared_derecha";
             // 
+            // abandonar_but
+            // 
+            this.abandonar_but.Location = new System.Drawing.Point(1718, 24);
+            this.abandonar_but.Name = "abandonar_but";
+            this.abandonar_but.Size = new System.Drawing.Size(109, 32);
+            this.abandonar_but.TabIndex = 350;
+            this.abandonar_but.Text = "Abandonar";
+            this.abandonar_but.UseVisualStyleBackColor = true;
+            this.abandonar_but.Click += new System.EventHandler(this.abandonar_but_Click);
+            // 
             // TemploHelado2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.abandonar_but);
             this.Controls.Add(this.pictureBox36);
             this.Controls.Add(this.pictureBox35);
             this.Controls.Add(this.pictureBox30);
@@ -1420,5 +1432,6 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox30;
         private System.Windows.Forms.PictureBox pictureBox35;
         private System.Windows.Forms.PictureBox pictureBox36;
+        private System.Windows.Forms.Button abandonar_but;
     }
 }

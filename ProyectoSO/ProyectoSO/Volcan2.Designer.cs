@@ -174,6 +174,7 @@ namespace ProyectoSO
             this.J1derrotado = new System.Windows.Forms.Timer(this.components);
             this.MainTimerJuego = new System.Windows.Forms.Timer(this.components);
             this.tiempoJuego = new System.Windows.Forms.Timer(this.components);
+            this.abandonar_but = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox107)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox108)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -1719,12 +1720,23 @@ namespace ProyectoSO
             this.tiempoJuego.Interval = 1000;
             this.tiempoJuego.Tick += new System.EventHandler(this.tiempoJuego_Tick);
             // 
+            // abandonar_but
+            // 
+            this.abandonar_but.Location = new System.Drawing.Point(1727, 12);
+            this.abandonar_but.Name = "abandonar_but";
+            this.abandonar_but.Size = new System.Drawing.Size(109, 32);
+            this.abandonar_but.TabIndex = 350;
+            this.abandonar_but.Text = "Abandonar";
+            this.abandonar_but.UseVisualStyleBackColor = true;
+            this.abandonar_but.Click += new System.EventHandler(this.abandonar_but_Click);
+            // 
             // Volcan2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCoral;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.abandonar_but);
             this.Controls.Add(this.pictureBox107);
             this.Controls.Add(this.pictureBox108);
             this.Controls.Add(this.pictureBox16);
@@ -2151,5 +2163,6 @@ namespace ProyectoSO
         private System.Windows.Forms.Timer J1derrotado;
         private System.Windows.Forms.Timer MainTimerJuego;
         private System.Windows.Forms.Timer tiempoJuego;
+        private System.Windows.Forms.Button abandonar_but;
     }
 }

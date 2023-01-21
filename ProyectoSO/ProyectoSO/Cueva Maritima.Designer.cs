@@ -138,6 +138,7 @@
             this.pictureBox75 = new System.Windows.Forms.PictureBox();
             this.pictureBox76 = new System.Windows.Forms.PictureBox();
             this.pictureBox77 = new System.Windows.Forms.PictureBox();
+            this.abandonar_but = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -1299,12 +1300,23 @@
             this.pictureBox77.TabStop = false;
             this.pictureBox77.Tag = "aire";
             // 
+            // abandonar_but
+            // 
+            this.abandonar_but.Location = new System.Drawing.Point(1790, 19);
+            this.abandonar_but.Name = "abandonar_but";
+            this.abandonar_but.Size = new System.Drawing.Size(109, 32);
+            this.abandonar_but.TabIndex = 397;
+            this.abandonar_but.Text = "Abandonar";
+            this.abandonar_but.UseVisualStyleBackColor = true;
+            this.abandonar_but.Click += new System.EventHandler(this.abandonar_but_Click);
+            // 
             // Cueva_Maritima
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.abandonar_but);
             this.Controls.Add(this.pictureBox45);
             this.Controls.Add(this.pictureBox44);
             this.Controls.Add(this.pictureBox43);
@@ -1627,5 +1639,6 @@
         private System.Windows.Forms.PictureBox pictureBox75;
         private System.Windows.Forms.PictureBox pictureBox76;
         private System.Windows.Forms.PictureBox pictureBox77;
+        private System.Windows.Forms.Button abandonar_but;
     }
 }
