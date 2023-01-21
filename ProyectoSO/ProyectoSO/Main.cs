@@ -1019,54 +1019,138 @@ namespace ProyectoSO
                         mapa = trozos[2];
                         string resultado = trozos[3];
                         string letra_res = trozos[4];
+                        Invoke(new Action(() =>
+                        {
+                            formularios1.Remove(formularios1[idPartida]);
+
+                        }));
                         switch (mapa)
                         {
                             case "Templo":
                                 Invoke(new Action(() =>
                                 {
                                     form_templo_4Jug[idPartida].FinDePartida(resultado, letra_res);
+                                    form_templo_4Jug.Remove(form_templo_4Jug[idPartida]);
                                 }));
                                 break;
                             case "Volcan":
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_4Jug[idPartida].FinDePartida(resultado, letra_res);
+                                    form_volcan_4Jug.Remove(form_volcan_4Jug[idPartida]);
+
                                 }));
                                 break;
                             case "Volcan (3Jug)":
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_3Jug[idPartida].FinDePartida(resultado, letra_res);
+                                    form_volcan_3Jug.Remove(form_volcan_3Jug[idPartida]);
+
                                 }));
                                 break;
                             case "Volcan (2Jug)":
                                 Invoke(new Action(() =>
                                 {
                                     form_volcan_2Jug[idPartida].FinDePartida(resultado, letra_res);
+                                    form_volcan_2Jug.Remove(form_volcan_2Jug[idPartida]);
+
                                 }));
                                 break;
                             case "Cueva":
                                 Invoke(new Action(() =>
                                 {
                                     form_cueva_mar_4Jug[idPartida].FinDePartida(resultado, letra_res);
+                                    form_cueva_mar_4Jug.Remove(form_cueva_mar_4Jug[idPartida]);
+
                                 }));
                                 break;
                             case "Templo Helado":
                                 Invoke(new Action(() =>
                                 {
                                     form_templohelado[idPartida].FinDePartida(resultado, letra_res);
+                                    form_templohelado.Remove(form_templohelado[idPartida]);
+
                                 }));
                                 break;
                             case "Templo Helado (2Jug)":
                                 Invoke(new Action(() =>
                                 {
                                     form_templohelado_2Jug[idPartida].FinDePartida(resultado, letra_res);
+                                    form_templohelado_2Jug.Remove(form_templohelado_2Jug[idPartida]);
+
                                 }));
                                 break;
                             case "Templo (2Jug)":
                                 Invoke(new Action(() =>
                                 {
                                     form_templo_2Jug[idPartida].FinDePartida(resultado, letra_res);
+                                    form_templo_2Jug.Remove(form_templo_2Jug[idPartida]);
+
+                                }));
+                                break;
+                        }
+
+                        break;
+                    case 51: //borrar formularios de la lista de formularios
+                             // 51/idpartida/mapa
+                        idPartida = Convert.ToInt32(trozos[1]);
+                        mapa = trozos[2];
+                        switch (mapa)
+                        {
+                            case "Templo":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_4Jug.Remove(form_templo_4Jug[idPartida]);
+                                }));
+                                break;
+                            case "Volcan":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_4Jug.Remove(form_volcan_4Jug[idPartida]);
+
+                                }));
+                                break;
+                            case "Volcan (3Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_3Jug.Remove(form_volcan_3Jug[idPartida]);
+
+                                }));
+                                break;
+                            case "Volcan (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_volcan_2Jug.Remove(form_volcan_2Jug[idPartida]);
+
+                                }));
+                                break;
+                            case "Cueva":
+                                Invoke(new Action(() =>
+                                {
+                                    form_cueva_mar_4Jug.Remove(form_cueva_mar_4Jug[idPartida]);
+
+                                }));
+                                break;
+                            case "Templo Helado":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado.Remove(form_templohelado[idPartida]);
+
+                                }));
+                                break;
+                            case "Templo Helado (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templohelado_2Jug.Remove(form_templohelado_2Jug[idPartida]);
+
+                                }));
+                                break;
+                            case "Templo (2Jug)":
+                                Invoke(new Action(() =>
+                                {
+                                    form_templo_2Jug.Remove(form_templo_2Jug[idPartida]);
+
                                 }));
                                 break;
                         }

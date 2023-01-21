@@ -768,6 +768,7 @@ void *AtenderCliente (void *socket)
 		char mapa[60]; // Para consulta 3
 		char peticion[500];
 		char username[60];
+		char usernameFijo[60];
 		char password[60];
 		
 		char invitado[60];
@@ -806,6 +807,7 @@ void *AtenderCliente (void *socket)
 			// Obtenemos usuario
 			p = strtok(NULL, "/");
 			strcpy(username, p);
+			strcpy(usernameFijo, p);
 			//Obtenemos contrasenya
 			p = strtok(NULL, "/");
 			strcpy(password, p);
@@ -1242,6 +1244,21 @@ void *AtenderCliente (void *socket)
 				pthread_mutex_unlock (&mutex);
 			}
 		}
+		else if (codigo == 51) // 51 /idpartida/ mapa
+		{
+			p = strtok(NULL, "/");
+			int idpartida = atoi(p);
+			char map[30];
+			p = strtok(NULL, "/");
+			strcpy(map, p);
+			
+			sprintf(notificacion, "51/%d/%s", idpartida, map);
+			for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
+			{
+				write (listaPartidas[idpartida].jugadores[j].socket, notificacion, strlen(notificacion));
+			}
+			printf("Notificacion: %s\n", notificacion);
+		}
 		
 		else //if (codigo == 20)
 		{	//Mensaje del chat de seleccion partida
@@ -1267,7 +1284,7 @@ void *AtenderCliente (void *socket)
 			
 		}
 		
-		printf ("- - - - - - - - - Tiene este nombre %s - - - - - - - - \n", username);
+		printf ("- - - - - - - - - [%s] (fijo) tiene este nombre %s - - - - - - - - \n", usernameFijo, username);
 		if (codigo !=0)
 		{
 			printf ("Respuesta: %s\n", respuesta);

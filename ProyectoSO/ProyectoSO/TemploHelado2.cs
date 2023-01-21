@@ -2796,7 +2796,7 @@ namespace ProyectoSO
         void botonCerrarPartida_Click(object sender, EventArgs e)
         {
             // Este messagebox se quitará y en vez de esto, se cerrara el mapa
-            MessageBox.Show("La partida ha terminado.");
+            MessageBox.Show("La partida ha terminado.");             string mensaje = "51/" + idPartida + "/" + mapa;             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);            server.Send(msg);
             this.Close();
         }
     }
