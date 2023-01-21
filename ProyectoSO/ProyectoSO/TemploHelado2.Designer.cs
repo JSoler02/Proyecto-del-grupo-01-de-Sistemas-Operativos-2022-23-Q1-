@@ -125,7 +125,8 @@ namespace ProyectoSO
             this.pictureBox30 = new System.Windows.Forms.PictureBox();
             this.pictureBox35 = new System.Windows.Forms.PictureBox();
             this.pictureBox36 = new System.Windows.Forms.PictureBox();
-            this.abandonar_but = new System.Windows.Forms.Button();
+            this.abandonar_label = new System.Windows.Forms.Label();
+            this.pictureBox37 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox107)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox96)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox85)).BeginInit();
@@ -212,6 +213,7 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox107
@@ -519,7 +521,7 @@ namespace ProyectoSO
             this.pictureBox78.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox78.Location = new System.Drawing.Point(1101, 145);
             this.pictureBox78.Name = "pictureBox78";
-            this.pictureBox78.Size = new System.Drawing.Size(358, 10);
+            this.pictureBox78.Size = new System.Drawing.Size(343, 10);
             this.pictureBox78.TabIndex = 269;
             this.pictureBox78.TabStop = false;
             this.pictureBox78.Tag = "techo";
@@ -537,9 +539,9 @@ namespace ProyectoSO
             // pictureBox39
             // 
             this.pictureBox39.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox39.Location = new System.Drawing.Point(1245, 454);
+            this.pictureBox39.Location = new System.Drawing.Point(1263, 454);
             this.pictureBox39.Name = "pictureBox39";
-            this.pictureBox39.Size = new System.Drawing.Size(606, 10);
+            this.pictureBox39.Size = new System.Drawing.Size(588, 10);
             this.pictureBox39.TabIndex = 265;
             this.pictureBox39.TabStop = false;
             this.pictureBox39.Tag = "techo";
@@ -639,7 +641,7 @@ namespace ProyectoSO
             // pictureBox69
             // 
             this.pictureBox69.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox69.Location = new System.Drawing.Point(1514, 732);
+            this.pictureBox69.Location = new System.Drawing.Point(1516, 739);
             this.pictureBox69.Name = "pictureBox69";
             this.pictureBox69.Size = new System.Drawing.Size(151, 10);
             this.pictureBox69.TabIndex = 234;
@@ -649,7 +651,7 @@ namespace ProyectoSO
             // pictureBox68
             // 
             this.pictureBox68.BackColor = System.Drawing.Color.Olive;
-            this.pictureBox68.Location = new System.Drawing.Point(1514, 703);
+            this.pictureBox68.Location = new System.Drawing.Point(1516, 710);
             this.pictureBox68.Name = "pictureBox68";
             this.pictureBox68.Size = new System.Drawing.Size(163, 39);
             this.pictureBox68.TabIndex = 226;
@@ -1136,15 +1138,26 @@ namespace ProyectoSO
             this.pictureBox36.TabStop = false;
             this.pictureBox36.Tag = "pared_derecha";
             // 
-            // abandonar_but
+            // abandonar_label
             // 
-            this.abandonar_but.Location = new System.Drawing.Point(1718, 24);
-            this.abandonar_but.Name = "abandonar_but";
-            this.abandonar_but.Size = new System.Drawing.Size(109, 32);
-            this.abandonar_but.TabIndex = 350;
-            this.abandonar_but.Text = "Abandonar";
-            this.abandonar_but.UseVisualStyleBackColor = true;
-            this.abandonar_but.Click += new System.EventHandler(this.abandonar_but_Click);
+            this.abandonar_label.AutoSize = true;
+            this.abandonar_label.BackColor = System.Drawing.Color.Ivory;
+            this.abandonar_label.Location = new System.Drawing.Point(1739, 21);
+            this.abandonar_label.Name = "abandonar_label";
+            this.abandonar_label.Size = new System.Drawing.Size(78, 17);
+            this.abandonar_label.TabIndex = 351;
+            this.abandonar_label.Text = "Abandonar";
+            this.abandonar_label.Click += new System.EventHandler(this.abandonar_label_Click);
+            // 
+            // pictureBox37
+            // 
+            this.pictureBox37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBox37.Location = new System.Drawing.Point(1673, 720);
+            this.pictureBox37.Name = "pictureBox37";
+            this.pictureBox37.Size = new System.Drawing.Size(10, 23);
+            this.pictureBox37.TabIndex = 346;
+            this.pictureBox37.TabStop = false;
+            this.pictureBox37.Tag = "pared_derecha";
             // 
             // TemploHelado2
             // 
@@ -1152,11 +1165,12 @@ namespace ProyectoSO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
-            this.Controls.Add(this.abandonar_but);
+            this.Controls.Add(this.abandonar_label);
             this.Controls.Add(this.pictureBox36);
             this.Controls.Add(this.pictureBox35);
             this.Controls.Add(this.pictureBox30);
             this.Controls.Add(this.pictureBox14);
+            this.Controls.Add(this.pictureBox37);
             this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.pictureBox118);
             this.Controls.Add(this.pictureBox119);
@@ -1332,7 +1346,9 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox36)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox37)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1432,6 +1448,7 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox30;
         private System.Windows.Forms.PictureBox pictureBox35;
         private System.Windows.Forms.PictureBox pictureBox36;
-        private System.Windows.Forms.Button abandonar_but;
+        private System.Windows.Forms.Label abandonar_label;
+        private System.Windows.Forms.PictureBox pictureBox37;
     }
 }

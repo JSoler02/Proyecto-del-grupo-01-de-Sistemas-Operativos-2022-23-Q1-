@@ -393,9 +393,9 @@ namespace ProyectoSO
             // pictureBox39
             // 
             this.pictureBox39.BackColor = System.Drawing.Color.Goldenrod;
-            this.pictureBox39.Location = new System.Drawing.Point(1245, 454);
+            this.pictureBox39.Location = new System.Drawing.Point(1256, 454);
             this.pictureBox39.Name = "pictureBox39";
-            this.pictureBox39.Size = new System.Drawing.Size(606, 10);
+            this.pictureBox39.Size = new System.Drawing.Size(595, 10);
             this.pictureBox39.TabIndex = 265;
             this.pictureBox39.TabStop = false;
             this.pictureBox39.Tag = "techo";
@@ -577,7 +577,7 @@ namespace ProyectoSO
             this.pictureBox12.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox12.Location = new System.Drawing.Point(669, 179);
             this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(902, 10);
+            this.pictureBox12.Size = new System.Drawing.Size(892, 10);
             this.pictureBox12.TabIndex = 214;
             this.pictureBox12.TabStop = false;
             this.pictureBox12.Tag = "techo";
@@ -665,7 +665,7 @@ namespace ProyectoSO
             // pictureBox87
             // 
             this.pictureBox87.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.pictureBox87.Location = new System.Drawing.Point(748, 599);
+            this.pictureBox87.Location = new System.Drawing.Point(746, 598);
             this.pictureBox87.Name = "pictureBox87";
             this.pictureBox87.Size = new System.Drawing.Size(10, 156);
             this.pictureBox87.TabIndex = 342;
@@ -677,7 +677,7 @@ namespace ProyectoSO
             this.pictureBox91.BackColor = System.Drawing.Color.Goldenrod;
             this.pictureBox91.Location = new System.Drawing.Point(748, 745);
             this.pictureBox91.Name = "pictureBox91";
-            this.pictureBox91.Size = new System.Drawing.Size(843, 10);
+            this.pictureBox91.Size = new System.Drawing.Size(833, 10);
             this.pictureBox91.TabIndex = 340;
             this.pictureBox91.TabStop = false;
             this.pictureBox91.Tag = "techo";

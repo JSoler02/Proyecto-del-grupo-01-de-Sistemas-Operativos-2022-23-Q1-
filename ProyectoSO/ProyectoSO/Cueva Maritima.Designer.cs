@@ -138,7 +138,7 @@
             this.pictureBox75 = new System.Windows.Forms.PictureBox();
             this.pictureBox76 = new System.Windows.Forms.PictureBox();
             this.pictureBox77 = new System.Windows.Forms.PictureBox();
-            this.abandonar_but = new System.Windows.Forms.Button();
+            this.abandonar_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
@@ -1300,15 +1300,16 @@
             this.pictureBox77.TabStop = false;
             this.pictureBox77.Tag = "aire";
             // 
-            // abandonar_but
+            // abandonar_label
             // 
-            this.abandonar_but.Location = new System.Drawing.Point(1790, 19);
-            this.abandonar_but.Name = "abandonar_but";
-            this.abandonar_but.Size = new System.Drawing.Size(109, 32);
-            this.abandonar_but.TabIndex = 397;
-            this.abandonar_but.Text = "Abandonar";
-            this.abandonar_but.UseVisualStyleBackColor = true;
-            this.abandonar_but.Click += new System.EventHandler(this.abandonar_but_Click);
+            this.abandonar_label.AutoSize = true;
+            this.abandonar_label.BackColor = System.Drawing.Color.Ivory;
+            this.abandonar_label.Location = new System.Drawing.Point(1807, 19);
+            this.abandonar_label.Name = "abandonar_label";
+            this.abandonar_label.Size = new System.Drawing.Size(78, 17);
+            this.abandonar_label.TabIndex = 397;
+            this.abandonar_label.Text = "Abandonar";
+            this.abandonar_label.Click += new System.EventHandler(this.abandonar_label_Click);
             // 
             // Cueva_Maritima
             // 
@@ -1316,7 +1317,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
-            this.Controls.Add(this.abandonar_but);
+            this.Controls.Add(this.abandonar_label);
             this.Controls.Add(this.pictureBox45);
             this.Controls.Add(this.pictureBox44);
             this.Controls.Add(this.pictureBox43);
@@ -1526,6 +1527,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox76)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox77)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1639,6 +1641,6 @@
         private System.Windows.Forms.PictureBox pictureBox75;
         private System.Windows.Forms.PictureBox pictureBox76;
         private System.Windows.Forms.PictureBox pictureBox77;
-        private System.Windows.Forms.Button abandonar_but;
+        private System.Windows.Forms.Label abandonar_label;
     }
 }

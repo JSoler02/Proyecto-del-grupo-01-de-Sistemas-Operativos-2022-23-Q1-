@@ -2009,6 +2009,14 @@ namespace ProyectoSO
             }));
         }
 
+        private void abandonar_label_Click(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                EnvíoMensajeFinDePartida("No Superado", "F");
+            }));
+        }
+
         private void ColisionesPersonajesParedIzquierda(Control x)
         {
             // Colisiones Jugador 1 - plataforma

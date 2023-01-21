@@ -1822,6 +1822,14 @@ namespace ProyectoSO
             }));
         }
 
+        private void abandonar_label_Click(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                EnvíoMensajeFinDePartida("No Superado", "F");
+            }));
+        }
+
         private void ColisionesPersonajesPlaca2_2(Control x)
         {
             // Colisiones Jugador 1 - placa 1
@@ -2107,7 +2115,7 @@ namespace ProyectoSO
                 {
                     paredPalanca4_activa = true;
                     palanca4.Image = Image.FromFile("palanca4_activada.png");
-                    palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    //palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
             }
 
@@ -2118,7 +2126,7 @@ namespace ProyectoSO
                 {
                     paredPalanca4_activa = true;
                     palanca4.Image = Image.FromFile("palanca4_activada.png");
-                    palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    //palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
             }
 
@@ -2129,7 +2137,7 @@ namespace ProyectoSO
                 {
                     paredPalanca4_activa = true;
                     palanca4.Image = Image.FromFile("palanca4_activada.png");
-                    palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    //palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
             }
             // Colisiones Jugador 4 - palanca 4
@@ -2139,7 +2147,7 @@ namespace ProyectoSO
                 {
                     paredPalanca4_activa = true;
                     palanca4.Image = Image.FromFile("palanca4_activada.png");
-                    palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    //palanca4.Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
             }
 
