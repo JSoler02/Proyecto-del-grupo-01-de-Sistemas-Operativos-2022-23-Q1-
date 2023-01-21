@@ -55,7 +55,7 @@ int i;
 int sockets[100];
 
 //Variables de desarrollo
-int shiva = 0; //1: si Shiva; 0: si MaqVirtual
+int shiva = 1; //1: si Shiva; 0: si MaqVirtual
 //Esta funcion retorna el puerto y el rellena host con el Host 
 // dependiendo de si estamos en el entorno de desarrollo o el de produccion
 int DamePuertoYHost (int shiva, char host[50])
@@ -769,6 +769,7 @@ void *AtenderCliente (void *socket)
 		char peticion[500];
 		char username[60];
 		char password[60];
+		
 		char invitado[60];
 		
 		strcpy(respuesta, ""); // vaciamos respuesta
@@ -1214,20 +1215,20 @@ void *AtenderCliente (void *socket)
 			char map[30];
 			p = strtok(NULL, "/");
 			strcpy(map, p);
-			char resultado[30];
+			char resultado_frase[30];
 			char letra_result[5];
 			p = strtok (NULL, "/");
-			strcpy (resultado, p);
+			strcpy (resultado_frase, p);
 			p= strtok (NULL, "/"); 
 			strcpy(letra_result, p);
 			p= strtok(NULL, "/");
 			int tiempo= atoi(p);
 			
 			// ponemos la partida en la BASE DE DATOS
-			int res_bd = PonPartidaYHistorialEnBBDD(idpartida, map, resultado, letra_result, tiempo);
+			int res_bd = PonPartidaYHistorialEnBBDD(idpartida, map, resultado_frase, letra_result, tiempo);
 			if (res_bd == 0) // BBDD ok
 			{
-				sprintf(notificacion, "50/%d/%s/%s/%s", idpartida,map, resultado, letra_result);
+				sprintf(notificacion, "50/%d/%s/%s/%s", idpartida,map, resultado_frase, letra_result);
 				
 				for (int j = 0; j<listaPartidas[idpartida].numjugadores; j++)
 				{
@@ -1266,7 +1267,7 @@ void *AtenderCliente (void *socket)
 			
 		}
 		
-		printf ("- - - - - - - - - [%d] tiene este nombre %s - - - - - - - - \n", i, username);
+		printf ("- - - - - - - - - Tiene este nombre %s - - - - - - - - \n", username);
 		if (codigo !=0)
 		{
 			printf ("Respuesta: %s\n", respuesta);
