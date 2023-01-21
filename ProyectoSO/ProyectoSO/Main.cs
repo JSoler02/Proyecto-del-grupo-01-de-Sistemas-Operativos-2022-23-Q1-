@@ -1021,6 +1021,7 @@ namespace ProyectoSO
                         string letra_res = trozos[4];
                         Invoke(new Action(() =>
                         {
+                            formularios1[idPartida].Dispose();
                             formularios1.Remove(formularios1[idPartida]);
 
                         }));
@@ -1101,12 +1102,14 @@ namespace ProyectoSO
                             case "Templo":
                                 Invoke(new Action(() =>
                                 {
+                                    form_templo_4Jug[idPartida].Dispose();
                                     form_templo_4Jug.Remove(form_templo_4Jug[idPartida]);
                                 }));
                                 break;
                             case "Volcan":
                                 Invoke(new Action(() =>
                                 {
+                                    form_volcan_4Jug[idPartida].Dispose();
                                     form_volcan_4Jug.Remove(form_volcan_4Jug[idPartida]);
 
                                 }));
@@ -1114,13 +1117,14 @@ namespace ProyectoSO
                             case "Volcan (3Jug)":
                                 Invoke(new Action(() =>
                                 {
+                                    form_volcan_3Jug[idPartida].Dispose();
                                     form_volcan_3Jug.Remove(form_volcan_3Jug[idPartida]);
-
                                 }));
                                 break;
                             case "Volcan (2Jug)":
                                 Invoke(new Action(() =>
                                 {
+                                    form_volcan_2Jug[idPartida].Dispose();
                                     form_volcan_2Jug.Remove(form_volcan_2Jug[idPartida]);
 
                                 }));
@@ -1128,6 +1132,7 @@ namespace ProyectoSO
                             case "Cueva":
                                 Invoke(new Action(() =>
                                 {
+                                    form_cueva_mar_4Jug[idPartida].Dispose();
                                     form_cueva_mar_4Jug.Remove(form_cueva_mar_4Jug[idPartida]);
 
                                 }));
@@ -1135,6 +1140,7 @@ namespace ProyectoSO
                             case "Templo Helado":
                                 Invoke(new Action(() =>
                                 {
+                                    form_templohelado[idPartida].Dispose();
                                     form_templohelado.Remove(form_templohelado[idPartida]);
 
                                 }));
@@ -1142,6 +1148,7 @@ namespace ProyectoSO
                             case "Templo Helado (2Jug)":
                                 Invoke(new Action(() =>
                                 {
+                                    form_templohelado_2Jug[idPartida].Dispose();
                                     form_templohelado_2Jug.Remove(form_templohelado_2Jug[idPartida]);
 
                                 }));
@@ -1149,6 +1156,7 @@ namespace ProyectoSO
                             case "Templo (2Jug)":
                                 Invoke(new Action(() =>
                                 {
+                                    form_templo_2Jug[idPartida].Dispose();
                                     form_templo_2Jug.Remove(form_templo_2Jug[idPartida]);
 
                                 }));
