@@ -233,6 +233,7 @@ void AcabaPartida (Partida lista[20], int idpartida)
 {
 	lista[idpartida].numjugadores = 0;
 	lista[idpartida].invitaciones = 0;
+	lista[idpartida].ocupado = 0;
 	for (int i=0;i < 4;i++)
 	{
 		lista[idpartida].jugadores[i].socket = -1;
@@ -871,9 +872,9 @@ void *AtenderCliente (void *socket)
 /*			sprintf(respuesta, "5/%s", res);*/
 			
 			strcpy(res, "No hay datos");
-			printf("Res Antes: %s\n", res);
+			//printf("Res Antes: %s\n", res);
 			Consulta3Buena(username,res);
-			printf("Res Despu￩s: %s\n", res);
+			//printf("Res Despu￩s: %s\n", res);
 			if (strcmp(res, "")==0)
 				sprintf (res, "No hay datos");
 			sprintf(respuesta, "5/%s", res);
@@ -961,13 +962,16 @@ void *AtenderCliente (void *socket)
 		}
 		
 	
-		else if (codigo == 10) // seleccion de personaje
+		else if (codigo == 10) // seleccion de personaje --> 10/idpartida/personaje
 		{
 			p = strtok(NULL, "/");
 			int idpartida = atoi(p);
 			
 			p = strtok(NULL, "/");
 			int jugadorEscogido = atoi(p);
+			
+/*			p = strtok (NULL, "/");*/
+/*			strcpy (username, p);*/
 			
 			sprintf(notificacion, "10/%d/%d/%s", idpartida, jugadorEscogido, username);
 			
@@ -1262,6 +1266,7 @@ void *AtenderCliente (void *socket)
 			
 		}
 		
+		printf ("- - - - - - - - - [%d] tiene este nombre %s - - - - - - - - \n", i, username);
 		if (codigo !=0)
 		{
 			printf ("Respuesta: %s\n", respuesta);

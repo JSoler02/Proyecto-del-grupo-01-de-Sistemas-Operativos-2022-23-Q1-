@@ -1235,6 +1235,8 @@ namespace ProyectoSO
                             //{
                             EnviarJugadoresPartida(invitados);
                             GridConectados.ClearSelection();
+                            for (int j = 0; j<GridConectados.Rows.Count; j++)
+                            { GridConectados.Rows[j].Cells[0].Style.BackColor = Color.White;}
                             invitados = "";
                             But_empezarPartida_activado = false;
                             //}
@@ -1386,6 +1388,23 @@ namespace ProyectoSO
             t.SetJug4Juega(formularios1[idPartida].DameJug4Juega());
 
             form_templohelado_2Jug.Add(t);
+
+            // rellenamos los otros vectores 
+            //TemploHelado t_1 = new TemploHelado(idPartida, server);
+            //form_templohelado.Add(t_1);
+            //Templo2 t_2 = new Templo2(idPartida, server);
+            //form_templo_2Jug.Add(t_2);
+            //Templo4 t_3 = new Templo4(idPartida, server);
+            //form_templo_4Jug.Add(t_3);
+            //Cueva_Maritima t_4 = new Cueva_Maritima(idPartida, server);
+            //form_cueva_mar_4Jug.Add(t_4);
+            //Volcan2 t_5 = new Volcan2(idPartida, server);
+            //form_volcan_2Jug.Add(t_5);
+            //Volcan3 t_6 = new Volcan3(idPartida, server);
+            //form_volcan_3Jug.Add(t_6);
+            //Volcan4 t_7 = new Volcan4(idPartida, server);
+            //form_volcan_4Jug.Add(t_7);
+
             t.ShowDialog();
         }
         private void PonerEnMarchaForm_CuevaMaritima()

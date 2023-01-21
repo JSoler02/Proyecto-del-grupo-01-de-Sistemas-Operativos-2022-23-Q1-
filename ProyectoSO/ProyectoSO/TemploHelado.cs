@@ -2481,7 +2481,7 @@ namespace ProyectoSO
             // 50% puntos por tiempo: 60s como referencia
             // restaremos 20% dependiendo de las vidas: 12 vidas se pueden perder en total
             double porcion_puntos = (Convert.ToDouble(total_puntos) / 3) * 0.5;
-            double porcion_tiempo = ((60 - Convert.ToDouble(total_tiempo)) / 60) * 0.5;
+            double porcion_tiempo = 0;             if (total_tiempo <= 60)             { porcion_tiempo = 0.5; }             else             { porcion_tiempo = 0.25; }
             double porcion_restar_vidas = (Convert.ToDouble(total_restar_vidas) / 9) * 0.2;
             double puntos_partida = porcion_puntos + porcion_tiempo - porcion_restar_vidas;
 

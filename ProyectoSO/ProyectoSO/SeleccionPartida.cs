@@ -293,7 +293,7 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 2; }
 
-                string mensaje_chat = "10/" + idPartida + "/2/" + username;
+                string mensaje_chat = "10/" + idPartida + "/2";
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -332,7 +332,7 @@ namespace ProyectoSO
                 if (J4seleccionado != -1)
                 { J4seleccionado = 2; }
 
-                string mensaje_chat = "10/" + idPartida + "/3/" + username;
+                string mensaje_chat = "10/" + idPartida + "/3";
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
@@ -371,7 +371,7 @@ namespace ProyectoSO
                 if (J3seleccionado != -1)
                 { J3seleccionado = 2; }
 
-                string mensaje_chat = "10/" + idPartida + "/4/" + username;
+                string mensaje_chat = "10/" + idPartida + "/4";
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_chat);
                 server.Send(msg);
             }
