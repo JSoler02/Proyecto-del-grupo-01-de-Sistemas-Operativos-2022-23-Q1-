@@ -1887,6 +1887,15 @@ namespace ProyectoSO
             }
 
         }
+
+        private void abandonar_label_Click(object sender, EventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                EnvíoMensajeFinDePartida("No Superado", "F");
+            }));
+        }
+
         private void ColisionesPersonajesPlaca5_1(Control x)
         {
             // Colisiones Jugador 1 - placa 1
@@ -2802,10 +2811,7 @@ namespace ProyectoSO
 
         private void abandonar_but_Click(object sender, EventArgs e)
         {
-            Invoke(new Action(()=>
-            { 
-            EnvíoMensajeFinDePartida("No Superado", "F");
-            }));
+            
         }
 
     }

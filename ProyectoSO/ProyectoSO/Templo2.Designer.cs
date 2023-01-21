@@ -104,7 +104,7 @@ namespace ProyectoSO
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox21 = new System.Windows.Forms.PictureBox();
-            this.abandonar_but = new System.Windows.Forms.Button();
+            this.abandonar_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox85)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox80)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -884,15 +884,16 @@ namespace ProyectoSO
             this.pictureBox21.TabStop = false;
             this.pictureBox21.Tag = "pared_derecha";
             // 
-            // abandonar_but
+            // abandonar_label
             // 
-            this.abandonar_but.Location = new System.Drawing.Point(1733, 12);
-            this.abandonar_but.Name = "abandonar_but";
-            this.abandonar_but.Size = new System.Drawing.Size(109, 32);
-            this.abandonar_but.TabIndex = 349;
-            this.abandonar_but.Text = "Abandonar";
-            this.abandonar_but.UseVisualStyleBackColor = true;
-            this.abandonar_but.Click += new System.EventHandler(this.abandonar_but_Click);
+            this.abandonar_label.AutoSize = true;
+            this.abandonar_label.BackColor = System.Drawing.Color.Ivory;
+            this.abandonar_label.Location = new System.Drawing.Point(1730, 21);
+            this.abandonar_label.Name = "abandonar_label";
+            this.abandonar_label.Size = new System.Drawing.Size(78, 17);
+            this.abandonar_label.TabIndex = 350;
+            this.abandonar_label.Text = "Abandonar";
+            this.abandonar_label.Click += new System.EventHandler(this.abandonar_label_Click);
             // 
             // Templo2
             // 
@@ -900,7 +901,7 @@ namespace ProyectoSO
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
-            this.Controls.Add(this.abandonar_but);
+            this.Controls.Add(this.abandonar_label);
             this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.pictureBox96);
             this.Controls.Add(this.pictureBox14);
@@ -1039,6 +1040,7 @@ namespace ProyectoSO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1116,6 +1118,6 @@ namespace ProyectoSO
         private System.Windows.Forms.PictureBox pictureBox14;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox21;
-        private System.Windows.Forms.Button abandonar_but;
+        private System.Windows.Forms.Label abandonar_label;
     }
 }
