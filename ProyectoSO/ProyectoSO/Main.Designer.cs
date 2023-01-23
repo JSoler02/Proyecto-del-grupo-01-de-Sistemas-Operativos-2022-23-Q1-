@@ -52,6 +52,7 @@ namespace ProyectoSO
             this.data_mapas_info = new System.Windows.Forms.DataGridView();
             this.eliminar_but = new System.Windows.Forms.Button();
             this.label_notificacion = new System.Windows.Forms.Label();
+            this.personajFav_but = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridConectados)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.info_mapas_pb)).BeginInit();
@@ -237,7 +238,7 @@ namespace ProyectoSO
             this.data_mapas_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_mapas_info.ColumnHeadersVisible = false;
             this.data_mapas_info.GridColor = System.Drawing.Color.BlanchedAlmond;
-            this.data_mapas_info.Location = new System.Drawing.Point(525, 400);
+            this.data_mapas_info.Location = new System.Drawing.Point(375, 273);
             this.data_mapas_info.Name = "data_mapas_info";
             this.data_mapas_info.RowHeadersWidth = 51;
             this.data_mapas_info.RowTemplate.Height = 24;
@@ -266,11 +267,21 @@ namespace ProyectoSO
             this.label_notificacion.TabIndex = 28;
             this.label_notificacion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // personajFav_but
+            // 
+            this.personajFav_but.Location = new System.Drawing.Point(514, 483);
+            this.personajFav_but.Name = "personajFav_but";
+            this.personajFav_but.Size = new System.Drawing.Size(143, 69);
+            this.personajFav_but.TabIndex = 13;
+            this.personajFav_but.Text = "Personaje Favorito";
+            this.personajFav_but.UseVisualStyleBackColor = true;
+            this.personajFav_but.Click += new System.EventHandler(this.personajFav_but_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 593);
+            this.ClientSize = new System.Drawing.Size(758, 593);
             this.Controls.Add(this.label_notificacion);
             this.Controls.Add(this.eliminar_but);
             this.Controls.Add(this.data_mapas_info);
@@ -282,6 +293,7 @@ namespace ProyectoSO
             this.Controls.Add(this.PartidasMapa_But);
             this.Controls.Add(this.lbl_lista_con);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.personajFav_but);
             this.Controls.Add(this.PuntMax_But);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.desconnectButton);
@@ -326,6 +338,7 @@ namespace ProyectoSO
         private System.Windows.Forms.DataGridView data_mapas_info;
         private System.Windows.Forms.Button eliminar_but;
         private System.Windows.Forms.Label label_notificacion;
+        private System.Windows.Forms.Button personajFav_but;
     }
 }
 

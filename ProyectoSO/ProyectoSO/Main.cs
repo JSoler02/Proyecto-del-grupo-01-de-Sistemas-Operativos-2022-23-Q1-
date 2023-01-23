@@ -20,7 +20,7 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
+        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
         int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
@@ -34,7 +34,7 @@ namespace ProyectoSO
         bool soyanfitrion;
 
         bool conectado;
-
+        bool permite_click_boton_ConectyLogIn = true;
         // Lista generica de formularios (memoria) per saber donde enviare el mensaje
         List<SeleccionPartida> formularios1 = new List<SeleccionPartida>();
         // listas de los mapas -->  igual que la lista de partidas del servidor[] tiene 10 max
@@ -58,6 +58,8 @@ namespace ProyectoSO
         PictureBox Jug2 = new PictureBox();
         PictureBox Jug3 = new PictureBox();
         PictureBox Jug4 = new PictureBox();
+        PictureBox personajFAV_pb = new PictureBox();
+
         Random rnd = new Random();
         int dice;
         Panel panelTituloJuego = new Panel();
@@ -120,6 +122,8 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
+            personajFav_but.Visible = false;
+            this.Controls.Remove(personajFAV_pb);
             eliminar_but.Visible = false;
             PartidasMapa_But.Visible = false;
             TiempoMaxPartida_But.Visible = false;
@@ -208,7 +212,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8095;
+                puerto = 8080;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -273,7 +277,7 @@ namespace ProyectoSO
                                 timer_saludo.Interval = 2000; //3segundos para el saludo
                                 timer_saludo.Start();
                                 if (dice == 1)
-                                { Jug1.Image = Image.FromFile("Fireboy_saludando.gif");}
+                                { Jug1.Image = Image.FromFile("Fireboy_saludando.gif"); }
                                 else if (dice == 2)
                                 { Jug2.Image = Image.FromFile("Watergirl_saludando.gif"); }
                                 else if (dice == 3)
@@ -282,6 +286,10 @@ namespace ProyectoSO
                                 { Jug4.Image = Image.FromFile("Cloudgirl_saludando.gif"); }
 
                             }));
+                        }
+                        else
+                        {
+                            permite_click_boton_ConectyLogIn = true;
                         }
                         break;
                     case 2: // New User
@@ -978,6 +986,8 @@ namespace ProyectoSO
                             label3.Visible = false;
                             lbl_lista_con.Visible = false;
                             PuntMax_But.Visible = false;
+                            personajFav_but.Visible = false;
+                            this.Controls.Remove(personajFAV_pb);
                             eliminar_but.Visible = false;
                             PartidasMapa_But.Visible = false;
                             TiempoMaxPartida_But.Visible = false;
@@ -992,6 +1002,8 @@ namespace ProyectoSO
                             label_notificacion.Visible = false;
                             label_notificacion.Text = "";
                             panel1.Visible = true;
+
+                            permite_click_boton_ConectyLogIn = true;
 
                             InicioPersonajesImagenes();
 
@@ -1011,6 +1023,54 @@ namespace ProyectoSO
                             conectado = false;
 
                         }));
+                        break;
+                    case 26:
+                        // consulta de personaje favorito
+                        // 26/ fav o -1/ partidas jugadas
+                        if (Convert.ToInt32(trozos[1]) == -1)
+                        {
+                            Invoke(new Action(() =>
+                            {
+                                label_notificacion.Text = "No hay datos";
+                            }));
+                        }
+                        else
+                        {
+                            Invoke(new Action(() =>
+                            {
+                                string nombre_personaje = "";
+                                if (Convert.ToInt32(trozos[1]) == 1)
+                                { 
+                                    nombre_personaje = "Fireboy";
+                                    personajFAV_pb.Image = Image.FromFile("Fireboy_saludando.gif");
+                                    personajFAV_pb.Width = 65;
+                                    personajFAV_pb.Height = 75;
+                                }
+                                else if (Convert.ToInt32(trozos[1]) == 2)
+                                { nombre_personaje = "Watergirl";
+                                    personajFAV_pb.Image = Image.FromFile("Watergirl_saludando.gif");
+                                    personajFAV_pb.Width = 75;
+                                    personajFAV_pb.Height = 80;
+                                }
+                                else if (Convert.ToInt32(trozos[1]) == 3)
+                                { nombre_personaje = "Rockboy";
+                                    personajFAV_pb.Image = Image.FromFile("Rockboy_saludando.gif");
+                                    personajFAV_pb.Width = 60;
+                                    personajFAV_pb.Height = 75;
+                                }
+                                else if (Convert.ToInt32(trozos[1]) == 4)
+                                {   nombre_personaje = "Cloudgirl";
+                                    personajFAV_pb.Image = Image.FromFile("Cloudgirl_saludando.gif");
+                                    personajFAV_pb.Width = 70;
+                                    personajFAV_pb.Height = 70;
+                                }
+                                personajFAV_pb.Location = new Point(500, 380);
+                                personajFAV_pb.BackColor = Color.Transparent;
+                                personajFAV_pb.SizeMode = PictureBoxSizeMode.Zoom;
+                                this.Controls.Add(personajFAV_pb);
+                                label_notificacion.Text = "Tu personaje más jugado es " + nombre_personaje + " y has jugado " + trozos[2] + " partidas.";
+                            }));
+                        }
                         break;
 
                     case 50:
@@ -1173,6 +1233,8 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
+            personajFav_but.Visible = false;
+            this.Controls.Remove(personajFAV_pb);
             eliminar_but.Visible = false;
             PartidasMapa_But.Visible = false;
             TiempoMaxPartida_But.Visible = false;
@@ -1187,6 +1249,8 @@ namespace ProyectoSO
             label_notificacion.Visible = false;
             label_notificacion.Text = "";
             panel1.Visible = true;
+
+            permite_click_boton_ConectyLogIn = true;
 
             InicioPersonajesImagenes();
 
@@ -1237,25 +1301,12 @@ namespace ProyectoSO
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
-        {  
-            if (conectado == true)
+        {
+            if (permite_click_boton_ConectyLogIn == true)
             {
-                
-                //MessageBox.Show("Conectado con el servidor");
-
-                //panel1.Visible = true;
-                string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
-                nombre = usernameBox.Text;
-                // Enviamos al servidor el nombre tecleado
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-                
-            }
-            else
-            {
-                int conexion = ConectarConServidor();
-                if (conexion == 0)
+                if (conectado == true)
                 {
+
                     //MessageBox.Show("Conectado con el servidor");
 
                     //panel1.Visible = true;
@@ -1264,32 +1315,50 @@ namespace ProyectoSO
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
-                    conectado = true;
+
                 }
+                else
+                {
+                    int conexion = ConectarConServidor();
+                    if (conexion == 0)
+                    {
+                        //MessageBox.Show("Conectado con el servidor");
+
+                        //panel1.Visible = true;
+                        string mensaje = "1/" + usernameBox.Text + "/" + passwordBox.Text; // + palabra_box.Text ;
+                        nombre = usernameBox.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
+                        conectado = true;
+                    }
+                }
+                permite_click_boton_ConectyLogIn = false;
             }
         }
 
         private void NewAccountButton_Click(object sender, EventArgs e)
         {
-            int conexion = ConectarConServidor();
-            if (conexion == 0)
+            if (permite_click_boton_ConectyLogIn == true)
             {
-                //MessageBox.Show("Conectado con el servidor");
-                string mensaje = "2/" + usernameBox.Text + "/" + passwordBox.Text;
-                // pasar los datos de username, y contraseña en una cadena de texto. 
-                // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
+                int conexion = ConectarConServidor();
+                if (conexion == 0)
+                {
+                    //MessageBox.Show("Conectado con el servidor");
+                    string mensaje = "2/" + usernameBox.Text + "/" + passwordBox.Text;
+                    // pasar los datos de username, y contraseña en una cadena de texto. 
+                    // Hacer protocolo de applicación de Crear usuario en la base de datos (mirar numero más de ID, y poner +1)
 
 
-                // Enviamos al servidor el nombre tecleado
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-                conectado = true;
+                    // Enviamos al servidor el nombre tecleado
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+                    conectado = true;
+                }
             }
         }
         private void CrearPartidaBut_Click(object sender, EventArgs e)
         {
-            
-            
             if (But_empezarPartida_activado == false)
             {
                 CrearPartida f = new CrearPartida();
@@ -1551,6 +1620,8 @@ namespace ProyectoSO
             label3.Visible = false;
             lbl_lista_con.Visible = false;
             PuntMax_But.Visible = false;
+            personajFav_but.Visible = false;
+            this.Controls.Remove(personajFAV_pb);
             eliminar_but.Visible = false;
             PartidasMapa_But.Visible = false;
             TiempoMaxPartida_But.Visible = false;
@@ -1560,6 +1631,8 @@ namespace ProyectoSO
             CrearPartidaBut.Visible = false;
             label_notificacion.Visible = false;
             label_notificacion.Text = "";
+
+            permite_click_boton_ConectyLogIn = true;
 
             if (conectado == true)
             {
@@ -1590,6 +1663,7 @@ namespace ProyectoSO
                 label3.Visible = true;
                 lbl_lista_con.Visible = false;
                 PuntMax_But.Visible = true;
+                personajFav_but.Visible = true;
                 eliminar_but.Visible = true;
                 PartidasMapa_But.Visible = true;
                 TiempoMaxPartida_But.Visible = true;
@@ -1634,6 +1708,13 @@ namespace ProyectoSO
         private void eliminar_but_Click(object sender, EventArgs e)
         {
             string mensaje = "25/";
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
+
+        private void personajFav_but_Click(object sender, EventArgs e)
+        {
+            string mensaje = "26/";
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }

@@ -55,7 +55,7 @@ int i;
 int sockets[100];
 
 //Variables de desarrollo
-int shiva = 1; //1: si Shiva; 0: si MaqVirtual
+int shiva = 0; //1: si Shiva; 0: si MaqVirtual
 //Esta funcion retorna el puerto y el rellena host con el Host 
 // dependiendo de si estamos en el entorno de desarrollo o el de produccion
 int DamePuertoYHost (int shiva, char host[50])
@@ -64,7 +64,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8095;
+		puerto = 8080;
 	}
 	else 
 	{
@@ -75,10 +75,10 @@ int DamePuertoYHost (int shiva, char host[50])
 }
 
 // * * * * * * * * * Funciones ListaConectados
-
-int PonConectado(ListaConectados *lista, char nombre[20], int socket){
 	// Pone nuevo conectado.retorna 0 si ha ido bien y -1 si la lista ya 
 	// estaba llena y no lo ha podido poner
+int PonConectado(ListaConectados *lista, char nombre[20], int socket){
+
 	if (lista->num == 100)
 		return -1;
 	else{
@@ -88,9 +88,9 @@ int PonConectado(ListaConectados *lista, char nombre[20], int socket){
 		return 0;
 	}
 }
-
+ //Devuelve el socket o -1 si no lo encuentra
 int DameSocket (ListaConectados *lista, char nombre[20])
-{ //Devuelve el socket o -1 si no lo encuentra
+{
 	int i = 0;
 	int encontrado = 0;
 	//busqueda
@@ -108,9 +108,9 @@ int DameSocket (ListaConectados *lista, char nombre[20])
 		return -1;
 	
 }
-
+//Devuelve la posicion o -1 si no lo encuentra
 int DamePosicion (ListaConectados *lista, char nombre[20])
-{ //Devuelve la posicion o -1 si no lo encuentra
+{ 
 	int i = 0;
 	int encontrado = 0;
 	//b\uffef\uffbf\uffaf\uffef\uffbe\uffbf\uffef\uffbe\uffbasqueda
@@ -129,10 +129,10 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 	
 }
 
-
-int EliminaConectado (ListaConectados *lista, char nombre[20])	
-{ // Devuelve 0 si elimina y -1 si el usuario no est\uffef\uffbf\uffaf\uffef\uffbe\uffbf\uffef\uffbe\uffa1 en la lista
+// Devuelve 0 si elimina y -1 si el usuario no est\uffef\uffbf\uffaf\uffef\uffbe\uffbf\uffef\uffbe\uffa1 en la lista
 	// Elimina el socket de la lista global de sockets
+int EliminaConectado (ListaConectados *lista, char nombre[20])	
+{ 
 	int pos = DamePosicion (lista,nombre);
 	if (pos == -1)
 		return -1;
@@ -172,20 +172,20 @@ int EliminaConectado (ListaConectados *lista, char nombre[20])
 		return 0;
 	}
 }
-
-void DameNombreConectados (ListaConectados *lista, char respuesta[512])
-{ //Devuelve los nombres de los jugadores conectados separados por "/"
+ //Devuelve los nombres de los jugadores conectados separados por "/"
 	//Primero pone el numero de conectado. "3/Juan/Pedro/Maria"
+void DameNombreConectados (ListaConectados *lista, char respuesta[512])
+{
 	sprintf (respuesta, "%d", lista->num);
 	for (int i = 0; i<lista->num; i++)
 	{
 		sprintf (respuesta, "%s/%s", respuesta, lista->conectados[i].nombre);
 	}
 }
-
-void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char sockets[200])
-{ //Recibe una lista con nombres de jugadores separados por "/";: "3/Juan/Pedro/Maria";
+ //Recibe una lista con nombres de jugadores separados por "/";: "3/Juan/Pedro/Maria";
 	//Devuelve una lista con los sockets de estos jugadores separados por "/":"3/5/1/3";
+void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char sockets[200])
+{
 	char *p = strtok (conectados, "/");
 	int n = atoi (p);
 	sprintf (sockets,"%d", n);
@@ -226,9 +226,9 @@ int BuscarPartidaLibre(Partida lista[20])
 }
 
 
-// Elimina la partida de la lista: pone a 0 el t\uffef\uffbf\uffa9rmino ocupado 
+// Elimina la partida de la lista: pone a 0 el parametro "ocupado" 
 // de la partida que le venga como parametro. Eliminamos (ponemos a -1)
-// tambi\uffef\uffbf\uffa9n los sockets de la lista de partidas
+// tambien los sockets de la lista de partidas
 void AcabaPartida (Partida lista[20], int idpartida)	
 {
 	lista[idpartida].numjugadores = 0;
@@ -243,7 +243,7 @@ void AcabaPartida (Partida lista[20], int idpartida)
 }
 
 // Esta funcion establece el numero de invitaciones que se necesitan para empezar la Partida
-// adem\uffe1s pone al anfitrion en la partida
+// ademas pone al anfitrion en la partida
 void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char jugador[20], int n_invitaciones)
 {
 	if (lista[idpartida].ocupado == 0)
@@ -263,7 +263,7 @@ void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char j
 	//printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 	
 }
-//Pone al jugador en partida. (menos al anfitri\ufff3n)
+//Pone al jugador en partida. (menos al anfitrion)
 void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 {
 	//printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);	
@@ -286,7 +286,7 @@ int  AceptaInvitacionYDameFaltantes(Partida lista[20], int idpartida)
 	return n_invitaciones_Faltantes;
 }
 
-// funcion que pone la posicion (nJugador) en la posicon del jugador de la Partida
+// Funcion que pone la posicion (nJugador) en la posicon del jugador de la Partida
 void PonPosicionJugadorPartida(Partida lista[20], int idpartida, char jugador[20], int posicion)
 {
 	// buscamos el nombre y su posicon relativa en la lista de jugadores de la partida
@@ -356,7 +356,7 @@ int LogIn(char user[60], char passw[60])
 	
 }
 
-// Esta funcion crea un Usuario. Necesita un nombre y una contrasenya
+// Esta funcion crea un Usuario. Necesita un nombre y una contrasenya.
 // Devuelve 0 si todo OK. Devuelve -1 si no se hace correctamente. Devuelve 1 si usuario existente
 int CrearUsuario(char user[60], char passw[60])
 {
@@ -419,7 +419,8 @@ int CrearUsuario(char user[60], char passw[60])
 }
 
 
-// Nos dice la puntuacion maxima que ha conseguido el usuario en sus partidas
+// Nos dice la puntuacion maxima que ha conseguido el usuario en sus partidas --> lo rellena en el parametro nota
+// Tambien necesita como paramentro el nombre del jugador
 void Consulta1Buena(char nombre[20], char nota[20])
 {
 	char cons[500];
@@ -522,7 +523,8 @@ void Consulta1Buena(char nombre[20], char nota[20])
 		sprintf (nota, "S");
 	}
 }
-// cantidad de partidas que el usuario ha jugado en el mapa que escoja
+// Resllena en respuesta la cantidad de partidas que el usuario ha jugado en el mapa que escoja
+// le entra como parametro el nombre y mapa
 void Consulta2Buena(char resp[500], char map[30], char nombre[20])
 {
 	char cons[500];
@@ -554,7 +556,8 @@ void Consulta2Buena(char resp[500], char map[30], char nombre[20])
 }
 
 
-// Nos dice la puntuacion maxima que ha conseguido el usuario en sus partidas
+// Rellena en respuesta el tiempo maximo que ha estado el jugador en sus partidas
+// necesita el nombre como parametro 
 void Consulta3Buena(char nombre[20], char resp[500])
 {
 	char cons[500];
@@ -642,6 +645,8 @@ void EliminarUsuarioBD (char resp[500], char nombre[20])
 	
 }
 
+// Esta funcion sirve para enviar a todos los conectados la lista de conectados
+// rellena la respuesta con la lista de conectados
 void EnviarListaConectadosNotificacion(char respuesta[512])
 {
 	char res[512];
@@ -729,6 +734,180 @@ int PonPartidaYHistorialEnBBDD(int idpartida, char mapa[30], char result[30], ch
 	return 0;
 	
 }
+// Esta funcion rellena el vector respuesta el numero de partidas con el personaje preferido del jugador
+// necesita como parametros la respuesta y el nombre. Retorna el numero de personaje favorito
+int DamePersonajeFavoritoYCantidadPartidas (char resp[500], char nombre[20])
+{
+	char cons[500];
+	char cons1[500];
+	char cons2[500];
+	char cons3[500];
+	char cons4[500];
+	
+	char name [20];
+	
+	int posicion_preferida = 0;
+	int pos1 = 0;
+	int pos2 = 0;
+	int pos3 = 0;
+	int pos4 = 0;
+	
+	//quiere saber la puntuacion maxima de usuario
+	strcpy (name, nombre);
+	
+	// consulta SQL para obtener una tabla con todos los datos
+	
+	// primero hacemos una consulta para saber si hay datos de este jugador y sus partidas
+	sprintf (cons,"SELECT COUNT(historial.id_p) FROM (jugador, historial) WHERE jugador.username ='%s' AND jugador.id = historial.id_j;", name);
+	
+	err=mysql_query (conn, cons);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+		exit (1);
+	}
+	// Recogemos el resultado
+	resultado = mysql_store_result (conn); 
+	row = mysql_fetch_row (resultado);
+	
+	if (row == NULL)
+	{
+		sprintf(resp,"No hay datos");
+	}
+	else
+	{
+		if (atoi(row[0]) == 0)
+		{
+			sprintf(resp,"No hay datos");
+			return -1;
+		}
+		else
+		{
+			// Ahora vamos a realizar la consulta
+			sprintf(cons1,"SELECT Count(Distinct(historial.id_p)) FROM (jugador, historial) WHERE historial.posicion = 1 AND historial.id_j = (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s');", name); 
+			sprintf(cons2,"SELECT Count(Distinct(historial.id_p)) FROM (jugador, historial) WHERE historial.posicion = 2 AND historial.id_j = (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s');", name); 
+			sprintf(cons3,"SELECT Count(Distinct(historial.id_p)) FROM (jugador, historial) WHERE historial.posicion = 3 AND historial.id_j = (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s');", name); 
+			sprintf(cons4,"SELECT Count(Distinct(historial.id_p)) FROM (jugador, historial) WHERE historial.posicion = 4 AND historial.id_j = (SELECT jugador.id FROM (jugador) WHERE jugador.username = '%s');", name); 
+			
+			// posicion 1
+			err=mysql_query (conn, cons1);
+			if (err!=0) {
+				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			// Recogemos el resultado
+			resultado = mysql_store_result (conn); 
+			row = mysql_fetch_row (resultado);
+			if (row == NULL)
+				sprintf(resp,"No hay datos");
+			else
+				pos1 = atoi(row[0]);
+			
+			// posicion 2
+			err=mysql_query (conn, cons2);
+			if (err!=0) {
+				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			// Recogemos el resultado
+			resultado = mysql_store_result (conn); 
+			row = mysql_fetch_row (resultado);
+			if (row == NULL)
+				sprintf(resp,"No hay datos");
+			else
+				pos2 = atoi(row[0]);
+			
+			// posicion 3
+			err=mysql_query (conn, cons3);
+			if (err!=0) {
+				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			// Recogemos el resultado
+			resultado = mysql_store_result (conn); 
+			row = mysql_fetch_row (resultado);
+			if (row == NULL)
+				sprintf(resp,"No hay datos");
+			else
+				pos3 = atoi(row[0]);
+			
+			// posicion 4
+			err=mysql_query (conn, cons1);
+			if (err!=0) {
+				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			// Recogemos el resultado
+			resultado = mysql_store_result (conn); 
+			row = mysql_fetch_row (resultado);
+			if (row == NULL)
+				sprintf(resp,"No hay datos");
+			else
+				pos4 = atoi(row[0]);
+			
+			// miramos cual es el mayor
+			if (pos1 >= pos2)
+			{
+				if (pos1 >= pos3)
+				{
+					if(pos1>=pos4)
+					{ posicion_preferida = 1 ;
+						sprintf (resp, "%d",pos1);
+					}
+					else
+					   { posicion_preferida = 4;
+					   sprintf (resp, "%d",pos4);
+					}
+				}
+				else
+				{
+					if (pos2 >= pos3)
+					{
+						if(pos2>=pos4)
+						{ posicion_preferida = 2 ;
+						sprintf (resp, "%d",pos2);
+						}
+						else
+						{ posicion_preferida = 4;
+						sprintf (resp, "%d",pos4);
+						}
+					}
+					else
+					{
+						if(pos3>=pos4)
+						{ posicion_preferida = 3 ; 
+						sprintf (resp, "%d",pos3);}
+						else
+						{ posicion_preferida = 4;
+						sprintf (resp, "%d",pos4);}
+					}
+				}
+			}
+			else
+			{
+				if (pos2 >= pos3)
+				{
+					if(pos2>=pos4)
+					{ posicion_preferida = 2 ; 
+					sprintf (resp, "%d",pos2);}
+					else
+					{ posicion_preferida = 4;
+					sprintf (resp, "%d",pos4);}
+				}
+				else
+				{
+					if(pos3>=pos4)
+					{ posicion_preferida = 3 ;
+					sprintf (resp, "%d",pos3);}
+					else
+					{ posicion_preferida = 4;
+					sprintf (resp, "%d",pos4);}
+				}
+			}
+			return posicion_preferida;
+		}
+	}
+}
+
 
 void *AtenderCliente (void *socket)
 {
@@ -1208,6 +1387,14 @@ void *AtenderCliente (void *socket)
 			strcpy(res, "");
 			EliminarUsuarioBD(res,username);
 			sprintf(respuesta, "25/%s", res);
+			
+		}
+		else if (codigo == 26) // peticion de consulta de personaje favorito
+		{
+			strcpy(res, "");
+			int favorito = DamePersonajeFavoritoYCantidadPartidas(res, username);
+			
+			sprintf(respuesta, "26/%d/%s", favorito,res);
 			
 		}
 		else if (codigo == 50)	// fin de partida 
