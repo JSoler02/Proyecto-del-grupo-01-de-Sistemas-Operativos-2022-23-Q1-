@@ -212,7 +212,7 @@ namespace ProyectoSO
             }
             else
             {
-                puerto = 8080;
+                puerto = 8090;
                 if (this.julia == 1)
                 { ip = "192.168.195.128"; }
                 else
@@ -1049,8 +1049,8 @@ namespace ProyectoSO
                                 else if (Convert.ToInt32(trozos[1]) == 2)
                                 { nombre_personaje = "Watergirl";
                                     personajFAV_pb.Image = Image.FromFile("Watergirl_saludando.gif");
-                                    personajFAV_pb.Width = 75;
-                                    personajFAV_pb.Height = 80;
+                                    personajFAV_pb.Width = 70;
+                                    personajFAV_pb.Height = 85;
                                 }
                                 else if (Convert.ToInt32(trozos[1]) == 3)
                                 { nombre_personaje = "Rockboy";

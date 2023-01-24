@@ -1304,7 +1304,7 @@
             // 
             this.abandonar_label.AutoSize = true;
             this.abandonar_label.BackColor = System.Drawing.Color.Ivory;
-            this.abandonar_label.Location = new System.Drawing.Point(1807, 19);
+            this.abandonar_label.Location = new System.Drawing.Point(1647, 19);
             this.abandonar_label.Name = "abandonar_label";
             this.abandonar_label.Size = new System.Drawing.Size(78, 17);
             this.abandonar_label.TabIndex = 397;

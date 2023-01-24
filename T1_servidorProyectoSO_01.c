@@ -64,7 +64,7 @@ int DamePuertoYHost (int shiva, char host[50])
 	if (shiva == 0)
 	{
 		strcpy(host, "localhost");
-		puerto = 8080;
+		puerto = 8090;
 	}
 	else 
 	{
@@ -831,7 +831,7 @@ int DamePersonajeFavoritoYCantidadPartidas (char resp[500], char nombre[20])
 				pos3 = atoi(row[0]);
 			
 			// posicion 4
-			err=mysql_query (conn, cons1);
+			err=mysql_query (conn, cons4);
 			if (err!=0) {
 				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
 				exit (1);
@@ -903,6 +903,7 @@ int DamePersonajeFavoritoYCantidadPartidas (char resp[500], char nombre[20])
 					sprintf (resp, "%d",pos4);}
 				}
 			}
+			printf ("Posiciones y partidas con: 1 - %d, 2 - %d, 3 - %d, 4 - %d. --> FAVORITO: %d\n", pos1, pos2, pos3, pos4, posicion_preferida);
 			return posicion_preferida;
 		}
 	}

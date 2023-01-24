@@ -731,6 +731,9 @@ namespace ProyectoSO
             plataformaVertical5_Bot_limit.Visible = false;
             plataformaVertical5_Top_limit.Visible = false;
 
+            label_mensaje.Visible = false;
+
+
         }
 
         // Animaciones y mensaje a enviar al mover MI PERSONAJE

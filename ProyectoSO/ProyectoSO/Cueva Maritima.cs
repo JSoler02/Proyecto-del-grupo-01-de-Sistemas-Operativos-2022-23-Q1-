@@ -83,8 +83,8 @@ namespace ProyectoSO
 
         Jugador Jug1 = new Jugador(1, 60, 713);
         Jugador Jug2 = new Jugador(2, 120, 710);
-        Jugador Jug3 = new Jugador(3, 1200, 715);
-        Jugador Jug4 = new Jugador(4, 1260, 715);
+        Jugador Jug3 = new Jugador(3, 1150, 715);
+        Jugador Jug4 = new Jugador(4, 1200, 715);
         // variables del tiempo
         int segundos;
         private void tiempoJuego_Tick(object sender, EventArgs e)
@@ -644,6 +644,8 @@ namespace ProyectoSO
             plataformaVertical3_Top_limit.Visible = false;
             plataformaVertical4_Bot_limit.Visible = false;
             plataformaVertical4_Top_limit.Visible = false;
+
+            label_mensaje.Visible = false;
         }
         // Animaciones y mensaje a enviar al mover MI PERSONAJE
         private void TeclaArribaSolaClicada()
@@ -2320,7 +2322,7 @@ namespace ProyectoSO
         {
             if (onPlatform_J3 == true)
             { onPlatform_J3 = false; }
-            Jug3.SetX(1200);
+            Jug3.SetX(1150);
             Jug3.SetY(700);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas3 > 1)
@@ -2349,7 +2351,7 @@ namespace ProyectoSO
         {
             if (onPlatform_J4 == true)
             { onPlatform_J4 = false; }
-            Jug4.SetX(1260);
+            Jug4.SetX(1200);
             Jug4.SetY(700);
             //misPicsPersonajes[1].Image = Image.FromFile("vacio.png");
             if (vidas4 > 1)

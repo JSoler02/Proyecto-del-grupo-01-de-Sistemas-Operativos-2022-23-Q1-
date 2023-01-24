@@ -490,15 +490,19 @@ namespace ProyectoSO
                 // techos   --> 1 por cada plataforma que no se pueda atravesar desde abajo.
                 if ((string)x.Tag == "techo")
                 {
-                    //x.Visible = false;
+                    x.Visible = false;
                 }
                 if ((string)x.Tag == "pared_izquierda")
                 {
-                    //x.Visible = false;
+                    x.Visible = false;
                 }
                 if ((string)x.Tag == "pared_derecha")
                 {
-                    //x.Visible = false;
+                    x.Visible = false;
+                }
+                if ((string)x.Tag == "aire")
+                {
+                    x.Visible = false;
                 }
                 // Puntos
                 if ((string)x.Tag == "diamante1")
@@ -595,6 +599,11 @@ namespace ProyectoSO
             // Eliminamos visibilidades extras
             portal1_inicio_hitbox.Visible = false;
             portal2_inicio_hitbox.Visible = false;
+
+            label_mensaje.Visible = false;
+            label_estaEnPuerta.Visible = false;
+            lbl_conquePlat_contacto.Visible = false;
+            lbl_noColisionesPlataforma.Visible = false;
         }
 
 

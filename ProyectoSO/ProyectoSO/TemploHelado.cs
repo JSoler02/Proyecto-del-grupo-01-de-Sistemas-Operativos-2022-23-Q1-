@@ -747,6 +747,8 @@ namespace ProyectoSO
 
             this.Controls.Remove(aire_pal_4);
 
+            label_mensaje.Visible = false;
+
         }
 
         // Animaciones y mensaje a enviar al mover MI PERSONAJE
