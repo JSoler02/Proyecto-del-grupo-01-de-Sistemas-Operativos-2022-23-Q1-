@@ -55,7 +55,7 @@ int i;
 int sockets[100];
 
 //Variables de desarrollo
-int shiva = 0; //1: si Shiva; 0: si MaqVirtual
+int shiva = 1; //1: si Shiva; 0: si MaqVirtual
 //Esta funcion retorna el puerto y el rellena (en el char de entrada) el Host 
 // dependiendo de si estamos en el entorno de desarrollo o el de produccion
 int DamePuertoYHost (int shiva, char host[50])
