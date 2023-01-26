@@ -88,7 +88,7 @@ int PonConectado(ListaConectados *lista, char nombre[20], int socket){
 		return 0;
 	}
 }
- //Devuelve el socket de un conectado. Si no lo encuentra, devuelve un -1.
+ //Retorna el socket de un conectado. Si no lo encuentra, retorna un -1.
 int DameSocket (ListaConectados *lista, char nombre[20])
 {
 	int i = 0;
@@ -108,7 +108,7 @@ int DameSocket (ListaConectados *lista, char nombre[20])
 		return -1;
 	
 }
-//Devuelve la posicion de un conectado en la lista de conectados. Si no lo encuentra, devuelve un -1. 
+//Retorna la posicion de un conectado en la lista de conectados. Si no lo encuentra, retorna un -1. 
 int DamePosicion (ListaConectados *lista, char nombre[20])
 { 
 	int i = 0;
@@ -129,7 +129,7 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 	
 }
 
-// Eliminia un conectado de la lista de conectados. Devuelve 0 si elimina y -1 si el usuario no esta en la lista.
+// Elimina un conectado de la lista de conectados. Retorna un 0 si elimina y -1 si el usuario no esta en la lista.
 // Elimina el socket de la lista global de sockets
 int EliminaConectado (ListaConectados *lista, char nombre[20])	
 { 
@@ -172,7 +172,7 @@ int EliminaConectado (ListaConectados *lista, char nombre[20])
 		return 0;
 	}
 }
- //Devuelve los nombres de los jugadores conectados separados por "/" en la variable vacia de entrada "respuesta". 
+ //Retorna los nombres de los jugadores conectados separados por "/" en la variable vacia de entrada "respuesta". 
 //Primero pone el numero de conectado. "3/Juan/Pedro/Maria"
 void DameNombreConectados (ListaConectados *lista, char respuesta[512])
 {
@@ -183,7 +183,7 @@ void DameNombreConectados (ListaConectados *lista, char respuesta[512])
 	}
 }
  //Recibe una lista con nombres de jugadores separados por "/";: "3/Juan/Pedro/Maria";
-//Devuelve una lista con los sockets de estos jugadores separados por "/":"3/5/1/3" en la variable vacia de entrada "sockets";
+//Retorna una lista con los sockets de estos jugadores separados por "/":"3/5/1/3" en la variable vacia de entrada "sockets";
 void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char sockets[200])
 {
 	char *p = strtok (conectados, "/");
@@ -206,8 +206,8 @@ void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char
 }
 // * * * * * * * * * Funciones ListaPartidas
 
-// Devuelve la id de la partida (busca el primero libre)
-// Devuelve -1 si no encuentra ninguna libre
+// Retorna la id de la partida (busca el primero libre)
+// Retorna -1 si no encuentra ninguna libre
 int BuscarPartidaLibre(Partida lista[20])
 {
 	int j = 0;
@@ -276,7 +276,7 @@ void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 }
 
 // Actualiza la decision sobre la Partida.
-// Devuelve el numero de invitaciones faltantes para empezar la partida.
+// Retorna el numero de invitaciones faltantes para empezar la partida.
 int  AceptaInvitacionYDameFaltantes(Partida lista[20], int idpartida)
 {
 	printf ("Antes de restar faltan %d para empezar la partida [%d]\n", lista[idpartida].invitaciones, idpartida);
@@ -286,7 +286,7 @@ int  AceptaInvitacionYDameFaltantes(Partida lista[20], int idpartida)
 	return n_invitaciones_Faltantes;
 }
 
-// Funcion que pone la posicion (nJugador) en la posicion del jugador de la Partida
+// Funcion que pone la posicion (1,2,3 o 4 --> nJugador) en la posicion del jugador de la Partida (Jugador1, Jugador 2, ...)
 void PonPosicionJugadorPartida(Partida lista[20], int idpartida, char jugador[20], int posicion)
 {
 	// buscamos el nombre y su posicon relativa en la lista de jugadores de la partida
@@ -306,7 +306,7 @@ void PonPosicionJugadorPartida(Partida lista[20], int idpartida, char jugador[20
 		lista[idpartida].jugadores[x].posicion = posicion;
 }
 // Esta funcion hace el LogIn. Necesita un nombre y una contrasenya
-// Devuelve 0 si todo OK. Devuelve -1 si no es correcto. Devuelve 1 si contrasenya incorrecta
+// Retorna 0 si todo OK, -1 si no es correcto o 1 si contrasenya incorrecta
 int LogIn(char user[60], char passw[60])
 {
 	char cons[500];
@@ -357,7 +357,7 @@ int LogIn(char user[60], char passw[60])
 }
 
 // Esta funcion crea un Usuario. Necesita un nombre y una contrasenya.
-// Devuelve 0 si todo OK. Devuelve -1 si no se hace correctamente. Devuelve 1 si usuario existente
+// Retorna 0 si todo OK, -1 si no se hace correctamente o 1 si usuario existente
 int CrearUsuario(char user[60], char passw[60])
 {
 	char cons[500];
@@ -419,7 +419,7 @@ int CrearUsuario(char user[60], char passw[60])
 }
 
 
-// Nos dice la puntuacion maxima que ha conseguido el usuario en sus partidas --> lo rellena en el parametro nota
+// Retorna la puntuacion maxima que ha conseguido el usuario en sus partidas --> lo rellena en el parametro nota
 // Tambien necesita como paramentro el nombre del jugador
 void Consulta1Buena(char nombre[20], char nota[20])
 {
@@ -625,7 +625,7 @@ void Consulta3Buena(char nombre[20], char resp[500])
 
 // Esta funcion, sirve para eliminar un usuario de la base de datos.
 // Necesita el nombre del usuario a eliminar
-// Pone en respuesta "Usuario Eliminado" o "Error al eliminar"
+// Rellena en respuesta "Usuario Eliminado" o "Error al eliminar"
 void EliminarUsuarioBD (char resp[500], char nombre[20])
 {
 	char cons[500];
@@ -664,7 +664,7 @@ void EnviarListaConectadosNotificacion(char respuesta[512])
 }
 
 // Esta funcion crea una partida y la añade en la base de datos. Tambien la relaciona con el historial de jugadores
-// Devuelve 0 si todo OK. Devuelve -1 si no se hace correctamente.
+// Retorna 0 si todo OK o -1 si no se hace correctamente.
 int PonPartidaYHistorialEnBBDD(int idpartida, char mapa[30], char result[30], char nota[5], int tiempo)
 {
 	char cons[500];
