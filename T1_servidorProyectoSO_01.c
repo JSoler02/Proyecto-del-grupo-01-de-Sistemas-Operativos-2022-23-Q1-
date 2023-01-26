@@ -56,7 +56,7 @@ int sockets[100];
 
 //Variables de desarrollo
 int shiva = 0; //1: si Shiva; 0: si MaqVirtual
-//Esta funcion retorna el puerto y el rellena host con el Host 
+//Esta funcion retorna el puerto y el rellena (en el char de entrada) el Host 
 // dependiendo de si estamos en el entorno de desarrollo o el de produccion
 int DamePuertoYHost (int shiva, char host[50])
 {
@@ -75,7 +75,7 @@ int DamePuertoYHost (int shiva, char host[50])
 }
 
 // * * * * * * * * * Funciones ListaConectados
-	// Pone nuevo conectado.retorna 0 si ha ido bien y -1 si la lista ya 
+	// Pone nuevo conectado en la lista de conectados. Retorna 0 si ha ido bien y -1 si la lista ya 
 	// estaba llena y no lo ha podido poner
 int PonConectado(ListaConectados *lista, char nombre[20], int socket){
 
@@ -88,7 +88,7 @@ int PonConectado(ListaConectados *lista, char nombre[20], int socket){
 		return 0;
 	}
 }
- //Devuelve el socket o -1 si no lo encuentra
+ //Devuelve el socket de un conectado. Si no lo encuentra, devuelve un -1.
 int DameSocket (ListaConectados *lista, char nombre[20])
 {
 	int i = 0;
@@ -108,7 +108,7 @@ int DameSocket (ListaConectados *lista, char nombre[20])
 		return -1;
 	
 }
-//Devuelve la posicion o -1 si no lo encuentra
+//Devuelve la posicion de un conectado en la lista de conectados. Si no lo encuentra, devuelve un -1. 
 int DamePosicion (ListaConectados *lista, char nombre[20])
 { 
 	int i = 0;
@@ -129,8 +129,8 @@ int DamePosicion (ListaConectados *lista, char nombre[20])
 	
 }
 
-// Devuelve 0 si elimina y -1 si el usuario no est\uffef\uffbf\uffaf\uffef\uffbe\uffbf\uffef\uffbe\uffa1 en la lista
-	// Elimina el socket de la lista global de sockets
+// Eliminia un conectado de la lista de conectados. Devuelve 0 si elimina y -1 si el usuario no esta en la lista.
+// Elimina el socket de la lista global de sockets
 int EliminaConectado (ListaConectados *lista, char nombre[20])	
 { 
 	int pos = DamePosicion (lista,nombre);
@@ -172,8 +172,8 @@ int EliminaConectado (ListaConectados *lista, char nombre[20])
 		return 0;
 	}
 }
- //Devuelve los nombres de los jugadores conectados separados por "/"
-	//Primero pone el numero de conectado. "3/Juan/Pedro/Maria"
+ //Devuelve los nombres de los jugadores conectados separados por "/" en la variable vacia de entrada "respuesta". 
+//Primero pone el numero de conectado. "3/Juan/Pedro/Maria"
 void DameNombreConectados (ListaConectados *lista, char respuesta[512])
 {
 	sprintf (respuesta, "%d", lista->num);
@@ -183,7 +183,7 @@ void DameNombreConectados (ListaConectados *lista, char respuesta[512])
 	}
 }
  //Recibe una lista con nombres de jugadores separados por "/";: "3/Juan/Pedro/Maria";
-	//Devuelve una lista con los sockets de estos jugadores separados por "/":"3/5/1/3";
+//Devuelve una lista con los sockets de estos jugadores separados por "/":"3/5/1/3" en la variable vacia de entrada "sockets";
 void DameSocketsDeConectados (ListaConectados *lista, char conectados[512], char sockets[200])
 {
 	char *p = strtok (conectados, "/");
@@ -242,8 +242,8 @@ void AcabaPartida (Partida lista[20], int idpartida)
 	}
 }
 
-// Esta funcion establece el numero de invitaciones que se necesitan para empezar la Partida
-// ademas pone al anfitrion en la partida
+// Esta funcion establece el numero de invitaciones que se necesitan para empezar la Partida, poniendo el anfitrion en la partida.
+// Pone a 1 el parametro "ocupado" conforme esa partida esta ocupada.
 void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char jugador[20], int n_invitaciones)
 {
 	if (lista[idpartida].ocupado == 0)
@@ -263,7 +263,7 @@ void PonInvitacionesYAnfitrionEnPartida(Partida lista[20], int idpartida, char j
 	//printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 	
 }
-//Pone al jugador en partida. (menos al anfitrion)
+//Pone al jugador en partida (menos al anfitrion).
 void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 {
 	//printf ("Antes de poner: Partida n%d tiene a los jugadores en este orden:  %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket,listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);	
@@ -275,8 +275,8 @@ void PonJugadorPartida(Partida lista[20], int idpartida, char jugador[20])
 	//printf ("Luego de poner: Partida n%d tiene a los jugadores en este orden: %s - %d, %s- %d, %s- %d, %s- %d --> %d\n", idpartida, listaPartidas[idpartida].jugadores[0].nombre,listaPartidas[idpartida].jugadores[0].socket, listaPartidas[idpartida].jugadores[1].nombre, listaPartidas[idpartida].jugadores[1].socket,listaPartidas[idpartida].jugadores[2].nombre,listaPartidas[idpartida].jugadores[2].socket, listaPartidas[idpartida].jugadores[3].nombre,listaPartidas[idpartida].jugadores[3].socket, listaPartidas[idpartida].numjugadores);
 }
 
-// Actualiza la decision sobre la Partida
-// devuelve el numero de invitaciones faltantes para empezar la partida
+// Actualiza la decision sobre la Partida.
+// Devuelve el numero de invitaciones faltantes para empezar la partida.
 int  AceptaInvitacionYDameFaltantes(Partida lista[20], int idpartida)
 {
 	printf ("Antes de restar faltan %d para empezar la partida [%d]\n", lista[idpartida].invitaciones, idpartida);
@@ -286,7 +286,7 @@ int  AceptaInvitacionYDameFaltantes(Partida lista[20], int idpartida)
 	return n_invitaciones_Faltantes;
 }
 
-// Funcion que pone la posicion (nJugador) en la posicon del jugador de la Partida
+// Funcion que pone la posicion (nJugador) en la posicion del jugador de la Partida
 void PonPosicionJugadorPartida(Partida lista[20], int idpartida, char jugador[20], int posicion)
 {
 	// buscamos el nombre y su posicon relativa en la lista de jugadores de la partida
@@ -523,8 +523,8 @@ void Consulta1Buena(char nombre[20], char nota[20])
 		sprintf (nota, "S");
 	}
 }
-// Resllena en respuesta la cantidad de partidas que el usuario ha jugado en el mapa que escoja
-// le entra como parametro el nombre y mapa
+// Rellena en respuesta la cantidad de partidas que el usuario ha jugado en el mapa que escoja.
+// Le entra como parametro el nombre y mapa.
 void Consulta2Buena(char resp[500], char map[30], char nombre[20])
 {
 	char cons[500];
@@ -557,7 +557,7 @@ void Consulta2Buena(char resp[500], char map[30], char nombre[20])
 
 
 // Rellena en respuesta el tiempo maximo que ha estado el jugador en sus partidas
-// necesita el nombre como parametro 
+// Necesita el nombre como parametro.
 void Consulta3Buena(char nombre[20], char resp[500])
 {
 	char cons[500];
@@ -623,9 +623,9 @@ void Consulta3Buena(char nombre[20], char resp[500])
 	
 }
 
-// Esta funcion, sirve para eliminar un usuario
-// necesita el nombre del usuario a eliminar
-// pone En respuesta "Usuario Eliminado" o "Error al eliminar"
+// Esta funcion, sirve para eliminar un usuario de la base de datos.
+// Necesita el nombre del usuario a eliminar
+// Pone en respuesta "Usuario Eliminado" o "Error al eliminar"
 void EliminarUsuarioBD (char resp[500], char nombre[20])
 {
 	char cons[500];
@@ -646,7 +646,7 @@ void EliminarUsuarioBD (char resp[500], char nombre[20])
 }
 
 // Esta funcion sirve para enviar a todos los conectados la lista de conectados
-// rellena la respuesta con la lista de conectados
+// Rellena la respuesta con la lista de conectados
 void EnviarListaConectadosNotificacion(char respuesta[512])
 {
 	char res[512];
@@ -663,7 +663,7 @@ void EnviarListaConectadosNotificacion(char respuesta[512])
 		write (listaconectados.conectados[j].socket, respuesta, strlen(respuesta));
 }
 
-// Esta funcion crea una partida y la a￱ade en la base de datos. Tambien la relaciona con el historial de jugadores
+// Esta funcion crea una partida y la añade en la base de datos. Tambien la relaciona con el historial de jugadores
 // Devuelve 0 si todo OK. Devuelve -1 si no se hace correctamente.
 int PonPartidaYHistorialEnBBDD(int idpartida, char mapa[30], char result[30], char nota[5], int tiempo)
 {
@@ -735,7 +735,7 @@ int PonPartidaYHistorialEnBBDD(int idpartida, char mapa[30], char result[30], ch
 	
 }
 // Esta funcion rellena el vector respuesta el numero de partidas con el personaje preferido del jugador
-// necesita como parametros la respuesta y el nombre. Retorna el numero de personaje favorito
+// Necesita como parametros la respuesta y el nombre. Retorna el numero de personaje favorito
 int DamePersonajeFavoritoYCantidadPartidas (char resp[500], char nombre[20])
 {
 	char cons[500];

@@ -20,7 +20,7 @@ namespace ProyectoSO
         Thread atender; // declaramos thread
 
         // Variables de desarrollo
-        int shiva = 0;  // 1: si Shiva; 0: si Maquina Virtual
+        int shiva = 1;  // 1: si Shiva; 0: si Maquina Virtual
         int julia = 0;  // 1: si IP de Julia en la Maquina Virtual; 0: si IP del resto en la Maquina virtual
 
         int idPartida;
